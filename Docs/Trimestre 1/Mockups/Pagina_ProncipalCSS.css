@@ -120,7 +120,7 @@ header a{
 
 .carrito{
     position: absolute;
-    top: -5px;
+    top: -1px;
     right: 10rem;
 }    
 .carrito img{
