@@ -1,0 +1,46 @@
+<html>
+    <link rel="stylesheet" href="style.css">
+    <header></header>
+    <body>
+        
+        <div class="container">
+
+            <div class="container-usuario contenedor">
+                <div class="tapa tapa1"></div>
+                <h3>Ingresar usuario</h3>
+                <form action="" method="POST">
+                    <input type="text" name="usuario"  placeholder="Username" required>
+                    <input type="password" name="contraseña"  placeholder="Password" required>
+                    <input type="submit" name="btningresar"  value="Ingresar">
+                </form>
+                <p>¿No has iniciado sesion?<a href="#"> Registrate ahora.</a></p>
+            </div>
+            
+    
+            <div class="container-admin contenedor">
+                <div class="tapa tapa2"></div>
+                <h3>Ingresar administrador</h3>
+                <form action="" method="POST">
+                    <input type="text" name="usuario"  placeholder="Username" required>
+                    <input type="password" name="contraseña"  placeholder="Password" required>
+                    <input type="submit" name="btningresar"  value="Ingresar">
+                </form>
+            </div>
+
+        </div>
+        
+    </body>
+    <script>
+        let tapa1 = document.querySelector('.tapa1');
+            tapa2 = document.querySelector('.tapa2');
+        tapa1.addEventListener('click',()=>{
+            tapa1.classList.toggle('slider');
+            
+        });
+
+        tapa2.addEventListener('click',()=>{
+            tapa2.classList.toggle('slider');
+        });
+
+    </script>
+</html>
