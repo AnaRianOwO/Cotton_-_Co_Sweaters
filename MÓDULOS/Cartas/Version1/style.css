@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0%;
+}
+
+.card{
+    margin: 100px auto;
+    height: 300px;
+    width: 150px;
+    border-radius: 20px;
+    background: red;
+    /* overflow: hidden; */
+    position: relative;
+    display: inline-block;
+    margin: 50px 30px;
+}
+
+.card .content-superior{
+    position: absolute;
+    transform: translateY(-150px);
+    height: 150px;
+    width: 150px;
+    background: rgba(0, 0, 0, 0.548);
+    transition: all .9s ease;
+}
+
+.card .content-inferior{
+    position: absolute;
+    transform: translateY(300px);
+    height: 150px;
+    width: 150px;
+    background: rgba(0, 0, 0, 0.548);
+    transition: all .9s ease;
+}
+
+.card .content1{
+    transform: translateY(0px);
+    transition: all .9s ease;
+}
+
+.card .content2{
+    transform: translateY(150px);
+    transition: all .9s ease;
+}
