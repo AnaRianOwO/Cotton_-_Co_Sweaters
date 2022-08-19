@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: url(https://images.pexels.com/photos/8386657/pexels-photo-8386657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);   
+    background-size: 100%;
+}
+
+/* ---------------------------------------------------CONTENEDOR ROJO---------------------------------------------------- */
+
+.container{
+    position: relative;
+    width: 60%;
+    height: 75%;
+    background: #7f9aa1ce;
+    margin: 6% auto;
+    border-radius: 90px;
+   
+}
+
+/* -------------------------------------------------CONTENEDORES AZULES------------------------------------------------------ */
+
+.contenedor{
+    position: relative;
+    display: inline-block;
+    height: 70%;
+    width: 30%;
+    margin: 50px 30px;
+    background: radial-gradient(#D1B0E8, #F0CCD8);
+    border-radius: 50px;
+    /* overflow: hidden; */
+}
+
+/* -------------------------------------------------CONTENEDORES DE SLIDER------------------------------------------------------ */
+
+.contenedor .tapa{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(#EDD3E5, #EDD3E5);
+    border-radius: 50px;
+    transition: all 1.7s;
+}
+
+.contenedor .slider{
+    transform: translateY(-280px);
+    transition: all 1.7s;
+}
+
+i{
+    position: relative;
+    top: 40%;
+    right: -30%;
+    clear: both;
+    font-size: 5rem;
+}
+
+/* ---------------------------------------------------CONTENEDOR AZUL USUARIO---------------------------------------------------- */
+
+.container .container-usuario{
+    position: absolute;
+    left: 30px;
+    margin: 50px 0px 0 40px;
+    justify-content: center;
+}
+
+h3{
+    justify-content: center;
+    align-items: center;
+}
+
+/* ----------------------------------------------------CONTENEDOR AZUL ADMIN--------------------------------------------------- */
+
+.container .container-admin{
+    position: absolute;
+    right: 30px;
+    margin: 50px 30px 0 0;
+}
+
+/* -----------------------------------------------------CONTENEDOR TITULOS-------------------------------------------------- */
+
+.container .container-usuario h3{
+    color: #fff;
+    margin: 45px 0px 20px 40px ;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container .container-admin h3{
+    margin: 45px 0 0 60px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ----------------------------------------------------CONTENEDORES DE ENTRADA--------------------------------------------------- */
+
+.container input[type=text],[type=password]{
+    display: block;
+    margin: 2px 28px;
+    padding: 10px 10px;
+    left: 0px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    width: 180px;
+}
+
+.container input[type=text]::placeholder,[type=password]::placeholder{
+    color: #fff;
+}
+
+/* ----------------------------------------------------CONTENEDOR DE BOTONES--------------------------------------------------- */
+
+.container input[type=submit]{
+    margin: 20px calc(50% - 60px);
+    height: 40px;
+    width: 120px;
+    border-radius: 40px;
+    border: none;
+    background: #fff;
+    color: rgb(0, 0, 0); 
+    transition: all .7s;
+}
+
+.container input[type=submit]:hover{
+    transform: scale(1.1);
+    background: rgb(36, 36, 36);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all .7s;
+}
+
+.container .container-usuario p, a{
+    margin: auto 20px;
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    /* text-decoration: none; */
+}
+
+.container .container-usuario a{
+    transition: all .7s;
+}
+
+.container .container-usuario a:hover{
+    color: grey;
+    transform: scale(1.02);
+    transition: all .7s;
+}
