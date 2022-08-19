@@ -1,0 +1,307 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', 'Sans serif';
+    width: 100%;
+    height: 100vh;
+    background: rgb(16, 36, 77);
+    position: relative;
+    overflow: hidden;
+}
+h1{
+    margin-top: 30px;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1{
+    color: white;
+    font-weight: bold;
+    margin: 15px auto !important;
+}
+
+form{
+    max-width: 400px;
+    height: 540px;
+    margin: 8px 0 0 800px;
+    background: rgb(79, 171, 231);
+    border-radius: 40px;
+    border: 2px solid rgba(153, 153, 153, 0.788);
+    padding: auto; 
+    margin-bottom: 200px;
+    box-shadow: 10px 10px 40px rgb(91, 149, 197);
+}
+
+form input{
+    display: block;
+    margin: 10px auto;
+    padding: 13px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    height: 25px;
+    width: 300px;
+    font-size: 15px;
+    
+}
+
+form input[type=submit]{
+    border-radius: 30px;
+    margin: 34px auto;
+    background: rgb(219, 212, 212);
+    padding: auto;
+    height: 40px;
+    width: 200px;
+    border: none;
+    box-shadow: 10px 6px 22px  black;
+}
+
+form input[type=submit]:hover{
+    background: white;
+    color: black;
+    cursor: pointer;
+    transition: all .7s ;
+}
+
+form input::placeholder{
+    margin: 15px auto;
+    color: rgb(34, 34, 34);
+}
+
+
+
+select{
+    display: block;
+    margin: auto;
+    color: black;
+}
+
+.content-input input,
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+.content-select select::-ms-expand {
+    display: none;
+}
+
+.content-select{
+	max-width: 308px;
+	position: relative;
+}
+ 
+.content-select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 5px 8px;
+    outline: 0; 
+    border: 0;
+	border-radius: 0;
+	background: #d7dce2;
+	color: black;
+	font-size: 1em;
+	color: black;
+	font-family: 'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    left: 45px;
+    transition: all 0.25s ease;
+}
+ 
+.content-select select:hover{
+	background: #2f679456;
+    color: #f0f0f0;
+}
+
+option{
+    background: #d7dce2;
+}
+select option:hover{
+    background: #850d6b;
+}
+ 
+/*
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+	position: absolute;
+	right: -23px;
+	top: calc(50% - 13px);
+	width: 16px;
+	height: 16px;
+	display: block;
+	border-left:4px solid #0d4f85;
+	border-bottom:4px solid #0d4f85;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+ 
+.content-select:hover i{
+	margin-top: 3px;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+.banner_img{
+    animation: movimiento 2.5s linear infinite;
+}
+
+.banner_img img{
+    width: 400px;
+    display: block;
+    position: absolute;
+    flex: auto;
+    top: -700px !important;
+    left: 100px;
+}
+/* burbujas */
+
+.burbuja{
+    border-radius: 50%;
+    background: rgba(217, 221, 224, 0.733);
+    opacity: .3;
+
+    position: absolute;
+    bottom: -150;
+    
+    animation: burbujas 3s linear infinite ;
+}
+
+.burbuja:nth-child(1){
+    width: 80px;
+    height: 80px;
+    left: 5%;
+    animation-duration: 3s;
+    animation-delay: 3s;
+}
+
+.burbuja:nth-child(2){
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 5s;
+    
+}
+
+.burbuja:nth-child(3){
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    animation-duration: 1.5s;
+    animation-delay: 7s;
+}
+
+.burbuja:nth-child(4){
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    animation-duration: 6s;
+    animation-delay: 3s;
+}
+
+.burbuja:nth-child(5){
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 3s;
+    animation-delay: 1s;
+}
+
+.burbuja:nth-child(6){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(7){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(8){
+    width: 100;
+    height: 100px;
+    left: 52%;
+    animation-duration: 5s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(9){
+    width: 65px;
+    height: 65px;
+    left: 51%;
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+
+.burbuja:nth-child(10){
+    width: 40px;
+    height: 40px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+
+@keyframes burbujas{
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    30%{
+        transform: translateX(30px);
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes movimiento{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
