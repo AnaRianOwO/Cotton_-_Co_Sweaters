@@ -1,0 +1,105 @@
+.app-sidebar__user-avatar{
+    width: 48px;
+    background: gray;
+    padding: 6px;
+}
+
+.app-header{
+    background: rgb(182, 102, 12);
+}
+.app-header__logo{
+    background: rgb(65, 54, 54);
+    
+}
+
+.app-sidebar__toggle:hover{
+    background: rgba(9, 188, 243, 0.815);
+}
+
+.app-nav{
+    background: rgb(141, 38, 38);
+}
+
+.dropdown{
+    background: rgb(0, 219, 11);
+}
+
+.dropdown-menu .settings-menu .dropdown-menu-right{
+    background: rgb(0, 81, 255);
+}
+
+.app-sidebar{
+    background: rgb(150, 0, 219);
+}
+.app-menu__item:hover{
+    background: rgba(204, 219, 0, 0.815);    
+}
+.app-menu ul{
+    background: rgb(87, 27, 27);
+}
+.app-menu ul li{
+    background: rgb(119, 235, 243);
+}
+.app-menu__labe:hover{
+    background: rgb(9, 77, 82);
+}
+
+.treeview{
+    background: rgb(116, 40, 40);
+}
+.treeview-menu{
+    background: rgb(202, 114, 114);
+}
+
+.treeview-menu li:hover{
+    background: rgb(116, 141, 143);
+}
+
+.treeview-item:hover{
+    background: rgb(67, 148, 72);
+}
+
+.btn{
+    margin-top: 13px;
+}
+
+.btn-primary1 {
+    color: #fff;
+    background-color: #5cb85c;
+  	border-color: #000000;
+}
+.btn-primary1:hover {
+  	color: #fff;
+  	background-color: #24da24;
+	border-color: #000000;
+}
+
+.btn-primary2 {
+  	color: #fff;
+  	background-color: #da523a;
+	border-color: #000000;
+}
+.btn-primary2:hover {
+	color: #fff;
+	background-color: #ff0000;
+  	border-color: #000000;
+}
+.btn-success1 {
+    color: #fff;
+    background-color: #6c97e0;
+    border-color: #000000;
+}
+.btn-success1:hover {
+  	color: #fff;
+  	background-color: #2254aaff;
+  	border-color: #000000;
+}
+i .icon{
+    font-size: 30px;
+}
+
+
+
+.widget-small .primary .coloured-icon{
+    background: red;
+}
