@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    height: 2100px;
+    width: 1600px;
+    background: radial-gradient(rgb(255, 128, 128), rgb(255, 180, 180));
+    position: relative;
+}
+
+.container-body{
+    position: absolute;
+    height: 70%;
+    width: 70%;
+    background: #fff;
+    margin: 10% 12%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px black;
+}
+
+.container-body header{
+    width: 100%;
+}
+
+.container-body h1{
+    margin: 30px 30%;
+    font-size: 100px;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.container-body h3{
+    font-size: 50px;
+    margin: 10px 50px;
+    font-weight: bold;
+}
+
+.container-body p{
+    font-size: 30px;
+    margin: 20px 60px;
+}
+
+.container-body ul{
+    margin: 0px 50px;
+}
+
+.container-body ul li{
+    list-style: none;
+}
+
+.container-body ul li span{
+    font-size: 30px;
+    cursor: default;
+}
+
+.container-body ul li span a{
+    text-decoration: none;
+}
+
+.container-body i{
+    font-size: 30px;
+    margin: 15px 20px;
+}
+
+.container-body iframe{
+    display: flex;
+    margin: 30px 30% 40px 30%;
+    border-radius: 40px;
+}
+
+.container-body .facebook{
+    color: blue;
+}
+
+
+.container-body .whatsapp{
+    color: green;
+}
+
+.container-body .instagram{
+    color: red;
+}
+
+.container-body .casa{
+    color: black;
+    font-size: 20px;
+    margin: 20px 5px 20px 70px;
+    transition: all .7s;
+}
+
+.container-body a:hover,.container-body .casa:hover{
+    color: red;
+    transition: all .7s;
+}
+
