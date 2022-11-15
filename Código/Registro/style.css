@@ -1,0 +1,412 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Dancing Script';
+    width: 100%;
+    height: 100vh;
+    background: rgb(255, 182, 157);
+    position: relative;
+    overflow: hidden;
+    max-width: 1700px;
+    min-width: 500px;
+}
+
+h2{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 25px;
+    color: #000000;
+
+}
+.contenedor{
+    color: #850d0d;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1{
+    color: rgb(28, 15, 5);
+    font-weight: bold;
+    margin: 60px auto !important;
+    font-family: 'Dancing Script';
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.container-formulario{
+    
+    position: absolute;
+    background: violet;
+    display: flex;
+    height: 30em;
+    width: 400px;
+    margin: auto;
+}
+
+form{
+    position: absolute !important;
+    font-family:'Times New Roman', Times, serif;
+    width: 400px;
+    height: 700px;
+    margin: 140px 0 0 1100px;
+    background: rgb(255, 178, 165);
+    border-radius: 50px;
+    /* border: 2px solid rgba(153, 153, 153, 0.788); */
+    padding: auto; 
+    z-index: 5;
+    margin-bottom: 200px;
+    
+    /* transform: translateX(-150px); */
+    transition: all .9s ease;
+}
+
+.form-movimiento{
+    transform: translateX(-200px);
+    border-radius: 20px 0px 0px 20px;
+    box-shadow: 0px 0px 40px 3px rgb(255, 149, 141);
+    transition: all .9s ease;
+}
+
+.form h2{
+    color: rgb(0, 0, 0) !important;
+    font-weight: bold;
+    margin: 10px auto !important;
+    font-family: 'Dancing Script';
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.tapa{
+    position: absolute;
+    display: flex;
+    margin: 20px auto;
+    height: 700px;
+    width: 400px;
+    display: flex;
+    margin: 140px 0 0 1100px;
+    background: linear-gradient(45deg, rgb(255, 158, 158), rgb(255, 130, 130), rgb(255, 179, 129));
+    border-radius: 50px;
+    /* transform: translateX(150px); */
+    transition: all .9s ease;
+    z-index: 6;
+}
+
+.movimiento-tapa{
+    transform: translateX(200px);
+    border-radius: 0px 40px 40px 40px;
+    box-shadow: 0px 0px 40px 3px rgb(255, 149, 141);
+    transition: all .9s ease;
+}
+
+.tapa h1{
+    position: relative;
+    display: flex;
+    margin: 20px 10px;
+    font-size: 65px;
+    font-weight: bold;
+    transform: rotate(90deg);
+    justify-content: center;
+    align-items: center;    
+    right: 0px !important;
+}
+
+form input{
+    display: block;
+    margin: 19px auto;
+    padding: 13px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(57, 11, 19, 0.617);
+    height: 25px;
+    width: 300px;
+    font-size: 15px;
+    
+}
+
+form input[type=submit]{
+    border-radius: 30px;
+    margin: 14px auto;
+    background: rgb(219, 212, 212);
+    padding: auto;
+    height: 40px;
+    width: 200px;
+    border: none;
+    box-shadow: 10px 6px 22px  rgb(172, 74, 74);
+}
+
+form input[type=submit]:hover{
+    background: white;
+    color: black;
+    cursor: pointer;
+    transition: all .7s ;
+}
+
+form input::placeholder{
+    margin: 15px auto;
+    color: rgb(34, 34, 34);
+}
+
+form p{
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+form p a{
+    color: rgb(0, 0, 0);
+    display: flex;
+    margin: auto;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+select{
+    display: block;
+    margin: auto;
+    color: black;
+}
+
+.content-input input,
+.content-select select{
+	appearance: none;
+    background: rgb(0, 0, 0) !important;
+	-webkit-appearance: button;
+	-moz-appearance: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.content-select select{
+	appearance: none;
+    background: rgb(255, 201, 201) !important;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+}
+
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+.content-select select::-ms-expand {
+    display: none;
+}
+
+.content-select{
+	max-width: 308px;
+	position: relative;
+    
+}
+ 
+.content-select select{
+    margin-top: 0px;
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 5px 8px;
+    outline: 0; 
+    border: 0;
+	border-radius: 0;
+	background: #ffadad;
+	color: black;
+	font-size: 1em;
+	color: black;
+	font-family: 'Times New Roman', Times, serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    left: 45px;
+    transition: all 0.25s ease;
+}
+ 
+.content-select select:hover{
+	background-color: #ff858556;
+    color: #000000;
+}
+
+option{
+    background: #d7dce2;
+}
+select option:hover{
+    background: #850d6b;
+}
+ 
+/*
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+	position: absolute;
+	right: -23px;
+	top: calc(50% - 8px);
+	width: 16px;
+	height: 16px;
+	display: block;
+	border-left:4px solid #da6c6c;
+	border-bottom:4px solid #da6c6c;
+	transform: rotate(50deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+ 
+.content-select:hover i{
+    top: 5px;
+	transform: rotateZ(-48deg);
+    transition: all 0.15s ease;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+
+.banner_img{
+    animation: movimiento 2.5s linear infinite;
+    z-index: 1;
+}
+
+.banner_img img{
+    width: 600px;
+    display: block;
+    position: absolute;
+    flex: auto;
+    top: 90px;
+    left: 100px;
+    
+}
+/* burbujas */
+
+.burbuja{
+    border-radius: 120px 4% 120px 4%;
+    background: rgb(0, 0, 0);
+    opacity: .3;
+
+    position: absolute;
+    bottom: -250px;
+    
+    animation: burbujas 3s linear infinite ;
+}
+
+.burbuja:nth-child(1){
+    width: 60px;
+    height: 60px;
+    left: 5%;
+    animation-duration: 3s;
+    animation-delay: 3s;
+}
+
+.burbuja:nth-child(2){
+    width: 80px;
+    height: 80px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 5s;
+    
+}
+
+.burbuja:nth-child(3){
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    animation-duration: 1.5s;
+    animation-delay: 7s;
+}
+
+.burbuja:nth-child(4){
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    animation-duration: 6s;
+    animation-delay: 3s;
+}
+
+.burbuja:nth-child(5){
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 3s;
+    animation-delay: 1s;
+}
+
+.burbuja:nth-child(6){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(7){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(8){
+    width: 100;
+    height: 100px;
+    left: 52%;
+    animation-duration: 5s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(9){
+    width: 65px;
+    height: 65px;
+    left: 51%;
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+
+.burbuja:nth-child(10){
+    width: 40px;
+    height: 40px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+
+@keyframes burbujas{
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    30%{
+        transform: translateX(30px);
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes movimiento{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

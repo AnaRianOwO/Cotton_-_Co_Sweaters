@@ -1,0 +1,34 @@
+body{
+	padding-top: 70px;
+}
+.btn-primary1 {
+    color: #fff;
+    background-color: #5cb85c;
+  	border-color: #000000;
+}
+.btn-primary1:hover {
+  	color: #fff;
+  	background-color: #24da24;
+	border-color: #000000;
+}
+
+.btn-primary2 {
+  	color: #fff;
+  	background-color: #da523a;
+	border-color: #000000;
+}
+.btn-primary2:hover {
+	color: #fff;
+	background-color: #ff0000;
+  	border-color: #000000;
+}
+.btn-success1 {
+    color: #fff;
+    background-color: #6c97e0;
+    border-color: #000000;
+}
+.btn-success1:hover {
+  	color: #fff;
+  	background-color: #2254aaff;
+  	border-color: #000000;
+}

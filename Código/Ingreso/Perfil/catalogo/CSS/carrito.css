@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    /* overflow: hidden; */
+    background: linear-gradient(45deg, rgb(255, 202, 202), rgb(255, 155, 155), rgb(255, 190, 190));
+}
+.slider-lateral{
+    position: absolute;
+    height: 100vh;
+    width: 70vh;
+    background: rgb(204, 204, 204);
+    top: 0px !important;
+    left: 100% !important;
+    transition: all 1.5s ease;
+}
+
+.slider-lateral h1{
+    margin-top: 30px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#tabla{
+    border: 3px solid rgb(101, 101, 101);
+    color: rgb(0, 0, 0);
+    background: #fff;
+    width: 80%;
+
+    margin: 20px auto;
+}
+#tabla th{
+    border: 3px solid rgb(101, 101, 101);
+    color: rgb(0, 0, 0);
+    background: grey;
+}
+#tabla td{
+    border: 3px solid rgb(101, 101, 101);
+    color: rgb(0, 0, 0);
+}
+
+
+#carrito{
+    position: absolute;
+    display: flex;
+    width: 70px;
+    height: 70px;
+    background: blue;
+    font-size: 45px;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 20px 0 0 20px;
+    right: 100%;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: all 1.5s ease;
+}
+
+.container-productos{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.carta{
+    padding: 7px;
+    position: relative;
+    height: 300px;
+    width: 30vh;
+    background: linear-gradient(45deg , rgb(255, 129, 129), rgb(255, 111, 111), rgb(255, 164, 164));
+    margin: 20px;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    display: block;
+}
+
+input[type='text'],input[type='numer']{
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    padding: 5px;
+    display: block;
+}
+
+input[type='submit']{
+    display: block;
+}
+
+
+
+.apagar{
+    transform: translateX(-70vh) !important;
+    transition: all 1.5s ease;
+}
