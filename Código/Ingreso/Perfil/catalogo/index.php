@@ -4,7 +4,7 @@
     $usuario='root';
     $pass='';
     $db= 'cotton';
-    $conexion=mysqli_connect($servidor,$usuario,$pass,$db)or die(msql_error());
+    $conexion=mysqli_connect($servidor,$usuario,$pass,$db);//or die(msql_error());
 
 ?>
 
