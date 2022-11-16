@@ -23,7 +23,7 @@
 
                                             <li class="list-group-item">
                                                 <div class="row col-12">
-                                                    <div class="col-6 p-0"><h6 class="my-0">Cantidad:<?php echo $myCar['cantidad']; ?>  <?php echo $myCar[$i]['titulo']; ?> </h6></div>
+                                                    <div class="col-6 p-0"><h6 class="my-0">Cantidad:<?php echo $$myCar['cantidad']; ?>  <?php echo $myCar[$i]['titulo']; ?> </h6></div>
                                                 </div>
                                             </li>
                                             <?php

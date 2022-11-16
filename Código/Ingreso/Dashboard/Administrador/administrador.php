@@ -133,9 +133,9 @@ $row=mysqli_fetch_array($query);
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                 <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
-                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
                       <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
 		                </div>
                   <thead>
