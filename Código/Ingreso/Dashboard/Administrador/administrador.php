@@ -1,3 +1,21 @@
+<?php
+
+include("../../../DB/db.php");
+session_start();
+
+$idAdministrador = $_SESSION['idAdministrador'];
+
+if(!isset($_SESSION['idAdministrador'])){
+    header('Location: ../../index.php');    
+
+}
+$sql="SELECT * FROM administrador WHERE idAdministrador = '$idAdministrador'";
+$query=mysqli_query($DB,$sql);
+
+$row=mysqli_fetch_array($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,7 +63,7 @@
     <aside class="app-sidebar">
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="images/avatar.png" alt="User Image">
         <div>
-          <p class="app-sidebar__user-name">Anibal</p>
+          <p class="app-sidebar__user-name"><?php echo $row['firstName'] ?></p>
           <p class="app-sidebar__user-designation">Administrador</p>
         </div>
       </div>
@@ -107,8 +125,87 @@
           <li class="breadcrumb-item"><a href="dashboard.php">Inicio</a></li>
         </ul>
       </div>
-      
+
       <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                <div>
+                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      </a>
+                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
+		                </div>
+                  <thead>
+                    <tr>
+                      <th>Número de identidad</th>
+                        <th>Tipo de Documento</th>
+                        <th>Primer Nombre</th>
+                        <th>Segundo Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Indicativo</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Direccion</th>
+                        <th>Ciudad</th>
+                        <th>Estado</th>
+                        <td></td>
+                  
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                            $conexion=mysqli_connect("localhost","root","","cotton");               
+                            $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
+                            A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
+                            E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;"; 
+
+                            $dato = mysqli_query($conexion, $SQL);
+
+                            if($dato -> num_rows >0){
+                              while($fila=mysqli_fetch_array($dato)){
+                          ?>
+                    <tr>
+                      <th><?php echo $fila['idAdministrador']?></th>
+                        <th><?php echo $fila['docType']?></th>
+                        <th><?php echo $fila['firstName']?></th>
+                        <th><?php echo $fila['secondName']?></th>
+                        <th><?php echo $fila['surname']?></th>
+                        <th><?php echo $fila['secondSurname']?></th>
+                        <th><?php echo $fila['indicativo']?></th>
+                        <th><?php echo $fila['phone']?></th>
+                        <th><?php echo $fila['correo']?></th>
+                        <th><?php echo $fila['direccion']?></th>
+                        <th><?php echo $fila['nameCiudad']?></th>
+                        <th><?php echo $fila['nameEstado']?></th>
+                        <td>
+                          <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+
+                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?idAdministrador=<?php  echo $fila['idAdministrador']?>"><i class="fa-regular fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                    <?php
+                            }
+                            }else{
+                                ?>
+                                <tr class="text-center">
+                                <td colspan="16">No existen registros</td>
+                                </tr>
+                              <?php  
+                            }
+                            ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--<div class="row">
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
@@ -205,7 +302,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>

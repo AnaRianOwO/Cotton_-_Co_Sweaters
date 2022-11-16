@@ -1,141 +1,93 @@
 <?php
+session_start();
+include "global/conexion.php";
 
-    $servidor='localhost';
-    $usuario='root';
-    $pass='';
-    $db= 'cotton';
-    $conexion=mysqli_connect($servidor,$usuario,$pass,$db)or die(msql_error());
-
+include "añadir.php";
+// session_unset();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">    
-    <title>Muestra de catalogo</title>
-    <style>
-        .cartas{
-            width: 180vh;
-            height: 100%;
-            padding: 30px;
-            margin: auto;
-            border: 2px solid #fff;
-        }
-        .carta{
-            display: inline-block;
-            width: 280px;
-            height: 420px;
-            background: rgb(255, 152, 152);
-            border-radius: 10px;
-            margin: 50px 30px;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-            color: white;
-        }
-        .carta .card-hover{
-            background: rgba(0, 0, 0, 0.949);
-            position: absolute;
-            width: 300px;
-            height: 230px;
-            cursor: default;
-            /* transform: translateY(-120px); */
-            justify-content: center;
-            align-items: center;
-            z-index: 6;
-            padding:auto;
-            transition: all .7s ease;
-        }
-        .carta .card-hover p{
-            background-color: transparent;
-            /* border: 2px solid #fff; */
-            color: #fff;
-            margin: 100px auto;
-            display: flex;
-            height: 30px;
-            width: 100px;
-            font-size: 25px;
-            cursor: pointer;
-        }
-        .carta .content{
-            display: flex;
-            position: relative;
-            margin: 10px 20px;
-            font-size: 18px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-weight: 100;
-            z-index: 3;
-
-        }
-        .carta img{
-            height: 300px !important;
-            position: relative;
-            margin: 30px auto;
-            display: flex;
-            
-            bottom: 0 !important;
-            z-index: 3;
-        }
-        .apagar{
-            transform: translateY(120px);
-            transition: all .9s ease;
-        }
-    </style>
-    <header>
-        <img src="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png" alt="" height="200px" width="200px">
-        <h1>COTTON & CO SWEATERS</h1>
-        <input type="search" name="Busqueda" placeholder="Buscar..." id="busqueda" class="busqueda">
-    </header>
+    <script src="https://kit.fontawesome.com/a2ea5c7b4d.js" crossorigin="anonymous"></script><!-- IMPORTACION DE FONTAWESOME -->
+    <link rel="stylesheet" href="CSS/carrito.css"><!-- IMPORTACION DE ESTILOS -->
+    <title>Carrito de compras</title>
 </head>
+
 <body>
-    <center>
-        <h2 class="titulo" style="font-weight: 300;font-family: Verdana;color: #025f4a; font-size: 50px;font-family: times new roman;">Catalogo</h2>
-    </center>
-    <div class="cartas">
+    <div class="container-productos">
         <?php
-            $query = mysqli_query($conexion, "SELECT * FROM producto;");
-            $result =mysqli_num_rows($query);
-            if($result>0){
-                while($data = mysqli_fetch_array($query)){
+            if($row>0){
+                while($data = mysqli_fetch_array($sql)){
                     ?>
-                    <div class="carta" id="carta">
-                        <!-- <div class="card-hover">
-                            <p>Leer mas</p>
-                        </div> -->
-                        <div class="content">
-                            <p><?php echo $data['nameProducto'] ?><br>
-                            <b style="color: green;"><?php echo $data['precio'] ?>$</b><br>
-                            <?php echo $data['talla'] ?><br></p>
+
+                    <form action="" method="post">
+                        <div class="carta" id="carta">
+                            <input type="text" name="nameProducto" id="" value="<?php echo $data['nameProducto'] ?>">
+                            <input type="text" name="codigo" id="" value="<?php echo $data['codigo'] ?>">
+                            <input type="text" name="precio" id="" value="<?php echo $data['precio'] ?>">
+                            <input type="number" name="cantidad" id="" value="1">
+                            <br>
+                            <center><img class="imagen" height="160px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></center>
+                            <br>
+                            <input type="submit" name="btnAccion" value="Añadir">
                         </div>
-                            
-                        <img class="imagen" height="120px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>">
-                    </div>
+                        
+                    </form>
+                    
                     <?php
                 }
             }
         ?>
-    </div>
-            
-</body>
-<script>
 
-    const carta = document.querySelector('.carta');
-    const busca = document.querySelector('.busqueda');
-    busca.addEventListener('blur',()=>{
-        buscar = busca.value;
-        if(carta.classList == buscar){
-            let hidden = carta.classList == buscar;
-            hidden.classList.add('apagar');
-        }else{
-            console.log('La clase no es carta');
-        }
-    });
+
+        <div class="slider-lateral">
+            <i class="fa-solid fa-cart-shopping" id="carrito"></i>
+            <div class="carrito-productos">
+                <center><h1>Productos</h1></center>
+                <table id="tabla">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total de la compra</th>
+                    </tr>
+                    <?php if(!empty($_SESSION['carrito'])) { ?>
+                        <div class="container-pedidos">
+                            
+
+                            
+                            <?php $total=0; ?>
+                            <?php foreach($_SESSION['carrito'] as $indice=>$productos){ ?>
+                                <tr>
+                                    <td><?php echo $productos['nameProducto'] ?></td>
+                                    <td><?php echo $productos['cantidad'] ?></td>
+                                    <td><?php echo $productos['precio'] ?></td>
+                                    <td><?php echo ($productos['cantidad']*$productos['precio']); ?></td>
+                                </tr>
+                                <?php $total=$total+($productos['cantidad']*$productos['precio']); ?>
+                            <?php } ?>
+                        </div>
+                        <tr>
+                            <td colspan="3"><center>Total</center></td>
+                            <!-- <td><?php //echo number_format($total,2) ?></td> -->
+                            <td><?php echo $total ?></td>
+                        </tr>
+                        <form action="" method="post">
+                            <input type="submit" name="btnVaciar" value="Vaciar">
+                        </form>
+                    <?php } else{
+                        echo "El carrito esta vacio";
+                    } ?>
+                </table>
+                
+            </div>   
+        </div>
     
 
-</script>
+    
+</body>
+<script src="script/carrito.js"></script>
 </html>

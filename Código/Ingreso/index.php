@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    $sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
+    if(!empty($sessData['status']['msg'])){
+        $statusMsg = $sessData['status']['msg'];
+        $statusMsgType = $sessData['status']['type'];
+        unset($_SESSION['sessData']['status']);
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,20 +93,22 @@
             </div>
             <div class="modal-body">
                 <p>
-                <form action="recuperar.php" method="post">
-                    <table>
-		                
-                        <tr> 
-                        <td><b>&#128231; Correo</b></td>
-                        <td><input type="email" name="correo" required class="cajaentradatexto"></td>
-                        </tr>
-                        <tr> 	
-                        <td>
-				        <input class="txtrecuperar" type="submit" name="btn_recuperar" value="Enviar" onClick="javascript: return confirm('¿Deseas enviar tu contraseña a tu correo?');">
-			            </td>
-                        </tr>
-                    </table>
-                </form>
+                <h2>Enter the Email of Your Account to Reset New Password</h2>
+                <?php echo !empty($statusMsg)?'<p class="'.$statusMsgType.'">'.$statusMsg.'</p>':''; ?>
+
+                    <form action="userAccount.php" method="post">
+                        <table>
+                            <tr> 
+                            <td><b>&#128231; Correo</b></td>
+                            <td><input type="email" name="correo" required class="cajaentradatexto"></td>
+                            </tr>
+                            <tr> 	
+                            <td>
+			                <input class="txtrecuperar" type="submit" name="forgotSubmit" value="Enviar" onClick="javascript: return confirm('¿Deseas enviar tu contraseña a tu correo? ');">
+			                </td>
+                            </tr>
+                        </table>
+                    </form>   
                 </p>
             </div>
             <div class="modal-footer">
