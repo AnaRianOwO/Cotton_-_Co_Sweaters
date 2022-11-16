@@ -1,13 +1,13 @@
 <?php
-
 include("../DB/db.php");
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
 $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
 
 $sqlEstado = "SELECT * FROM estado";
 $resultadoEstado = mysqli_query($DB, $sqlEstado);
-?>
 
+include "TyC/terminosYCondiciones.html";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +15,7 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="TyC/estilos.css">
     <title>Registro</title>
 </head>
 <body>
@@ -59,15 +60,15 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                     <input type="email" class="" name="correo" placeholder="Correo electrónico" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')">
                     <input type="password" class="" name="pass" placeholder="Contraseña" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">            
                     
-                    <center><p><a href="../Ingreso/index.php">¿ya tienes cuenta?</a></p></center>
+                    
+                    <a href="#" class="TyC">Acepta los términos y condiciones antes de terminar</a>
+                    <center><p><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></p></center>
 
-                    <input type="submit" class="btn btn-primary" name="btn_registrar" value="Registrar">
+                    <input type="submit" class="btn btn-primary" name="btn_registrar" id="btn_registrar" value="Registrar" disabled>
                 </form>
                 <div class="tapa">
                     <h1>Cotton & Co Sweaters</h1>
                 </div>
-
-
             
             <div class="banner_img">
                 <img src="ropa.png" alt="">
@@ -88,4 +89,5 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
             </div>
 </body>
 <script src="script.js"></script>
+<script src="TyC/funciones.js"></script>
 </html>
