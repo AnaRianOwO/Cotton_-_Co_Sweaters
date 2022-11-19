@@ -15,6 +15,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
 
 	<link rel="stylesheet" href="./css/es.css">
     <link rel="stylesheet" href="./css/styles.css">
@@ -32,7 +33,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                     
                             <br>
                             <br>
-                            <h3 class="text-center">Registro de nuevo usuario</h3>
+                            <h3 class="text-center">Registro de Nuevo Administrador</h3>
                             <div class="modal-body">
                             <form  action="" method="POST">
                                 <div class="form-group">
@@ -117,7 +118,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
 
                                 <div class="mb-3">
                                     
-                               <input type="submit" value="Guardar"class="btn btn-success" 
+                                <input type="submit" value="Guardar"class="btn btn-success" 
                                name="registrar">
                                <a href="../../Administrador/administrador.php" class="btn btn-danger">Cancelar</a>
                                

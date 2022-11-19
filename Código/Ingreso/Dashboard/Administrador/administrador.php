@@ -220,19 +220,40 @@ $row=mysqli_fetch_array($query);
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+
 
 
   </body>
+
+  <script>
+
+    $('.btn-del').on('click', function(e){
+      e.preventDefault();
+      const href = $(this).attr('href')
+      Swal.fire({
+      title: 'Estás seguro de eliminar este usuario?',
+      text: "¡No podrás revertir esto!!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar', 
+      cancelButtonText: 'Cancelar', 
+    }).then((result)=>{
+        if(result.value){
+            if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'El usuario fue eliminado.',
+          'success'
+        )
+      }
+            document.location.href= href;
+        }   
+    })
+  })
+
+  </script> 
 
 
 <!--Fecha y Reloj-->  

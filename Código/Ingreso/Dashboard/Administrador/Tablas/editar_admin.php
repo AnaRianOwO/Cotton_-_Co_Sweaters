@@ -38,7 +38,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                     <div id="login-box" class="col-md-12">
                     
                             <br><br>
-                            <h3 class="text-center">Editar usuario</h3>
+                            <h3 class="text-center">Editar Administrador</h3>
                             <div class="form-group">
                                 <label for="firstName" class="form-label">Primer Nombre</label>
                                 <input type="text"  id="firstName" name="firstName" class="form-control" value="<?php echo $administrador['firstName'];?>"required>
@@ -71,11 +71,6 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                                 <input type="email"  id="correo" name="correo" class="form-control" placeholder="" value="<?php echo $administrador['correo'];?>" >
                             </div>
                             
-                            <div class="form-group">
-                                <label for="phone">Celular</label><br>
-                                <input type="text" name="phone" id="phone" class="form-control" value="<?php echo $administrador['phone'];?>" required> 
-                            </div>
-
                             <div class="form-group">
                                 <label for="direccion">Direccion</label><br>
                                 <input type="text" name="direccion" id="direccion" class="form-control" value="<?php echo $administrador['direccion'];?>" required> 
