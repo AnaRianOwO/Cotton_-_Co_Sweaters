@@ -1,7 +1,18 @@
 <?php
 
+include("../../../DB/db.php");
 session_start();
-error_reporting(0);
+
+$idAdministrador = $_SESSION['idAdministrador'];
+
+if(!isset($_SESSION['idAdministrador'])){
+    header('Location: ../../index.php');    
+
+}
+$sql="SELECT * FROM administrador WHERE idAdministrador = '$idAdministrador'";
+$query=mysqli_query($DB,$sql);
+
+$row=mysqli_fetch_array($query);
 
 ?>
 
@@ -52,7 +63,7 @@ error_reporting(0);
     <aside class="app-sidebar">
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="images/avatar.png" alt="User Image">
         <div>
-          <p class="app-sidebar__user-name">Anibal</p>
+          <p class="app-sidebar__user-name"><?php echo $row['firstName'] ?></p>
           <p class="app-sidebar__user-designation">Administrador</p>
         </div>
       </div>
@@ -114,8 +125,87 @@ error_reporting(0);
           <li class="breadcrumb-item"><a href="dashboard.php">Inicio</a></li>
         </ul>
       </div>
-      
+
       <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                <div>
+                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      </a>
+                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
+		                </div>
+                  <thead>
+                    <tr>
+                      <th>Número de identidad</th>
+                        <th>Tipo de Documento</th>
+                        <th>Primer Nombre</th>
+                        <th>Segundo Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Indicativo</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Direccion</th>
+                        <th>Ciudad</th>
+                        <th>Estado</th>
+                        <td></td>
+                  
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                            $conexion=mysqli_connect("localhost","root","","cotton");               
+                            $SQL="SELECT U.idUsuario, U.docType, U.firstName, U.secondName, U.surname,
+                            U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
+                            E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN     estado E On E.idEstado=U.idEstado;"; 
+
+                            $dato = mysqli_query($conexion, $SQL);
+
+                            if($dato -> num_rows >0){
+                              while($fila=mysqli_fetch_array($dato)){
+                          ?>
+                    <tr>
+                      <th><?php echo $fila['idUsuario']?></th>
+                        <th><?php echo $fila['docType']?></th>
+                        <th><?php echo $fila['firstName']?></th>
+                        <th><?php echo $fila['secondName']?></th>
+                        <th><?php echo $fila['surname']?></th>
+                        <th><?php echo $fila['secondSurname']?></th>
+                        <th><?php echo $fila['indicativo']?></th>
+                        <th><?php echo $fila['phone']?></th>
+                        <th><?php echo $fila['correo']?></th>
+                        <th><?php echo $fila['direccion']?></th>
+                        <th><?php echo $fila['nameCiudad']?></th>
+                        <th><?php echo $fila['nameEstado']?></th>
+                        <td>
+                          <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+
+                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                    <?php
+                            }
+                            }else{
+                                ?>
+                                <tr class="text-center">
+                                <td colspan="16">No existen registros</td>
+                                </tr>
+                              <?php  
+                            }
+                            ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="row">
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
@@ -131,9 +221,9 @@ error_reporting(0);
                       </div>
                     </div>
                     <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
-                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
                       <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
 		                </div>
                     <div class="col-sm-12 col-md-6">
@@ -143,6 +233,90 @@ error_reporting(0);
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                        <thead>    
+                          <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Numero de identidad: activate to sort column descending" style="width: 343.125px;">Número de identidad</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Tipo de Documento: activate to sort column ascending" style="width:243.172px;">Tipo de Documento</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Primer Nombre: activate to sort column ascending" style="width:102.859px;">Primer Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Segundo Nombre: activate to sort column ascending" style="width:100.8438px;">Segundo Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Primer Apellido: activate to sort column ascending" style="width:102.047px;">Primer Apellido</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Segundo Apellido: activate to sort column ascending" style="width:102.047px;">Segundo Apellido</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Indicativo: activate to sort column ascending" style="width:102.047px;">Indicativo</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Celular: activate to sort column ascending"  style="width:102.047px;">Celular</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Correo: activate to sort column ascending" style="width:102.047px;">Correo</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Direccion: activate to sort column ascending"  style="width:102.047px;">Direccion</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Ciudad: activate to sort column ascending" style="width:102.047px;">Ciudad</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Estado: activate to sort column ascending" style="width:102.047px;">Estado</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $conexion=mysqli_connect("localhost","root","","cotton");               
+                            $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
+                            A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
+                            E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;"; 
+
+                            $dato = mysqli_query($conexion, $SQL);
+
+                            if($dato -> num_rows >0){
+                              while($fila=mysqli_fetch_array($dato)){
+                          ?>
+                          <tr role="row" class="odd">
+                            <td class="sorting_1"><?php echo $fila['idAdministrador']?></td>
+                            <td><?php echo $fila['docType']?></td>
+                            <td><?php echo $fila['firstName']?></td>
+                            <td><?php echo $fila['secondName']?></td>
+                            <td><?php echo $fila['surname']?></td>
+                            <td><?php echo $fila['secondSurname']?></td>
+                            <td><?php echo $fila['indicativo']?></td>
+                            <td><?php echo $fila['phone']?></td>
+                            <td><?php echo $fila['correo']?></td>
+                            <td><?php echo $fila['direccion']?></td>
+                            <td><?php echo $fila['nameCiudad']?></td>
+                            <td><?php echo $fila['nameEstado']?></td>
+                            <td>
+                              <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+
+                              <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?idAdministrador=<?php  echo $fila['idAdministrador']?>"><i class="fa-regular fa-trash-can"></i></a>
+                            </td>
+                          </tr>
+                          <?php
+                            }
+                            }else{
+                                ?>
+                                <tr class="text-center">
+                                <td colspan="16">No existen registros</td>
+                                </tr>
+                              <?php  
+                            }
+                            ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+      
+      <!--<div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                
+
+                    <div>
+                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      </a>
+                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
+		                </div>
                   <div class="row">
                     <div class="col-sm-12">
                       <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
@@ -207,12 +381,11 @@ error_reporting(0);
                       </table>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -226,17 +399,6 @@ error_reporting(0);
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
 
 
   </body>
@@ -287,7 +449,6 @@ error_reporting(0);
 <script src="package/dist/sweetalert2.all.js"></script>
 <script src="package/dist/sweetalert2.all.min.js"></script>
 <script src="package/jquery-3.6.0.min.js"></script>
-
 
 <script src="js/reloj.js"></script>
 <?php include('Tablas/insertar_usuario.php'); ?>
