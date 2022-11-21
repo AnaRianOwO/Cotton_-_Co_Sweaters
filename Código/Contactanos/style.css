@@ -1,22 +1,48 @@
+:root{
+    /* -------------AZULES---------------- */
+     ------azulOscuro: #1851F0;
+     ------azulMedio: #0F98F7;
+     ------azulCeleste: #19D0E0;
+     ------azulAguamarina: #0FF7BB;
+     ------verdeAzul: #0AF063;
+ /* ---------------MORADOS---------------- */
+     ------MoradoPurorosa: #E541F0;
+     ------Morado: #AC39F7;
+     ------MoraAzul: #6A3EE0;
+     ------azul: #3946F7 ;
+     ------azulClaro: #327DF0 ;
+ /* --------------VERDES------------------- */
+     ------azulV:#41BFF0;
+     ------azulC:#39F7EB;
+     ------azulVV: #3EE09A;
+     ------VerdeClaro:#39F75F;
+     ------verdeOsc:#6AF048;
+ 
+ }
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif !important;
 }
 
+h1{
+    font-family: 'Times New Roman', Times, serif;
+}
 .container{
     height: 2100px;
     width: 1600px;
-    background: radial-gradient(rgb(255, 128, 128), rgb(255, 180, 180));
+    background-image: url("https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     position: relative;
 }
 
 .container-body{
     position: absolute;
     height: 70%;
-    width: 70%;
-    background: #fff;
-    margin: 10% 12%;
+    width: 60%;
+    background: var(------azulClaro);
+    margin: 10% 10%;
     border-radius: 20px;
     box-shadow: 2px 2px 20px black;
 }

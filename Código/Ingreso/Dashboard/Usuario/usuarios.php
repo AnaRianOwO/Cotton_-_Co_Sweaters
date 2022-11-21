@@ -136,7 +136,7 @@ $row=mysqli_fetch_array($query);
                       <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
                       <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <a href="Tablas/insertar_usuario.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
 		                </div>
                   <thead>
                     <tr>
@@ -451,4 +451,5 @@ $row=mysqli_fetch_array($query);
 <script src="package/jquery-3.6.0.min.js"></script>
 
 <script src="js/reloj.js"></script>
+<?php include('Tablas/insertar_usuario.php'); ?>
 </html>
