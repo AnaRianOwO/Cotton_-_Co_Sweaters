@@ -136,7 +136,7 @@ $row=mysqli_fetch_array($query);
                       <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
                       <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <a href="Tablas/insertar_admin.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
 		                </div>
                   <thead>
                     <tr>
@@ -205,7 +205,104 @@ $row=mysqli_fetch_array($query);
         </div>
       </div>
       
-      
+      <!--<div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <div class="dataTables_length" id="sampleTable_length">
+                        <label>Show 
+                          <select name="sampleTable_length" aria-controls="sampleTable" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option>
+                          </select> entries
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      </a>
+                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
+		                </div>
+                    <div class="col-sm-12 col-md-6">
+                      <div id="sampleTable_filter" class="dataTables_filter">
+                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="sampleTable">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                        <thead>    
+                          <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Numero de identidad: activate to sort column descending" style="width: 343.125px;">Número de identidad</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Tipo de Documento: activate to sort column ascending" style="width:243.172px;">Tipo de Documento</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Primer Nombre: activate to sort column ascending" style="width:102.859px;">Primer Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Segundo Nombre: activate to sort column ascending" style="width:100.8438px;">Segundo Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Primer Apellido: activate to sort column ascending" style="width:102.047px;">Primer Apellido</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Segundo Apellido: activate to sort column ascending" style="width:102.047px;">Segundo Apellido</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Indicativo: activate to sort column ascending" style="width:102.047px;">Indicativo</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Celular: activate to sort column ascending"  style="width:102.047px;">Celular</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Correo: activate to sort column ascending" style="width:102.047px;">Correo</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Direccion: activate to sort column ascending"  style="width:102.047px;">Direccion</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Ciudad: activate to sort column ascending" style="width:102.047px;">Ciudad</th>
+                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Estado: activate to sort column ascending" style="width:102.047px;">Estado</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                            $conexion=mysqli_connect("localhost","root","","cotton");               
+                            $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
+                            A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
+                            E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;"; 
+
+                            $dato = mysqli_query($conexion, $SQL);
+
+                            if($dato -> num_rows >0){
+                              while($fila=mysqli_fetch_array($dato)){
+                          ?>
+                          <tr role="row" class="odd">
+                            <td class="sorting_1"><?php echo $fila['idAdministrador']?></td>
+                            <td><?php echo $fila['docType']?></td>
+                            <td><?php echo $fila['firstName']?></td>
+                            <td><?php echo $fila['secondName']?></td>
+                            <td><?php echo $fila['surname']?></td>
+                            <td><?php echo $fila['secondSurname']?></td>
+                            <td><?php echo $fila['indicativo']?></td>
+                            <td><?php echo $fila['phone']?></td>
+                            <td><?php echo $fila['correo']?></td>
+                            <td><?php echo $fila['direccion']?></td>
+                            <td><?php echo $fila['nameCiudad']?></td>
+                            <td><?php echo $fila['nameEstado']?></td>
+                            <td>
+                              <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+
+                              <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?idAdministrador=<?php  echo $fila['idAdministrador']?>"><i class="fa-regular fa-trash-can"></i></a>
+                            </td>
+                          </tr>
+                          <?php
+                            }
+                            }else{
+                                ?>
+                                <tr class="text-center">
+                                <td colspan="16">No existen registros</td>
+                                </tr>
+                              <?php  
+                            }
+                            ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -256,6 +353,38 @@ $row=mysqli_fetch_array($query);
   </script> 
 
 
+  </body>
+<!--=================================Modal===============================-->
+<script>
+
+  $('.btn-del').on('click', function(e){
+    e.preventDefault();
+    const href = $(this).attr('href')
+    Swal.fire({
+    title: 'Estás seguro de eliminar este administrador?',
+    text: "¡No podrás revertir esto!!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Eliminar', 
+    cancelButtonText: 'Cancelar', 
+  }).then((result)=>{
+      if(result.value){
+          if (result.isConfirmed) {
+      Swal.fire(
+        'Eliminado!',
+        'El administrador fue eliminado.',
+        'success'
+      )
+    }
+          document.location.href= href;
+      }   
+  })
+  })
+
+</script>  
+
 <!--Fecha y Reloj-->  
 <br>
   <?php include "Tablas/fecha.php"?>
@@ -274,4 +403,5 @@ $row=mysqli_fetch_array($query);
 
 
 <script src="js/reloj.js"></script>
+<?php include('Tablas/insertar_admin.php'); ?>
 </html>
