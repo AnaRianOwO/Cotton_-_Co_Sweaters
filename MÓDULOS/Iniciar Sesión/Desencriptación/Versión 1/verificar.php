@@ -36,7 +36,6 @@
         if(($nr == 1)){
 
             header("Location: sistema/index.html" );
-
         }else{
             echo "<script>alert('Usuario o contraseña incorrecta');window.location='index.html'</script>";
         }

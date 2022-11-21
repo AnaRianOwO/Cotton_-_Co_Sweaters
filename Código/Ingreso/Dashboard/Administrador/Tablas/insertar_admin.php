@@ -98,58 +98,14 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="submit" value="Guardar" id="register" class="btn btn-success" name="registrar">
-                                    <a href="./administrador.php" class="btn btn-danger">Cancelar</a>
-                               </div>
-                            </form>
-                            
-                            <script src="./package/dist/sweetalert2.all.js"></script>
-                            <script src="./package/dist/sweetalert2.all.min.js"></script>
-                            <script type="text/javascript">
-                            $(function(){
-                                $('#register').click(function(e){
-                                    var valid = this.form.checkValidity();
-                                    if(valid){
-                                        var idAdministrador 	= $('#idAdministrador').val();
-                                        var docType 		= $('#docType').val();
-                                        var firstName = $('#firstName').val();
-                                        var secondName 	= $('#secondName').val();
-                                        var surname	= $('#surname').val();
-                                        var secondSurname 	= $('#secondSurname').val();
-                                        var indicativo 		= $('#indicativo').val();
-                                        var phone = $('#phone').val();
-                                        var correo 	= $('#correo').val();
-                                        var direccion	= $('#direccion').val();
-                                        var pass	= $('#pass').val();
-                                        var idCiudad	= $('#idCiudad').val();
-                                        var idEstado	= $('#idEstado').val();
-
-                                        e.preventDefault();	
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: 'validar_admin.php',
-                                            data: {idAdministrador: idAdministrador,docType: docType, firstName: firstName,secondName: secondName, surname: surname,
-                                                secondSurname: secondSurname,indicativo: indicativo, phone: phone,correo: correo, direccion: direccion, pass: pass, idCiudad: idCiudad, idEstado: idEstado},
-                                                success: function(data){
-                                                    Swal.fire({
-                                                        'title': '¡Mensaje!',
-                                                        'text': data,
-                                                        'icon': 'success',
-                                                        'showConfirmButton': 'false',
-                                                        'timer': '1500'
-                                                    }).then(function() {
-                                                        window.location = "./administrador.php";
-                                                    });
-                                                } ,
-                                                error: function(data){
-                                                    Swal.fire({
-                                                        'title': 'Error',
-                                                        'text': data,
-                                                        'icon': 'error'
-                                                    })
-                                                }
-                                            });
-                                        }else{
+                                    
+                               <input type="submit" value="Guardar"class="btn btn-success" 
+                               name="registrar">
+                               <a href="../../Administrador/administrador.php" class="btn btn-danger">Cancelar</a>
+                               
+                            </div>
+                            </div>
+                            </div>
 
                                         }
                                     });		
