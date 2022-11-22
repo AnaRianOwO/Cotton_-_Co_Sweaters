@@ -125,7 +125,7 @@ $row=mysqli_fetch_array($query);
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa-solid fa-address-book"></i> Lista de Administradores</h1>
+          <h1><i class="fa-solid fa-address-book"></i>Lista de Ventas</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -147,28 +147,21 @@ $row=mysqli_fetch_array($query);
 		                </div>
                   <thead>
                     <tr>
-                      <th>Número de identidad</th>
-                        <th>Tipo de Documento</th>
-                        <th>Primer Nombre</th>
-                        <th>Segundo Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        <th>Indicativo</th>
-                        <th>Celular</th>
-                        <th>Correo</th>
-                        <th>Direccion</th>
-                        <th>Ciudad</th>
-                        <th>Estado</th>
+                        <th>Número de factura</th>
+                        <th>Identificación comprador</th>
+                        <th>Nombre comprador</th>
+                        <th>Telefono</th>
+                        <th>Dirección</th>
+                        <th>Fecha</th>
+                        <th>Cantidad de productos</th>
+                        <th>Total</th>
                         <td></td>
-                  
                     </tr>
                   </thead>
                   <tbody>
                   <?php
                             $conexion=mysqli_connect("localhost","root","","cotton");               
-                            $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
-                            A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
-                            E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;"; 
+                            $SQL="SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;"; 
 
                             $dato = mysqli_query($conexion, $SQL);
 
@@ -176,15 +169,10 @@ $row=mysqli_fetch_array($query);
                               while($fila=mysqli_fetch_array($dato)){
                           ?>
                     <tr>
-                      <th><?php echo $fila['idAdministrador']?></th>
-                        <th><?php echo $fila['docType']?></th>
-                        <th><?php echo $fila['firstName']?></th>
-                        <th><?php echo $fila['secondName']?></th>
-                        <th><?php echo $fila['surname']?></th>
-                        <th><?php echo $fila['secondSurname']?></th>
-                        <th><?php echo $fila['indicativo']?></th>
+                      <th><?php echo $fila['idFactura']?></th>
+                        <th><?php echo $fila['idUsuario']?></th>
+                        <th><?php echo $fila['firstName']." ".$fila['secondName']." ".$fila['surname']." ".$fila ['secondSurname']?></th>
                         <th><?php echo $fila['phone']?></th>
-                        <th><?php echo $fila['correo']?></th>
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['nameCiudad']?></th>
                         <th><?php echo $fila['nameEstado']?></th>
