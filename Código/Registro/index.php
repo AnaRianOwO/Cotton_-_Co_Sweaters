@@ -6,6 +6,8 @@ $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
 
 $sqlEstado = "SELECT * FROM estado";
 $resultadoEstado = mysqli_query($DB, $sqlEstado);
+
+include "TyC/terminosyCondiciones.html";
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +17,7 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="TyC/estilos.css">
     <title>Registro</title>
 </head>
 <body>
@@ -59,10 +62,11 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                     <input type="email" class="" name="correo" placeholder="Correo electrónico" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')">
                     <input type="password" class="" name="pass" placeholder="Contraseña" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">            
                     
-                    <p><center><a href="../Ingreso/index.php">¿ya tienes cuenta?</a></center></p>
+                    <a href="#" class="TyC">Acepta los términos y condiciones antes de terminar</a>
+                    <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
                     
 
-                    <input type="submit" class="btn btn-primary" name="btn_registrar" value="Registrar">
+                    <input type="submit" class="TyC btn btn-primary" name="btn_registrar" id="btn_registrar" value="Registrar" disabled>
                 </form>
                 <div class="tapa">
                     <h1>Cotton & Co Sweaters</h1>
@@ -89,4 +93,5 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
             </div>
 </body>
 <script src="script.js"></script>
+<script src="TyC/funciones.js"></script>
 </html>

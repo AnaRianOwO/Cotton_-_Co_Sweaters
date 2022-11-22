@@ -110,9 +110,16 @@ $row=mysqli_fetch_array($query);
           </ul>
         </li>
 
-        <li><a class="app-menu__item" href="#">
-            <i class="app-menu__icon fa-solid fa-cart-shopping"></i>
-            <span class="app-menu__label">Pedidos</span></a>
+        <li class="treeview">
+            <a class="app-menu__item" href="#" data-toggle="treeview">
+            <i class="app-menu__icon fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                <span class="app-menu__label">Ventas</span>
+                  <i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li>
+                <a class="treeview-item" href="Ventas/ventas.php"><i class="icon fa fa-circle-o"></i> Ventas</a>
+            </li>
+          </ul>
         </li>
 
         <li><a class="app-menu__item" href="../logout.php">
@@ -264,7 +271,36 @@ $row=mysqli_fetch_array($query);
 
 
   </body>
+<!--=================================Modal===============================-->
+<script>
 
+  $('.btn-del').on('click', function(e){
+    e.preventDefault();
+    const href = $(this).attr('href')
+    Swal.fire({
+    title: 'Estás seguro de eliminar este administrador?',
+    text: "¡No podrás revertir esto!!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Eliminar', 
+    cancelButtonText: 'Cancelar', 
+  }).then((result)=>{
+      if(result.value){
+          if (result.isConfirmed) {
+      Swal.fire(
+        'Eliminado!',
+        'El administrador fue eliminado.',
+        'success'
+      )
+    }
+          document.location.href= href;
+      }   
+  })
+  })
+
+</script>  
 
 <!--Fecha y Reloj-->  
 <br>

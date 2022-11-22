@@ -15,13 +15,13 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
 
 	<link rel="stylesheet" href="./css/es.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body id="page-top">
-
 
 <form  action="validar_usuario.php" method="POST">
 <div id="login" >
@@ -32,7 +32,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                     
                             <br>
                             <br>
-                            <h3 class="text-center">Registro de nuevo usuario</h3>
+                            <h3 class="text-center">Registro de Usuario</h3>
                             <div class="modal-body">
                             <form  action="" method="POST">
                                 <div class="form-group">
@@ -111,10 +111,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                                     <label for="pass">Contraseña:</label><br>
                                     <input type="password" name="pass" id="pass" class="form-control" required>
                                 </div>
-                      
-                        
                            <br>
-
                                 <div class="mb-3">
                                     
                                <input type="submit" value="Guardar"class="btn btn-success" 
@@ -124,7 +121,6 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                             </div>
                             </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

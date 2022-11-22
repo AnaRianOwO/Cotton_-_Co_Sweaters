@@ -6,6 +6,7 @@ let body = document.querySelector("body");
 let aceptar = document.getElementById('aceptar');
 
 TyC.addEventListener('click',()=>{
+    console.log("owo");
     ventanaModal.style.display= "flex";
 })
 
