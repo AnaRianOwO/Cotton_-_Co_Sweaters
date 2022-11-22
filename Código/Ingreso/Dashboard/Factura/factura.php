@@ -81,7 +81,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="usuarios.php"><i class="icon fa fa-circle-o"></i> Usuarios</a>
+                <a class="treeview-item" href="../Usuario/usuarios.php"><i class="icon fa fa-circle-o"></i> Usuarios</a>
             </li> 
           </ul>
         </li>
@@ -93,7 +93,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="../Administrador/administrador.php"><i class="icon fa fa-circle-o"></i> Administradores</a>
+                <a class="treeview-item" href="administrador.php"><i class="icon fa fa-circle-o"></i> Administradores</a>
             </li>
           </ul>
         </li>
@@ -121,11 +121,11 @@ $row=mysqli_fetch_array($query);
         </li>
       </ul>
     </aside>
-
+<!--======================================================================================================-->
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa-solid fa-address-book"></i> Lista de Usuarios</h1>
+          <h1><i class="fa-solid fa-address-book"></i>Lista de Ventas</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -140,35 +140,28 @@ $row=mysqli_fetch_array($query);
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                 <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
-                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <a href="Tablas/insertar_usuario.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
+                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><i class="fa-solid fa-file-circle-plus"></i><b> Añadir</b></a></button>
 		                </div>
                   <thead>
                     <tr>
-                      <th>Número de identidad</th>
-                        <th>Tipo de Documento</th>
-                        <th>Primer Nombre</th>
-                        <th>Segundo Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        <th>Indicativo</th>
-                        <th>Celular</th>
-                        <th>Correo</th>
-                        <th>Direccion</th>
-                        <th>Ciudad</th>
-                        <th>Estado</th>
+                        <th>Número de factura</th>
+                        <th>Identificación comprador</th>
+                        <th>Nombre comprador</th>
+                        <th>Telefono</th>
+                        <th>Dirección</th>
+                        <th>Fecha</th>
+                        <th>Total Compra</th>
+                        <th>Ver factura</th>
                         <td></td>
-                  
                     </tr>
                   </thead>
                   <tbody>
                   <?php
                             $conexion=mysqli_connect("localhost","root","","cotton");               
-                            $SQL="SELECT U.idUsuario, U.docType, U.firstName, U.secondName, U.surname,
-                            U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
-                            E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN     estado E On E.idEstado=U.idEstado;"; 
+                            $SQL="SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;"; 
 
                             $dato = mysqli_query($conexion, $SQL);
 
@@ -176,22 +169,19 @@ $row=mysqli_fetch_array($query);
                               while($fila=mysqli_fetch_array($dato)){
                           ?>
                     <tr>
-                      <th><?php echo $fila['idUsuario']?></th>
-                        <th><?php echo $fila['docType']?></th>
-                        <th><?php echo $fila['firstName']?></th>
-                        <th><?php echo $fila['secondName']?></th>
-                        <th><?php echo $fila['surname']?></th>
-                        <th><?php echo $fila['secondSurname']?></th>
-                        <th><?php echo $fila['indicativo']?></th>
+                      <th><?php echo $fila['idFactura']?></th>
+                        <th><?php echo $fila['idUsuario']?></th>
+                        <th><?php echo $fila['firstName']." ".$fila['secondName']." ".$fila['surname']." ".$fila ['secondSurname']?></th>
                         <th><?php echo $fila['phone']?></th>
-                        <th><?php echo $fila['correo']?></th>
                         <th><?php echo $fila['direccion']?></th>
-                        <th><?php echo $fila['nameCiudad']?></th>
-                        <th><?php echo $fila['nameEstado']?></th>
+                        <th><?php echo $fila['fecha']?></th>
+                        <th><?php echo $fila['total']?></th>
+                        <th><a class="btn btn-info" href="#"><i class="fa-solid fa-file"></i></a></th>
+                        <!-- En esta parte se inserta el documento de la factura en pdf, en el href-->
                         <td>
-                          <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 
-                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_venta.php?idFactura=<?php  echo $fila['idFactura']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php
@@ -211,7 +201,7 @@ $row=mysqli_fetch_array($query);
           </div>
         </div>
       </div>
-
+      
       <!--<div class="row">
         <div class="col-md-12">
           <div class="tile">
@@ -260,7 +250,7 @@ $row=mysqli_fetch_array($query);
                           </tr>
                         </thead>
                         <tbody>
-                        <?php
+                          <?php
                             $conexion=mysqli_connect("localhost","root","","cotton");               
                             $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
                             A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
@@ -310,89 +300,6 @@ $row=mysqli_fetch_array($query);
           </div>
         </div>
       </div>-->
-      
-      <!--<div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <div class="tile-body">
-              <div class="table-responsive">
-                
-
-                    <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
-                      </a>
-                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
-		                </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
-                        <thead>    
-                          <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Numero de identidad: activate to sort column descending" style="width: 343.125px;">Número de identidad</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Tipo de Documento: activate to sort column ascending" style="width:243.172px;">Tipo de Documento</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Primer Nombre: activate to sort column ascending" style="width:102.859px;">Primer Nombre</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Segundo Nombre: activate to sort column ascending" style="width:100.8438px;">Segundo Nombre</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Primer Apellido: activate to sort column ascending" style="width:102.047px;">Primer Apellido</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Segundo Apellido: activate to sort column ascending" style="width:102.047px;">Segundo Apellido</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Indicativo: activate to sort column ascending" style="width:102.047px;">Indicativo</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Celular: activate to sort column ascending"  style="width:102.047px;">Celular</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Correo: activate to sort column ascending" style="width:102.047px;">Correo</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Direccion: activate to sort column ascending"  style="width:102.047px;">Direccion</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Ciudad: activate to sort column ascending" style="width:102.047px;">Ciudad</th>
-                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"  colspan="1" aria-label="Estado: activate to sort column ascending" style="width:102.047px;">Estado</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                            $conexion=mysqli_connect("localhost","root","","cotton");               
-                            $SQL="SELECT U.idUsuario, U.docType, U.firstName, U.secondName, U.surname,
-                            U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
-                            E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN     estado E On E.idEstado=U.idEstado;"; 
-
-                            $dato = mysqli_query($conexion, $SQL);
-
-                            if($dato -> num_rows >0){
-                              while($fila=mysqli_fetch_array($dato)){
-                          ?>
-                          <tr role="row" class="odd">
-                            <td class="sorting_1"><?php echo $fila['idUsuario']?></td>
-                            <td><?php echo $fila['docType']?></td>
-                            <td><?php echo $fila['firstName']?></td>
-                            <td><?php echo $fila['secondName']?></td>
-                            <td><?php echo $fila['surname']?></td>
-                            <td><?php echo $fila['secondSurname']?></td>
-                            <td><?php echo $fila['indicativo']?></td>
-                            <td><?php echo $fila['phone']?></td>
-                            <td><?php echo $fila['correo']?></td>
-                            <td><?php echo $fila['direccion']?></td>
-                            <td><?php echo $fila['nameCiudad']?></td>
-                            <td><?php echo $fila['nameEstado']?></td>
-                            <td>
-                              <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
-
-                              <a class="btn btn-danger btn-del"  href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
-                            </td>
-                          </tr>
-                          <?php
-                            }
-                            }else{
-                                ?>
-                                <tr class="text-center">
-                                <td colspan="16">No existen registros</td>
-                                </tr>
-                              <?php  
-                            }
-                            ?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -406,6 +313,8 @@ $row=mysqli_fetch_array($query);
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <!-- Google analytics script-->
+
 
 
   </body>
@@ -441,6 +350,38 @@ $row=mysqli_fetch_array($query);
   </script> 
 
 
+  </body>
+<!--=================================Modal===============================-->
+<script>
+
+  $('.btn-del').on('click', function(e){
+    e.preventDefault();
+    const href = $(this).attr('href')
+    Swal.fire({
+    title: 'Estás seguro de eliminar este administrador?',
+    text: "¡No podrás revertir esto!!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Eliminar', 
+    cancelButtonText: 'Cancelar', 
+  }).then((result)=>{
+      if(result.value){
+          if (result.isConfirmed) {
+      Swal.fire(
+        'Eliminado!',
+        'El administrador fue eliminado.',
+        'success'
+      )
+    }
+          document.location.href= href;
+      }   
+  })
+  })
+
+</script>  
+
 <!--Fecha y Reloj-->  
 <br>
   <?php include "Tablas/fecha.php"?>
@@ -457,5 +398,7 @@ $row=mysqli_fetch_array($query);
 <script src="package/dist/sweetalert2.all.min.js"></script>
 <script src="package/jquery-3.6.0.min.js"></script>
 
+
 <script src="js/reloj.js"></script>
+<?php include('Tablas/insertar_admin.php'); ?>
 </html>
