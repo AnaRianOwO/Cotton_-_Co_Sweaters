@@ -143,7 +143,7 @@ $row=mysqli_fetch_array($query);
                       <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
                       <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><span class="glyphicon glyphicon-plus"></span><i class="icon bi bi-person-plus-fill"></i><b> Crear</b></a></button>
+                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><i class="fa-solid fa-file-circle-plus"></i><b> Añadir</b></a></button>
 		                </div>
                   <thead>
                     <tr>
@@ -153,7 +153,8 @@ $row=mysqli_fetch_array($query);
                         <th>Telefono</th>
                         <th>Dirección</th>
                         <th>Fecha</th>
-                        <th>Total</th>
+                        <th>Total Compra</th>
+                        <th>Ver factura</th>
                         <td></td>
                     </tr>
                   </thead>
@@ -175,6 +176,8 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['fecha']?></th>
                         <th><?php echo $fila['total']?></th>
+                        <th><a class="btn btn-info" href="#"><i class="fa-solid fa-file"></i></a></th>
+                        <!-- En esta parte se inserta el documento de la factura en pdf, en el href-->
                         <td>
                           <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 

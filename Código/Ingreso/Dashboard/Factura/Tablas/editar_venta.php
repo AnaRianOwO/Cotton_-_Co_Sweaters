@@ -1,18 +1,20 @@
 <?php
 
-$idAdministrador= $_GET['idAdministrador'];
+$idFactura= $_GET['idFactura'];
 $conexion= mysqli_connect("localhost", "root", "", "cotton");
-$consulta= "SELECT A.docType, A.firstName, A.secondName, A.surname,
-A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
-E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado WHERE A.idAdministrador = '$idAdministrador'";
-$resultado = mysqli_query($conexion, $consulta);
-$administrador = mysqli_fetch_assoc($resultado);
 
-$sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
-$resultadoCiudad = mysqli_query($conexion, $sqlCiudad);
+$sql = "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario WHERE idFactura = '$idFactura'";
+$resultadoFactura = mysqli_query($conexion, $sql);
+$factura = mysqli_fetch_assoc($resultadoFactura);
 
-$sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($conexion, $sqlEstado);
+$consulta= "SELECT  df.idFactura, df.codigo, p.nameProducto, p.descripcion, p.precio, df.cantidad FROM detallefactura df INNER JOIN factura f ON f.idFactura = df.idFactura INNER JOIN producto p ON df.codigo = p.codigo WHERE f.idFactura= '$idFactura'";
+$detalles = mysqli_query($conexion, $consulta);
+
+$sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
+$consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
+
+// while($row = $consultaUsuario->fetch_assoc())
+// { echo $row['idUsuario']." <br>";}
 ?>
 
 <!DOCTYPE html>
@@ -38,74 +40,61 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                     <div id="login-box" class="col-md-12">
                     
                             <br><br>
-                            <h3 class="text-center">Editar Administrador</h3>
+                            <h3 class="text-center">Editar Venta</h3>
                             <div class="form-group">
-                                <label for="firstName" class="form-label">Primer Nombre</label>
-                                <input type="text"  id="firstName" name="firstName" class="form-control" value="<?php echo $administrador['firstName'];?>"required>
-                            </div>
-                            <div class="form-group">
-                                <label for="secondName">Segundo Nombre</label><br>
-                                <input type="text" name="secondName" id="secondName" class="form-control" value="<?php echo $administrador['secondName'];?>"required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="surname" class="form-label">Primer Apellido </label>
-                                <input type="text"  id="surname" name="surname" class="form-control" value="<?php echo $administrador['surname'];?>" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="secondSurname">Segundo Apellido</label><br>
-                                <input type="text" name="secondSurname" id="secondSurname" class="form-control" value="<?php echo $administrador['secondSurname'];?>" required> 
-                            </div>
-                            <div class="form-group">
-                                <label for="indicativo" class="form-label">indicativo</label>
-                                <input type="text"  id="indicativo" name="indicativo" class="form-control" value="<?php echo $administrador['indicativo'];?>"required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Celular</label><br>
-                                <input type="tel" name="phone" id="phone" class="form-control"  value="<?php echo $administrador['phone'];?>"required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="correo" class="form-label">Correo</label>
-                                <input type="email"  id="correo" name="correo" class="form-control" placeholder="" value="<?php echo $administrador['correo'];?>" >
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="direccion">Direccion</label><br>
-                                <input type="text" name="direccion" id="direccion" class="form-control" value="<?php echo $administrador['direccion'];?>" required> 
-                            </div>
-
-                            <div class="form-group">
-                            <label for="idCiudad">Ciudad</label><br>
-                                <select name="idCiudad" id="idCiudad" required>
-                                    <option value="">Seleccione su ciudad</option>
-                                    <?php while($row = $resultadoCiudad->fetch_assoc())
+                                <label for="idUsuario" class="form-label">Cambiar usuario</label>
+                                <select name="idUsuario" id="idUsuario" required>
+                                    <option value="">Seleccione el usuario correspondiente</option>
+                                    <?php while($row = $consultaUsuario->fetch_assoc())
                                             {
-                                                $row['idCiudad'] = "'".$row['idCiudad']."'";
-                                                echo "<option value=".$row['idCiudad']; if ($row['nameCiudad']==$administrador['nameCiudad']){ echo "selected"; };
-                                                echo ">".$row['nameCiudad']."</option>";
+                                                $usuario = "'".$row['idUsuario']."'";
+                                                $factura['idUsuario'] = "'".$factura['idUsuario']."'";
+                                                echo "<option value=".$usuario; if ($usuario==$factura['idUsuario']){ echo "selected"; };
+                                                echo ">".$row['idUsuario']." - ".$row['firstName']." ".$row['secondName']." ".$row['surname']." ".$row['secondSurname']." - ".$row['phone']." - ".$row['direccion']."</option>";
+                                                
                                             }
                                     ?>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label><br>
+                                <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo $factura['fecha'];?>"required>
+                            </div>
+                            
+                            <div class="detallitos">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Código producto</th>
+                                            <th>Nombre producto</th>
+                                            <th>Descripción</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while($row = mysqli_fetch_array($detalles)){?>
+                                        <tr>
+                                            <td><?php echo $row['codigo'] ?></td>
+                                            <td><?php echo $row['nameProducto'] ?></td>
+                                            <td><?php echo $row['descripcion'] ?></td>
+                                            <td><?php echo $row['precio'] ?></td>
+                                            <td><?php echo $row['cantidad'] ?></td>
+                                            <td><?php echo $row['precio']*$row['cantidad'] ?></td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div class="form-group">
-                                <label for="nameEstado">Estado</label><br>
-                                <select name="idEstado" id="idEstado">
-                                    <option value="">Seleccione su estado</option>
-                                    <?php while($row = $resultadoEstado->fetch_assoc())
-                                            {
-                                                $row['idEstado'] = "'".$row['idEstado']."'";
-                                                echo "<option value=".$row['idEstado']; if ($row['nameEstado']==$administrador['nameEstado']){ echo "selected"; };
-                                                echo ">".$row['nameEstado']."</option>";
-                                            }
-                                    ?>
-                                </select>
+                                <label for="total" class="form-label">Total </label>
+                                <input type="text"  id="total" name="total" class="form-control" value="<?php echo $factura['total'];?>" disabled required>
                             </div>
-                                
-                                <input type="hidden" name="accion" value="editar_registro">
-                                <input type="hidden" name="idAdministrador" value="<?php echo $idAdministrador;?>">
+                        
+                            <input type="hidden" name="accion" value="editar_registro">
+                            <input type="hidden" name="idFactura" value="<?php echo $idFactura;?>">
                             </div>
                         
                            <br>
@@ -113,7 +102,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                                 <div class="mb-3">
                                     
                                 <button type="submit" class="btn btn-success" >Editar</button>
-                               <a href="../administrador.php" class="btn btn-danger">Cancelar</a>
+                               <a href="../factura.php" class="btn btn-danger">Cancelar</a>
                                
                             </div>
                             </div>
