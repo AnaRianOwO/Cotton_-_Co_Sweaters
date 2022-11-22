@@ -8,7 +8,7 @@ body{
     font-family: 'Dancing Script';
     width: 100%;
     height: 100vh;
-    background: rgb(255, 182, 157);
+    background: rgba(239, 112, 90, 0.9);
     position: relative;
     overflow: hidden;
     max-width: 1700px;
@@ -19,6 +19,7 @@ h2{
     font-family:'Times New Roman', Times, serif;
     font-size: 25px;
     color: #000000;
+    top: 20px;
 
 }
 .contenedor{
@@ -120,7 +121,7 @@ form input{
     padding: 13px;
     background: transparent;
     border: none;
-    border-bottom: 2px solid rgba(57, 11, 19, 0.617);
+    border-bottom: 2px solid rgba(233, 70, 70, 0.617);
     height: 25px;
     width: 300px;
     font-size: 15px;
@@ -128,12 +129,13 @@ form input{
 }
 
 form input[type=submit]{
-    border-radius: 30px;
+    border-radius: 25px;
     margin: 14px auto;
-    background: rgb(219, 212, 212);
+    background: rgb(255, 222, 207);
     padding: auto;
     height: 40px;
     width: 200px;
+    top: 1%;
     border: none;
     box-shadow: 10px 6px 22px  rgb(172, 74, 74);
 }
@@ -165,7 +167,11 @@ form p a{
     text-decoration: none;
     font-family: 'Times New Roman', Times, serif;
 }
+.TyC{
 
+    position: relative;
+    right: 3%;
+}
 
 
 select{
@@ -291,7 +297,7 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 
 .burbuja{
     border-radius: 120px 4% 120px 4%;
-    background: rgb(0, 0, 0);
+    background: rgb(33, 54, 69);
     opacity: .3;
 
     position: absolute;

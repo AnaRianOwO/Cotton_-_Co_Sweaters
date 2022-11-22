@@ -1,25 +1,4 @@
-:root{
-    /* -------------AZULES---------------- */
-     ------azulOscuro: #1851F0;
-     ------azulmosc:#0A6FC9;
-     ------azulMedio: #0F98F7;
-     ------azulCeleste: #19D0E0;
-     ------azulAguamarina: #0FF7BB;
-     ------verdeAzul: #0AF063;
- /* ---------------MORADOS---------------- */
-     ------MoradoPurorosa: #E541F0;
-     ------Morado: #AC39F7;
-     ------MoraAzul: #6A3EE0;
-     ------azul: #3946F7 ;
-     ------azulClaro: #327DF0 ;
- /* --------------VERDES------------------- */
-     ------azulV:#41BFF0;
-     ------azulC:#39F7EB;
-     ------azulVV: #3EE09A;
-     ------VerdeClaro:#39F75F;
-     ------verdeOsc:#6AF048;
- 
- }
+
 
 *{
     margin: 0;
@@ -28,14 +7,57 @@
     font-family: 'Times New Roman', Times, serif !important;
 }
 
+body{
+
+    position: absolute;
+   background-color: palevioletred;
+}
 h1{
     font-family: 'Times New Roman', Times, serif;
 }
-.container{
-    height: 2000px;
-    width: 1900px;
-    background-color: #0A6FC9;
+.conocen0{
+   margin: auto;
+   margin-top: 30px;
+   width: 250px;
+   height: 50px;
+   border-radius: 30px;
+   position: relative;
+   text-align: center;
+   align-items: center;
+   background-color: #0A6FC9;
+
+}
+.sobren{
+
+    margin: 5%;
+   margin-top: 50px;
+   width: 40%;
+   height: 40%;
+   border-radius: 15px;
+   position: relative;
+
+   align-items: center;
+   font-family: 'Times New Roman', Times, serif;
+   font-size: 25px;
+   background-color: #c90a0a;
+}
+
+.redes{
+    margin: 5%;
+    margin-top: 55px; 
+    width: 40%;
+    height: 40%;
+    border-radius: 15px;
+    background-color: #0a4dc9;
+
+}
+
+.iframe{
     position: relative;
+    margin-right: 0%;
+
+
+
 }
 
 /* .container-body{ 
