@@ -76,11 +76,6 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                             </div>
                             
                             <div class="form-group">
-                                <label for="phone">Celular</label><br>
-                                <input type="text" name="phone" id="phone" class="form-control" value="<?php echo $usuario['phone'];?>" required> 
-                            </div>
-
-                            <div class="form-group">
                                 <label for="direccion">Direccion</label><br>
                                 <input type="text" name="direccion" id="direccion" class="form-control" value="<?php echo $usuario['direccion'];?>" required> 
                             </div>

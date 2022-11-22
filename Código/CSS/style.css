@@ -1,11 +1,23 @@
 :root{
+   /* -------------AZULES---------------- */
+    ------azulOscuro: #1851F0;
+    ------azulMedio: #0F98F7;
+    ------azulCeleste: #19D0E0;
+    ------azulAguamarina: #0FF7BB;
+    ------verdeAzul: #0AF063;
+/* ---------------MORADOS---------------- */
+    ------MoradoPurorosa: #E541F0;
+    ------Morado: #AC39F7;
+    ------MoraAzul: #6A3EE0;
+    ------azul: #3946F7 ;
+    ------azulClaro: #327DF0 ;
+/* --------------VERDES------------------- */
+    ------azulV:#41BFF0;
+    ------azulC:#39F7EB;
+    ------azulVV: #3EE09A;
+    ------VerdeClaro:#39F75F;
+    ------verdeOsc:#6AF048;
 
-    ---color:rgb(255, 182, 157);
-    ---color:rgba(227, 98, 62, 0.401);
-    ---color:#f3b33e;
-    ---color:rgb(243, 144, 144);
-    ---color:#f6e9d1;
-    ---color: #b03648;
 }
 
 
@@ -342,7 +354,6 @@ main hr{
     border-radius: 5px;
     background: var(--i);
     background-size: cover;
-    box-shadow: 3px 5px 5px rgba(208, 79, 79, 0.8);
     overflow: hidden;    
 }
 
@@ -415,7 +426,8 @@ main hr{
     transition: all 0.3s ease;
 }
 
-.hover-card{
+.hover-card{    box-shadow: 3px 5px 5px var(------azulOscuro);
+
     
     height: 350;
     width: 290;
@@ -423,7 +435,7 @@ main hr{
 }
 
 .hover-card:hover{
-    background: #f58e8768;
+    background: var(------azulV);
     transition: all .9s ease;
     transform: translateX(300px);
 }
@@ -491,7 +503,7 @@ footer{
     position: relative;
     bottom: 0;
     left: 0;
-    height: fit-content;
+    height: 400px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -499,7 +511,7 @@ footer{
     flex-direction: column;
     background-color: var(--dark);
     color: rgb(255, 255, 255);
-    background-color: #b03648;
+    background-image: url(../IMG/Group\ 1.png);
 }
 
 .copyright-container{
@@ -508,13 +520,15 @@ footer{
     justify-content: center;
     align-items: center;
     border-top: 1px solid #ffffff;
+    top: 0;
+    bottom: 0;
 }
 
 .copyright{
     font-size: 15px;
     opacity: 0.7;
     font-weight: 400;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .footer-menus{
@@ -527,7 +541,7 @@ footer{
 .footer-container{
     height: fit-content;
     width: 100%;
-    padding: 3rem 6rem;
+    padding: 4rem 7rem;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -549,7 +563,7 @@ footer .website-logo{
 }
 
 .footer-info, .menu-item-footer{
-    margin: 0.2rem 0;
+    margin: 0.1rem 0;
     opacity: 0.7;
     color: rgb(255, 255, 255);
     text-decoration: none;

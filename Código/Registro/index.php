@@ -59,7 +59,8 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                     <input type="email" class="" name="correo" placeholder="Correo electrónico" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')">
                     <input type="password" class="" name="pass" placeholder="Contraseña" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">            
                     
-                    <center><p><a href="../Ingreso/index.php">¿ya tienes cuenta?</a></p></center>
+                    <p><center><a href="../Ingreso/index.php">¿ya tienes cuenta?</a></center></p>
+                    
 
                     <input type="submit" class="btn btn-primary" name="btn_registrar" value="Registrar">
                 </form>

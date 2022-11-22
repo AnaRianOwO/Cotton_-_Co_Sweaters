@@ -21,7 +21,6 @@ $idCiudad = $_POST['idCiudad'];
 $sql="UPDATE usuario SET firstName='$firstName',secondName='$secondName',surname='$surname',secondSurname='$secondSurname',indicativo='$indicativo',phone='$phone',direccion='$direccion',idCiudad='$idCiudad' WHERE idUsuario='$id' AND docType='$docType'";
 echo $sql;
 $query=mysqli_query($con,$sql);
-
     if($query){
         echo "valores cambiados exitosamente";
         Header("Location: index.php");
