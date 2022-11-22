@@ -110,7 +110,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="Ventas/ventas.php"><i class="icon fa fa-circle-o"></i> Ventas</a>
+                <a class="treeview-item" href="Factura/factura.php"><i class="icon fa fa-circle-o"></i> Ventas</a>
             </li>
           </ul>
         </li>

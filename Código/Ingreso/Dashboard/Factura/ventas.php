@@ -153,7 +153,6 @@ $row=mysqli_fetch_array($query);
                         <th>Telefono</th>
                         <th>Dirección</th>
                         <th>Fecha</th>
-                        <th>Cantidad de productos</th>
                         <th>Total</th>
                         <td></td>
                     </tr>
@@ -174,12 +173,12 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['firstName']." ".$fila['secondName']." ".$fila['surname']." ".$fila ['secondSurname']?></th>
                         <th><?php echo $fila['phone']?></th>
                         <th><?php echo $fila['direccion']?></th>
-                        <th><?php echo $fila['nameCiudad']?></th>
-                        <th><?php echo $fila['nameEstado']?></th>
+                        <th><?php echo $fila['fecha']?></th>
+                        <th><?php echo $fila['total']?></th>
                         <td>
-                          <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 
-                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?idAdministrador=<?php  echo $fila['idAdministrador']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_venta.php?idFactura=<?php  echo $fila['idFactura']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php
