@@ -101,7 +101,6 @@ $consultaProductos = mysqli_query($conexion, $sqlProductos);
                             </div>
                         
                            <br>
-
                                 <div class="mb-3">
                                     
                                 <button type="submit" class="btn btn-success" >Editar</button>
