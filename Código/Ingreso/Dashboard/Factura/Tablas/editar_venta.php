@@ -7,7 +7,7 @@ $sql = "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u
 $resultadoFactura = mysqli_query($conexion, $sql);
 $factura = mysqli_fetch_assoc($resultadoFactura);
 
-$consulta= "SELECT  df.idFactura, df.codigo, p.nameProducto, p.descripcion, p.precio, df.cantidad FROM detallefactura df INNER JOIN factura f ON f.idFactura = df.idFactura INNER JOIN producto p ON df.codigo = p.codigo WHERE f.idFactura= '$idFactura'";
+$consulta= "giut ";
 $detalles = mysqli_query($conexion, $consulta);
 
 $sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
