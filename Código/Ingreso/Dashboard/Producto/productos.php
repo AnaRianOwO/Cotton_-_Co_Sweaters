@@ -14,6 +14,9 @@ $query=mysqli_query($DB,$sql);
 
 $row=mysqli_fetch_array($query);
 
+$estado = mysqli_query($DB, "SELECT * FROM producto P inner join estado E on P.idEstado = E.idEstado");
+$resultado = mysqli_fetch_array($estado);
+
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +84,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="usuarios.php"><i class="icon fa fa-circle-o"></i> Usuarios</a>
+                <a class="treeview-item" href="../Usuario/usuarios.php"><i class="icon fa fa-circle-o"></i> Usuarios</a>
             </li> 
           </ul>
         </li>
@@ -105,7 +108,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="../Producto/productos.php"><i class="icon fa fa-circle-o"></i> Productos</a>
+                <a class="treeview-item" href="productos.php"><i class="icon fa fa-circle-o"></i> Productos</a>
             </li>
           </ul>
         </li>
@@ -122,17 +125,17 @@ $row=mysqli_fetch_array($query);
           </ul>
         </li>
 
-        <li><a class="app-menu__item" href="../logout.php">
+        <li><a class="app-menu__item" href="../../logout.php">
             <i class="app-menu__icon fa-solid fa-right-from-bracket"></i>
             <span class="app-menu__label">Logout</span></a>
         </li>
       </ul>
     </aside>
-
-    <main class="app-content">
+<!--======================================================================================================-->
+<main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa-solid fa-address-book"></i> Lista de Usuarios</h1>
+          <h1><i class="fa-solid fa-address-book"></i> Lista de Productos</h1>
         </div>
       </div>
 
@@ -146,67 +149,52 @@ $row=mysqli_fetch_array($query);
                       <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
                       <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <a href="Tablas/insertar_usuario.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
+                      <a href="insertar.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
 		                </div>
                   <thead>
                     <tr>
-                      <th>Número de identidad</th>
-                        <th>Tipo de Documento</th>
-                        <th>Primer Nombre</th>
-                        <th>Segundo Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        <th>Indicativo</th>
-                        <th>Celular</th>
-                        <th>Correo</th>
-                        <th>Direccion</th>
-                        <th>Ciudad</th>
+                        <th>Código</th>
+                        <th>Nombre Producto</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Descripción</th>
+                        <th>Imagen</th>
                         <th>Estado</th>
                         <td></td>
                   
                     </tr>
                   </thead>
                   <tbody>
-                  <?php
-                            $conexion=mysqli_connect("localhost","root","","cotton");               
-                            $SQL="SELECT U.idUsuario, U.docType, U.firstName, U.secondName, U.surname,
-                            U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
-                            E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN     estado E On E.idEstado=U.idEstado;"; 
-
-                            $dato = mysqli_query($conexion, $SQL);
-
-                            if($dato -> num_rows >0){
-                              while($fila=mysqli_fetch_array($dato)){
-                          ?>
-                    <tr>
-                      <th><?php echo $fila['idUsuario']?></th>
-                        <th><?php echo $fila['docType']?></th>
-                        <th><?php echo $fila['firstName']?></th>
-                        <th><?php echo $fila['secondName']?></th>
-                        <th><?php echo $fila['surname']?></th>
-                        <th><?php echo $fila['secondSurname']?></th>
-                        <th><?php echo $fila['indicativo']?></th>
-                        <th><?php echo $fila['phone']?></th>
-                        <th><?php echo $fila['correo']?></th>
-                        <th><?php echo $fila['direccion']?></th>
-                        <th><?php echo $fila['nameCiudad']?></th>
-                        <th><?php echo $fila['nameEstado']?></th>
-                        <td>
-                          <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
-
-                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
-                        </td>
-                    </tr>
                     <?php
-                            }
-                            }else{
+                        $query = mysqli_query($DB, "SELECT * FROM producto;");
+                        $result = mysqli_num_rows($query);
+                        if($result>0){
+                            while($data = mysqli_fetch_array($query)){
                                 ?>
-                                <tr class="text-center">
-                                <td colspan="16">No existen registros</td>
+                                <tr>
+                                  <th><?php echo $data['codigo'] ?></th>
+                                    <th><?php echo $data['nameProducto'] ?></th>
+                                    <th><?php echo $data['precio'] ?></th>
+                                    <th><?php echo $data['stock'] ?></th>
+                                    <th><?php echo $data['descripcion'] ?></th>
+                                    <th><img height="50px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></td>
+                                    <td><?php echo $resultado['nameEstado'] ?></th>
+                                    <td>
+                                        <a href="actualizar.php?id=<?php echo $data['codigo'] ?>" class="btn btn-info"><i class="fa-solid fa-arrows-rotate"></i></a>
+
+                                        <a href="delete.php?id=<?php echo $data['codigo'] ?>" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
+                                    </td>
                                 </tr>
-                              <?php  
+                                <?php
                             }
+                        }else{
                             ?>
+                            <tr class="text-center">
+                            <td colspan="16">No hay productos</td>
+                            </tr>
+                            <?php  
+                        }
+                        ?>
                   </tbody>
                 </table>
               </div>
@@ -227,56 +215,15 @@ $row=mysqli_fetch_array($query);
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
-
-
   </body>
 
-  <script>
 
-    $('.btn-del').on('click', function(e){
-      e.preventDefault();
-      const href = $(this).attr('href')
-      Swal.fire({
-      title: 'Estás seguro de eliminar este usuario?',
-      text: "¡No podrás revertir esto!!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Eliminar', 
-      cancelButtonText: 'Cancelar', 
-    }).then((result)=>{
-        if(result.value){
-            if (result.isConfirmed) {
-        Swal.fire(
-          'Eliminado!',
-          'El usuario fue eliminado.',
-          'success'
-        )
-      }
-            document.location.href= href;
-        }   
-    })
-  })
-
-  </script> 
-
-
-<!--Fecha y Reloj-->  
-<br>
-  <?php include "Tablas/fecha.php"?>
-  <center>
-    <p class="ml-auto"><strong> Colombia </strong><?php echo fecha(); ?></p>
-    <div class="reloj">
-      <h5><span id="tiempo">00 : 00 : 00</span></h5>
-    </div>
-  </center>
-<br>
 
 <div id="paginador" class=""></div>
 <script src="package/dist/sweetalert2.all.js"></script>
 <script src="package/dist/sweetalert2.all.min.js"></script>
 <script src="package/jquery-3.6.0.min.js"></script>
+
 
 <script src="js/reloj.js"></script>
 </html>

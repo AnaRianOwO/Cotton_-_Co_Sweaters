@@ -7,11 +7,14 @@ $sql = "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u
 $resultadoFactura = mysqli_query($conexion, $sql);
 $factura = mysqli_fetch_assoc($resultadoFactura);
 
-$consulta= "SELECT  df.idFactura, df.codigo, p.nameProducto, p.descripcion, p.precio, df.cantidad FROM detallefactura df INNER JOIN factura f ON f.idFactura = df.idFactura INNER JOIN producto p ON df.codigo = p.codigo WHERE f.idFactura= '$idFactura'";
+$consulta= "giut ";
 $detalles = mysqli_query($conexion, $consulta);
 
 $sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
 $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
+
+$sqlProductos = "SELECT p.codigo, p.nameProducto, p.descripcion, p.precio";
+$consultaProductos = mysqli_query($conexion, $sqlProductos);
 
 // while($row = $consultaUsuario->fetch_assoc())
 // { echo $row['idUsuario']." <br>";}
@@ -76,7 +79,7 @@ $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
                                     <tbody>
                                         <?php while($row = mysqli_fetch_array($detalles)){?>
                                         <tr>
-                                            <td><?php echo $row['codigo'] ?></td>
+                                            <td><input type="text" value="<?php echo $row['codigo'] ?>"></td>
                                             <td><?php echo $row['nameProducto'] ?></td>
                                             <td><?php echo $row['descripcion'] ?></td>
                                             <td><?php echo $row['precio'] ?></td>
