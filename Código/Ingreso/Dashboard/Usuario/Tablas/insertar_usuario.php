@@ -16,7 +16,6 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
-
 	<link rel="stylesheet" href="./css/es.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -30,8 +29,7 @@ $resultadoEstado = mysqli_query($conexion, $sqlEstado);
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                     
-                            <br>
-                            <br>
+                            <br><br>
                             <h3 class="text-center">Registro de Usuario</h3>
                             <div class="modal-body">
                             <form  action="" method="POST">
