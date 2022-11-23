@@ -146,9 +146,9 @@ $resultado = mysqli_fetch_array($estado);
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                 <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Producto_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
-                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <a href="Pdf/Informe_Producto.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
                       <a href="insertar.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
 		                </div>
                   <thead>
@@ -174,7 +174,7 @@ $resultado = mysqli_fetch_array($estado);
                                 <tr>
                                   <th><?php echo $data['codigo'] ?></th>
                                     <th><?php echo $data['nameProducto'] ?></th>
-                                    <th><?php echo $data['precio'] ?></th>
+                                    <th><?php echo '$ '.$data['precio'] ?></th>
                                     <th><?php echo $data['stock'] ?></th>
                                     <th><?php echo $data['descripcion'] ?></th>
                                     <th><img height="50px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></td>
