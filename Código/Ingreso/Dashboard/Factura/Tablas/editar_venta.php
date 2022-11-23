@@ -83,7 +83,7 @@ $consultaProductos = mysqli_query($conexion, $sqlProductos);
                                             <td><?php echo $row['nameProducto'] ?></td>
                                             <td><?php echo $row['descripcion'] ?></td>
                                             <td><?php echo $row['precio'] ?></td>
-                                            <td><input type="text" value="<?php echo $row['cantidad'] ?>"></td>
+                                            <td><input type="text" id="" value="<?php echo $row['cantidad'] ?>"></td>
                                             <td><?php echo $row['precio']*$row['cantidad'] ?></td>
                                         </tr>
                                         <?php } ?>
