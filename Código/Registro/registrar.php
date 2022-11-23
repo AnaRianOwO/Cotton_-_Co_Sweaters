@@ -26,7 +26,7 @@
         }else{
         $query_usuario = "INSERT INTO usuario VALUES 
         ('$idUsuario','$docType','$name','$secondName','$surname','$secondSurname',
-        '$indicativo','$phone','$correo','$direccion','$pass_cifrada','','$idCiudad','1')";
+        '$indicativo','$phone','$correo','$direccion','$pass_cifrada','$idCiudad','1')";
 
         $resultado_usuario = $DB->query($query_usuario);
         if($resultado_usuario > 0){
