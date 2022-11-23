@@ -2,6 +2,12 @@
 session_start();
 include "global/conexion.php";
 
+    $idUsuario = $_SESSION['idUsuario'];
+
+    if(!isset($_SESSION['idUsuario'])){
+        header('Location: ../index.php');    
+
+    }
 include "añadir.php";
 // session_unset();
 ?>
@@ -17,6 +23,11 @@ include "añadir.php";
 </head>
 
 <body>
+    <div class="cabeza">
+        <h1>Cotton & Co Sweaters</h1>
+        <input id="searchbar" onkeyup="search_animal()" type="text"
+        name="search" placeholder="Search">
+    </div>
     <div class="container-productos">
         <?php
             if($row>0){
@@ -77,6 +88,7 @@ include "añadir.php";
                         </tr>
                         <form action="" method="post">
                             <input type="submit" name="btnVaciar" value="Vaciar">
+                            <input type="submit" name="btnComprar" value="Comprar">
                         </form>
                     <?php } else{
                         echo "El carrito esta vacio";
