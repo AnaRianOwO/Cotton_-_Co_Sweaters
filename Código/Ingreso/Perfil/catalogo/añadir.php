@@ -54,4 +54,13 @@ if(isset($_POST['btnVaciar'])){
     session_unset();
 }
 
+if(isset($_POST['btnComprar'])){
+    $sql = mysqli_query($con, "SELECT * FROM producto P INNER JOIN detallefactura D on D.codigo=P.codigo INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN usuario U on U.idUsuario=F.idUsuario WHERE '$id'");
+    $row = mysqli_num_rows($sql);
+    if($row>0){
+        while($data = mysqli_fetch_array($sql)){
+            $insert = mysqli_query($con, "INSERT INTO factura VALUES ");
+        }
+    }
+}
 ?>
