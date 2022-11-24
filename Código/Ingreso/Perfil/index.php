@@ -5,7 +5,7 @@
     $idUsuario = $_SESSION['idUsuario'];
 
     if(!isset($_SESSION['idUsuario'])){
-        header('Location: ../index.php');    
+        header('Location: ../index.php');
 
     }
     $sql="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";

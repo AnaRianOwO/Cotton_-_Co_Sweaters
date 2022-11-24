@@ -1,3 +1,4 @@
+
 <?php
 $mensaje="";
 
@@ -54,13 +55,25 @@ if(isset($_POST['btnVaciar'])){
     session_unset();
 }
 
+$valor = 5;
+$detFac = 1;
 if(isset($_POST['btnComprar'])){
-    $sql = mysqli_query($con, "SELECT * FROM producto P INNER JOIN detallefactura D on D.codigo=P.codigo INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN usuario U on U.idUsuario=F.idUsuario WHERE '$id'");
-    $row = mysqli_num_rows($sql);
-    if($row>0){
-        while($data = mysqli_fetch_array($sql)){
-            $insert = mysqli_query($con, "INSERT INTO factura VALUES ");
+    foreach($_SESSION['carrito'] as $indice=>$productos){
+        $valor+=1;
+        // $consulta = mysqli_query($con, "SELECT * FROM producto P INNER JOIN detallefactura D on D.codigo=P.codigo INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN usuario U on U.idUsuario=F.idUsuario");
+        $tabProd = mysqli_query($con, "SELECT * FROM producto");
+        $product = mysqli_fetch_array($tabProd);
+        // $inner = mysqli_fetch_array($consulta);
+        $factura = mysqli_query($con, "INSERT INTO factura VALUES ('F$valor','$idUsuario','NULL','20')");
+        if($factura){
+            $detFac+=1;
+            $tabFactura = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM factura"));
+            $facTabla = $tabFactura['idFactura'];
+            $proTabla = $productos["cantidad"];
+            $prodTabla = $product["codigo"];
+            $detalle = mysqli_query($con, "INSERT INTO detallefactura VALUES ('D$detFac','$proTabla','$prodTabla','$facTabla')");
         }
+        
     }
 }
 ?>
