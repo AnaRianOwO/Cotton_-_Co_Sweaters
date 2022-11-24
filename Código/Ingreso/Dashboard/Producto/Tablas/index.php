@@ -29,6 +29,7 @@
                                 <input type="text" class="form-control mb-3" name="stock" placeholder="Actualmemnte en stock">
                                 <input type="text" class="form-control mb-3" name="descripcion" placeholder="Descripcion">
                                 <input type="file" class="form-control mb-3" name="imagen" id="Img" required>
+                                <input type="text" class="form-control mb-3" name="estado" placeholder= "Estado">
                                 
                                 <input type="submit" class="btn btn-primary">
                             </form>
