@@ -180,9 +180,9 @@ $resultado = mysqli_fetch_array($estado);
                                     <th><img height="50px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></td>
                                     <td><?php echo $resultado['nameEstado'] ?></th>
                                     <td>
-                                        <a href="actualizar.php?id=<?php echo $data['codigo'] ?>" class="btn btn-info"><i class="fa-solid fa-arrows-rotate"></i></a>
+                                        <a href="Tablas/actualizar.php?codigo=<?php echo $data['codigo'] ?>" class="btn btn-info"><i class="fa-solid fa-arrows-rotate"></i></a>
 
-                                        <a href="delete.php?id=<?php echo $data['codigo'] ?>" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
+                                        <a href="Tablas/delete.php?codigo=<?php echo $data['codigo'] ?>" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -216,8 +216,6 @@ $resultado = mysqli_fetch_array($estado);
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
   </body>
-
-
 
 <div id="paginador" class=""></div>
 <script src="package/dist/sweetalert2.all.js"></script>
