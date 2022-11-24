@@ -125,7 +125,7 @@ $resultado = mysqli_fetch_array($estado);
           </ul>
         </li>
 
-        <li><a class="app-menu__item" href="../../logout.php">
+        <li><a class="app-menu__item" href="../logout.php">
             <i class="app-menu__icon fa-solid fa-right-from-bracket"></i>
             <span class="app-menu__label">Logout</span></a>
         </li>
