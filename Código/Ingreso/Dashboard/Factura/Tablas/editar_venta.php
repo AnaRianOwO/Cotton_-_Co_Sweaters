@@ -13,8 +13,9 @@ $detalles = mysqli_query($conexion, $consulta);
 $sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
 $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
 
-$sqlProductos = "SELECT p.codigo, p.nameProducto, p.descripcion, p.precio FROM producto p FROM producto p";
+$sqlProductos = "SELECT p.codigo, p.nameProducto, p.descripcion, p.precio FROM producto p";
 $consultaProducto = mysqli_query($conexion, $sqlProductos);
+$productos = $consultaProducto->fetch_assoc();
 // while($row = $consultaUsuario->fetch_assoc())
 // { echo $row['idUsuario']." <br>";}
 ?>
