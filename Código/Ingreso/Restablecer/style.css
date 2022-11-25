@@ -1,0 +1,15 @@
+.bad{
+
+    text-align: center;
+    width: 25%;
+    padding: 12px;
+    background-color: rgb(255, 94, 0);
+    color: black;
+    position: absolute;
+    top: 6rem;
+    left: 3rem;
+    border-radius: 4px;
+    border: black 5px groove;
+    border-radius: 4px;
+    border: 1px solid #a032167e;
+}

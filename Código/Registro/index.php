@@ -62,7 +62,7 @@ include "TyC/terminosyCondiciones.html";
                     <input type="email" class="" name="correo" placeholder="Correo electrónico" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')">
                     <input type="password" class="" name="pass" placeholder="Contraseña" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">            
                     
-                    <a href="#" class="TyC">Acepta los términos y condiciones antes de terminar</a>
+                    <a href="#" class="TyC"><center>Acepta los términos y condiciones antes de terminar</center></a>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
                     
 

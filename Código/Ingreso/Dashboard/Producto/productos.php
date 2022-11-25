@@ -14,9 +14,6 @@ $query=mysqli_query($DB,$sql);
 
 $row=mysqli_fetch_array($query);
 
-$estado = mysqli_query($DB, "SELECT * FROM producto P inner join estado E on P.idEstado = E.idEstado");
-$resultado = mysqli_fetch_array($estado);
-
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +122,7 @@ $resultado = mysqli_fetch_array($estado);
           </ul>
         </li>
 
-        <li><a class="app-menu__item" href="../../logout.php">
+        <li><a class="app-menu__item" href="../logout.php">
             <i class="app-menu__icon fa-solid fa-right-from-bracket"></i>
             <span class="app-menu__label">Logout</span></a>
         </li>
@@ -149,7 +146,7 @@ $resultado = mysqli_fetch_array($estado);
                       <a class="btn btn-primary1" href="Excel/Informe_Producto_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
                       <a href="Pdf/Informe_Producto.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <a href="insertar.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
+                      <a href="Tablas/insertar_Producto.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
 		                </div>
                   <thead>
                     <tr>
@@ -165,11 +162,14 @@ $resultado = mysqli_fetch_array($estado);
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                        $query = mysqli_query($DB, "SELECT * FROM producto;");
-                        $result = mysqli_num_rows($query);
-                        if($result>0){
-                            while($data = mysqli_fetch_array($query)){
+                    <?php            
+                        $consulta="SELECT P.codigo, P.nameProducto, P.precio, P.stock, P.descripcion, P.imagen, E.nameEstado 
+                        FROM producto P INNER JOIN estado E ON P.idEstado=E.idEstado;"; 
+
+                        $resultado = mysqli_query($DB, $consulta);
+                        
+                        if($resultado -> num_rows >0){
+                          while($data=mysqli_fetch_array($resultado)){
                                 ?>
                                 <tr>
                                   <th><?php echo $data['codigo'] ?></th>
@@ -178,11 +178,11 @@ $resultado = mysqli_fetch_array($estado);
                                     <th><?php echo $data['stock'] ?></th>
                                     <th><?php echo $data['descripcion'] ?></th>
                                     <th><img height="50px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></td>
-                                    <td><?php echo $resultado['nameEstado'] ?></th>
+                                    <td><?php echo $data['nameEstado'] ?></th>
                                     <td>
-                                        <a href="actualizar.php?id=<?php echo $data['codigo'] ?>" class="btn btn-info"><i class="fa-solid fa-arrows-rotate"></i></a>
+                                        <a href="Tablas/actualizar.php?codigo=<?php echo $data['codigo'] ?>" class="btn btn-info"><i class="fa-solid fa-arrows-rotate"></i></a>
 
-                                        <a href="delete.php?id=<?php echo $data['codigo'] ?>" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
+                                        <a href="Tablas/delete.php?codigo=<?php echo $data['codigo'] ?>" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -216,8 +216,6 @@ $resultado = mysqli_fetch_array($estado);
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
   </body>
-
-
 
 <div id="paginador" class=""></div>
 <script src="package/dist/sweetalert2.all.js"></script>
