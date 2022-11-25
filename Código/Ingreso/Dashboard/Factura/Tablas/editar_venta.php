@@ -15,9 +15,16 @@ $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
 
 $sqlProductos = "SELECT p.codigo, p.nameProducto, p.precio FROM producto p";
 $consultaProducto = mysqli_query($conexion, $sqlProductos);
-$productos = $consultaProducto->fetch_assoc();
-// while($row = $consultaUsuario->fetch_assoc())
-// { echo $row['idUsuario']." <br>";}
+
+while($productos = $consultaProducto->fetch_assoc()){
+    $arrayProductos[] = array(
+            //$productos['codigo'] => array (
+                'Código'=>$productos['codigo'],
+                'Nombre'=>$productos['nameProducto'],
+                'Precio'=>$productos['precio']
+        );
+}
+//print_r($arrayProductos);
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +58,6 @@ $productos = $consultaProducto->fetch_assoc();
                                     <?php while($row = $consultaUsuario->fetch_assoc())
                                             {
                                                 $usuario = '"'.$row['idUsuario'].'"';
-                                                //$factura['idUsuario']= "'".$factura['idUsuario']."'";
                                                 echo "<option value=".$usuario; if ($row['idUsuario']==$factura['idUsuario']){ echo "selected"; };
                                                 echo ">".$row['idUsuario']." - ".$row['firstName']." ".$row['secondName']." ".$row['surname']." ".$row['secondSurname']." - ".$row['phone']." - ".$row['direccion']."</option>";
                                             }
@@ -67,24 +73,25 @@ $productos = $consultaProducto->fetch_assoc();
                                 <table>
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Producto</th>
                                             <th>Cantidad</th>
                                             <th>Subtotal</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php while($row = mysqli_fetch_array($detalles)){?>
                                         <tr>
+                                            <td></td>
                                             <td>
                                                 <select name="codigos">
                                                     <option value="">Seleccione el producto correspondiente</option>
-                                                    <?php while($productos = $consultaProducto->fetch_assoc()){
-                                                            //foreach ($productos as $consultaProducto) {
-                                                                //$productos = $productos->fetch_assoc();
-                                                                $producto['codigo'] = "'".$productos['codigo']."'";
-                                                                echo "<option value=".$producto['codigo']; if ($productos['codigo']==$row['codigo']){ echo "selected"; };
-                                                                echo ">".$productos['nameProducto']." - ".$productos['precio']."</option>";
-                                                            //}
+                                                    <?php //while($productos = $consultaProducto->fetch_assoc()){
+                                                            foreach ($arrayProductos as $productos) {
+                                                                $cod = "'".$productos[$row['codigo']]['Código']."'";
+                                                                echo "<option value=".$cod; if ($productos['Código']==$row['codigo']){ echo "selected"; };
+                                                                echo ">".$productos['Nombre']." - ".$productos['Precio']."</option>";
                                                             }
                                                     ?>
                                                 </select>
@@ -92,8 +99,12 @@ $productos = $consultaProducto->fetch_assoc();
                                             
                                             <td><input type="text" id="" value="<?php echo $row['cantidad'] ?>"></td>
                                             <td><?php echo $row['precio']*$row['cantidad'] ?></td>
+                                            <td>Eliminar</td>
                                         </tr>
                                         <?php } ?>
+                                        <tr>
+                                            <td>Agregar</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
