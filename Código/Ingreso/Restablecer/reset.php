@@ -1,10 +1,11 @@
 
 <?php
-    if(isset($GET['correo']) && isset($GET['token'])){
-        $correo = $GET['correo'];
-        $token = $GET['token'];
+
+    if(isset($_GET['correo']) && isset($_GET['token'])){
+        $correo = $_GET['correo'];
+        $token = $_GET['token'];
     }else{
-        //header("Location:../Ingreso/index.php");
+        header("Location:../index.php");
     }
 ?>
 
@@ -21,13 +22,13 @@
 <body>
     <div class="container">
         <div class="row justify-content-md-center" style="margin-top:15%">
-            <form class="col-3" action="restablecer.php" method="POST">
+            <form class="col-3" action="verificar_token.php" method="POST">
                 <h2>Restablecer Password</h2>
                 <div class="mb-3">
                     <label for="c" class="form-label">Código</label>
                     <input type="number" class="form-control" id="c" name="codigo">
-                    <input type="email" class="form-control" id="c" name="correo" value="<?php echo $correo;?>">
-                    <input type="text" class="form-control" id="c" name="token" value="<?php echo $token;?>">
+                    <input type="hidden" class="form-control" id="c" name="correo" value="<?php echo $correo;?>">
+                    <input type="hidden" class="form-control" id="c" name="token" value="<?php echo $token;?>">
                  
                 </div>
                
