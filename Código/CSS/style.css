@@ -1,38 +1,21 @@
-:root{
-
-    ---color:rgb(255, 182, 157);
-    ---color:rgba(227, 98, 62, 0.401);
-    ---color:#f3b33e;
-    ---color:rgb(243, 144, 144);
-    ---color:#f6e9d1;
-    ---color: #b03648;
-}
-
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    flex-wrap: wrap;
 }
-
-
  body{
 
-   background-color :rgb(255, 228, 228);
+   background-color :rgba(223, 213, 204, 0.781), 0.918;
    margin: auto;
-    left: 70px;
+   left: 70px;
  }
-
  .todo{
-
-    background-color: #ff8e884a;
+    background-color: #ff888872;
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
  }
-
-
 /* --------------------------------- HEADER ------------------------------------------*/
 header{
     width: 100%;
@@ -46,17 +29,39 @@ header{
 }
 .container-header{
     
-    background: rgba(255, 228, 228, 0.491);
+    background: rgba(99, 37, 28, 0.726);
     z-index: 1;
     font-family: 'Dancing Script', cursive;
     font-weight: 900;
     
 }
+.line-header{
+    position: relative;
+    top: -75px;
+    left: 100px;
+    max-width: 1110px;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 
+}
+.icon{
+    position:absolute;
+    top: 100px;
+    right: 100px;
+}
+.icon-header{
+    color:#fff;
+    font-size: 40px;
+    font-weight: lighter;
+    display: inline-block;
+    margin-right: 40px;
+}
 header h1{
     font-size: 70px;
     font-weight: 900;
-    color: rgb(0, 0, 0);
+    color: rgb(241, 241, 241);
     line-height: 230px;
     font-weight: 300;
     transition: all 0.3s ease;
@@ -66,7 +71,7 @@ header nav{
     height: 70px;
     line-height: 70px;
     width: 100%;
-    background: #b03648;
+    background: #ff8a8a;
 }
 nav {
 	float: right;
@@ -76,17 +81,23 @@ nav {
 		padding: 0;
 		list-style: none;
 		padding-right: 20px;
+        
 	}
 	
 		nav ul li {
 			display: inline-block;
-			line-height: 80px;
+			line-height: 10px;
+            position: relative;
+            left: 270px;
+            
 		}
 			
 			nav ul li a {
 				display: block;
 				padding: 0 10px;
 				text-decoration: none;
+                margin-right: 500px;
+                font-size: 24px;
 			}
 			
 				
@@ -148,8 +159,7 @@ img {
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    height: 500px;
-
+    height: 600px;
 }
 
 .slide {
@@ -162,7 +172,6 @@ img {
     animation-direction: alternate;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
-    
 }
 
 .item-slide{
@@ -172,8 +181,6 @@ img {
     flex-shrink: 0;
     flex-grow: 0;
     max-width: 100%;
-    
-    
 }
 
 .pagination{
@@ -289,7 +296,7 @@ main hr{
     max-width: 500px;
     height: 4px;
     border-style: none;
-    background: -webkit-linear-gradient(90deg, rgb(255, 52, 52), #ffb8b8);
+    background: -webkit-linear-gradient(90deg, rgb(185, 80, 80), #ffb8b8);
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -325,8 +332,7 @@ main hr{
     border-radius: 5px;
     background: var(--i);
     background-size: cover;
-    box-shadow: 3px 5px 5px rgba(208, 79, 79, 0.8);
-    overflow: hidden;   
+    overflow: hidden;    
 }
 
 .content_1{
@@ -355,161 +361,10 @@ main hr{
 
 
 
-/*-------------------------------SLIDER CON CARDS--------------------------------------*/
-
-
-
-
-.swiper{
-    width: 950px;
-}
-
-.card_3 .image{
-    height: 140px;
-    width: 140px;
-    border-radius: 50%;
-    padding: 3px;
-    background: #7d2ae8;
-}
-
-.card_3 .image img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #fff;
-}
-
-.card_3{
-    position: relative;
-    background: #fff;
-    border-radius: 20px;
-    margin: 20px 0;
-    /*width: 280px;*/
-}
-
-.card_3::before{
-    content: "";
-    position: absolute;
-    height: 45%;
-    width: 100%;
-    background: #7d2ae8;
-    border-radius: 20px 20px 0 0;
-}
-
-.card_3 .card-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    position: relative;
-    z-index: 100;
-}
-
-.card_3 .media-icons{
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card_3 .media-icons i{
-    color: #fff;
-    opacity: 0.6;
-    margin-top:  10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.card_3 .media-icons i:hover{
-    opacity: 1;
-}
-
-.card_3 .name-profession{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    color: #333;
-}
-
-.name-profession .name{
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.name-profession .profession{
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.card_3 .rating{
-    display: flex;
-    align-items: center;
-    margin-top: 18px;
-}
-
-.card_3 .rating i{
-    font-size: 18px;
-    margin: 0.2px;
-    color: #7d2ae8;
-}
-
-.card_3 .button{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.card_3 .button button{
-    background: #7d2ae8;
-    outline: none;
-    border: none;
-    color: #fff;
-    padding: 8px 22px;
-    border-radius: 20px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.button button:hover{
-    background: #7d2ae8;
-}
-
-.swiper-pagunation{
-    position: relative;
-}
-
-.swiper-pagination-bullet{
-    height: 7px;
-    width: 26px;
-    border-radius: 25px;
-    background: #7d2ae8;
-}
-
-.swiper-button-next, .swiper-button-prev{
-    opacity: 0.7;
-    color: #7d2ae8;
-    transition: all 0.3s ease;
-}
-
-.swiper-button-next:hover, .swiper-button-prev:hover{
-    opacity: 1;
-    color: #7d2ae8;
-}
-
-
-
 
 /*---------------------------------- CARD -------------------------------------*/
-
 .card{ 
     max-width: 100%;
-
 }
 .container-card_1{
     width: 100%;
@@ -549,7 +404,8 @@ main hr{
     transition: all 0.3s ease;
 }
 
-.hover-card{
+.hover-card{    box-shadow: 3px 5px 5px var(------azulOscuro);
+
     
     height: 350;
     width: 290;
@@ -557,7 +413,7 @@ main hr{
 }
 
 .hover-card:hover{
-    background: #f58e8768;
+    background: var(------azulV);
     transition: all .9s ease;
     transform: translateX(300px);
 }
@@ -587,8 +443,6 @@ main hr{
 
 /*-------------------------- DESTACADOS ----------------------------*/
 .destacados{
-    
-    
     border-radius: 10px;
     padding: 2rem;
     flex: 1px;
@@ -600,19 +454,16 @@ main hr{
     position: relative;
     height: 700px;
     left: 20px;
-    background: #ffd9df;
-    border: 1px solid #E697A0;
+    background: #ffeeee;
+    border: 1px solid #d16b6b;
     justify-content: center;
     font-family: 'Dancing Script', cursive;
     box-sizing: border-box;
-
-    
 }
 
 @media screen and (max-width:1093px) {
     .destacados{
         
-        background-color: #ffd9df;
         align-items: center;
         width: 50%;
         height: 1650px;
@@ -622,9 +473,6 @@ main hr{
     }
     
 }
-/*--------------------------------------INFO------------------------------------------*/
-
-
 
 /*-------------------------------------- FOOTER --------------------------------------*/
 
@@ -633,7 +481,7 @@ footer{
     position: relative;
     bottom: 0;
     left: 0;
-    height: fit-content;
+    height: 400px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -641,7 +489,7 @@ footer{
     flex-direction: column;
     background-color: var(--dark);
     color: rgb(255, 255, 255);
-    background-color: #b03648;
+    background-image: url(../IMG/Group\ 1.png);
 }
 
 .copyright-container{
@@ -650,13 +498,15 @@ footer{
     justify-content: center;
     align-items: center;
     border-top: 1px solid #ffffff;
+    top: 0;
+    bottom: 0;
 }
 
 .copyright{
     font-size: 15px;
     opacity: 0.7;
     font-weight: 400;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .footer-menus{
@@ -669,7 +519,7 @@ footer{
 .footer-container{
     height: fit-content;
     width: 100%;
-    padding: 3rem 6rem;
+    padding: 4rem 7rem;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -691,7 +541,7 @@ footer .website-logo{
 }
 
 .footer-info, .menu-item-footer{
-    margin: 0.2rem 0;
+    margin: 0.1rem 0;
     opacity: 0.7;
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -872,6 +722,4 @@ footer .social-link:nth-of-type(3){/*Nth of type inside that container*/
 
         flex-direction: column;
     }
-
 }
-   
