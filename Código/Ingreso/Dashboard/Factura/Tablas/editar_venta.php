@@ -13,7 +13,7 @@ $detalles = mysqli_query($conexion, $consulta);
 $sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
 $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
 
-$sqlProductos = "SELECT p.codigo, p.nameProducto, p.descripcion, p.precio FROM producto p";
+$sqlProductos = "SELECT p.codigo, p.nameProducto, p.precio FROM producto p";
 $consultaProducto = mysqli_query($conexion, $sqlProductos);
 $productos = $consultaProducto->fetch_assoc();
 // while($row = $consultaUsuario->fetch_assoc())
@@ -75,15 +75,16 @@ $productos = $consultaProducto->fetch_assoc();
                                     <tbody>
                                         <?php while($row = mysqli_fetch_array($detalles)){?>
                                         <tr>
-                                            <td><?php echo $row['codigo'];?></td>
                                             <td>
                                                 <select name="codigos">
                                                     <option value="">Seleccione el producto correspondiente</option>
-                                                    <?php while($productos = $consultaProducto->fetch_assoc())
-                                                            {
+                                                    <?php while($productos = $consultaProducto->fetch_assoc()){
+                                                            //foreach ($productos as $consultaProducto) {
+                                                                //$productos = $productos->fetch_assoc();
                                                                 $producto['codigo'] = "'".$productos['codigo']."'";
                                                                 echo "<option value=".$producto['codigo']; if ($productos['codigo']==$row['codigo']){ echo "selected"; };
                                                                 echo ">".$productos['nameProducto']." - ".$productos['precio']."</option>";
+                                                            //}
                                                             }
                                                     ?>
                                                 </select>
