@@ -182,7 +182,7 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['phone']?></th>
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['fecha']?></th>
-                        <th><?php echo $fila['total']?></th>
+                        <th><?php echo '$ '.$fila['total']?></th>
                         <th><a class="btn btn-info" href="#"><i class="fa-solid fa-file"></i></a></th>
                         <!-- En esta parte se inserta el documento de la factura en pdf, en el href-->
                         <td>
