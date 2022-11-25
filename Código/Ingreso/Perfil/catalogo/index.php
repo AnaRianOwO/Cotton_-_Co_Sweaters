@@ -71,19 +71,18 @@ include "añadir.php";
                         <th>Total de la compra</th>
                     </tr>
                     <?php if(!empty($_SESSION['carrito'])) { ?>
-                        <div class="container-pedidos">
-                            
-
-                            
+                        <div class="container-pedidos">    
                             <?php $total=0; ?>
                             <?php foreach($_SESSION['carrito'] as $indice=>$productos){ ?>
-                                <tr>
-                                    <td><?php echo $productos['nameProducto'] ?></td>
-                                    <td><?php echo $productos['cantidad'] ?></td>
-                                    <td><?php echo $productos['precio'] ?></td>
-                                    <td><?php echo ($productos['cantidad']*$productos['precio']); ?></td>
-                                </tr>
-                                <?php $total=$total+($productos['cantidad']*$productos['precio']); ?>
+                                <div class="productos">
+                                    <tr>
+                                        <td><?php echo $productos['nameProducto'] ?></td>
+                                        <td><?php echo $productos['cantidad'] ?></td>
+                                        <td><?php echo $productos['precio'] ?></td>
+                                        <td><?php echo ($productos['cantidad']*$productos['precio']); ?></td>
+                                    </tr>
+                                    <?php $total=$total+($productos['cantidad']*$productos['precio']); ?>
+                                </div>
                             <?php } ?>
                         </div>
                         <tr>
