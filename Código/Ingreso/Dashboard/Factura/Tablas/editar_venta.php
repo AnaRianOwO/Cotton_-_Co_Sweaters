@@ -25,7 +25,26 @@ while($productos = $consultaProducto->fetch_assoc()){
         );
 }
 //print_r($arrayProductos);
-?>
+
+// $sqlPrueba = "SELECT f.idFactura FROM factura f WHERE f.idFactura = (SELECT MAX(f.idFactura) FROM factura f) LIMIT 1;";
+// $consulta = mysqli_query($conexion, $sqlPrueba);
+// print_r($consulta);
+// if (isset($consulta)) {
+//     $fafactura = mysqli_fetch_assoc($consulta);
+//     print_r($fafactura['idFactura']." <br>");
+//     print_r($codigo = substr($fafactura['idFactura'], 1)." <br>");
+//     print_r(gettype($codigo)." <br>");
+//     print_r($cod = intval($codigo)." <br>");
+//     print_r(gettype($cod)." <br>");
+//     print_r($cod+1);
+// } else {
+//     $cod = 1;
+//     print_r($cod);
+// }
+// $owo = "123";
+// $awa = intval($owo);
+// print_r(gettype($awa)." Es el tipo de dato de awa ".gettype($owo)." y este el de owo")
+// ?>
 
 <!DOCTYPE html>
 <html lang="es-MX">
@@ -66,11 +85,11 @@ while($productos = $consultaProducto->fetch_assoc()){
                             </div>
                             <div class="form-group">
                                 <label for="fecha">Fecha</label><br>
-                                <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo $factura['fecha'];?>"required>
+                                <input type="timestamp" name="timestap" id="fecha" class="form-control" step="1" value="<?php echo $factura['fecha'];?>"required>
                             </div>
                             
                             <div class="detallitos">
-                                <table>
+                                <table id="tabla">
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -85,11 +104,12 @@ while($productos = $consultaProducto->fetch_assoc()){
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <select name="codigos">
+                                                <select id="select">
                                                     <option value="">Seleccione el producto correspondiente</option>
                                                     <?php //while($productos = $consultaProducto->fetch_assoc()){
+                                                            
                                                             foreach ($arrayProductos as $productos) {
-                                                                $cod = "'".$productos[$row['codigo']]['Código']."'";
+                                                                $cod = "'".$productos['Código']."'";
                                                                 echo "<option value=".$cod; if ($productos['Código']==$row['codigo']){ echo "selected"; };
                                                                 echo ">".$productos['Nombre']." - ".$productos['Precio']."</option>";
                                                             }
@@ -99,11 +119,11 @@ while($productos = $consultaProducto->fetch_assoc()){
                                             
                                             <td><input type="text" id="" value="<?php echo $row['cantidad'] ?>"></td>
                                             <td><?php echo $row['precio']*$row['cantidad'] ?></td>
-                                            <td>Eliminar</td>
+                                            <td><span>Eliminar</span></td>
                                         </tr>
                                         <?php } ?>
                                         <tr>
-                                            <td>Agregar</td>
+                                            <td><input type="button" id="agregar" value="Agregar"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -135,5 +155,6 @@ while($productos = $consultaProducto->fetch_assoc()){
         </div>
     </div>
     </form>
+    <script src="js/funciones.js"></script>
 </body>
 </html>
