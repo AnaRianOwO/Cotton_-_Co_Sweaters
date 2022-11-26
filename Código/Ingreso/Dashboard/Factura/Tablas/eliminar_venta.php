@@ -1,4 +1,5 @@
 <?php
+    require_once ("../../../../DB/db.php");
 
     $idFactura= $_GET['idFactura'];
     $conexion=mysqli_connect("localhost","root","","cotton");
