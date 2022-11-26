@@ -15,8 +15,6 @@ $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
 
 $sqlProductos = "SELECT p.codigo, p.nameProducto, p.precio FROM producto p";
 $consultaProducto = mysqli_query($conexion, $sqlProductos);
-<<<<<<< HEAD
-=======
 
 while($productos = $consultaProducto->fetch_assoc()){
     $arrayProductos[] = array(
@@ -27,7 +25,6 @@ while($productos = $consultaProducto->fetch_assoc()){
         );
 }
 //print_r($arrayProductos);
->>>>>>> origin/main
 ?>
 
 <!DOCTYPE html>
