@@ -6,7 +6,7 @@ session_start();
 $idUsuario = $_SESSION['idUsuario'];
 
 if(!isset($_SESSION['idUsuario'])){
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
 
 }
 $consul="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
@@ -81,7 +81,9 @@ include "añadir.php";
                                         <td><?php echo $productos['precio'] ?></td>
                                         <td><?php echo ($productos['cantidad']*$productos['precio']); ?></td>
                                     </tr>
-                                    <?php $total=$total+($productos['cantidad']*$productos['precio']); ?>
+                                    <?php $total=$total+($productos['cantidad']*$productos['precio']); 
+                                    $_SESSION['total'] = $total;
+                                    ?>
                                 </div>
                             <?php } ?>
                         </div>
