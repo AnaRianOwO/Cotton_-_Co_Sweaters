@@ -1,3 +1,15 @@
+<?php
+include('../catalogo/global/conexion.php');
+
+session_start();
+
+$idUsuario = $_SESSION['idUsuario'];
+
+if(!isset($_SESSION['idUsuario'])){
+    header('Location: ../../index.php');
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
