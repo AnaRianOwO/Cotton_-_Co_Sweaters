@@ -22,7 +22,26 @@
         $resultado_user = $DB->query($sql_user);
         $filas = $resultado_user->num_rows;
         if ($filas > 0) {
-            echo "<script>alert('El usuario ya existe');window.location='index.php'</script>";
+            echo "
+                .
+                <html>
+                    <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+                <html>
+                <script>
+                    Swal
+                        .fire({
+                            title: 'El usuario ya existe',
+                            text: 'Porfavor verifique su información',
+                            icon: 'warning',
+                            confirmButtonText: 'Continuar'
+                        })
+                        .then(resultado => {
+                            if (resultado.value) {
+                                window.location='index.php';
+                            }else {    
+                            }
+                        });
+                </script>";
         }else{
         $query_usuario = "INSERT INTO usuario VALUES 
         ('$idUsuario','$docType','$name','$secondName','$surname','$secondSurname',
@@ -30,9 +49,47 @@
 
         $resultado_usuario = $DB->query($query_usuario);
         if($resultado_usuario > 0){
-            echo "<script>alert('Usuario registrado: $name');window.location='index.php'</script>";
+            echo "
+                .
+                <html>
+                    <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+                <html>
+                <script>
+                    Swal
+                        .fire({
+                            title: 'Usuario registrado correctamente',
+                            icon: 'success',
+                            confirmButtonText: 'Continuar'
+                        })
+                        .then(resultado => {
+                            if (resultado.value) {
+                                window.location='index.php';
+                            }else {    
+                            }
+                        });
+                </script>";
         }else{
-            echo "Error: ".$query."<br>".mysqli_error($DB);
+            echo "
+                .
+                <html>
+                    <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+                <html>
+                <script>
+                    Swal
+                        .fire({
+                            title: 'Ha ocurrido un error',
+                            text: 'Porfavor verifique su información',
+                            icon: 'error',
+                            confirmButtonText: 'Continuar'
+                        })
+                        .then(resultado => {
+                            if (resultado.value) {
+                                window.location='index.php';
+                            }else {    
+                            }
+                        });
+                </script>";
+                // echo "Error: ".$query."<br>".mysqli_error($DB);
         }
         }
     }
