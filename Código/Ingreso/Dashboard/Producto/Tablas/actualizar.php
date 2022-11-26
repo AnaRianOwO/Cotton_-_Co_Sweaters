@@ -1,14 +1,15 @@
 <?php 
 
-    include("../../../DB/db.php");
+include("../../../../DB/db.php");
 
-
-$id=$_GET['id'];
-
-$sql="SELECT * FROM producto WHERE codigo='$id'";
+$codigo=$_GET['codigo'];
+$sql="SELECT P.codigo, P.nameProducto, P.precio, P.stock, P.descripcion, E.nameEstado 
+FROM producto P INNER JOIN estado E ON P.idEstado=E.idEstado WHERE P.codigo='$codigo'";
 $query=mysqli_query($DB,$sql);
+$row=mysqli_fetch_assoc($query);
 
-$row=mysqli_fetch_array($query);
+$sqlEstado = "SELECT * FROM estado";
+$resultadoEstado = mysqli_query($DB,$sqlEstado);
 ?>
 
 <!DOCTYPE html>
@@ -26,18 +27,31 @@ $row=mysqli_fetch_array($query);
                 <div class="container mt-5">
                     <form action="update.php" method="POST" enctype="multipart/form-data">
                     
+                                <h3 class="text-center">Editar Administrador</h3>
                                 <input type="hidden" name="codigo" value="<?php echo $row['codigo']  ?>">
                                 
                                 <input type="text" class="form-control mb-3" name="nameProducto" placeholder="Nombre del producto" value="<?php echo $row['nameProducto']  ?>">
                                 <input type="text" class="form-control mb-3" name="precio" placeholder="Precio" value="<?php echo $row['precio']  ?>">
                                 <input type="text" class="form-control mb-3" name="stock" placeholder="stock" value="<?php echo $row['stock']  ?>">
                                 <input type="text" class="form-control mb-3" name="descripcion" placeholder="Descripcion" value="<?php echo $row['descripcion']  ?>">
-                                <input type="file" class="form-control mb-3" name="imagen" placeholder="Imagen" value="<?php //echo $row['imagen'] ?>">
-                                <input type="text" class="form-control mb-3" name="idEstado" placeholder="Estado" value="<?php echo $row['idEstado'] ?>">
-                                
-                            <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
+                                <!--<input type="file" class="form-control mb-3" name="imagen" placeholder="Imagen" value="<?php //echo $row['imagen'] ?>">-->
+                                <select name="idEstado"  required>
+                                    <option value="">Seleccione su ciudad</option>
+                                    <?php while($select = $resultadoEstado->fetch_assoc())
+                                            {
+                                                $select['idEstado'] = "'".$select['idEstado']."'";
+                                                echo "<option value=".$select['idEstado']; if ($select['nameEstado']==$row['nameEstado']){ echo "selected"; };
+                                                echo ">".$select['nameEstado']."</option>";
+                                            }
+                                    ?>
+                                </select>
+                                <br><br>
+                                <input type="hidden" name="accion" value="editar_registro">
+                                <input type="hidden" name="idAdministrador" value="<?php echo $row;?>">
+
+                                <button type="submit" class="btn btn-success" >Editar</button>
+                                <a href="../productos.php" class="btn btn-danger">Cancelar</a>
                     </form>
-                    
                 </div>
     </body>
 </html>

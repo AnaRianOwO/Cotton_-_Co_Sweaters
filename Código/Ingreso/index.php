@@ -38,6 +38,7 @@
 		<b>&#128274; Contraseña</b>
         <input type="password" class="cajaentradatexto" name="pass" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">
         <div class="checkboxvai"><a class="" data-bs-toggle="modal" data-bs-target="#recuperarPass">Recuperar contraseña</a></div> 
+        <div class="checkboxvai"><a class="" href="../Registro/index.php">¿No tienes cuenta? Ingresa Aquí</a></div> 
         <button type="submit" class="botonenviar" name="btn_login">Iniciar sesión</button>
         </form>
 		<!--Formulario para admin -->
@@ -47,7 +48,6 @@
         <input type="email" class="cajaentradatexto" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')" name="correo">
 			<b>&#128274; Contraseña</b>
         <input type="password" class="cajaentradatexto" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')" name="pass">
-        <div class="checkboxvai"><a class="" data-bs-toggle="modal" data-bs-target="#recuperarPass">Recuperar contraseña</a></div> 
         <button type="submit" class="botonenviar" name="btn_login">Iniciar sesión</button>
         </form>
         </div>
@@ -93,10 +93,10 @@
             </div>
             <div class="modal-body">
                 <p>
-                <h2>Enter the Email of Your Account to Reset New Password</h2>
+                <h2>Ingresa un correo para restablecer tu contraseña</h2>
                 <?php echo !empty($statusMsg)?'<p class="'.$statusMsgType.'">'.$statusMsg.'</p>':''; ?>
 
-                    <form action="userAccount.php" method="post">
+                    <form action="Restablecer/restablecer.php" method="post">
                         <table>
                             <tr> 
                             <td><b>&#128231; Correo</b></td>
