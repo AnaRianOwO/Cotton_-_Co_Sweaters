@@ -9,6 +9,7 @@ if(!isset($_SESSION['idUsuario'])){
     header('Location: ../../index.php');
 
 }
+$tabUsu = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM usuario WHERE idUsuario = '$idUsuario'"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +36,7 @@ if(!isset($_SESSION['idUsuario'])){
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo"><!-----CONEXION DATABASE-----> uwuwuwuwuwuw</h3>
+                <h3 class="titulo"><?php echo $tabUsu['firstName']," ", $tabUsu['surname']; ?></h3>
                 
             </div>
             <div class="perfil-usuario-footer">
