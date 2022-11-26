@@ -22,7 +22,7 @@
 
         if(($nr == 1) && (password_verify($pass, $buscar_pass['pass']))){
 
-            header("Location: Perfil/index.php");
+            header("Location: Perfil/Usu_Per/index.php");
         }else{
             echo "<script>alert('Usuario o contraseña incorrecta');window.location='index.php'</script>";
         }

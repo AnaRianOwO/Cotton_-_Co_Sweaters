@@ -234,7 +234,7 @@ $row=mysqli_fetch_array($query);
     e.preventDefault();
     const href = $(this).attr('href')
     Swal.fire({
-    title: 'Estás seguro de eliminar este administrador?',
+    title: '¿Estás seguro de eliminar este factura?',
     text: "¡No podrás revertir esto!!",
     icon: 'warning',
     showCancelButton: true,
@@ -247,7 +247,7 @@ $row=mysqli_fetch_array($query);
           if (result.isConfirmed) {
       Swal.fire(
         'Eliminado!',
-        'El administrador fue eliminado.',
+        'La factura fue eliminada.',
         'success'
       )
     }
