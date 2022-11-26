@@ -15,8 +15,6 @@ $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
 
 $sqlProductos = "SELECT p.codigo, p.nameProducto, p.descripcion, p.precio FROM producto p FROM producto p";
 $consultaProducto = mysqli_query($conexion, $sqlProductos);
-// while($row = $consultaUsuario->fetch_assoc())
-// { echo $row['idUsuario']." <br>";}
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +48,6 @@ $consultaProducto = mysqli_query($conexion, $sqlProductos);
                                     <?php while($row = $consultaUsuario->fetch_assoc())
                                             {
                                                 $usuario = '"'.$row['idUsuario'].'"';
-                                                //$factura['idUsuario']= "'".$factura['idUsuario']."'";
                                                 echo "<option value=".$usuario; if ($row['idUsuario']==$factura['idUsuario']){ echo "selected"; };
                                                 echo ">".$row['idUsuario']." - ".$row['firstName']." ".$row['secondName']." ".$row['surname']." ".$row['secondSurname']." - ".$row['phone']." - ".$row['direccion']."</option>";
                                             }

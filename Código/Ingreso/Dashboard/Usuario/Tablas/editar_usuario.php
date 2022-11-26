@@ -6,9 +6,9 @@ include("../../../../DB/db.php");
 
 $idUsuario= $_GET['idUsuario'];
 
-$consulta= "SELECT  U.docType, U.firstName, U.secondName, U.surname,
-U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
-E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=U.idEstado WHERE  U.idUsuario = '$idUsuario'";
+$consulta= "SELECT  U.docType, U.firstName, U.secondName, U.surname,U.secondSurname, U.indicativo,
+ U.phone, U.correo, U.direccion, C.nameCiudad, E.nameEstado FROM usuario U INNER JOIN ciudad C ON 
+ U.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=U.idEstado WHERE  U.idUsuario = '$idUsuario'";
 $resultado = mysqli_query($DB, $consulta);
 $usuario = mysqli_fetch_assoc($resultado);
 
