@@ -12,9 +12,10 @@
     $pdf->AddPage();
 
 	// Consulta SQL
-	$consulta = "SELECT P.codigo,P.nameProducto,P.descripcion,U.idUsuario,U.docType,U.firstName,U.secondName,U.surname,U.secondSurname,
-    U.phone,U.direccion,P.precio,D.cantidad,F.fecha,F.total,F.idFactura FROM factura F INNER JOIN detallefactura D on F.idFactura=D.idFactura 
-    INNER JOIN producto P on P.codigo=D.codigo INNER JOIN usuario U on F.idUsuario=U.idUsuario WHERE F.idFactura='$idFactura'";
+	// $consulta = "SELECT P.codigo,P.nameProducto,P.descripcion,U.idUsuario,U.docType,U.firstName,U.secondName,U.surname,U.secondSurname,
+    // U.phone,U.direccion,P.precio,D.cantidad,F.fecha,F.total,F.idFactura FROM factura F INNER JOIN detallefactura D on F.idFactura=D.idFactura 
+    // INNER JOIN producto P on P.codigo=D.codigo INNER JOIN usuario U on F.idUsuario=U.idUsuario WHERE F.idFactura='$idFactura'";
+    $consulta = "SELECT * FROM usuario U INNER JOIN factura F on U.idUsuario=F.idUsuario WHERE F.idFactura='$idFactura'";
 	$resultado= $DB->query($consulta);
 	$Administrador = mysqli_fetch_assoc($resultado);
 
@@ -67,10 +68,10 @@
     $pdf->Ln(5);
 
     # Tabla de productos #
-    $pdf->MultiCell(0,4,utf8_decode($Administrador["nameProducto"]),0,'C',false);
+    // $pdf->MultiCell(0,4,utf8_decode($Administrador["nameProducto"]),0,'C',false);
 
-    $pdf->Cell(0,5,utf8_decode("------------------------------------------------------"),0,0,'C');
-    $pdf->Ln(3);
+    // $pdf->Cell(0,5,utf8_decode("------------------------------------------------------"),0,0,'C');
+    // $pdf->Ln(3);
 
     // Encabezado Tabla
     $pdf->Cell(25,5,utf8_decode("Cant."),0,0,'C');
@@ -82,15 +83,27 @@
     $pdf->Cell(72,5,utf8_decode("------------------------------------------------------"),0,0,'C');
     $pdf->Ln(5);
 
-    // Contenido Tabla
-    $pdf->Cell(23,4,utf8_decode($Administrador["cantidad"]),0,0,'C');
-    $pdf->Cell(20,4,utf8_decode("$ ".$Administrador["precio"]),0,0,'C');
-    //$pdf->Cell(13,4,utf8_decode("50%"),0,0,'C');
-    $pdf->Cell(24,4,utf8_decode("$ ".$Administrador["total"]),0,0,'C');
-
-    $pdf->Ln(5);
-    $pdf->MultiCell(0,4,utf8_decode($Administrador["descripcion"]),0,'C',false);
-    $pdf->Ln(5);
+    $elSql = mysqli_query($DB, "SELECT * FROM detallefactura D INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN producto P on P.codigo=D.codigo WHERE F.idFactura='$idFactura'");
+    $datos = 
+    $rowss = mysqli_num_rows($elSql);
+    if($rowss > 0){
+        while ($data = mysqli_fetch_array($elSql)) {
+            $pdf->Ln(1);
+            $pdf->MultiCell(0,4,utf8_decode($data["nameProducto"]),0,'C',false);
+            
+            
+            // $pdf->Cell(23,4,utf8_decode($data['cantidad']),0,0,'C');
+            // Contenido Tabla
+            $pdf->Cell(23,4,utf8_decode($data["cantidad"]),0,0,'C');
+            $pdf->Cell(20,4,utf8_decode("$ ".$data["precio"]),0,0,'C');
+            //$pdf->Cell(13,4,utf8_decode("50%"),0,0,'C');
+            $precio = $data['cantidad']*$data['precio'];
+            $pdf->Cell(24,4,utf8_decode("$ ".$precio),0,0,'C');
+            $pdf->Ln(5);
+        }
+    }
+    
+    
 
     $pdf->Cell(72,5,utf8_decode("------------------------------------------------------"),0,0,'C');
 

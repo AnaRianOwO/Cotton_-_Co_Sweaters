@@ -59,6 +59,8 @@ if(isset($_POST['btnComprar'])){
         $codigo=1;
     }else{
         $consult = mysqli_query($con, "SELECT f.idFactura FROM factura f WHERE f.idFactura = (SELECT MAX(f.idFactura) FROM factura f) LIMIT 1;");
+        // $consult = mysqli_query($con, "SELECT * FROM factura ORDER BY SUBSTRING(idFactura,3,3), cast(Substring(idFactura,2,2) as int);");
+
         $fafactura = mysqli_fetch_assoc($consult);
         $codigo = substr($fafactura['idFactura'], 1);
         $codigo = intval($codigo);
@@ -70,6 +72,7 @@ if(isset($_POST['btnComprar'])){
     $total = $_SESSION['total'];
     // $inner = mysqli_fetch_array($consulta);
     $factura = mysqli_query($con, "INSERT INTO factura VALUES ('F$codigo','$idUsuario','NULL','$total')");
+
     if(isset($_SESSION['carrito'])){
         foreach($_SESSION['carrito'] as $indice=>$productos){ 
             $consu = mysqli_query($con, "SELECT D.idDetalle FROM detallefactura D WHERE D.idDetalle = (SELECT MAX(D.idDetalle) FROM detallefactura D) LIMIT 1;");

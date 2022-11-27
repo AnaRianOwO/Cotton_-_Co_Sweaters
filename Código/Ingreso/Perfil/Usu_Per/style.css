@@ -96,7 +96,6 @@ body {
     width: 70%;
     position: relative;
     max-width: 750px;
-    
 }
 
 .seccion-perfil-usuario .perfil-usuario-body .titulo {
@@ -121,6 +120,12 @@ body {
     border-radius: 15px;
     width: 100%;
     text-decoration: none;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
 }
 
 .seccion-perfil-usuario .perfil-usuario-bio {
