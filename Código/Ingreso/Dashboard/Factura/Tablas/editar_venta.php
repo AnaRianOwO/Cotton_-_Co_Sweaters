@@ -24,7 +24,7 @@ while($productos = $consultaProducto->fetch_assoc()){
                 'Precio'=>$productos['precio']
         );
 }
-//print_r($arrayProductos);
+// print_r($arrayProductos);
 
 // $sqlPrueba = "SELECT f.idFactura FROM factura f WHERE f.idFactura = (SELECT MAX(f.idFactura) FROM factura f) LIMIT 1;";
 // $consulta = mysqli_query($conexion, $sqlPrueba);
@@ -32,15 +32,19 @@ while($productos = $consultaProducto->fetch_assoc()){
 // if (isset($consulta)) {
 //     $fafactura = mysqli_fetch_assoc($consulta);
 //     print_r($fafactura['idFactura']." <br>");
-//     print_r($codigo = substr($fafactura['idFactura'], 1)." <br>");
+//     $codigo = substr($fafactura['idFactura'], 1);
+//     print_r($codigo." <br>");
+//     echo gettype($codigo)." <br>";
+//     $cod = intval($codigo);
+//     print_r($cod." <br>");
+//     echo strlen($codigo)." <br>";
 //     print_r(gettype($codigo)." <br>");
-//     print_r($cod = intval($codigo)." <br>");
-//     print_r(gettype($cod)." <br>");
-//     print_r($cod+1);
+//     print_r($cod+=1);
 // } else {
 //     $cod = 1;
 //     print_r($cod);
-// }
+// };
+// print_r(mysqli_insert_id($conexion));
 // $owo = "123";
 // $awa = intval($owo);
 // print_r(gettype($awa)." Es el tipo de dato de awa ".gettype($owo)." y este el de owo")

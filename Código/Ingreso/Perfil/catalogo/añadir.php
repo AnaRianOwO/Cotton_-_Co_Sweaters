@@ -61,6 +61,9 @@ if(isset($_POST['btnComprar'])){
         $consult = mysqli_query($con, "SELECT f.idFactura FROM factura f WHERE f.idFactura = (SELECT MAX(f.idFactura) FROM factura f) LIMIT 1;");
         $fafactura = mysqli_fetch_assoc($consult);
         $codigo = substr($fafactura['idFactura'], 1);
+        print_r($fafactura['idFactura']);
+        print_r($codigo);
+        print_r(mysqli_insert_id($con));
         $codigo = intval($codigo);
         $codigo+=1;
     }
@@ -78,6 +81,7 @@ if(isset($_POST['btnComprar'])){
             }else{
                 $facturita = mysqli_fetch_assoc($consu);
                 $valor = substr($facturita['idDetalle'], 1);
+                print_r($valor);
                 $valor = intval($valor);
                 $valor+=1;
             }
