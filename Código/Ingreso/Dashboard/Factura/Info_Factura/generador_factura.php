@@ -65,9 +65,9 @@
 
     // Tabla de productos 
     // Encabezado Tabla
-    $pdf->Cell(25,5,utf8_decode("Cant."),0,0,'C');
+    $pdf->Cell(27,5,utf8_decode("Cant."),0,0,'C');
     $pdf->Cell(16,5,utf8_decode("Precio"),0,0,'C');
-    $pdf->Cell(29,5,utf8_decode("Total"),0,0,'C');
+    $pdf->Cell(27,5,utf8_decode("Total"),0,0,'C');
 
     $pdf->Ln(4);
     $pdf->Cell(72,5,utf8_decode("------------------------------------------------------"),0,0,'C');
@@ -80,10 +80,10 @@
             $pdf->Ln(1);
             $pdf->MultiCell(0,4,utf8_decode($data["nameProducto"]),0,'C',false);
             $pdf->Ln(1);
-            $pdf->Cell(23,4,utf8_decode($data["cantidad"]),0,0,'C');
-            $pdf->Cell(20,4,utf8_decode("$ ".$data["precio"]),0,0,'C');
+            $pdf->Cell(27,4,utf8_decode($data["cantidad"]),0,0,'C');
+            $pdf->Cell(15,4,utf8_decode("$ ".$data["precio"]),0,0,'C');
             $precio = $data['cantidad']*$data['precio'];
-            $pdf->Cell(24,4,utf8_decode("$ ".$precio),0,0,'C');
+            $pdf->Cell(28,4,utf8_decode("$ ".$precio),0,0,'C');
             $pdf->Ln(5);
         }
     }

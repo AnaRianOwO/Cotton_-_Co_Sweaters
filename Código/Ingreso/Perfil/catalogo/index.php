@@ -103,9 +103,6 @@ include "añadir.php";
                 
             </div>   
         </div>
-    
-
-    
 </body>
 <script src="script/carrito.js"></script>
 </html>
