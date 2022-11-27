@@ -42,7 +42,7 @@ function Footer()
 }
 }
 
-require '../../../../DB/db.php';
+require ('../../../../DB/db.php');
 $consulta = "SELECT * FROM usuario";
 $resultado =$DB->query($consulta);
 

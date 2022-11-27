@@ -93,7 +93,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="administrador.php"><i class="icon fa fa-circle-o"></i> Administradores</a>
+                <a class="treeview-item" href="../Administrador/administrador.php"><i class="icon fa fa-circle-o"></i> Administradores</a>
             </li>
           </ul>
         </li>
@@ -166,11 +166,9 @@ $row=mysqli_fetch_array($query);
                     </tr>
                   </thead>
                   <tbody>
-                  <?php
-                            $conexion=mysqli_connect("localhost","root","","cotton");               
+                  <?php              
                             $SQL="SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;"; 
-
-                            $dato = mysqli_query($conexion, $SQL);
+                            $dato = mysqli_query($DB, $SQL);
 
                             if($dato -> num_rows >0){
                               while($fila=mysqli_fetch_array($dato)){
@@ -183,7 +181,7 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['fecha']?></th>
                         <th><?php echo '$ '.$fila['total']?></th>
-                        <th><a class="btn btn-info" href="#"><i class="fa-solid fa-file"></i></a></th>
+                        <th><a class="btn btn-info" href="Info_Factura/generador_factura.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-file"></i></a></th>
                         <!-- En esta parte se inserta el documento de la factura en pdf, en el href-->
                         <td>
                           <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a>

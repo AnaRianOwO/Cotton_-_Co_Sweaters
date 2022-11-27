@@ -39,7 +39,7 @@ function Footer()
 }
 }
 
-require '../../../../DB/db.php';
+require ('../../../../DB/db.php');
 $SQL="SELECT * FROM producto P INNER JOIN estado E On E.idEstado=P.idEstado;";
 $resultado =$DB->query($SQL);
 
