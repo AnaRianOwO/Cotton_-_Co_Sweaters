@@ -10,6 +10,9 @@
     $pdf->AddPage();
 
 	// Consulta SQL
+	// $consulta = "SELECT P.codigo,P.nameProducto,P.descripcion,U.idUsuario,U.docType,U.firstName,U.secondName,U.surname,U.secondSurname,
+    // U.phone,U.direccion,P.precio,D.cantidad,F.fecha,F.total,F.idFactura FROM factura F INNER JOIN detallefactura D on F.idFactura=D.idFactura 
+    // INNER JOIN producto P on P.codigo=D.codigo INNER JOIN usuario U on F.idUsuario=U.idUsuario WHERE F.idFactura='$idFactura'";
     $consulta = "SELECT * FROM usuario U INNER JOIN factura F on U.idUsuario=F.idUsuario WHERE F.idFactura='$idFactura'";
 	$resultado= $DB->query($consulta);
 	$Administrador = mysqli_fetch_assoc($resultado);
@@ -64,6 +67,12 @@
     $pdf->Ln(5);
 
     // Tabla de productos 
+    # Tabla de productos #
+    // $pdf->MultiCell(0,4,utf8_decode($Administrador["nameProducto"]),0,'C',false);
+
+    // $pdf->Cell(0,5,utf8_decode("------------------------------------------------------"),0,0,'C');
+    // $pdf->Ln(3);
+
     // Encabezado Tabla
     $pdf->Cell(27,5,utf8_decode("Cant."),0,0,'C');
     $pdf->Cell(16,5,utf8_decode("Precio"),0,0,'C');

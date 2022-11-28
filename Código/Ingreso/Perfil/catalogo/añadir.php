@@ -74,9 +74,7 @@ if(isset($_POST['btnComprar'])){
     $product = mysqli_fetch_array($tabProd);
     $total = $_SESSION['total'];
     // $inner = mysqli_fetch_array($consulta);
-    date_default_timezone_set('America/Bogota');
-    $FecHr = date('Y-m-d H:i:s');
-    $factura = mysqli_query($con, "INSERT INTO factura VALUES ('F$codigo','$idUsuario','$FecHr','$total')");
+    $factura = mysqli_query($con, "INSERT INTO factura VALUES ('F$codigo','$idUsuario','NULL','$total')");
 
     if(isset($_SESSION['carrito'])){
         foreach($_SESSION['carrito'] as $indice=>$productos){ 
