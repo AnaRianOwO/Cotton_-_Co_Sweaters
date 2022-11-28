@@ -50,10 +50,23 @@ header{
     align-items: center;
     padding: 0;
 
+}
+.icon{
+    position:absolute;
+    top: 100px;
+    right: 100px;
+}
+.icon-header{
+    color:#fff;
+    font-size: 40px;
+    font-weight: lighter;
+    display: inline-block;
+    margin-right: 40px;
+}
 header h1{
     font-size: 70px;
     font-weight: 900;
-    color: rgb(0, 0, 0);
+    color: rgb(241, 241, 241);
     line-height: 230px;
     font-weight: 300;
     transition: all 0.3s ease;
