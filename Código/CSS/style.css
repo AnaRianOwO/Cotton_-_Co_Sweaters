@@ -38,7 +38,7 @@ header{
 .line-header{
     position: relative;
     top: -75px;
-    left: 100px;
+    left: 20%;
     max-width: 1110px;
     text-align: center;
     align-items: center;
@@ -100,6 +100,9 @@ nav {
                 font-size: 24px;
 			}
 			
+            @media screen {
+                
+            }
 				
 
 /*.container-categoria{
@@ -493,9 +496,9 @@ iframe{
 }
 .linear{
     width: 100%;
-    height: 100%;
-    color: #3498db;
-    background-color: #3498db;
+    height: 10%;
+    color: #db3934;
+    background-color: #db6334;
     margin: auto;
 
 }
