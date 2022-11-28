@@ -461,6 +461,44 @@ main hr{
     box-sizing: border-box;
 }
 
+/* -----------------------------INFO------------------------------------------- */
+
+.container-contact{
+
+    width: 100%;
+    height: 400px;
+    color: #ffffff;
+    background-color: #ff7e7e;
+    
+    margin: 10px 10px;
+}
+.sobren{
+    width: 400px;
+    height: 300px;
+    color: rgb(255, 255, 255);
+    border-radius:15px ;
+    background-color: #ff6060a1;
+    margin: 10%;
+   
+    align-items: center;
+    text-align: center;
+}
+
+iframe{
+    position: relative;
+    left: 60%;
+    margin-bottom: 150px;
+    margin-top: -800px;
+
+}
+.linear{
+    width: 100%;
+    height: 100%;
+    color: #3498db;
+    background-color: #3498db;
+    margin: auto;
+
+}
 @media screen and (max-width:1093px) {
     .destacados{
         
