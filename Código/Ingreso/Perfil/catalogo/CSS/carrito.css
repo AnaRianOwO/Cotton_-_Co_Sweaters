@@ -6,16 +6,26 @@
 body{
     position: relative;
     /* overflow: hidden; */
-    background: linear-gradient(45deg, rgb(255, 202, 202), rgb(255, 155, 155), rgb(255, 190, 190));
+    background: linear-gradient(45deg, rgb(255, 139, 139), rgb(255, 192, 192), rgb(255, 158, 158));
 }
 
 body .cabeza{
-    background: linear-gradient(180deg, black, rgba(0, 0, 0, 0.909), rgba(0, 0, 0, 0.776));
+    background: linear-gradient(45deg, black, rgba(0, 0, 0, 0.909), rgba(0, 0, 0, 0.776));
     width: 100%;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cabeza #devolver{
+    background: rgba(255, 255, 255, 0.747);
+    transition: all .7s ease;
+}
+
+#devolver{
+    background: #fff;
+    transition: all .7s ease;
 }
 
 .cabeza h1{
@@ -96,9 +106,9 @@ body .cabeza{
 .carta{
     padding: 7px;
     position: relative;
-    height: 300px;
-    width: 30vh;
-    background: linear-gradient(45deg , rgb(255, 129, 129), rgb(255, 111, 111), rgb(255, 164, 164));
+    height: 400px;
+    width: 250px;
+    background: linear-gradient(45deg , rgb(255, 129, 129), rgb(255, 148, 148), rgb(255, 164, 164));
     margin: 20px;
     border: none;
     border-radius: 20px;
@@ -107,12 +117,28 @@ body .cabeza{
     display: block;
 }
 
+.carta .imagen{
+    height: 20% !important;
+    display: flex;
+    position: relative;
+    max-width: 150px;
+    margin: 5px;
+}
+
+.carta hr{
+    background: purple;
+    border: 2px solid linear-gradient(90deg, red, blue);
+}
+
 input[type='text'],input[type='numer']{
     background: transparent;
     border: none;
     border-bottom: 2px solid #fff;
     padding: 5px;
     display: block;
+}
+.carta input[type="number"]{
+    width: 40px;
 }
 
 input[type='submit']{

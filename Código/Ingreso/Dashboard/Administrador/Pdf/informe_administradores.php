@@ -44,7 +44,7 @@ function Footer()
 }
 }
 
-require '../../../../DB/db.php';
+require ('../../../../DB/db.php');
 $consulta = "SELECT * FROM administrador";
 $resultado =$DB->query($consulta);
 

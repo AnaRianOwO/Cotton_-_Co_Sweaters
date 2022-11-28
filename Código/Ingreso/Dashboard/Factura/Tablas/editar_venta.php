@@ -13,12 +13,42 @@ $detalles = mysqli_query($conexion, $consulta);
 $sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
 $consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
 
-$sqlProductos = "SELECT p.codigo, p.nameProducto, p.descripcion, p.precio FROM producto p";
-$consultaProductos = mysqli_query($conexion, $sqlProductos);
+$sqlProductos = "SELECT p.codigo, p.nameProducto, p.precio FROM producto p";
+$consultaProducto = mysqli_query($conexion, $sqlProductos);
 
-// while($row = $consultaUsuario->fetch_assoc())
-// { echo $row['idUsuario']." <br>";}
-?>
+while($productos = $consultaProducto->fetch_assoc()){
+    $arrayProductos[] = array(
+            //$productos['codigo'] => array (
+                'Código'=>$productos['codigo'],
+                'Nombre'=>$productos['nameProducto'],
+                'Precio'=>$productos['precio']
+        );
+}
+// print_r($arrayProductos);
+
+// $sqlPrueba = "SELECT f.idFactura FROM factura f WHERE f.idFactura = (SELECT MAX(f.idFactura) FROM factura f) LIMIT 1;";
+// $consulta = mysqli_query($conexion, $sqlPrueba);
+// print_r($consulta);
+// if (isset($consulta)) {
+//     $fafactura = mysqli_fetch_assoc($consulta);
+//     print_r($fafactura['idFactura']." <br>");
+//     $codigo = substr($fafactura['idFactura'], 1);
+//     print_r($codigo." <br>");
+//     echo gettype($codigo)." <br>";
+//     $cod = intval($codigo);
+//     print_r($cod." <br>");
+//     echo strlen($codigo)." <br>";
+//     print_r(gettype($codigo)." <br>");
+//     print_r($cod+=1);
+// } else {
+//     $cod = 1;
+//     print_r($cod);
+// };
+// print_r(mysqli_insert_id($conexion));
+// $owo = "123";
+// $awa = intval($owo);
+// print_r(gettype($awa)." Es el tipo de dato de awa ".gettype($owo)." y este el de owo")
+// ?>
 
 <!DOCTYPE html>
 <html lang="es-MX">
@@ -50,43 +80,55 @@ $consultaProductos = mysqli_query($conexion, $sqlProductos);
                                     <option value="">Seleccione el usuario correspondiente</option>
                                     <?php while($row = $consultaUsuario->fetch_assoc())
                                             {
-                                                $usuario = "'".$row['idUsuario']."'";
-                                                $factura['idUsuario'] = "'".$factura['idUsuario']."'";
-                                                echo "<option value=".$usuario; if ($usuario==$factura['idUsuario']){ echo "selected"; };
+                                                $usuario = '"'.$row['idUsuario'].'"';
+                                                echo "<option value=".$usuario; if ($row['idUsuario']==$factura['idUsuario']){ echo "selected"; };
                                                 echo ">".$row['idUsuario']." - ".$row['firstName']." ".$row['secondName']." ".$row['surname']." ".$row['secondSurname']." - ".$row['phone']." - ".$row['direccion']."</option>";
-                                                
                                             }
                                     ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="fecha">Fecha</label><br>
-                                <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo $factura['fecha'];?>"required>
+                                <input type="timestamp" name="timestap" id="fecha" class="form-control" step="1" value="<?php echo $factura['fecha'];?>"required>
                             </div>
                             
                             <div class="detallitos">
-                                <table>
+                                <table id="tabla">
                                     <thead>
                                         <tr>
-                                            <th>Código producto</th>
-                                            <th>Nombre producto</th>
-                                            <th>Descripción</th>
-                                            <th>Precio</th>
+                                            <th></th>
+                                            <th>Producto</th>
                                             <th>Cantidad</th>
                                             <th>Subtotal</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php while($row = mysqli_fetch_array($detalles)){?>
                                         <tr>
-                                            <td><input type="text" id="detalleFactura<?php echo $row['codigo']?>" value="<?php echo $row['codigo'] ?>"></td>
-                                            <td><?php echo $row['nameProducto'] ?></td>
-                                            <td><?php echo $row['descripcion'] ?></td>
-                                            <td><?php echo $row['precio'] ?></td>
-                                            <td><input type="text" value="<?php echo $row['cantidad'] ?>"></td>
+                                            <td></td>
+                                            <td>
+                                                <select id="select">
+                                                    <option value="">Seleccione el producto correspondiente</option>
+                                                    <?php //while($productos = $consultaProducto->fetch_assoc()){
+                                                            
+                                                            foreach ($arrayProductos as $productos) {
+                                                                $cod = "'".$productos['Código']."'";
+                                                                echo "<option value=".$cod; if ($productos['Código']==$row['codigo']){ echo "selected"; };
+                                                                echo ">".$productos['Nombre']." - ".$productos['Precio']."</option>";
+                                                            }
+                                                    ?>
+                                                </select>
+                                            </td>
+                                            
+                                            <td><input type="text" id="" value="<?php echo $row['cantidad'] ?>"></td>
                                             <td><?php echo $row['precio']*$row['cantidad'] ?></td>
+                                            <td><span>Eliminar</span></td>
                                         </tr>
                                         <?php } ?>
+                                        <tr>
+                                            <td><input type="button" id="agregar" value="Agregar"></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -101,7 +143,6 @@ $consultaProductos = mysqli_query($conexion, $sqlProductos);
                             </div>
                         
                            <br>
-
                                 <div class="mb-3">
                                     
                                 <button type="submit" class="btn btn-success" >Editar</button>
@@ -118,5 +159,6 @@ $consultaProductos = mysqli_query($conexion, $sqlProductos);
         </div>
     </div>
     </form>
+    <script src="js/funciones.js"></script>
 </body>
 </html>

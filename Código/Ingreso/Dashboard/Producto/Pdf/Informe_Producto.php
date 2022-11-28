@@ -1,5 +1,4 @@
 <?php
-/*require('Xampp/htdocs/reporte-pdf-php/fpdf/fpdf.php');*/
 require_once ('fpdf/fpdf.php');
 
 class PDF extends FPDF
@@ -40,7 +39,7 @@ function Footer()
 }
 }
 
-require '../../../../DB/db.php';
+require ('../../../../DB/db.php');
 $SQL="SELECT * FROM producto P INNER JOIN estado E On E.idEstado=P.idEstado;";
 $resultado =$DB->query($SQL);
 

@@ -62,7 +62,8 @@
         <div class="categorias">
             <div class="container-categoria">
                 <ul>
-                    <li id="perfil"><a href="index.php">INICIO</a></li>
+                    <!-- <li id="perfil"><a href="index.php">INICIO</a></li> -->
+                    <li id="perfil"><a href="Usu_Per/index.php">REGRESAR</a></li>
                 </ul>
             </div>
         </div>
