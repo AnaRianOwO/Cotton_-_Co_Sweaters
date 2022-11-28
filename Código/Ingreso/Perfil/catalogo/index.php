@@ -60,7 +60,6 @@ include "añadir.php";
             }
         ?>
 
-
         <div class="slider-lateral">
             <i class="fa-solid fa-cart-shopping" id="carrito"></i>
             <div class="carrito-productos">
@@ -104,10 +103,7 @@ include "añadir.php";
                 </table>
                 
             </div>   
-        </div>
-    
-
-    
+        </div>    
 </body>
 <script src="script/carrito.js"></script>
 </html>
