@@ -27,7 +27,7 @@ $resultadoEstado = mysqli_query($DB,$sqlEstado);
                 <div class="container mt-5">
                     <form action="update.php" method="POST" enctype="multipart/form-data">
                     
-                                <h3 class="text-center">Editar Producto</h3>
+                                <h3 class="text-center">Editar Administrador</h3>
                                 <input type="hidden" name="codigo" value="<?php echo $row['codigo']  ?>">
                                 
                                 <input type="text" class="form-control mb-3" name="nameProducto" placeholder="Nombre del producto" value="<?php echo $row['nameProducto']  ?>">

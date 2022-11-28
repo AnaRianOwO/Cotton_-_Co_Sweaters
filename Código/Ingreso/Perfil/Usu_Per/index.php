@@ -40,12 +40,10 @@ $tabUsu = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM usuario WHERE idU
                 
             </div>
             <div class="perfil-usuario-footer">
-                <ul class="lista-datos">
-                <a href="../index.php"> <i class="fa-solid fa-user"></i> Perfil</a>
-                <a href=""><i class="fa-solid fa-bag-shopping"></i>  compras</a>
-                <a href=""><i class="fa-solid fa-heart"></i>  Favoritos</a>
-                <a href=""><i class="fa-sharp fa-solid fa-door-closed"></i></i>  Cerrar</a>
-                        </ul>
+                <a href="../perfil.php" class="user"> <i class="fa-solid fa-user"></i> Perfil</a>
+                <a href="../catalogo" class="bolso"><i class="fa-solid fa-bag-shopping "></i>  compras</a>
+                <a href="" class="favorite"><i class="fa-solid fa-heart "></i>  Favoritos</a>
+                <a href="direccion.php" name="cerrar" class="cerrar"><i class="fa-sharp fa-solid fa-door-closed "></i></i>  Cerrar</a>
             </div>
 
             <div class="container-references">

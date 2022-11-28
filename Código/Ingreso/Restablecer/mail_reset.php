@@ -19,7 +19,7 @@ $mensaje = '
     <p>Restablecer contraseña</p>
     <h3>'.$codigo.'</h3>
     <!--Cambiar por el dominio al momento de subir al host-->
-    <p><a href="http://localhost/Cotton_-_Co_Sweaters/Código/Ingreso/Restablecer/reset.php?correo='.$correo.'&token='.$token.'">Para restablecer da Click Aqui</a></p>
+    <p><a href="http://localhost:8080/Cotton_-_Co_Sweaters/Código/Ingreso/Restablecer/reset.php?correo='.$correo.'&token='.$token.'">Para restablecer da Click Aqui</a></p>
     <p><small>Si usted no solicitó un cambio de contraseña, favor omitir este correo</small></p>
   </div>
 </body>

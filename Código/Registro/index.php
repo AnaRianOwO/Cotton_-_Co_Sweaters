@@ -99,10 +99,8 @@ include "registrar.php";
                 <div class="burbuja"></div>
                 <div class="burbuja"></div>
             </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 <script src="TyC/funciones.js"></script>
-<script>    
-    // Swal.fire("Esta es una alerta");
-</script>
 </html>
