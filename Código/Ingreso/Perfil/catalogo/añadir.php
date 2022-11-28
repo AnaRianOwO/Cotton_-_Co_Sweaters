@@ -1,6 +1,5 @@
 <?php
-$mensaje="";
-
+error_reporting(0);
 if(isset($_POST['btnAccion'])){
     switch($_POST['btnAccion']) {
         case 'Añadir':

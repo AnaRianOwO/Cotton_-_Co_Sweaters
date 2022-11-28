@@ -38,11 +38,10 @@ header{
 .line-header{
     position: relative;
     top: -75px;
-    left: 100px;
     max-width: 1110px;
+    left: 20%;
     text-align: center;
     align-items: center;
-    margin: 0;
     padding: 0;
 
 }

@@ -18,16 +18,6 @@ body .cabeza{
     align-items: center;
 }
 
-.cabeza #devolver{
-    background: rgba(255, 255, 255, 0.747);
-    transition: all .7s ease;
-}
-
-#devolver{
-    background: #fff;
-    transition: all .7s ease;
-}
-
 .cabeza h1{
     color: #fff;
     font-size: 30px;

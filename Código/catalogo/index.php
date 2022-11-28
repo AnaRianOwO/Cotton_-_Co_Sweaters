@@ -1,20 +1,20 @@
 <?php
 include('global/conexion.php');
-error_reporting(0);
-session_start();
 
+session_start();
+error_reporting(0);
 $idUsuario = $_SESSION['idUsuario'];
 
-if(!isset($_SESSION['idUsuario'])){
-    header('Location: ../../index.php');
+// if(!isset($_SESSION['idUsuario'])){
+//     header('Location: ../../index.php');
 
-}
+// }
 $consul="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
 $consult=mysqli_query($con,$consul);
 
 $rows=mysqli_fetch_array($consult);
 include "añadir.php";
-// session_unset();
+// // session_unset();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +29,7 @@ include "añadir.php";
 
 <body>
     <div class="cabeza">
-        <a href="../index.html"><img id="devolver" height="100px" src="../../../IMG/return.png"></a> 
-        <h1>Bienvenido <?php echo $rows['firstName']; ?> a Cotton & Co Sweaters</h1>
+        <h1>Bienvenido <?php //echo $rows['firstName']; ?> a Cotton & Co Sweaters</h1>
         <input id="searchbar" onkeyup="search_persona()" type="text"
         name="search" placeholder="Search">
     </div>
