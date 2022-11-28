@@ -8,7 +8,7 @@ car.addEventListener('click',()=>{
 function search_persona() {
     let input = document.getElementById('searchbar').value;
     input=input.toLowerCase();
-    let x = document.getElementsByClassName('productos');
+    let x = document.getElementsByClassName('carta');
       
     for (i = 0; i < x.length; i++) { 
         if (!x[i].innerHTML.toLowerCase().includes(input)) {
