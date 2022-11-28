@@ -59,7 +59,6 @@ body {
     height: 180px;
     align-items: center;
     justify-content: center;
-    
     border: 7px solid #ff6b31;
     background-color: #ffc079;
     border-radius: 50%;
@@ -114,7 +113,7 @@ body {
 .seccion-perfil-usuario .perfil-usuario-footer,
 .seccion-perfil-usuario .perfil-usuario-bio {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding: 1.5rem 1rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color: #fff;
@@ -123,29 +122,64 @@ body {
     text-decoration: none;
 }
 
+.seccion-perfil-usuario .perfil-usuario-footer{
+    display: grid;
+    grid-template-columns: auto auto !important;
+    grid-template-rows: auto auto !important;
+}
+
 .seccion-perfil-usuario .perfil-usuario-bio {
     margin-bottom: 1.25rem;
     text-align: center;
+
 }
 
 a {
-    padding: 20px 20px;
-    width: 160px;
-    display: block;
-    position: relative;
-    left: 50%;
-    text-align: center;
+    height: 100px;
+    width: 300px;
+    display: flex;
+    /* position: relative; */
+    /* text-align: center;
+    align-items: center; */
     align-items: center;
-    align-items: center;
+    justify-content: center;
     font-family: 'Times New Roman', Times, serif;
-    font-weight: 1000px;
+    font-weight: bold;
     border-radius: 30px;
-    margin: 50px 96px;
-    padding: 1px px;
+    margin: 30px;
+    padding: auto;
     background-color:#ffa2a2;
     color: #000000;
     text-decoration: none;
+    transition: all .6s ease;
 }
+
+a i{
+    display: inline-block;
+    margin: 0 15px 0 0;
+    font-size: 26px;
+}
+a:hover{
+    transform: scale(1.2);
+    transition: all .6s ease;
+}
+.perfil-usuario-footer .user:hover{
+    color: rgb(255, 255, 255);
+    transition: all .6s ease;
+}
+.perfil-usuario-footer .bolso:hover{
+    color: rgb(255, 116, 116);
+    transition: all .6s ease;
+}
+.perfil-usuario-footer .favorite:hover{
+    color: rgb(255, 58, 58);
+    transition: all .6s ease;
+}
+.perfil-usuario-footer .cerrar:hover{
+    color: rgb(112, 112, 112);
+    transition: all .6s ease;
+}
+
 
 .seccion-perfil-usuario .lista-datos  {
     padding: 5px;

@@ -4,3 +4,7 @@ let form = document.querySelector('.form');
         tapa.classList.toggle('movimiento-tapa');
         form.classList.toggle('form-movimiento');
     });
+
+let btn = document.getElementById('click',function(e){
+    e.preventDefault();
+});

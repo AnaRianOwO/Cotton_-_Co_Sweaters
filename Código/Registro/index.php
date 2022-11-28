@@ -1,3 +1,6 @@
+<html>
+
+</html>
 <?php
 
 include("../DB/db.php");
@@ -7,7 +10,9 @@ $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
 $sqlEstado = "SELECT * FROM estado";
 $resultadoEstado = mysqli_query($DB, $sqlEstado);
 
+
 include "TyC/terminosyCondiciones.html";
+include "registrar.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +23,9 @@ include "TyC/terminosyCondiciones.html";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="TyC/estilos.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <title>Registro</title>
 </head>
 <body>
@@ -91,7 +99,8 @@ include "TyC/terminosyCondiciones.html";
                 <div class="burbuja"></div>
                 <div class="burbuja"></div>
             </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 <script src="TyC/funciones.js"></script>
 </html>

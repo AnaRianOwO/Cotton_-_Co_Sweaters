@@ -1,5 +1,5 @@
 <?php
-$conexion= mysqli_connect("localhost", "root", "", "cotton");
+require_once ("../../../../DB/db.php");
 
 if(isset($_POST)){
   if (strlen($_POST['idAdministrador']) >=1 && strlen($_POST['docType'])  >=1 && strlen($_POST['firstName'])  >=1 
@@ -27,8 +27,8 @@ if(isset($_POST)){
     VALUES ('$idAdministrador', '$docType','$firstName','$secondName','$surname', '$secondSurname',
     '$indicativo','$phone','$correo', '$direccion','$pass_cifrada','$idCiudad', '$idEstado')";
 
-    mysqli_query($conexion, $consulta);
-    mysqli_close($conexion);
+    mysqli_query($DB, $consulta);
+    mysqli_close($DB);
 
     header('Location: ../administrador.php');
   }
