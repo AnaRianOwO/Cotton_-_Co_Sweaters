@@ -5,6 +5,3 @@ let form = document.querySelector('.form');
         form.classList.toggle('form-movimiento');
     });
 
-let btn = document.getElementById('click',function(e){
-    e.preventDefault();
-});
