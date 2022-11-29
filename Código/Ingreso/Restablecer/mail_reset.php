@@ -1,45 +1,60 @@
 <?php
-// Varios destinatarios
-$para  = $correo . ', '; // atención a la coma
-//$para .= 'wez@example.com';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-// título
-$título = 'Restablecer contraseña';
-$codigo = rand(1000,9999);
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
-// mensaje
-$mensaje = '
-<html>
-<head>
-  <title>Restablecer</title>
-</head>
-<body>
-  <h1>Cotton & Co Sweaters</h1>
-  <div style="text-aling:center; background-color:#ccc">
-    <p>Restablecer contraseña</p>
-    <h3>'.$codigo.'</h3>
-    <!--Cambiar por el dominio al momento de subir al host-->
-    <p><a href="http://localhost/Cotton_-_Co_Sweaters/Código/Ingreso/Restablecer/reset.php?correo='.$correo.'&token='.$token.'">Para restablecer da Click Aqui</a></p>
-    <p><small>Si usted no solicitó un cambio de contraseña, favor omitir este correo</small></p>
-  </div>
-</body>
-</html>
-';
+$mail = new PHPMailer(true);
 
-// Para enviar un correo HTML, debe establecerse la cabecera Content-type
-$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
-$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-/*
-// Cabeceras adicionales
-$cabeceras .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
-$cabeceras .= 'From: Recordatorio <cumples@example.com>' . "\r\n";
-$cabeceras .= 'Cc: birthdayarchive@example.com' . "\r\n";
-$cabeceras .= 'Bcc: birthdaycheck@example.com' . "\r\n";
-*/
+include "../../DB/db.php";
 
-// Enviarlo
-$enviado = false;
-if(mail($para, $título, $mensaje, $cabeceras)){
-  $enviado = true; //Para asegurarse de que se haya enviado el correo
-}
-?>
+try {
+
+    $correo;
+    $sql="SELECT * FROM usuario WHERE correo = '$correo'";
+    $query=mysqli_query($DB,$sql);
+
+    $row=mysqli_fetch_array($query);
+
+    if($row > 0)
+    {
+        $codigo = rand(1000,9999);
+        $enviado = false;
+
+        //Server settings
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'cottoncosweattt@gmail.com';                     //SMTP username
+        $mail->Password   = 'awqelasvixyefjrs';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('cottoncosweattt@gmail.com', 'Cotton & Co Sweaters');
+        $mail->addAddress($correo);     //Add a recipient
+
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Restablecer tu Password';
+        $mail->Body    = '<div style="text-aling:center; background-color:#ccc">
+                            <p>Restablecer contraseña</p>
+                            <h3>'.$codigo.'</3>
+                            <p>
+                            <a href="http://localhost:8080/Cotton_-_Co_Sweaters/Código/Ingreso/Restablecer/reset.php?correo='.$correo.'&token='.$token.'">Para restablecer da Click Aqui</a>
+                            </p>
+                            <p><small>Si usted no solicitó un cambio de contraseña, favor omitir este correo</small></p>
+                            </div>';
+        if($mail->send()){
+            $enviado = true;
+        }
+    }else{
+         echo "<script>alert('Ingresa un correo registrado');window.location='../index.php'</script>";
+    }
+    } catch (Exception $e) {
+    }
+    
