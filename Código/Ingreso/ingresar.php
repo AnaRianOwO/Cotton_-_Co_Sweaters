@@ -21,7 +21,6 @@
         $buscar_pass = mysqli_fetch_array($resultado);
 
         if(($nr == 1) && (password_verify($pass, $buscar_pass['pass']))){
-
             header("Location: Perfil/Usu_Per/index.php");
         }else{
             echo "
