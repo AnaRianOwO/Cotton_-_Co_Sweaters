@@ -9,6 +9,7 @@
    background-color :rgba(223, 213, 204, 0.781), 0.918;
    margin: auto;
    left: 70px;
+   margin: 0%;
  }
  .todo{
     background-color: #ff888872;
@@ -38,13 +39,14 @@ header{
 .line-header{
     position: relative;
     top: -75px;
-    max-width: 1110px;
-    left: 20%;
+    left: 16%;
+    width: 70%;
     text-align: center;
     align-items: center;
     padding: 0;
 
 }
+
 .icon{
     position:absolute;
     top: 100px;
@@ -60,7 +62,7 @@ header{
 header h1{
     font-size: 70px;
     font-weight: 900;
-    color: rgb(241, 241, 241);
+    color: rgb(255, 255, 255);
     line-height: 230px;
     font-weight: 300;
     transition: all 0.3s ease;
@@ -68,7 +70,7 @@ header h1{
 
 header nav{
     height: 70px;
-    line-height: 70px;
+    line-height: 100%;
     width: 100%;
     background: #ff8a8a;
 }
@@ -99,10 +101,46 @@ nav {
                 font-size: 24px;
 			}
 			
-            @media screen {
+            @media (max-width: 1052px) {
+
+               .icon-header {
+                    display: contents;
+                    align-items: center;
+                    text-align: center;
+                    color: #ffffff;
+                    margin-top: 12px;
+                }
+                .header h1{
+                    display: contents;
+                    align-items: center;
+                    text-align: center;
+                    color: #ffffff;
+                    margin-top: 12px;
+                }
                 
+                header nav{
+
+                    background-color: #ff8a8a;
+                    height: 70%;
+                }
+                .Menu{
+                    position: relative;
+                    align-items: center;
+                    text-align: center;
+                    top: -5%;
+                }
+                .nav{
+                    
+                    align-items: center;
+                    width: 50%;
+                    height: 1650px;
+                    margin-top: 15px;
+                    text-align: center;
+                    align-items: center;
+                }
+
             }
-				
+                
 
 /*.container-categoria{
     height: 70px;
@@ -470,38 +508,22 @@ main hr{
     width: 100%;
     height: 400px;
     color: #ffffff;
-    background-color: #ff7e7e;
-    
-    margin: 10px 10px;
-}
-.sobren{
-    width: 400px;
-    height: 300px;
-    color: rgb(255, 255, 255);
-    border-radius:15px ;
-    background-color: #ff6060a1;
-    margin: 10%;
-   
+    display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    background-color: #ffa9a9;
+    position: relative;
+   margin-bottom: 5%;
 }
+
 
 iframe{
-    position: relative;
-    left: 60%;
-    margin-bottom: 150px;
-    margin-top: -800px;
-
+    width:800px;
+    height:300px;
+    border:0;
 }
-.linear{
-    width: 100%;
-    height: 10%;
-    color: #db3934;
-    background-color: #db6334;
-    margin: auto;
 
-}
-@media screen and (max-width:1093px) {
+@media (max-width: 1052px){
     .destacados{
         
         align-items: center;
@@ -510,6 +532,26 @@ iframe{
         margin-top: 15px;
         text-align: center;
         align-items: center;
+    }
+
+    .container-contact{
+        background-color: #ff8a8a;
+        width: 100%;
+        height: 300px;
+    }
+
+    .ubicacion{
+        width: 50%;
+        height: 30%;
+        position: absolute;
+        align-items: center;
+        text-align: center;
+
+    }
+    iframe{
+        width: 300px;
+        height: 200px;
+
     }
     
 }
