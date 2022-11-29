@@ -1,5 +1,4 @@
 <?php
-
 include("../../../DB/db.php");
 session_start();
 
@@ -7,13 +6,12 @@ $idAdministrador = $_SESSION['idAdministrador'];
 
 if(!isset($_SESSION['idAdministrador'])){
     header('Location: ../../index.php');    
-
 }
+
 $sql="SELECT * FROM administrador WHERE idAdministrador = '$idAdministrador'";
 $query=mysqli_query($DB,$sql);
 
 $row=mysqli_fetch_array($query);
-
 ?>
 
 <!DOCTYPE html>
@@ -147,9 +145,9 @@ $row=mysqli_fetch_array($query);
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                 <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i>&nbsp;<b>Excel</b>
                       </a>
-                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i>&nbsp;<b>PDF</b></a>
                       <a href="Tablas/insertar_admin.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
 		                </div>
                   <thead>
@@ -235,8 +233,6 @@ $row=mysqli_fetch_array($query);
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
 
-
-
   </body>
 
   <script>
@@ -317,7 +313,6 @@ $row=mysqli_fetch_array($query);
 <script src="package/dist/sweetalert2.all.js"></script>
 <script src="package/dist/sweetalert2.all.min.js"></script>
 <script src="package/jquery-3.6.0.min.js"></script>
-
 
 <script src="js/reloj.js"></script>
 </html>
