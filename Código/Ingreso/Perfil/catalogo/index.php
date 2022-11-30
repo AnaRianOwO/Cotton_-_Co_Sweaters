@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include('global/conexion.php');
 
 session_start();
@@ -30,30 +31,31 @@ include "añadir.php";
 <body>
     <div class="cabeza">
         <h1>Bienvenido <?php echo $rows['firstName']; ?> a Cotton & Co Sweaters</h1>
-        <input id="searchbar" onkeyup="search_animal()" type="text"
+        <input id="searchbar" onkeyup="search_persona()" type="text"
         name="search" placeholder="Search">
     </div>
     <div class="container-productos">
         <?php
             if($row>0){
                 while($data = mysqli_fetch_array($sql)){
+                    if($data['idEstado']==1){
                     ?>
-
-                    <form action="" method="post">
+                        <form action="" method="post">
                         <div class="carta" id="carta">
-                            <input type="text" name="nameProducto" id="" value="<?php echo $data['nameProducto'] ?>">
-                            <input type="text" name="codigo" id="" value="<?php echo $data['codigo'] ?>">
-                            <input type="text" name="precio" id="" value="<?php echo $data['precio'] ?>">
-                            <input type="number" name="cantidad" id="" value="1">
-                            <br>
-                            <center><img class="imagen" height="160px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></center>
-                            <br>
+                            <center><img class="imagen" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></center>
+                            <hr>
+                            <input type="hidden" class="nombreSearch" name="nameProducto" id="" value="<?php echo $data['nameProducto'] ?>">
+                            <input type="hidden" name="codigo" id="" value="<?php echo $data['codigo'] ?>">
+                            <input type="hidden" name="precio" id="" value="<?php echo $data['precio'] ?>">
+                            <p><?php echo $data['nameProducto']; ?></p>
+                            <p><?php echo $data['descripcion'] ?></p>
+                            <p><?php echo "$",$data['precio'] ?></p>
+                            <input type="number" name="cantidad" id="" value="1">    
                             <input type="submit" name="btnAccion" value="Añadir">
                         </div>
-                        
                     </form>
-                    
                     <?php
+                    }
                 }
             }
         ?>
@@ -100,12 +102,8 @@ include "añadir.php";
                         echo "El carrito esta vacio";
                     } ?>
                 </table>
-                
-            </div>   
+            </div>
         </div>
-    
-
-    
 </body>
 <script src="script/carrito.js"></script>
 </html>

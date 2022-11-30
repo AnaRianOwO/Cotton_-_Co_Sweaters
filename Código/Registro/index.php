@@ -23,6 +23,7 @@ include "registrar.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="TyC/estilos.css">
+    <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -64,11 +65,11 @@ include "registrar.php";
                         <i></i>
                     </div>
     
-                    <input type="text" class="" name="indicativo" placeholder="Indicativo del celular" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu el indicativo de tu numero de celular')">
-                    <input type="number" class="" name="phone" placeholder="Celular" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu número de celular')">
-                    <input type="text" class="" name="direccion" placeholder="Dirrección" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu dirección')">
-                    <input type="email" class="" name="correo" placeholder="Correo electrónico" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')">
-                    <input type="password" class="" name="pass" placeholder="Contraseña" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">            
+                    <input type="text" class="" name="indicativo" placeholder="Indicativo del celular" required="">
+                    <input type="number" class="" name="phone" placeholder="Celular" required="">
+                    <input type="text" class="" name="direccion" placeholder="Dirrección" required="">
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required="">
+                    <input type="password" id="Pass" name="pass" placeholder="Contraseña" required="">            
                     
                     <a href="#" class="TyC"><center>Acepta los términos y condiciones antes de terminar</center></a>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
@@ -99,10 +100,30 @@ include "registrar.php";
                 <div class="burbuja"></div>
                 <div class="burbuja"></div>
             </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 <script src="TyC/funciones.js"></script>
-<script>    
-    // Swal.fire("Esta es una alerta");
+<script>
+    let btn = document.getElementById('btn_registrar');
+
+    btn.addEventListener('click', function(e){
+        let pass = document.getElementById('Pass').value;
+        let correo = document.getElementById('correo').value;
+        if(pass.length < 8){
+            Swal.fire({
+                title: 'Caracteres insuficientes',
+                text: 'La contraseña debe tener por lo menos 8 caracteres o mas',
+                icon: 'warning',
+                confirmButtonText: 'Quiero arreglarlo',
+            })
+            .then(resultado => {
+                if (resultado.value) {
+                    
+                }
+            });
+            e.preventDefault();
+        }
+    });
 </script>
 </html>
