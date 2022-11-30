@@ -124,20 +124,6 @@ include "registrar.php";
             });
             e.preventDefault();
         }
-        if(correo.indexOf("@")){
-            Swal.fire({
-                title: 'Falta de caracter',
-                text: 'El correo debe tener por lo menos una @',
-                icon: 'warning',
-                confirmButtonText: 'Quiero arreglarlo',
-            })
-            .then(resultado => {
-                if (resultado.value) {
-                    
-                }
-            });
-            e.preventDefault();
-        }
     });
 </script>
 </html>

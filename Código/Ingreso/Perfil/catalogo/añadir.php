@@ -98,6 +98,28 @@ if(isset($_POST['btnComprar'])){
             $prodTabla = $productos["codigo"];
             $detalle = mysqli_query($con, "INSERT INTO detallefactura VALUES ('D$valor','$proTabla','$prodTabla','F$codigo')");
         }
+        echo "
+                .
+                <html>
+                    <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+                <html>
+                <script>
+                    Swal
+                        .fire({
+                            title: 'Compra exitosa',
+                            text: '¿\n\nQuiere generar su factura en estos momentos?',
+                            icon: 'succes',
+                            showCancelButton: true,
+                            confirmButtonText: 'Sí, quiero generar mi factura',
+                            cancelButtonText: 'Cancelar',
+                        })
+                        .then(resultado => {
+                            if (resultado.value) {
+                                window.location='index.php';
+                            }else {    
+                            }
+                        });
+                </script>";
     }
     unset($_SESSION['carrito']);
 }
