@@ -17,8 +17,10 @@ $tabUsu = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM usuario WHERE idU
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <link rel="stylesheet" href="style.css">
     <title>Perfil de usuario Cotton & Co Sweaters</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <script src="https://kit.fontawesome.com/be71717483.js" crossorigin="anonymous"></script>
 </head>
 
@@ -41,8 +43,8 @@ $tabUsu = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM usuario WHERE idU
             </div>
             <div class="perfil-usuario-footer">
                 <a href="../perfil.php" class="user"> <i class="fa-solid fa-user"></i> Perfil</a>
-                <a href="../catalogo" class="bolso"><i class="fa-solid fa-bag-shopping "></i>  compras</a>
-                <a href="" class="favorite"><i class="fa-solid fa-heart "></i>  Favoritos</a>
+                <a href="../catalogo" class="bolso"><i class="fa-solid fa-bag-shopping "></i>  Compras</a>
+                <a href="../factura/index.php" class="favorite"><i class="fa-solid fa-file"></i> Factura</a>
                 <a href="direccion.php" name="cerrar" class="cerrar"><i class="fa-sharp fa-solid fa-door-closed "></i></i>  Cerrar</a>
             </div>
 

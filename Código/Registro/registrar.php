@@ -1,5 +1,5 @@
 <?php
-    
+    error_reporting(0);
     include("../DB/db.php");
     
     //Registrar usuario
