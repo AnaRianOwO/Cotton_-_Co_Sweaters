@@ -20,6 +20,7 @@ $tabUsu = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM usuario WHERE idU
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <link rel="stylesheet" href="style.css">
     <title>Perfil de usuario Cotton & Co Sweaters</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <script src="https://kit.fontawesome.com/be71717483.js" crossorigin="anonymous"></script>
 </head>
 

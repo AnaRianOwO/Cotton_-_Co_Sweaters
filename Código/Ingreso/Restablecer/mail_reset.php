@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(0);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -45,7 +47,7 @@ try {
                             <p>Restablecer contraseña</p>
                             <h3>'.$codigo.'</3>
                             <p>
-                            <a href="http://localhost:8080/Cotton_-_Co_Sweaters/Código/Ingreso/Restablecer/reset.php?correo='.$correo.'&token='.$token.'">Para restablecer da Click Aqui</a>
+                            <a href="http://localhost/Cotton_-_Co_Sweaters/Código/Ingreso/Restablecer/reset.php?correo='.$correo.'&token='.$token.'">Para restablecer da Click Aqui</a>
                             </p>
                             <p><small>Si usted no solicitó un cambio de contraseña, favor omitir este correo</small></p>
                             </div>';
