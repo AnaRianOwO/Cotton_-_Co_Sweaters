@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{
+    background: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+#container-body{
+
+}
+
+header #busqueda{
+    position: relative;
+    display: flex;
+    width: 550px;
+    
+    background: rgb(255, 211, 91);
+    border:  rgb(255, 211, 91);
+    border-radius: 40px;
+    left: 80rem !important;
+    top: 1vh;
+    padding: 30px 60px;
+}
+
+header #busqueda:focus{
+    /* border: 1px solid black; */
+    outline: none;
+}
+
+header #busqueda::placeholder{
+    color: rgb(65, 65, 65);
+}
+
+.titulo{
+    background: rgb(255, 133, 133);
+    width: 500px;
+    height: 60px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 120px auto 40px auto;
+    color: #fff;
+}
+
+.tabla{
+    background: rgb(255, 133, 133);
+    width: 120vh;
+    height: auto;
+    padding: 30px;
+    border-radius: 30px;
+    margin: 20px auto auto auto;
+}
+
+.tabla table{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+table tr th{
+    background: #fff;
+    font-weight: bold;
+    color: black;
+}
+
+table tr td{
+    width: 40vh;
+    font-size: 20px;
+    padding: 10px;
+    border: 4px solid #fff;
+}
+
+.salida{
+    width: 100%;
+    height: 60px;
+    right: 0px;
+    display: flex;
+    justify-content: right;
+    top: 140px !important;
+}
+
+#container-body .devolver{
+    font-size: 60px;
+    position: relative;
+    margin: auto 40px;
+}
