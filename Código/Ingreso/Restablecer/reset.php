@@ -1,6 +1,5 @@
-
 <?php
-
+    error_reporting(0);
     if(isset($_GET['correo']) && isset($_GET['token'])){
         $correo = $_GET['correo'];
         $token = $_GET['token'];
