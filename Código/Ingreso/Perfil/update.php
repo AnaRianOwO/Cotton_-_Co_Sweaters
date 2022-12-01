@@ -20,6 +20,6 @@ $sql="UPDATE usuario SET idUsuario='$idUsuario', firstName='$firstName',secondNa
 $query=mysqli_query($DB,$sql);
 
     if($query){
-        echo "<script>alert('Datos cambiados exitosamen');window.location='index.php'</script>";
+        echo "<script>alert('Datos cambiados exitosamen');window.location='Usu_Per/index.php'</script>";
     }
 ?>
