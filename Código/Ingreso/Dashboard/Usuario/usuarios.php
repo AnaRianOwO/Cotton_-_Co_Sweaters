@@ -143,10 +143,10 @@ $row=mysqli_fetch_array($query);
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                 <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i>&nbsp;<b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Usuario_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
                       </a>
-                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i>&nbsp;<b>PDF</b></a>
-                      <!-- <a href="Tablas/insertar_usuario.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a> -->
+                      <a href="Pdf/informe_usuarios.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
+                      <a href="Tablas/insertar_usuario.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
 		                </div>
                   <thead>
                     <tr>
@@ -192,7 +192,7 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['nameCiudad']?></th>
                         <th><?php echo $fila['nameEstado']?></th>
                         <td>
-                          <!-- <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php //echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
+                          <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 
                           <a class="btn btn-danger btn-del"  href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
