@@ -19,6 +19,7 @@ if (isset($_POST['accion'])){
 	}
 
     function editar_registro() {
+		$DB=mysqli_connect("localhost","root","","cotton");
 		extract($_POST);
 		$consulta="UPDATE administrador SET firstName = '$firstName', secondName = '$secondName',
 		surname ='$surname', secondSurname ='$secondSurname', indicativo ='$indicativo', phone ='$phone', 
@@ -30,6 +31,7 @@ if (isset($_POST['accion'])){
 }
 
 function eliminar_registro() {
+    $DB=mysqli_connect("localhost","root","","cotton");
     extract($_POST);
     $idAdministrador= $_POST['idAdministrador'];
     $consulta= "DELETE FROM administrador WHERE idAdministrador= $idAdministrador";

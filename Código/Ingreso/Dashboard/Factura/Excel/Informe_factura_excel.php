@@ -21,7 +21,7 @@ header("Expires: 0");
 <tbody>
 
 <?php
-               
+//$conexion=mysqli_connect("localhost","root","","cotton");               
 $consulta= "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, 
 u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;";
 $dato = mysqli_query($DB, $consulta);

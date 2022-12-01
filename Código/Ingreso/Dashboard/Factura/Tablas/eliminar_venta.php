@@ -1,9 +1,7 @@
 <?php
-    require_once ("../../../../DB/db.php");
 
-    $idFactura= $_GET['idFactura'];
+    $idAdministrador= $_GET['idAdministrador'];
     $conexion=mysqli_connect("localhost","root","","cotton");
-    $consulta= mysqli_query($conexion,"DELETE FROM detallefactura WHERE idFactura= '$idFactura'");
-    $consulta= mysqli_query($conexion,"DELETE FROM factura WHERE idFactura= '$idFactura'");
+    $consulta= mysqli_query($conexion,"DELETE FROM administrador WHERE idAdministrador= '$idAdministrador'");
 
     header('Location: ../factura.php');   

@@ -1,5 +1,5 @@
 <?php
-require_once ("../../../../DB/db.php");
+$conexion= mysqli_connect("localhost", "root", "", "cotton");
 
 if(isset($_POST)){
   if (strlen($_POST['idUsuario']) >=1 && strlen($_POST['docType'])  >=1 && strlen($_POST['firstName'])  >=1 
@@ -27,8 +27,8 @@ if(isset($_POST)){
     VALUES ('$idUsuario', '$docType','$firstName','$secondName','$surname', '$secondSurname',
     '$indicativo','$phone','$correo', '$direccion','$pass_cifrada','$idCiudad', '$idEstado')";
 
-    mysqli_query($DB, $consulta);
-    mysqli_close($DB);
+    mysqli_query($conexion, $consulta);
+    mysqli_close($conexion);
 
     header('Location: ../usuarios.php');
   }

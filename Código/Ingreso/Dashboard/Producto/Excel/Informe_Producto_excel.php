@@ -20,9 +20,9 @@ header("Expires: 0");
 <tbody>
 
 <?php
-               
+$conexion=mysqli_connect("localhost","root","","cotton");               
 $SQL="SELECT * FROM producto P INNER JOIN estado E On E.idEstado=P.idEstado;";
-$dato = mysqli_query($DB, $SQL);
+$dato = mysqli_query($conexion, $SQL);
 
 if($dato -> num_rows >0){
 while($fila=mysqli_fetch_array($dato)){

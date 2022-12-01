@@ -25,11 +25,11 @@ header("Expires: 0");
 <tbody align="center">
 
 <?php
-               
+$conexion=mysqli_connect("localhost","root","","cotton");               
 $SQL="SELECT U.idUsuario, U.docType, U.firstName, U.secondName, U.surname, U.secondSurname, 
 U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, E.nameEstado FROM usuario U 
 INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=U.idEstado;";
-$dato = mysqli_query($DB, $SQL);
+$dato = mysqli_query($conexion, $SQL);
 
 if($dato -> num_rows >0){
 while($fila=mysqli_fetch_array($dato)){

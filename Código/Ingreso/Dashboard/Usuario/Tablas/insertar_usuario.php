@@ -1,11 +1,11 @@
 <?php
-require_once ("../../../../DB/db.php");
 
+$conexion= mysqli_connect("localhost", "root", "", "cotton");
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
-$resultadoCiudad = mysqli_query($DB, $sqlCiudad);
+$resultadoCiudad = mysqli_query($conexion, $sqlCiudad);
 
 $sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($DB, $sqlEstado);
+$resultadoEstado = mysqli_query($conexion, $sqlEstado);
 ?>
 
 <!DOCTYPE html>

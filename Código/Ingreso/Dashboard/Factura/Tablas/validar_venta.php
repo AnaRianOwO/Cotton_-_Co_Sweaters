@@ -1,6 +1,5 @@
 <?php
-  require_once ("../../../../DB/db.php");
-  
+  $conexion=mysqli_connect("localhost","root","","cotton");
   if(isset($_POST)){
     if (strlen($_POST['idAdministrador']) >=1 && strlen($_POST['docType'])  >=1 && strlen($_POST['firstName'])  >=1 
     && strlen($_POST['secondName'])  >=1 && strlen($_POST['surname']) >= 1 && strlen($_POST['secondSurname']) >= 1 
@@ -23,7 +22,7 @@
   
     $consulta = "INSERT INTO administrador (idAdministrador, docType, firstName, secondName, surname, secondSurname, indicativo, phone, correo, direccion, pass, idCiudad, idEstado)
     VALUES ('$idAdministrador', '$docType','$firstName','$secondName', '$surname', '$secondSurname', '$indicativo', '$phone', '$correo', '$direccion', '$pass', '$idCiudad', '$idEstado' )";
-      $resultado=mysqli_query($DB, $consulta);
+      $resultado=mysqli_query($conexion, $consulta);
   
       if($resultado){
   echo'Correcto';

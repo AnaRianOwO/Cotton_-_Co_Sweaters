@@ -2,21 +2,21 @@
 
 session_start();
 
-include("../../../../DB/db.php");
+
 
 $idUsuario= $_GET['idUsuario'];
-
-$consulta= "SELECT  U.docType, U.firstName, U.secondName, U.surname,U.secondSurname, U.indicativo,
- U.phone, U.correo, U.direccion, C.nameCiudad, E.nameEstado FROM usuario U INNER JOIN ciudad C ON 
- U.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=U.idEstado WHERE  U.idUsuario = '$idUsuario'";
-$resultado = mysqli_query($DB, $consulta);
+$conexion= mysqli_connect("localhost", "root", "", "cotton");
+$consulta= "SELECT  U.docType, U.firstName, U.secondName, U.surname,
+U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
+E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=U.idEstado WHERE  U.idUsuario = '$idUsuario'";
+$resultado = mysqli_query($conexion, $consulta);
 $usuario = mysqli_fetch_assoc($resultado);
 
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
-$resultadoCiudad = mysqli_query($DB, $sqlCiudad);
+$resultadoCiudad = mysqli_query($conexion, $sqlCiudad);
 
 $sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($DB, $sqlEstado);
+$resultadoEstado = mysqli_query($conexion, $sqlEstado);
 ?>
 
 <!DOCTYPE html>
