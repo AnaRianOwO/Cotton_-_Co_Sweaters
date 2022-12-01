@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include('global/conexion.php');
 error_reporting(0);
 session_start();
@@ -102,9 +103,8 @@ include "añadir.php";
                         echo "El carrito esta vacio";
                     } ?>
                 </table>
-                
-            </div>   
-        </div>    
+            </div>
+        </div>
 </body>
 <script src="script/carrito.js"></script>
 </html>
