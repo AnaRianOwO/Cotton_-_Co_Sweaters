@@ -24,6 +24,7 @@ include "añadir.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a2ea5c7b4d.js" crossorigin="anonymous"></script><!-- IMPORTACION DE FONTAWESOME -->
     <link rel="stylesheet" href="CSS/carrito.css"><!-- IMPORTACION DE ESTILOS -->
+    <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <title>Carrito de compras</title>
 </head>
 
@@ -49,8 +50,8 @@ include "añadir.php";
                             <p><?php echo $data['nameProducto']; ?></p>
                             <p><?php echo $data['descripcion'] ?></p>
                             <p><?php echo "$",$data['precio'] ?></p>
-                            <input type="number" name="cantidad" id="" value="1">    
-                            <input type="submit" name="btnAccion" value="Añadir">
+                            <input type="number" name="cantidad" id="cantidad" value="1">    
+                            <input type="submit" name="btnAccion" id= "añadir"value="Añadir">
                         </div>
                     </form>
                     <?php
@@ -93,10 +94,11 @@ include "añadir.php";
                             <!-- <td><?php //echo number_format($total,2) ?></td> -->
                             <td><?php echo $total ?></td>
                         </tr>
-                        <form action="" method="post">
-                            <input type="submit" name="btnVaciar" value="Vaciar">
-                            <input type="submit" name="btnComprar" value="Comprar">
-                        </form>
+                       <tr> <form action="" method="post">
+                            <input type="submit" name="btnVaciar" id="vaciar" value="Vaciar">
+                            <input type="submit" name="btnComprar" id="comprar" value="Comprar">
+                            </form></tr>
+                        
                     <?php } else{
                         echo "El carrito esta vacio";
                     } ?>
