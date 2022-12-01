@@ -62,9 +62,9 @@ if(isset($_POST['btnComprar'])){
 
         $fafactura = mysqli_fetch_assoc($consult);
         $codigo = substr($fafactura['idFactura'], 1);
-        print_r($fafactura['idFactura']);
-        print_r($codigo);
-        print_r(mysqli_insert_id($con));
+        // print_r($fafactura['idFactura']);
+        // print_r($codigo);
+        // print_r(mysqli_insert_id($con));
         $codigo = intval($codigo);
         $codigo+=1;
     }
@@ -85,7 +85,7 @@ if(isset($_POST['btnComprar'])){
             }else{
                 $facturita = mysqli_fetch_assoc($consu);
                 $valor = substr($facturita['idDetalle'], 1);
-                print_r($valor);
+                // print_r($valor);
                 $valor = intval($valor);
                 $valor+=1;
             }
@@ -99,7 +99,7 @@ if(isset($_POST['btnComprar'])){
             $detalle = mysqli_query($con, "INSERT INTO detallefactura VALUES ('D$valor','$proTabla','$prodTabla','F$codigo')");
         }
         echo "
-                .
+                
                 <html>
                     <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
                 <html>
