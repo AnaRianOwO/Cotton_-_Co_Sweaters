@@ -48,22 +48,4 @@
   
  }
 
-
-
-
-    
-/*
-    if(isset($_POST['btn_login_admin'])){
-
-        $query_login = mysqli_query($DB, "SELECT * FROM usuarios where administrador= '$correo' and clave= '$clave'");
-        $nr = mysqli_num_rows($query_login);
-
-        if(($nr == 1)){
-
-            header("Location: sistema/index.html" );
-
-        }else{
-            echo "<script>alert('Usuario o contraseña incorrecta');window.location='index.html'</script>";
-        }
-    }*/
 ?>
