@@ -1,5 +1,7 @@
 <?php
-   
+
+    error_reporting(0);
+
     include('../DB/db.php');
     
     $correo=$_POST['correo'];   
@@ -12,6 +14,12 @@
 
         $_SESSION['idUsuario'] = $data['idUsuario'];
     
+    if(isset($_SESSION['idUsuario'])){
+        header("Location: Perfil/catalogo/index.php");
+    } else {
+        
+    }
+
     if(isset($_POST['btn_login'])){
 
         $query_login = "SELECT * FROM usuario WHERE correo = '$correo'";

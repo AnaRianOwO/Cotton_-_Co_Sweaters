@@ -10,8 +10,6 @@ $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
 $sqlEstado = "SELECT * FROM estado";
 $resultadoEstado = mysqli_query($DB, $sqlEstado);
 
-
-include "TyC/terminosyCondiciones.html";
 include "registrar.php";
 ?>
 
@@ -73,7 +71,7 @@ include "registrar.php";
                     <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required="">
                     <input type="password" id="Pass" name="pass" placeholder="Contraseña" required="">            
                     
-                    <a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><center>Acepta los términos y condiciones antes de terminar</center></a>
+                    <center><a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled><center>Acepta los términos y condiciones antes de terminar</center></a></center>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
                     
 
@@ -233,7 +231,7 @@ include "registrar.php";
                             <!-- <a href="#owo">owo</a> -->
                             <!-- <h2 id="owo">OWO</h2> -->
                             <input type="checkbox" name="checkbox" id="checkbox" required> <p> He leído y aceptado los términos y condiciones</p>
-                            <button type="button" name="aceptar" id="aceptar" disabled>Aceptar</button>
+                            <button type="button" name="aceptar" id="aceptar" disabled data-bs-dismiss="modal">Aceptar</button>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

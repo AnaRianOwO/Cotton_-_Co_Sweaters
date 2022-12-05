@@ -48,28 +48,6 @@ if(isset($_POST['btnVaciar'])){
 
 
 if(isset($_POST['btnComprar'])){
-    if(isset($_SESSION['idUsuario'])){
-        echo ".
-            <html>
-                <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
-            <html>
-            <script>
-                Swal
-                    .fire({
-                        title: 'Contraseña o correo incorrectos',
-                        text: 'Porfavor verifique si la informacion es correcta',
-                        icon: 'error',
-                        confirmButtonText: 'Continuar'
-                    })
-                    .then(resultado => {
-                        if (resultado.value) {
-                            window.location='index.php';
-                        }else {    
-                        }
-                    });
-            </script>";
-            header('Location: ../Ingreso/index.php');
-    }
-    
+    header("Location: ../Ingreso/index.php");    
 }
 ?>

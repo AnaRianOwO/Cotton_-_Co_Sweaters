@@ -4,7 +4,7 @@ session_start();
 $idUsuario = $_SESSION['idUsuario'];
 
 $sqli = mysqli_query($DB, "SELECT * FROM usuario");
-$pro = mysqli_query($DB, "SELECT F.idFactura,F.fecha FROM usuario U INNER JOIN factura F on U.idUsuario=F.idUsuario INNER JOIN detallefactura D on D.idFactura=F.idFactura INNER JOIN producto P on P.codigo=D.codigo;");
+$pro = mysqli_query($DB, "SELECT F.idFactura,F.fecha FROM usuario U INNER JOIN factura F on U.idUsuario=F.idUsuario WHERE F.idUsuario = '$idUsuario';");
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ $pro = mysqli_query($DB, "SELECT F.idFactura,F.fecha FROM usuario U INNER JOIN f
                     <tr>
                         <td><?php echo $data['idFactura']; ?></td>
                         <td><?php echo $data['fecha']; ?></td>
-                        <td><?php echo "Aqui debe ir la factura"; ?></td>
+                        <td><center><a style="color: #fff; font-size: 20px;" class="btn btn-info" href="../../Dashboard/Factura/Info_Factura/generador_factura.php?idFactura=<?php echo $data['idFactura']?> "><i style="color: #fff; font-size: 20px;" class="fa-solid fa-file"></i></a></center></td>
                     </tr>
                 <?php } ?>
                 

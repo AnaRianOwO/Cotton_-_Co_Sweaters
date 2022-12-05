@@ -6,6 +6,14 @@
         $statusMsgType = $sessData['status']['type'];
         unset($_SESSION['sessData']['status']);
     }
+
+    if(isset($_SESSION['idUsuario'])){
+        header("Location: Perfil/Usu_Per/index.php");
+    }else{
+
+    }
+
+    error_reporting(0);
 ?>
 
 <!DOCTYPE html>

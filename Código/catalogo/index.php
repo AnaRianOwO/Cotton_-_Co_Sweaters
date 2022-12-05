@@ -5,10 +5,11 @@ session_start();
 error_reporting(0);
 $idUsuario = $_SESSION['idUsuario'];
 
-// if(!isset($_SESSION['idUsuario'])){
-//     header('Location: ../../index.php');
+if (isset($idUsuario)){
+    header("Location:  ../Ingreso/Perfil/catalogo/index.php");
+} else {
+}
 
-// }
 $consul="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
 $consult=mysqli_query($con,$consul);
 

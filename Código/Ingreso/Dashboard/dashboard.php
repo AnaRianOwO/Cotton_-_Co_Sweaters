@@ -44,12 +44,12 @@ $row=mysqli_fetch_array($query);
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li>
+            <!-- <li>
                 <a class="dropdown-item" href="opciones.php"><i class="fa fa-cog fa-lg"></i> Settings</a>
             </li>
             <li>
                 <a class="dropdown-item" href="perfil_admin.php"><i class="fa fa-user fa-lg"></i> Profile</a>
-            </li>
+            </li> -->
             <li>
                 <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
             </li>
