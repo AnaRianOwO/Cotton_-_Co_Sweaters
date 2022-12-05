@@ -115,7 +115,7 @@
     $pdf->Cell(20,5,utf8_decode("TOTAL A PAGAR:   "),0,0,'C');
     $pdf->Cell(32,5,utf8_decode("$ ".$Administrador["total"]),0,0,'C');
 
-    $pdf->Ln(35);
+    $pdf->Ln(12);
 
     $pdf->SetFont('Arial','B',16);
     $pdf->Cell(0,7,utf8_decode("¡Gracias por su compra!"),'',0,'C');
