@@ -77,15 +77,15 @@
             <div class="container-form">
                 <form action="update.php" method="POST" autocomplete="off">
                     <h1>Formulario personal</h1>
-                    <input type="text" id="firstName" name="firstName" value="<?php echo $row['firstName'] ?>" placeholder="Primer nombre">
-                    <input type="text" id="secondName" name="secondName" value="<?php echo $row['secondName'] ?>" placeholder="Segundo nombre" >
-                    <input type="text" id="surname" name="surname" value="<?php echo $row['surname'] ?>" placeholder="Primer apellido" >
-                    <input type="text" id="secondSurname" name="secondSurname" value="<?php echo $row['secondSurname'] ?>" placeholder="Segundo apellido" >
-                    <input type="text" id="indicativo" name="indicativo" placeholder="Indicativo del pais" value="<?php echo $row['indicativo'] ?>" >
-                    <input type="text" name="phone" id="phone" class="phone" value="<?php echo $row['phone'] ?>" >
-                    <input type="email" name="correo" id="correo" class="" value="<?php echo $row['correo'] ?>" >
-                    <input type="text" name="direccion" id="direccion" class="direccion" value="<?php echo $row['direccion'] ?>" >
-                    <select name="idCiudad" id="idCiudad" required>
+                    <input type="text" id="firstName" name="firstName" value="<?php echo $row['firstName'] ?>" placeholder="Primer nombre" required oninvalid="this.setCustomValidity(' Por favor introduce tu primer nombre')">
+                    <input type="text" id="secondName" name="secondName" value="<?php echo $row['secondName'] ?>" placeholder="Segundo nombre">
+                    <input type="text" id="surname" name="surname" value="<?php echo $row['surname'] ?>" placeholder="Primer apellido" required oninvalid="this.setCustomValidity(' Por favor introduce tu primer apellido')">
+                    <input type="text" id="secondSurname" name="secondSurname" value="<?php echo $row['secondSurname'] ?>" placeholder="Segundo apellido">
+                    <input type="text" id="indicativo" name="indicativo" placeholder="Indicativo del pais" value="<?php echo $row['indicativo'] ?>" required oninvalid="this.setCustomValidity(' Por favor introduce el indicativo de tu teléfono')">
+                    <input type="text" name="phone" id="phone" class="phone" placeholder="Télefono" value="<?php echo $row['phone'] ?>" required oninvalid="this.setCustomValidity(' Por favor introduce tu número de teléfono')">
+                    <input type="email" name="correo" id="correo" class="" value="<?php echo $row['correo'] ?>" required oninvalid="this.setCustomValidity(' Por favor introduce tu dirección de correo electrónico')">
+                    <input type="text" name="direccion" id="direccion" class="direccion" value="<?php echo $row['direccion'] ?>" required oninvalid="this.setCustomValidity(' Por favor introduce tu dirección de residencia')">
+                    <select name="idCiudad" id="idCiudad" required oninvalid="this.setCustomValidity(' Por favor introduce tu ciudad')">
                         <?php
                         $query = mysqli_query($DB, "SELECT * FROM ciudad;");
                         $result =mysqli_num_rows($query);
