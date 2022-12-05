@@ -93,7 +93,7 @@ $row=mysqli_fetch_array($query);
                   <i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-                <a class="treeview-item" href="administrador.php"><i class="icon fa fa-circle-o"></i> Administradores</a>
+                <a class="treeview-item" href="../Administrador/administrador.php"><i class="icon fa fa-circle-o"></i> Administradores</a>
             </li>
           </ul>
         </li>
@@ -147,10 +147,10 @@ $row=mysqli_fetch_array($query);
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                 <div>
-                      <a class="btn btn-primary1" href="Excel/Informe_Factura_excel.php"><i class="bi bi-file-earmark-excel-fill"></i><b>Excel</b>
+                      <a class="btn btn-primary1" href="Excel/Informe_Factura_excel.php"><i class="bi bi-file-earmark-excel-fill"></i>&nbsp;<b>Excel</b>
                       </a>
                       <a href="Pdf/informe_factura.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i><b>PDF</b></a>
-                      <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><i class="fa-solid fa-file-circle-plus"></i><b> Añadir</b></a></button>
+                      <!-- <button type="button" class="btn btn-success1" data-toggle="modal" data-target="#create"><i class="fa-solid fa-file-circle-plus"></i><b> Añadir</b></a></button> -->
 		                </div>
                   <thead>
                     <tr>
@@ -166,11 +166,9 @@ $row=mysqli_fetch_array($query);
                     </tr>
                   </thead>
                   <tbody>
-                  <?php
-                            $conexion=mysqli_connect("localhost","root","","cotton");               
+                  <?php              
                             $SQL="SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;"; 
-
-                            $dato = mysqli_query($conexion, $SQL);
+                            $dato = mysqli_query($DB, $SQL);
 
                             if($dato -> num_rows >0){
                               while($fila=mysqli_fetch_array($dato)){
@@ -183,10 +181,10 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['fecha']?></th>
                         <th><?php echo '$ '.$fila['total']?></th>
-                        <th><a class="btn btn-info" href="#"><i class="fa-solid fa-file"></i></a></th>
+                        <th><a class="btn btn-info" href="Info_Factura/generador_factura.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-file"></i></a></th>
                         <!-- En esta parte se inserta el documento de la factura en pdf, en el href-->
                         <td>
-                          <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <!-- <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
 
                           <a class="btn btn-danger btn-del"  href="Tablas/eliminar_venta.php?idFactura=<?php  echo $fila['idFactura']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
@@ -236,7 +234,7 @@ $row=mysqli_fetch_array($query);
     e.preventDefault();
     const href = $(this).attr('href')
     Swal.fire({
-    title: 'Estás seguro de eliminar este administrador?',
+    title: '¿Estás seguro de eliminar este factura?',
     text: "¡No podrás revertir esto!!",
     icon: 'warning',
     showCancelButton: true,
@@ -249,7 +247,7 @@ $row=mysqli_fetch_array($query);
           if (result.isConfirmed) {
       Swal.fire(
         'Eliminado!',
-        'El administrador fue eliminado.',
+        'La factura fue eliminada.',
         'success'
       )
     }

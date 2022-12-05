@@ -1,5 +1,5 @@
 <?php
-include("../../../../../DB/db.php");
+include("../../../../DB/db.php");
 
 $codigo = $_POST['codigo'];
 $nameProducto = $_POST['nameProducto'];

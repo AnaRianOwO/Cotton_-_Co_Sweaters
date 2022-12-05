@@ -26,6 +26,7 @@ $row=mysqli_fetch_array($query);
     <meta name="theme-color" content="#009688">
     <title>Cotton & Co Sweaters - Tienda Virtual</title>
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
+    <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -44,12 +45,12 @@ $row=mysqli_fetch_array($query);
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <!-- <li>
-                <a class="dropdown-item" href="opciones.php"><i class="fa fa-cog fa-lg"></i> Settings</a>
+            <li>
+                <a class="dropdown-item" href="#" id="ajustes"><i class="fa fa-cog fa-lg"></i> Settings</a>
             </li>
             <li>
                 <a class="dropdown-item" href="perfil_admin.php"><i class="fa fa-user fa-lg"></i> Profile</a>
-            </li> -->
+            </li>
             <li>
                 <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
             </li>
@@ -273,6 +274,21 @@ $row=mysqli_fetch_array($query);
       	ga('create', 'UA-72504830-1', 'auto');
       	ga('send', 'pageview');
       }
+
+      let ajustes = document.getElementById('ajustes');
+      ajustes.addEventListener('click',function(e){
+        Swal.fire({
+          title: 'Venta #123465',
+          text: '¿Eliminar?',
+          icon: 'warning',
+          confirmButtonText: 'Sí, eliminar',
+        }).then(resultado => {
+          if (resultado.value) {
+
+          }
+        });
+        e.preventDefault();
+      });
     </script>
   </body>
 </html>
