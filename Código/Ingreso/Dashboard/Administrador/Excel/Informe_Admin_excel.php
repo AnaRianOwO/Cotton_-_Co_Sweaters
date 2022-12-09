@@ -2,12 +2,12 @@
 require_once ("../../../../DB/db.php");
 header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=Reporte_Administradores_" . date('Y:m:d').".xls");
-header("Pragma: no-cache"); 
+header("Pragma: no-cache");
 header("Expires: 0");
 ?>
 
-<table border= 1xp class="table table-striped table-dark " id= "table_id">
-	<thead>    
+<table border= 1xp class="table table-striped table-dark " id= "table_id" aria-label="tabla de excel para los administradores">
+	<thead>
 		<tr>
 			<th>Numero Documento</th>
         	<th>Tipo Documento</th>
@@ -26,7 +26,7 @@ header("Expires: 0");
 <tbody>
 
 <?php
-               
+   
 $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
 A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
 E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;";

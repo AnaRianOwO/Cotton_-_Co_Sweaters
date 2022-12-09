@@ -19,8 +19,7 @@ if (isset($_POST['accion'])){
 	}
 
     function editar_registro() {
-		$DB=mysqli_connect("localhost","root","","cotton");
-		extract($_POST);
+        include("../../../../DB/db.php");		extract($_POST);
 		$consulta="UPDATE administrador SET firstName = '$firstName', secondName = '$secondName',
 		surname ='$surname', secondSurname ='$secondSurname', indicativo ='$indicativo', phone ='$phone', 
         correo ='$correo', direccion='$direccion', idCiudad='$idCiudad', idEstado='$idEstado' WHERE idAdministrador = '$idAdministrador' "; 
@@ -31,7 +30,7 @@ if (isset($_POST['accion'])){
 }
 
 function eliminar_registro() {
-    $DB=mysqli_connect("localhost","root","","cotton");
+    include("../../../../DB/db.php");
     extract($_POST);
     $idAdministrador= $_POST['idAdministrador'];
     $consulta= "DELETE FROM administrador WHERE idAdministrador= $idAdministrador";

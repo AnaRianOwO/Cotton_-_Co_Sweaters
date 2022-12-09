@@ -19,7 +19,6 @@ if (isset($_POST['accion'])){
 	}
 
     function editar_registro() {
-		$DB=mysqli_connect("localhost","root","","cotton");
 		extract($_POST);
 		$consulta="UPDATE usuario SET firstName = '$firstName', secondName = '$secondName',
 		surname ='$surname', secondSurname ='$secondSurname', indicativo ='$indicativo', phone ='$phone', 
@@ -31,7 +30,6 @@ if (isset($_POST['accion'])){
 }
 
 function eliminar_registro() {
-    $DB=mysqli_connect("localhost","root","","cotton");
     extract($_POST);
     $idUsuario= $_POST['idUsuario'];
     $consulta= "DELETE FROM usuario WHERE idUsuario= $idUsuario";

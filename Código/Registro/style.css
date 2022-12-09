@@ -152,6 +152,51 @@ form input::placeholder{
     color: rgb(34, 34, 34);
 }
 
+/* Estilos para la validación del formularios */
+
+form .grupo-validar {
+    position: relative;
+}
+
+form .error {
+    font-size: 12 px;
+    margin-bottom: 0;
+    display: none;
+}
+
+form .error-activo {
+    display: block;
+}
+
+.validacion-icono {
+    position: absolute;
+    right: 55px;
+    top: 6px;
+    font-size: 1em;
+    opacity: 0;
+}
+
+.grupo-validar-correcto .validacion-icono{
+    color: greenyellow;
+    opacity: 1;
+}
+
+.grupo-validar-incorrecto {
+    color: red;
+}
+
+.grupo-validar-incorrecto .validacion-icono {
+    color: red;
+    opacity: 1;
+}
+
+.grupo-validar-incorrecto input {
+    border-bottom: 3px solid red;
+}
+
+
+/* Sigan con su programación del día de hoy */
+
 form p{
     margin: auto;
     align-items: center;
@@ -167,6 +212,7 @@ form p a{
     text-decoration: none;
     font-family: 'Times New Roman', Times, serif;
 }
+
 .TyC{
 
     position: relative;

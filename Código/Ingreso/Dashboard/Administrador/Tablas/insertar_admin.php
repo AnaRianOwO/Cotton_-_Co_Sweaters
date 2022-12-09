@@ -46,7 +46,7 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                                     <option value="Pasaporte">Pasaporte</option>
                                     <option value="Cedula de extranjeria">Cédula de extranjería</option>
                                     </select>
-                                    <i></i>
+                                    <!-- <i></i> -->
                                 </div>
                                 <br>
                                 <div class="form-group">

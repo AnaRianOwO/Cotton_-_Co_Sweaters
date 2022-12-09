@@ -149,7 +149,6 @@ $row=mysqli_fetch_array($query);
               <p>
                 <b>
                 <?php
-                  $DB=new mysqli("localhost","root","","cotton"); 
                   $sql = "SELECT * FROM usuario";
                   if($result=mysqli_query($DB, $sql)){
                       $count = mysqli_num_rows($result);
@@ -176,7 +175,6 @@ $row=mysqli_fetch_array($query);
               <p>
                 <b>
                 <?php
-                  $DB=new mysqli("localhost","root","","cotton"); 
                   $sql = "SELECT * FROM administrador";
                   if($result=mysqli_query($DB, $sql)){
                       $count = mysqli_num_rows($result);

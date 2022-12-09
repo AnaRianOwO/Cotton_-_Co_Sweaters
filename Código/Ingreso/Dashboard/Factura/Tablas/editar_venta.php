@@ -1,20 +1,20 @@
 <?php
 
 $idFactura= $_GET['idFactura'];
-$conexion= mysqli_connect("localhost", "root", "", "cotton");
+include("../../../../DB/db.php");
 
 $sql = "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario WHERE idFactura = '$idFactura'";
-$resultadoFactura = mysqli_query($conexion, $sql);
+$resultadoFactura = mysqli_query($DB, $sql);
 $factura = mysqli_fetch_assoc($resultadoFactura);
 
 $consulta= "SELECT  df.idFactura, df.codigo, p.nameProducto, p.descripcion, p.precio, df.cantidad FROM detallefactura df INNER JOIN factura f ON f.idFactura = df.idFactura INNER JOIN producto p ON df.codigo = p.codigo WHERE f.idFactura= '$idFactura'";
-$detalles = mysqli_query($conexion, $consulta);
+$detalles = mysqli_query($DB, $consulta);
 
 $sqlUsuarios = "SELECT u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion FROM usuario u;";
-$consultaUsuario = mysqli_query($conexion, $sqlUsuarios);
+$consultaUsuario = mysqli_query($DB, $sqlUsuarios);
 
 $sqlProductos = "SELECT p.codigo, p.nameProducto, p.precio FROM producto p";
-$consultaProducto = mysqli_query($conexion, $sqlProductos);
+$consultaProducto = mysqli_query($DB, $sqlProductos);
 
 while($productos = $consultaProducto->fetch_assoc()){
     $arrayProductos[] = array(

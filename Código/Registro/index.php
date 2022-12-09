@@ -24,6 +24,7 @@ include "registrar.php";
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
+    <script src="https://kit.fontawesome.com/be71717483.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -33,10 +34,10 @@ include "registrar.php";
 
     
 
-                <form action="registrar.php" method="POST" class="form">
-
+                <form action="registrar.php" method="POST" class="form" id="registro">
+                    <!-- ponerle un div a cada campo, por fa ana del futuro x'd -->
                     <center><h2>Registro</h2></center>
-                    <div class="content-select">
+                    <div class="content-select" id="selectDOCTYPE">
                         <select name="docType" class="content-select" required="" oninvalid="this.setCustomValidity(' Por favor selecciona tu tipo de documento')">
                             <option>Seleccione tipo de documento</option>
                             <option value="Cedula de ciudadania">Cédula de ciudadanía</option>
@@ -46,13 +47,36 @@ include "registrar.php";
                         <i></i>
                     </div>  
                     
-                    <input type="number" class="" name="idUsuario" placeholder="NIT" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu número de documento')">
-                    <input type="text" class="" name="name" placeholder="Nombre" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu nombre')">
-                    <input type="text" class="" name="secondName" placeholder="Segundo nombre">
-                    <input type="text" class="" name="surname" placeholder="Apellido" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu apellido')" >
-                    <input type="text" class="" name="secondSurname" placeholder="Segundo apellido">
+                    <div class="grupo-validar" id="grupo-idUsuario">
+                        <input type="number" class="" name="idUsuario" placeholder="NIT" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu número de documento')">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El número de documento no puede tener letras o símbolos.</p>
+                    </div>
+                    
+                    <div class="grupo-validar" id="grupo-name">
+                        <input type="text" class="" name="name" placeholder="Nombre" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu nombre')">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-secondName">
+                        <input type="text" class="" name="secondName" placeholder="Segundo nombre">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-surname">
+                        <input type="text" class="" name="surname" placeholder="Apellido" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu apellido')" >
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El apellido no puede contener símbolos o números (1-20).</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-secondSurname">
+                        <input type="text" class="" name="secondSurname" placeholder="Segundo apellido">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El apellido no puede contener símbolos o números (1-20).</p>
+                    </div>
                
-    
                     <div class="content-select">
                         <select name="idCiudad" id="idCiudad" required class="content-select">
                             <option value="">Seleccione su ciudad</option>
@@ -64,12 +88,36 @@ include "registrar.php";
                         </select>
                         <i></i>
                     </div>
-    
-                    <input type="text" class="" name="indicativo" placeholder="Indicativo del celular" required="">
-                    <input type="number" class="" name="phone" placeholder="Celular" required="">
-                    <input type="text" class="" name="direccion" placeholder="Dirrección" required="">
-                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required="">
-                    <input type="password" id="Pass" name="pass" placeholder="Contraseña" required="">            
+
+                    <div class="grupo-validar" id="grupo-indicativo">
+                        <input type="text" class="" name="indicativo" placeholder="Indicativo del celular" required="">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El indicativo debe contener un símbolo "+" y un número.</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-phone">
+                        <input type="number" class="" name="phone" placeholder="Celular" required="">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El número no puede contener letras o símbolos.</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-direccion">
+                        <input type="text" class="" name="direccion" placeholder="Dirrección" required="">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">Introduzca correctamente su dirección.</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-correo">
+                        <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required="">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">El correo debe tener nombre de usuarios, símbolo de @, organización (gmail, hotmail, etc.) y tipo (.com, .edu, .org, etc.).</p>
+                    </div>
+
+                    <div class="grupo-validar" id="grupo-pass">
+                        <input type="password" id="Pass" name="pass" placeholder="Contraseña" required="">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">La contraseña debe tener al menos 8 carácteres y menos de 12.</p>
+                    </div>
                     
                     <center><a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled><center>Acepta los términos y condiciones antes de terminar</center></a></center>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>

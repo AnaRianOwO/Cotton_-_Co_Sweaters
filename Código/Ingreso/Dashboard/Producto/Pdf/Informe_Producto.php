@@ -5,7 +5,7 @@ class PDF extends FPDF
 {
 // Cabecera de página
 
-function Header()
+public function Header()
 {
     // Logo
     //$this->Image('https://media.discordapp.net/attachments/980648436275753030/987080826493751406/Logo.png?width=625&height=625',10,8,33);
@@ -28,7 +28,7 @@ function Header()
 }
 
 // Pie de página
-function Footer()
+public function Footer()
 {
     // Posición: a 1,5 cm del final
     $this->SetY(-15);
@@ -39,7 +39,7 @@ function Footer()
 }
 }
 
-require ('../../../../DB/db.php');
+require_once ('../../../../DB/db.php');
 $SQL="SELECT * FROM producto P INNER JOIN estado E On E.idEstado=P.idEstado;";
 $resultado =$DB->query($SQL);
 

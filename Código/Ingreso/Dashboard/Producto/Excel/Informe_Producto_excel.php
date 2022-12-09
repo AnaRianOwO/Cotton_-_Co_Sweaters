@@ -6,7 +6,7 @@ header("Pragma: no-cache");
 header("Expires: 0");
 ?>
 
-<table border= 1xp class="table table-striped table-dark " id= "table_id">
+<table border= 1xp class="table table-striped table-dark " id= "table_id" aria-label="tabla de excel para los preoductos">
 	<thead>    
 		<tr>
 			<th>Codigo</th>
