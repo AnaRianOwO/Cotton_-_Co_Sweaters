@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../../../../DB/db.php");
+require_once ("../../../DB/db.php");
 session_start();
 
 $idAdministrador = $_SESSION['idAdministrador'];
