@@ -1,6 +1,7 @@
 <?php
 require_once ('../../../../DB/db.php');
 header("Content-Type: application/xls");
+date_default_timezone_set('America/Bogota');
 header("Content-Disposition: attachment; filename=Reporte_Productos_" . date('Y:m:d').".xls");
 header("Pragma: no-cache"); 
 header("Expires: 0");
