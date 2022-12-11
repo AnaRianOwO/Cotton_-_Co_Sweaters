@@ -13,6 +13,7 @@ body{
     overflow: hidden;
     max-width: 1700px;
     min-width: 500px;
+    overflow: auto;
 }
 
 h2{
@@ -52,14 +53,18 @@ form{
     position: absolute !important;
     font-family:'Times New Roman', Times, serif;
     width: 400px;
-    height: 700px;
-    margin: 140px 0 0 1100px;
+    height: auto;
+    margin: 10px 10px 10px 700px;
     background: rgb(255, 178, 165);
     border-radius: 50px;
     /* border: 2px solid rgba(153, 153, 153, 0.788); */
-    padding: auto; 
+    padding: 10px; 
     z-index: 5;
     margin-bottom: 200px;
+    word-wrap: break-word;
+    overflow: auto;
+    align-items: center;
+    flex-wrap: wrap;
     
     /* transform: translateX(-150px); */
     transition: all .9s ease;
@@ -75,7 +80,7 @@ form{
 .form h2{
     color: rgb(0, 0, 0) !important;
     font-weight: bold;
-    margin: 10px auto !important;
+    margin-bottom: 5px auto !important;
     font-family: 'Dancing Script';
     font-size: 30px;
     font-weight: bold;
@@ -85,10 +90,10 @@ form{
     position: absolute;
     display: flex;
     margin: 20px auto;
-    height: 700px;
+    height: 737px;
     width: 400px;
     display: flex;
-    margin: 140px 0 0 1100px;
+    margin: 10px 0 20px 700px;
     background: linear-gradient(45deg, rgb(255, 158, 158), rgb(255, 130, 130), rgb(255, 179, 129));
     border-radius: 50px;
     /* transform: translateX(150px); */
@@ -130,7 +135,7 @@ form input{
 
 form input[type=submit]{
     border-radius: 25px;
-    margin: 14px auto;
+    margin: 5px auto;
     background: rgb(255, 222, 207);
     padding: auto;
     height: 40px;
@@ -165,7 +170,7 @@ form .error {
 }
 
 form .error-activo {
-    display: block;
+    display: inline;
 }
 
 .validacion-icono {
@@ -197,6 +202,56 @@ form .error-activo {
 
 /* Sigan con su programación del día de hoy */
 
+/* Mentiras, primero el responsive y el arreglo de la tapa de registrar y demás */
+
+.nombre-completo {
+    display: grid;
+    grid-template-columns: 165px 165px;
+    grid-template-rows: auto auto auto auto;
+    padding: auto;
+    justify-content: space-evenly;
+}
+
+.nombre-completo input {
+    width: 150px;
+    margin: 19px auto; 
+    
+}
+
+.nombre-completo .validacion-icono {
+    right: 10px;
+    top: 23px;
+}
+
+@media screen and (max-width: 962px) {
+    
+    body {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    form,
+    .form-movimiento {
+        margin: 5px auto;
+        border-radius: 50px;
+        margin-block-end: 0;
+        overflow: hidden;
+    }
+
+    .form-movimiento {
+        transform: none;
+    }
+
+    .tapa,
+    .banner_img {
+        display: none;
+    }
+
+
+}
+/* Ahora sí, continuén con la programación del día de hoy */
+
 form p{
     margin: auto;
     align-items: center;
@@ -214,7 +269,6 @@ form p a{
 }
 
 .TyC{
-
     position: relative;
     right: 3%;
 }
@@ -332,12 +386,12 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 }
 
 .banner_img img{
-    width: 600px;
+    width: 450px;
     display: block;
     position: absolute;
     flex: auto;
-    top: 90px;
-    left: 100px;
+    top: 80px;
+    left: 30px;
     
 }
 /* burbujas */

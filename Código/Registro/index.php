@@ -50,31 +50,33 @@ include "registrar.php";
                     <div class="grupo-validar" id="grupo-idUsuario">
                         <input type="number" class="" name="idUsuario" placeholder="NIT" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu número de documento')">
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El número de documento no puede tener letras o símbolos.</p>
+                        <p class="error">El número de documento no puede tener letras o símbolos (10-15).</p>
                     </div>
                     
-                    <div class="grupo-validar" id="grupo-name">
-                        <input type="text" class="" name="name" placeholder="Nombre" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu nombre')">
-                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
-                    </div>
+                    <div class="nombre-completo">
+                        <div class="grupo-validar" id="grupo-name">
+                            <input type="text" class="" name="name" placeholder="Nombre" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu nombre')">
+                            <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                            <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
+                        </div>
 
-                    <div class="grupo-validar" id="grupo-secondName">
-                        <input type="text" class="" name="secondName" placeholder="Segundo nombre">
-                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
-                    </div>
+                        <div class="grupo-validar" id="grupo-secondName">
+                            <input type="text" class="" name="secondName" placeholder="Segundo nombre">
+                            <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                            <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
+                        </div>
 
-                    <div class="grupo-validar" id="grupo-surname">
-                        <input type="text" class="" name="surname" placeholder="Apellido" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu apellido')" >
-                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El apellido no puede contener símbolos o números (1-20).</p>
-                    </div>
+                        <div class="grupo-validar" id="grupo-surname">
+                            <input type="text" class="" name="surname" placeholder="Apellido" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu apellido')" >
+                            <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                            <p class="error">El apellido no puede contener símbolos o números (1-20).</p>
+                        </div>
 
-                    <div class="grupo-validar" id="grupo-secondSurname">
-                        <input type="text" class="" name="secondSurname" placeholder="Segundo apellido">
-                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El apellido no puede contener símbolos o números (1-20).</p>
+                        <div class="grupo-validar" id="grupo-secondSurname">
+                            <input type="text" class="" name="secondSurname" placeholder="Segundo apellido">
+                            <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                            <p class="error">El apellido no puede contener símbolos o números (1-20).</p>
+                        </div>
                     </div>
                
                     <div class="content-select">
@@ -118,14 +120,20 @@ include "registrar.php";
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
                         <p class="error">La contraseña debe tener al menos 8 carácteres y menos de 12.</p>
                     </div>
+
+                    <div class="grupo-validar" id="grupo-pass2">
+                        <input type="password" id="Pass2" name="pass2" placeholder="Confirmar contraseña" required="">
+                        <i class="validacion-icono fa-solid fa-circle-xmark"></i>
+                        <p class="error">Las contraseñas deben coincidir.</p>
+                    </div>
                     
                     <center><a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled><center>Acepta los términos y condiciones antes de terminar</center></a></center>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
                     
 
-                    <input type="submit" class="TyC btn btn-primary" name="btn_registrar" id="btn_registrar" value="Registrar" disabled>
+                    <center><input type="submit" class="TyC btn btn-primary" name="btn_registrar" id="btn_registrar" value="Registrar" disabled></center>
                 </form>
-                <div class="tapa">
+                <div class="tapa" id="tapa">
                     <h1>Cotton & Co Sweaters</h1>
                 </div>
 
@@ -308,7 +316,6 @@ include "registrar.php";
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="funciones.js"></script>
 </body>
 
 <script src="funciones.js"></script>
