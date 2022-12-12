@@ -188,22 +188,10 @@ $row=mysqli_fetch_array($query);
         </div> 
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Monthly Sales</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Support Requests</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
+        <!-- Grafica de Uusario -->
+        <div class="col-md-6" id="piechart" class="embed-responsive embed-responsive-16by9" style="width: 900px; height: 500px;"></div>
+        <!-- Grafica de Ventas -->
+        <div class="col-md-6" id="top_x_div" class="embed-responsive embed-responsive-16by9" style="width: 900px; height: 500px;"></div>
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
@@ -287,6 +275,79 @@ $row=mysqli_fetch_array($query);
         });
         e.preventDefault();
       });
+    </script>
+
+    <!-- Funcion Grafica de Uusario -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          <?php
+          $SQL = "SELECT U.firstName, U.surname, count(F.idUsuario) as 'Total compras' FROM usuario U 
+          INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY U.firstName;";
+          //$SQL = "SELECT U.firstName, U.surname, count(F.idUsuario) as 'Total compras' FROM usuario U 
+          //INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY U.firstName ORDER BY count(F.idUsuario) DESC LIMIT 5";
+          $consulta = mysqli_query($DB, $SQL);
+          while ($resultado = mysqli_fetch_assoc($consulta)){
+            echo "['" .$resultado['firstName']."', " .$resultado['Total compras']."],";
+          }
+
+          ?>
+        ]);
+
+        var options = {
+          title: 'Compras de Usarios'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- Funcion Grafica de Ventas -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Producto', 'Cantidad'],
+        <?php
+        $SQL = "SELECT P.nameProducto, count(D.codigo) as 'Total compras' FROM producto P 
+        INNER JOIN detallefactura D on D.codigo=p.codigo GROUP BY p.codigo;";
+        //$SQL = "SELECT P.nameProducto, count(D.codigo) as 'Total compras' FROM producto P 
+        //INNER JOIN detallefactura D on D.codigo=P.codigo GROUP BY P.nameProducto ORDER BY count(D.codigo) DESC LIMIT 8";
+        $consulta = mysqli_query($DB, $SQL);
+        while ($resultado = mysqli_fetch_assoc($consulta)){
+          echo "['" .$resultado['nameProducto']."', " .$resultado['Total compras']."],";
+        }
+        ?>
+        ]);
+
+        var options = {
+          title: 'Chess opening moves',
+          width: 780,
+          legend: { position: 'none' },
+          chart: { title: 'Producto mas Vendido' },
+          bars: 'horizontal', 
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Ventas'} 
+            }
+          },
+          bar: { groupWidth: "100%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
     </script>
   </body>
 </html>
