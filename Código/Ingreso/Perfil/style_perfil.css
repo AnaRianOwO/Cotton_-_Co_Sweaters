@@ -218,6 +218,38 @@
     position: center;
 }
 
+/* ----------------------------------------------------- RESPONSIVE FAVORITOS ------------------------------------------------------------ */
+@media screen and (max-width: 962px) {
+    body {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .formulario {
+        margin: 0;
+        padding: 0;
+        width: 1100px !important;
+        height: auto !important;
+    }
+
+    .container-form {
+        margin: 0;
+        height: 1100px;
+        margin-top: 200px;
+    }
+    
+    .categorias {
+        display: none;
+        
+    }
+    
+    .container-categoria {
+        top: 0;
+        z-index: initial;
+    }
+}
 /* ----------------------------- CONTENEDOR DE PEDIDOS ------------------------------ */
 
 .container-pedido{
