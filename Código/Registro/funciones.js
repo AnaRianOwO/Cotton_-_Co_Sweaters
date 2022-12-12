@@ -8,10 +8,10 @@ const expresiones = {
 	num: /^\d{8,15}$/, // 10 a 15 numeros.
     tel: /^\d{10,15}$/,
     direccion: /^[a-zA-ZÁ-ÿ\s]+[0-9]+[a-zA-ZÁ-ÿ\s]+[(#)(No.)(N°)(numero)\]+[0-9]+[a-zA-ZÁ-ÿ\s]+[0-9]+$/, //dirección xd
-    indicativo: /^\++\d+$/ // valida símbolo "+" y max 3 numeros
+    indicativo: /^\++\d{2,5}$/ // valida símbolo "+" y max 3 numeros
 }
 
-console.log(registro.offsetHeight)
+// console.log(registro.offsetHeight)
 const ajusteTapa = () => {
     let tapa = document.getElementById("tapa");
     tapa.style.height = registro.offsetHeight;
@@ -136,9 +136,12 @@ inputs.forEach((input) => {
 })
 
 registro.addEventListener('submit', (e) => {
-    if (campos.idUsuario && campos.Name && campos.correo && campos.direccion && campos.secondName && campos.indicativo && campos.pass && campos.phone && campos.secondName && campos.secondSurname && campos.surname) {
+    var ciudad = document.getElementById('docType').value;
+    var docType = document.getElementById('idCiudad').value;
+    if (campos.idUsuario && campos.Name && campos.correo && campos.direccion && campos.secondName && campos.indicativo && campos.pass && campos.phone && campos.secondName && campos.secondSurname && campos.surname && ciudad!=='' && docType!=='') {
         console.log("por fin owo");
     } else {
+        e.preventDefault();
         Swal
             .fire({
                 title: 'Ha ocurrido un error',
@@ -146,7 +149,6 @@ registro.addEventListener('submit', (e) => {
                 icon: 'error',
                 confirmButtonText: 'Entendido'
             })
-        e.preventDefault();
     }
 })
 
