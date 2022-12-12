@@ -50,12 +50,12 @@ include "registrar.php";
                     <div class="grupo-validar" id="grupo-idUsuario">
                         <input type="number" class="" name="idUsuario" placeholder="NIT" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu número de documento')">
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El número de documento no puede tener letras o símbolos (10-15).</p>
+                        <p class="error">El número de documento no puede tener letras o símbolos (8-15).</p>
                     </div>
                     
                     <div class="nombre-completo">
-                        <div class="grupo-validar" id="grupo-name">
-                            <input type="text" class="" name="name" placeholder="Nombre" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu nombre')">
+                        <div class="grupo-validar" id="grupo-Name">
+                            <input type="text" class="" name="Name" placeholder="Nombre" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu nombre')">
                             <i class="validacion-icono fa-solid fa-circle-xmark"></i>
                             <p class="error">El nombre no puede contener símbolos o números (1-20).</p>
                         </div>
@@ -100,7 +100,7 @@ include "registrar.php";
                     <div class="grupo-validar" id="grupo-phone">
                         <input type="number" class="" name="phone" placeholder="Celular" required="">
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">El número no puede contener letras o símbolos.</p>
+                        <p class="error">El celular no puede contener letras o símbolos. (10-15)</p>
                     </div>
 
                     <div class="grupo-validar" id="grupo-direccion">
@@ -118,16 +118,16 @@ include "registrar.php";
                     <div class="grupo-validar" id="grupo-pass">
                         <input type="password" id="Pass" name="pass" placeholder="Contraseña" required="">
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">La contraseña debe tener al menos 8 carácteres y menos de 12.</p>
+                        <p class="error">La contraseña debe tener al menos 10 carácteres y menos de 12.</p>
                     </div>
 
-                    <div class="grupo-validar" id="grupo-pass2">
+                    <div class="grupo-validar last" id="grupo-pass2">
                         <input type="password" id="Pass2" name="pass2" placeholder="Confirmar contraseña" required="">
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
                         <p class="error">Las contraseñas deben coincidir.</p>
                     </div>
                     
-                    <center><a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled><center>Acepta los términos y condiciones antes de terminar</center></a></center>
+                    <input type="checkbox" name="checkbox" id="checkbox" class="checkbox" required><center>Acepta los <a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>términos y condiciones</a> antes de terminar</center>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
                     
 

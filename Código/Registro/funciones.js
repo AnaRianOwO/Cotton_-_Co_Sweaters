@@ -1,6 +1,5 @@
 var registro = document.getElementById('registro');
 var inputs = document.querySelectorAll('#registro input');
-var select = document.querySelectorAll('#registro select');
 
 const expresiones = {
 	nomYApe: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
@@ -8,15 +7,27 @@ const expresiones = {
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	num: /^\d{8,15}$/, // 10 a 15 numeros.
     tel: /^\d{10,15}$/,
-    direccion: /^[a-zA-ZÁ-ÿ\s]+[0-9]+[a-zA-ZÁ-ÿ\s]+[(#)(No.)(N°)(numero)\s]+[0-9]+[a-zA-ZÁ-ÿ\s]+[0-9]+$/, //dirección xd
+    direccion: /^[a-zA-ZÁ-ÿ\s]+[0-9]+[a-zA-ZÁ-ÿ\s]+[(#)(No.)(N°)(numero)\]+[0-9]+[a-zA-ZÁ-ÿ\s]+[0-9]+$/, //dirección xd
     indicativo: /^\++\d+$/ // valida símbolo "+" y max 3 numeros
 }
 
-// console.log(registro.offsetHeight)
+console.log(registro.offsetHeight)
 const ajusteTapa = () => {
     let tapa = document.getElementById("tapa");
     tapa.style.height = registro.offsetHeight;
-    // console.log(registro.offsetHeight);
+}
+
+const campos = {
+    idUsuario: false,
+    Name: false,
+    secondName: false,
+    surname: false,
+    secondSurname: false,
+    indicativo: false,
+    phone: false,
+    direccion: false,
+    correo: false,
+    pass: false
 }
 
 const validarRegistro = (e) => {
@@ -26,7 +37,7 @@ const validarRegistro = (e) => {
             ajusteTapa();
         break;
         
-        case "name":
+        case "Name":
             validarCampo(expresiones.nomYApe, e.target, e.target.name);
             ajusteTapa()
         break;
@@ -86,12 +97,14 @@ const validarCampo = (expresion, input, campo) => {
         document.querySelector(`#grupo-${campo} i`).classList.remove('fa-circle-xmark');
         document.querySelector(`#grupo-${campo} i`).classList.add('fa-check');
         document.querySelector(`#grupo-${campo} .error`).classList.remove('error-activo');
+        campos[campo] = true;
     } else {
         document.getElementById(`grupo-${campo}`).classList.add('grupo-validar-incorrecto');
         document.getElementById(`grupo-${campo}`).classList.remove('grupo-validar-correcto');
         document.querySelector(`#grupo-${campo} i`).classList.add('fa-circle-xmark');
         document.querySelector(`#grupo-${campo} i`).classList.remove('fa-check');
         document.querySelector(`#grupo-${campo} .error`).classList.add('error-activo');
+        campos[campo] = false;
     }
 }
 
@@ -105,12 +118,14 @@ const confirmarContrasenas = () => {
         document.querySelector(`#grupo-pass2 i`).classList.add('fa-circle-xmark');
         document.querySelector(`#grupo-pass2 i`).classList.remove('fa-check');
         document.querySelector(`#grupo-pass2 .error`).classList.add('error-activo');
+        campos['pass'] = false;
     } else {
         document.getElementById(`grupo-pass2`).classList.remove('grupo-validar-incorrecto');
         document.getElementById(`grupo-pass2`).classList.add('grupo-validar-correcto');
         document.querySelector(`#grupo-pass2 i`).classList.remove('fa-circle-xmark');
         document.querySelector(`#grupo-pass2 i`).classList.add('fa-check');
         document.querySelector(`#grupo-pass2 .error`).classList.remove('error-activo');
+        campos['pass'] = true;
     }
 }
 
@@ -121,7 +136,18 @@ inputs.forEach((input) => {
 })
 
 registro.addEventListener('submit', (e) => {
-    // e.preventDefault();
+    if (campos.idUsuario && campos.Name && campos.correo && campos.direccion && campos.secondName && campos.indicativo && campos.pass && campos.phone && campos.secondName && campos.secondSurname && campos.surname) {
+        console.log("por fin owo");
+    } else {
+        Swal
+            .fire({
+                title: 'Ha ocurrido un error',
+                text: 'Por favor verifique su información, que esté completa y correcta',
+                icon: 'error',
+                confirmButtonText: 'Entendido'
+            })
+        e.preventDefault();
+    }
 })
 
 // funciones Términos y condiciones uwu
@@ -129,14 +155,17 @@ registro.addEventListener('submit', (e) => {
 var checkbox = document.getElementById('checkbox');
 var body = document.querySelector("body");
 var aceptar = document.getElementById('aceptar');
+var registrar = document.getElementById('btn_registrar');
 
 
 checkbox.addEventListener('click',()=>{
     let checkbox = document.getElementById('checkbox').checked;
     if(checkbox) {
         aceptar.disabled = false;
+        registrar.disabled = false;
     } else {
         aceptar.disabled = true;
+        registrar.disabled = true;
     }
 })
 

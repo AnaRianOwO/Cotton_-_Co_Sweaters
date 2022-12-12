@@ -7,7 +7,7 @@
 
         $idUsuario = mysqli_real_escape_string($DB, $_POST['idUsuario']);
         $docType = mysqli_real_escape_string($DB, $_POST['docType']);
-        $name = mysqli_real_escape_string($DB, $_POST['name']);
+        $name = mysqli_real_escape_string($DB, $_POST['Name']);
         $secondName = mysqli_real_escape_string($DB, $_POST['secondName']);
         $surname = mysqli_real_escape_string($DB, $_POST['surname']);
         $secondSurname = mysqli_real_escape_string($DB, $_POST['secondSurname']);
@@ -63,7 +63,7 @@
                             })
                             .then(resultado => {
                                 if (resultado.value) {
-                                    window.location='index.php';
+                                    window.location='../Ingreso/index.php';
                                 }else {    
                                 }
                             });
@@ -78,7 +78,7 @@
                         Swal
                             .fire({
                                 title: 'Ha ocurrido un error',
-                                text: 'Porfavor verifique su información',
+                                text: 'Por favor verifique su información',
                                 icon: 'error',
                                 confirmButtonText: 'Continuar'
                             })

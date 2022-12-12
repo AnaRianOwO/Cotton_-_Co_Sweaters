@@ -80,7 +80,7 @@ form{
 .form h2{
     color: rgb(0, 0, 0) !important;
     font-weight: bold;
-    margin-bottom: 5px auto !important;
+    margin-bottom:  auto !important;
     font-family: 'Dancing Script';
     font-size: 30px;
     font-weight: bold;
@@ -90,7 +90,7 @@ form{
     position: absolute;
     display: flex;
     margin: 20px auto;
-    height: 737px;
+    height: 725px;
     width: 400px;
     display: flex;
     margin: 10px 0 20px 700px;
@@ -199,6 +199,9 @@ form .error-activo {
     border-bottom: 3px solid red;
 }
 
+.grupo-validar.last input {
+    margin-bottom: 5px;
+}
 
 /* Sigan con su programación del día de hoy */
 
@@ -270,10 +273,17 @@ form p a{
 
 .TyC{
     position: relative;
-    right: 3%;
+    /* right: 3%; */
 }
 
-
+.checkbox {
+    position: relative;
+    right: 135px;
+    top: 17px;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+}
 
 select{
     display: block;
