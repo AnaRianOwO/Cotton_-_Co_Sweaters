@@ -128,5 +128,33 @@
 } 
 
 
+/* #piechart,
+#top_x_div {
+	position: relative;
+    margin: 5px;
+	max-width: 500px;
+	max-height: 500px;
+}
 
+#top_x_div .col-md-6 {
+	position: relative;
+	left: 5px;
+	background-color: red;
+} */
 
+#top_x_div {
+	transform: scale(.9) !important;
+}
+
+@media (min-height:360px) {
+	#top_x_div {
+		display: block;
+		/* transform: scale(); */
+	}
+}
+
+@media (min-width:841px) and (max-width:1200px) {
+	#top_x_div {
+		display: block;		
+	}
+}

@@ -136,7 +136,7 @@ inputs.forEach((input) => {
 registro.addEventListener('submit', (e) => {
     var ciudad = document.getElementById('docType').value;
     var docType = document.getElementById('idCiudad').value;
-    if (campos.idUsuario && campos.Name && campos.correo && campos.direccion && campos.indicativo && campos.pass && campos.phone && campos.secondName && campos.surname && ciudad!=='' && docType!=='') {
+    if (campos.idUsuario && campos.Name && campos.correo && campos.direccion && campos.indicativo && campos.pass && campos.phone && campos.surname && ciudad!=='' && docType!=='') {
         console.log("por fin owo");
     } else {
         e.preventDefault();

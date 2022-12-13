@@ -118,7 +118,7 @@ include "registrar.php";
                     <div class="grupo-validar" id="grupo-pass">
                         <input type="password" id="Pass" name="pass" placeholder="Contraseña">
                         <i class="validacion-icono fa-solid fa-circle-xmark"></i>
-                        <p class="error">La contraseña debe tener al menos 10 carácteres y menos de 12.</p>
+                        <p class="error">La contraseña debe tener al menos 8 carácteres y menos de 12.</p>
                     </div>
 
                     <div class="grupo-validar last" id="grupo-pass2">

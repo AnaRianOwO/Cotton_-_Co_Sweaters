@@ -189,9 +189,9 @@ $row=mysqli_fetch_array($query);
       </div>
       <div class="row">
         <!-- Grafica de Uusario -->
-        <div class="col-md-6" id="piechart" class="embed-responsive embed-responsive-16by9" style="width: 900px; height: 500px;"></div>
+        <div class="col-md-6" id="piechart" class="embed-responsive embed-responsive-16by9" style="width: 500px; height: 500px; padding: 30px;"></div>
         <!-- Grafica de Ventas -->
-        <div class="col-md-6" id="top_x_div" class="embed-responsive embed-responsive-16by9" style="width: 900px; height: 500px;"></div>
+        <div class="col-md-6" id="top_x_div" class="embed-responsive embed-responsive-16by9" style="width: auto; height: 500px; padding: 30px; background: white;"></div>
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
@@ -332,17 +332,18 @@ $row=mysqli_fetch_array($query);
         ]);
 
         var options = {
-          title: 'Chess opening moves',
-          width: 780,
+          title: 'Producto más vendido',
+          width: 500,
+          padding: 15,
           legend: { position: 'none' },
-          chart: { title: 'Producto mas Vendido' },
-          bars: 'horizontal', 
+          chart: {title: 'Producto más vendido'},
+          bars:'horizontal', 
           axes: {
             x: {
               0: { side: 'top', label: 'Ventas'} 
             }
           },
-          bar: { groupWidth: "100%" }
+          bar: { groupWidth: "80%" }
         };
 
         var chart = new google.charts.Bar(document.getElementById('top_x_div'));
