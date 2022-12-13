@@ -1,5 +1,5 @@
 <?php
-include('global/conexion.php');
+include('../DB/db.php');
 
 session_start();
 error_reporting(0);
@@ -11,7 +11,10 @@ if (isset($idUsuario)){
 }
 
 $consul="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
-$consult=mysqli_query($con,$consul);
+$consult=mysqli_query($DB,$consul);
+
+$sql = mysqli_query($DB, "SELECT * FROM producto");
+$row = mysqli_num_rows($sql);
 
 $rows=mysqli_fetch_array($consult);
 include "añadir.php";
