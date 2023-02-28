@@ -5,7 +5,7 @@
     //Registrar usuario
     if(isset($_POST['btn_registrar'])){
 
-        $idUsuario = mysqli_real_escape_string($DB, $_POST['idUsuario']);
+        $id_persona = mysqli_real_escape_string($DB, $_POST['idUsuario']);
         $docType = mysqli_real_escape_string($DB, $_POST['docType']);
         $name = mysqli_real_escape_string($DB, $_POST['Name']);
         $secondName = mysqli_real_escape_string($DB, $_POST['secondName']);
@@ -18,7 +18,7 @@
         $pass = mysqli_real_escape_string($DB, $_POST['pass']);
         $idCiudad = mysqli_real_escape_string($DB, $_POST['idCiudad']);
         $pass_cifrada = password_hash($pass, PASSWORD_DEFAULT);
-        $sql_user = "SELECT idUsuario, docType FROM usuario WHERE idUsuario = '$idUsuario' and docType  = '$docType'";
+        $sql_user = "SELECT id_persona, docType FROM persona WHERE id_persona = '$idUsuario' and docType  = '$docType'";
         $resultado_user = $DB->query($sql_user);
         $filas = $resultado_user->num_rows;
         if ($filas > 0) {
@@ -43,12 +43,27 @@
                         });
                 </script>";
         }else{
-            $query_usuario = "INSERT INTO usuario VALUES 
-            ('$idUsuario','$docType','$name','$secondName','$surname','$secondSurname',
-            '$indicativo','$phone','$correo','$direccion','$pass_cifrada','','$idCiudad','1')";
+            $sumar = mysqli_query($DB ,"SELECT * FROM usuario ORDER BY CAST(REPLACE(idUsuario,'U','') as int) DESC LIMIT 1");
+            $rows = mysqli_num_rows($sumar);
+            if($rows > 0){
+                $index = 1;
+            }else{
+                $usuario = mysqli_fetch_assoc($sumar);
+                $indice = substr($usuario['idUsuario'], 1);
+                $indice = intval($indice);
+                $indice+=1;
+            }
 
-            $resultado_usuario = $DB->query($query_usuario);
-            if($resultado_usuario > 0){
+            $query_persona = "INSERT INTO persona VALUES 
+            ('$id_persona','$docType','$name','$secondName','$surname','$secondSurname',
+            '$indicativo','$phone','$correo','$pass_cifrada','1','$idCiudad')";
+
+            $query_usuario = "INSERT INTO usuario VALUES ('U$indice','$direccion','$id_persona')";
+            
+
+            $resultado_persona = $DB->query($query_persona);
+            $DB->query($query_usuario);
+            if($resultado_persona > 0){
                 echo "
                     .
                     <html>
