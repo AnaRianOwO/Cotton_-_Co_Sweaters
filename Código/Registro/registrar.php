@@ -45,7 +45,7 @@
         }else{
             $sumar = mysqli_query($DB ,"SELECT * FROM usuario ORDER BY CAST(REPLACE(idUsuario,'U','') as int) DESC LIMIT 1");
             $rows = mysqli_num_rows($sumar);
-            if($rows > 0){
+            if(!isset($rows)){
                 $index = 1;
             }else{
                 $usuario = mysqli_fetch_assoc($sumar);

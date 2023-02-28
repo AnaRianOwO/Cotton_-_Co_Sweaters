@@ -37,7 +37,6 @@ include "registrar.php";
                     <div class="content-select" id="selectDOCTYPE">
                         <select name="docType" id="docType" class="content-select" oninvalid="this.setCustomValidity(' Por favor selecciona tu tipo de documento')">
                             <option value="">Seleccione tipo de documento</option>
-                            <option value="TI">Targeta de identidad</option>
                             <option value="CC">Cédula de ciudadanía</option>
                             <option value="PP">Pasaporte</option>
                             <option value="CE">Cédula de extranjería</option>
