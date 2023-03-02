@@ -21,7 +21,6 @@ if(isset($_POST['btnAccion'])){
             }else{
                 $idProductos = array_column($_SESSION['carrito'],"codigo");
                 if(in_array($codigo,$idProductos)){
-                    // $productos['cantidad'] = $productos['cantidad']+1;
                 }else{
                     $cantidadPro=count($_SESSION['carrito']);
                     $productos = array(
@@ -35,14 +34,11 @@ if(isset($_POST['btnAccion'])){
                 
             }
             
-            
-            // header("Location: ".$_SERVER['HTTP_REFERER']."");
-            // $mensaje=print_r($_SESSION,true);        
+        
             break;
 
         case 'Vaciar':
             echo "<script>alert('Hola que mas');</script>";
-            // unset($_SESSION['carrito']);
             break;
         default:
             
@@ -59,21 +55,14 @@ if(isset($_POST['btnComprar'])){
         $codigo=1;
     }else{
         $consult = mysqli_query($DB, "SELECT F.idFactura FROM factura F ORDER BY CAST(REPLACE(F.idFactura,'F','') AS int) DESC LIMIT 1;");
-        // $consult = mysqli_query($DB, "SELECT * FROM factura ORDER BY SUBSTRING(idFactura,3,3), cast(Substring(idFactura,2,2) as int);");
-
         $fafactura = mysqli_fetch_assoc($consult);
         $codigo = substr($fafactura['idFactura'], 1);
-        // print_r($fafactura['idFactura']);
-        // print_r($codigo);
-        // print_r(mysqli_insert_id($con));
         $codigo = intval($codigo);
         $codigo+=1;
     }
-    // $consulta = mysqli_query($DB, "SELECT * FROM producto P INNER JOIN detallefactura D on D.codigo=P.codigo INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN usuario U on U.idUsuario=F.idUsuario");
     $tabProd = mysqli_query($DB, "SELECT * FROM producto");
-    $product = mysqli_fetch_array($tabProd);
+    $product = mysqli_fetch_assoc($tabProd);
     $total = $_SESSION['total'];
-    // $inner = mysqli_fetch_array($consulta);
     date_default_timezone_set('America/Bogota');
     $FecHr = date('Y-m-d H:i:s');
     $factura = mysqli_query($DB, "INSERT INTO factura VALUES ('F$codigo','$idUsuario','$FecHr','$total')");
@@ -86,15 +75,9 @@ if(isset($_POST['btnComprar'])){
             }else{
                 $facturita = mysqli_fetch_assoc($consu);
                 $valor = substr($facturita['idDetalle'], 1);
-                // print_r($valor);
                 $valor = intval($valor);
                 $valor+=1;
             }
-            // $tabFactura = mysqli_query($DB, "SELECT f.idFactura FROM factura f WHERE f.idFactura = (SELECT MAX(f.idFactura) FROM factura f) LIMIT 1;");
-            // $facturitaa = mysqli_fetch_assoc($tabFactura);
-            // $tabFactura = mysqli_fetch_array(mysqli_query($DB, "SELECT LAST(idFactura) FROM factura"));
-            // $facturitaa = mysqli_fetch_assoc($tabFactura);
-            // $facTabla = $tabFactura['idFactura'];
             $proTabla = $productos["cantidad"];
             $prodTabla = $productos["codigo"];
             $detalle = mysqli_query($DB, "INSERT INTO detallefactura VALUES ('D$valor','$proTabla','$prodTabla','F$codigo')");

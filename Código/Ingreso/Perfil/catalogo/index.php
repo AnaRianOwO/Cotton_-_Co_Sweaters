@@ -81,10 +81,10 @@ include "añadir.php";
                             <?php foreach($_SESSION['carrito'] as $indice=>$productos){ ?>
                                 <div class="productos">
                                     <tr>
-                                        <td><?php echo $productos['nameProducto'] ?></td>
-                                        <td><?php echo $productos['cantidad'] ?></td>
-                                        <td><?php echo $productos['precio'] ?></td>
-                                        <td><?php echo ($productos['cantidad']*$productos['precio']); ?></td>
+                                        <td><?php echo $productos['nameProducto']; ?></td>
+                                        <td><?php echo $productos['cantidad']; ?></td>
+                                        <td><?php echo "$".$productos['precio']; ?></td>
+                                        <td><?php echo "$".($productos['cantidad']*$productos['precio']); ?></td>
                                     </tr>
                                     <?php $total=$total+($productos['cantidad']*$productos['precio']); 
                                     $_SESSION['total'] = $total;
@@ -95,7 +95,7 @@ include "añadir.php";
                         <tr>
                             <td colspan="3"><center>Total</center></td>
                             <!-- <td><?php //echo number_format($total,2) ?></td> -->
-                            <td><?php echo $total ?></td>
+                            <td><?php echo "$".$total ?></td>
                         </tr>
                         <form action="" method="post">
                             <input type="submit" name="btnVaciar" id="vaciar" value="Vaciar">
