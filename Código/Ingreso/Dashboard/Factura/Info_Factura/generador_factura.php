@@ -1,10 +1,10 @@
 <?php
-    $idFactura= $_GET['idFactura'];
+    //$idFactura= $_GET['idFactura'];
     // Conexion con Base de datos
     include("../../../../DB/db.php");
 	// Conexion con Libreria
     require "./code128.php";
-
+    //require "./fpdf.php";
     
 
     $pdf = new PDF_Code128('P','mm',array(80,258));
@@ -12,10 +12,7 @@
     $pdf->AddPage();
 
 	// Consulta SQL
-	// $consulta = "SELECT P.codigo,P.nameProducto,P.descripcion,U.idUsuario,U.docType,U.firstName,U.secondName,U.surname,U.secondSurname,
-    // U.phone,U.direccion,P.precio,D.cantidad,F.fecha,F.total,F.idFactura FROM factura F INNER JOIN detallefactura D on F.idFactura=D.idFactura 
-    // INNER JOIN producto P on P.codigo=D.codigo INNER JOIN usuario U on F.idUsuario=U.idUsuario WHERE F.idFactura='$idFactura'";
-    $consulta = "SELECT * FROM usuario U INNER JOIN factura F on U.idUsuario=F.idUsuario WHERE F.idFactura='$idFactura'";
+    $consulta = "SELECT * FROM persona P INNER JOIN usuario U on P.id_persona=U.id_persona INNER JOIN factura F on U.idUsuario=F.idUsuario ";
 	$resultado= $DB->query($consulta);
 	$Administrador = mysqli_fetch_assoc($resultado);
 
@@ -59,7 +56,7 @@
     $pdf->SetFont('Arial','B',10);
     $pdf->MultiCell(0,5,utf8_decode("Nombres: ".$Administrador["firstName"]." ".$Administrador["secondName"]),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Apellidos: ".$Administrador["surname"]." ".$Administrador["secondSurname"]),0,'C',false);
-    $pdf->MultiCell(0,5,utf8_decode("Documento: ".$Administrador["idUsuario"]),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("Documento: ".$Administrador["id_persona"]),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Teléfono: ".$Administrador["phone"]),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Direccion: ".$Administrador["direccion"]),0,'C',false);
 
@@ -84,7 +81,7 @@
     $pdf->Cell(72,5,utf8_decode("------------------------------------------------------"),0,0,'C');
     $pdf->Ln(5);
 
-    $elSql = mysqli_query($DB, "SELECT * FROM detallefactura D INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN producto P on P.codigo=D.codigo WHERE F.idFactura='$idFactura'");
+    $elSql = mysqli_query($DB, "SELECT * FROM detallefactura D INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN producto P on P.codigo=D.codigo");
     $datos = 
     $rowss = mysqli_num_rows($elSql);
     if($rowss > 0){
@@ -130,3 +127,4 @@
     
     // Nombre del archivo PDF 
     $pdf->Output("I","Factura_Compra.pdf",true);
+?>    
