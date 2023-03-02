@@ -22,9 +22,9 @@ public function Header()
     $this->Cell(13, 10, 'Codigo', 1, 0, 'C', 0);
     $this->Cell(40, 10, 'Numbre Producto', 1, 0, 'C', 0);
     $this->Cell(25, 10, 'Precio', 1, 0, 'C', 0);
-    $this->Cell(15, 10, 'Stock', 1, 0, 'C', 0);
+    $this->Cell(13, 10, 'Stock', 1, 0, 'C', 0);
     $this->Cell(88, 10, 'Descripcion', 1, 0, 'C', 0);
-    $this->Cell(10, 10, 'Estado', 1, 1, 'C', 0);
+    $this->Cell(12, 10, 'Estado', 1, 1, 'C', 0);
 }
 
 // Pie de página
@@ -52,9 +52,9 @@ while ($row = $resultado->fetch_assoc()){
     $pdf->Cell(13, 10, utf8_decode($row['codigo']), 1, 0, 'C', 0);
     $pdf->Cell(40, 10, utf8_decode($row['nameProducto']), 1, 0, 'C', 0);
     $pdf->Cell(25, 10, utf8_decode('$ '.$row['precio']), 1, 0, 'C', 0);
-    $pdf->Cell(15, 10, utf8_decode($row['stock']), 1, 0, 'C', 0);
+    $pdf->Cell(13, 10, utf8_decode($row['stock']), 1, 0, 'C', 0);
     $pdf->Cell(88, 10, utf8_decode($row['descripcion']), 1, 0, 'C', 0);
-    $pdf->Cell(10, 10, utf8_decode($row['idEstado']), 1, 1, 'C', 0);
+    $pdf->Cell(12, 10, utf8_decode($row['idEstado']), 1, 1, 'C', 0);
 }
 
 $pdf->Output();
