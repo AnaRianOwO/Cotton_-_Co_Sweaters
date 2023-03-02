@@ -9,7 +9,7 @@ if(!isset($_SESSION['idUsuario'])){
     header('Location: ../../index.php');
 
 }
-$consul="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
+$consul="SELECT * FROM persona WHERE id_persona = '$idUsuario'";
 $consult=mysqli_query($DB,$consul);
 
 $sql = mysqli_query($DB,"SELECT * FROM producto");

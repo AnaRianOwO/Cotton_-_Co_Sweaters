@@ -32,7 +32,7 @@ $pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.idUs
                     <th>Fecha</th>
                     <th>Factura</th>
                 </tr>
-                <?php while($data = mysqli_fetch_array($pro)){ ?>
+                <?php foreach ($variable as $key => $value) { ?>
                     <tr>
                         <td><?php echo $data['idFactura']; ?></td>
                         <td><?php echo $data['fecha']; ?></td>
