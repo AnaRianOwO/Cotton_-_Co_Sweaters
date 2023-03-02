@@ -12,13 +12,11 @@ include('../DB/db.php');
     
     if(isset($_POST['btn_login'])){
 
-        $resultado = mysqli_query($DB, $consul);
-        $nr = mysqli_num_rows($resultado);
+        $nr = mysqli_num_rows($consul);
 
-        $buscar_pass = mysqli_fetch_array($resultado);
+        $buscar_pass = mysqli_fetch_array($consul);
 
         if(($nr == 1) && (password_verify($pass, $buscar_pass['pass']))){
-
             header("Location: Dashboard/dashboard.php");
         }else{
             echo "<script>alert('Usuario o contraseña incorrecta');window.location='index.php'</script>";

@@ -7,7 +7,7 @@
     $correo=$_POST['correo'];   
     $pass = $_POST['pass'];
 
-    $consul = mysqli_query($DB,"SELECT * FROM persona WHERE correo = '$correo'");
+    $consul = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN usuario U ON P.id_persona = U.id_persona and P.docType=U.docType WHERE P.correo = '$correo'");
     $data = mysqli_fetch_array($consul);
 
         session_start();
@@ -15,18 +15,16 @@
         $_SESSION['idUsuario'] = $data['id_persona'];
     
     if(isset($_SESSION['idUsuario'])){
-        header("Location: Perfil/catalogo/index.php");
+        header("Location: Perfil/Usu_Per/index.php");
     } else {
         
     }
 
     if(isset($_POST['btn_login'])){
 
-        $query_login = "SELECT * FROM persona WHERE correo = '$correo'";
-        $resultado = mysqli_query($DB, $query_login);
-        $nr = mysqli_num_rows($resultado);
+        $nr = mysqli_num_rows($consul);
 
-        $buscar_pass = mysqli_fetch_array($resultado);
+        $buscar_pass = mysqli_fetch_array($consul);
 
         if(($nr == 1) && (password_verify($pass, $buscar_pass['pass']))){
             header("Location: Perfil/Usu_Per/index.php");
