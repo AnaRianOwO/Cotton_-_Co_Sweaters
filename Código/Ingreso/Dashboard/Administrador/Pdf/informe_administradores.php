@@ -45,7 +45,7 @@ public function Footer()
 }
 
 require_once ('../../../../DB/db.php');
-$consulta = "SELECT * FROM administrador";
+$consulta = "SELECT * FROM persona P INNER JOIN administrador A on P.id_persona=A.id_persona";
 $resultado =$DB->query($consulta);
 
 $pdf = new PDF();
@@ -54,7 +54,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',7);
 
 while ($row = $resultado->fetch_assoc()){
-    $pdf->Cell(25, 10, utf8_decode($row['idAdministrador']), 1, 0, 'C', 0);
+    $pdf->Cell(25, 10, utf8_decode($row['id_persona']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['firstName']), 1, 0, 'C', 0);
     $pdf->Cell(25, 10, utf8_decode($row['secondName']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['surname']), 1, 0, 'C', 0);
