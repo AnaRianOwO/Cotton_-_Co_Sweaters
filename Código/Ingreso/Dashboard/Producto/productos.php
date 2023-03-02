@@ -163,8 +163,7 @@ $row=mysqli_fetch_array($query);
                   </thead>
                   <tbody>
                     <?php            
-                        $consulta="SELECT P.codigo, P.nameProducto, P.precio, P.stock, P.descripcion, P.imagen, E.nameEstado 
-                        FROM producto P INNER JOIN estado E ON P.idEstado=E.idEstado;"; 
+                        $consulta="SELECT * FROM producto P;"; 
 
                         $resultado = mysqli_query($DB, $consulta);
                         
@@ -178,7 +177,7 @@ $row=mysqli_fetch_array($query);
                                     <th><?php echo $data['stock'] ?></th>
                                     <th><?php echo $data['descripcion'] ?></th>
                                     <th><img height="50px" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></td>
-                                    <td><?php echo $data['nameEstado'] ?></th>
+                                    <td><?php echo $data['idEstado'] ?></th>
                                     <td>
                                         <a href="Tablas/actualizar.php?codigo=<?php echo $data['codigo'] ?>" class="btn btn-info"><i class="fa-solid fa-arrows-rotate"></i></a>
 

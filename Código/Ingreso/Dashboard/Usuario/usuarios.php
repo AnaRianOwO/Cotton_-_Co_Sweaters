@@ -168,9 +168,7 @@ $row=mysqli_fetch_array($query);
                   </thead>
                   <tbody>
                   <?php
-                            $SQL="SELECT U.idUsuario, U.docType, U.firstName, U.secondName, U.surname,
-                            U.secondSurname, U.indicativo, U.phone, U.correo, U.direccion, C.nameCiudad, 
-                            E.nameEstado FROM usuario U INNER JOIN ciudad C ON U.idCiudad=C.idCiudad INNER JOIN     estado E On E.idEstado=U.idEstado;"; 
+                            $SQL="SELECT * FROM usuario U INNER JOIN persona P ON U.id_persona=P.id_persona INNER JOIN ciudad C on P.idCiudad=C.idCiudad"; 
 
                             $dato = mysqli_query($DB, $SQL);
 
@@ -178,7 +176,7 @@ $row=mysqli_fetch_array($query);
                               while($fila=mysqli_fetch_array($dato)){
                           ?>
                     <tr>
-                      <th><?php echo $fila['idUsuario']?></th>
+                      <th><?php echo $fila['id_persona']?></th>
                         <th><?php echo $fila['docType']?></th>
                         <th><?php echo $fila['firstName']?></th>
                         <th><?php echo $fila['secondName']?></th>
@@ -189,7 +187,7 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['correo']?></th>
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['nameCiudad']?></th>
-                        <th><?php echo $fila['nameEstado']?></th>
+                        <th><?php echo $fila['idEstado']?></th>
                         <td>
                           <!-- <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php //echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
 

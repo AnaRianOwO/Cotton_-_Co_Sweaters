@@ -19,18 +19,18 @@ header("Expires: 0");
         	<th>indicativo</th>
         	<th>celular</th>
         	<th>correo</th>
-        	<th>direccion</th>
         	<th>Ciudad</th>
-        	<th>Estado</th>
+			<th>Estado</th>
     	</tr>
 	</thead>
 <tbody>
 
 <?php
    
-$SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
-A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
-E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;";
+//$SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
+//A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
+//E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;";
+$SQL="SELECT * FROM administrador A INNER JOIN persona P ON P.id_persona=A.id_persona INNER JOIN ciudad C ON P.idCiudad=C.idCiudad";
 $dato = mysqli_query($DB, $SQL);
 
 if($dato -> num_rows >0){
@@ -38,7 +38,7 @@ while($fila=mysqli_fetch_array($dato)){
 
 ?>
 <tr>
-	<td><?php echo $fila['idAdministrador']; ?></td>
+	<td><?php echo $fila['id_persona']; ?></td>
 	<td><?php echo utf8_decode($fila['docType']); ?></td>
 	<td><?php echo utf8_decode($fila['firstName']); ?></td>
 	<td><?php echo utf8_decode($fila['secondName']); ?></td>
@@ -47,9 +47,8 @@ while($fila=mysqli_fetch_array($dato)){
 	<td><?php echo $fila['indicativo']; ?></td>
 	<td><?php echo $fila['phone']; ?></td>
 	<td><?php echo utf8_decode($fila['correo']); ?></td>
-	<td><?php echo utf8_decode($fila['direccion']); ?></td>
 	<td><?php echo utf8_decode($fila['nameCiudad']); ?></td>
-	<td><?php echo utf8_decode($fila['nameEstado']); ?></td>
+	<td><?php echo utf8_decode($fila['idEstado']); ?></td>
 </tr>
 <?php
 }

@@ -23,8 +23,7 @@ header("Expires: 0");
 
 <?php
                
-$consulta= "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, 
-u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;";
+$consulta= "SELECT * FROM factura F INNER JOIN usuario U ON U.idUsuario = F.idUsuario INNER JOIN persona P on U.id_persona = P.id_persona;";
 $dato = mysqli_query($DB, $consulta);
 
 if($dato -> num_rows >0){
