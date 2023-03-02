@@ -9,7 +9,8 @@ if(!isset($_SESSION['idUsuario'])){
     header('Location: ../../index.php');
 
 }
-$tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM usuario WHERE idUsuario = '$idUsuario'"));
+
+$tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_persona = '$idUsuario'"));
 
 ?>
 <!DOCTYPE html>

@@ -58,7 +58,7 @@
             ('$id_persona','$docType','$name','$secondName','$surname','$secondSurname',
             '$indicativo','$phone','$correo','$pass_cifrada','1','$idCiudad')";
 
-            $query_usuario = "INSERT INTO usuario VALUES ('U$indice','$direccion','$id_persona')";
+            $query_usuario = "INSERT INTO usuario VALUES ('U$indice','$direccion','$id_persona','$docType')";
             
 
             $resultado_persona = $DB->query($query_persona);

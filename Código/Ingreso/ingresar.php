@@ -7,12 +7,12 @@
     $correo=$_POST['correo'];   
     $pass = $_POST['pass'];
 
-    $consul = mysqli_query($DB,"SELECT * FROM usuario WHERE correo = '$correo'");
+    $consul = mysqli_query($DB,"SELECT * FROM persona WHERE correo = '$correo'");
     $data = mysqli_fetch_array($consul);
 
         session_start();
 
-        $_SESSION['idUsuario'] = $data['idUsuario'];
+        $_SESSION['idUsuario'] = $data['id_persona'];
     
     if(isset($_SESSION['idUsuario'])){
         header("Location: Perfil/catalogo/index.php");
@@ -22,7 +22,7 @@
 
     if(isset($_POST['btn_login'])){
 
-        $query_login = "SELECT * FROM usuario WHERE correo = '$correo'";
+        $query_login = "SELECT * FROM persona WHERE correo = '$correo'";
         $resultado = mysqli_query($DB, $query_login);
         $nr = mysqli_num_rows($resultado);
 
