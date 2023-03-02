@@ -9,10 +9,12 @@
 
     $consul = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN usuario U ON P.id_persona = U.id_persona and P.docType=U.docType WHERE P.correo = '$correo'");
     $data = mysqli_fetch_array($consul);
+    // $exist = mysqli_num_rows($consul);
 
         session_start();
 
         $_SESSION['idUsuario'] = $data['id_persona'];
+        $_SESSION['docType'] = $data['docType'];
     
     if(isset($_SESSION['idUsuario'])){
         header("Location: Perfil/Usu_Per/index.php");

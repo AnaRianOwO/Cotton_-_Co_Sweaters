@@ -3,7 +3,7 @@ include '../../../DB/db.php';
 session_start();
 $idUsuario = $_SESSION['idUsuario'];
 
-$pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.idUsuario=F.idUsuario INNER JOIN persona P ON P.id_persona=U.id_persona WHERE U.idUsuario = 'U1';");
+$pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.idUsuario=F.idUsuario INNER JOIN persona P ON P.id_persona=U.id_persona WHERE U.idUsuario = '$idUsuario';");
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.idUs
                     <th>Fecha</th>
                     <th>Factura</th>
                 </tr>
-                <?php foreach ($variable as $key => $value) { ?>
+                <?php while($data = mysqli_fetch_array($pro)){ ?>
                     <tr>
                         <td><?php echo $data['idFactura']; ?></td>
                         <td><?php echo $data['fecha']; ?></td>

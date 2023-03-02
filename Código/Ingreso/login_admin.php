@@ -9,6 +9,7 @@ include('../DB/db.php');
 
         session_start();
         $_SESSION['idAdministrador'] = $data['id_persona'];
+        $_SESSION['docType'] = $data['docType'];
     
     if(isset($_POST['btn_login'])){
 
