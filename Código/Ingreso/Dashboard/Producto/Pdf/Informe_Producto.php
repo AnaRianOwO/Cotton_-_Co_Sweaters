@@ -23,8 +23,7 @@ public function Header()
     $this->Cell(50, 10, 'Numbre Producto', 1, 0, 'C', 0);
     $this->Cell(25, 10, 'Precio', 1, 0, 'C', 0);
     $this->Cell(15, 10, 'Stock', 1, 0, 'C', 0);
-    $this->Cell(70, 10, 'Descripcion', 1, 0, 'C', 0);
-    $this->Cell(15, 10, 'Estado', 1, 1, 'C', 0);
+    $this->Cell(85, 10, 'Descripcion', 1, 1, 'C', 0);
 }
 
 // Pie de página
@@ -40,7 +39,7 @@ public function Footer()
 }
 
 require_once ('../../../../DB/db.php');
-$SQL="SELECT * FROM producto P INNER JOIN estado E On E.idEstado=P.idEstado;";
+$SQL="SELECT * FROM producto P;";
 $resultado =$DB->query($SQL);
 
 $pdf = new PDF();
@@ -53,8 +52,7 @@ while ($row = $resultado->fetch_assoc()){
     $pdf->Cell(50, 10, utf8_decode($row['nameProducto']), 1, 0, 'C', 0);
     $pdf->Cell(25, 10, utf8_decode('$ '.$row['precio']), 1, 0, 'C', 0);
     $pdf->Cell(15, 10, utf8_decode($row['stock']), 1, 0, 'C', 0);
-    $pdf->Cell(70, 10, utf8_decode($row['descripcion']), 1, 0, 'C', 0);
-    $pdf->Cell(15, 10, utf8_decode($row['nameEstado']), 1, 1, 'C', 0);
+    $pdf->Cell(85, 10, utf8_decode($row['descripcion']), 1, 1, 'C', 0);
 }
 
 $pdf->Output();
