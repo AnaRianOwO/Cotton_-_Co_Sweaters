@@ -3,8 +3,7 @@ include '../../../DB/db.php';
 session_start();
 $idUsuario = $_SESSION['idUsuario'];
 
-$sqli = mysqli_query($DB, "SELECT * FROM usuario");
-$pro = mysqli_query($DB, "SELECT F.idFactura,F.fecha FROM usuario U INNER JOIN factura F on U.idUsuario=F.idUsuario WHERE F.idUsuario = '$idUsuario';");
+$pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.idUsuario=F.idUsuario INNER JOIN persona P ON P.id_persona=U.id_persona WHERE U.idUsuario = '$idUsuario';");
 
 ?>
 <!DOCTYPE html>

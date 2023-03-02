@@ -9,6 +9,7 @@ include('../DB/db.php');
 
         session_start();
         $_SESSION['idAdministrador'] = $data['id_persona'];
+        $_SESSION['docType'] = $data['docType'];
     
     if(isset($_POST['btn_login'])){
 
@@ -17,7 +18,6 @@ include('../DB/db.php');
         //$buscar_pass = mysqli_fetch_array($consul);
 
         if(($nr == 1) && (password_verify($pass, $data['pass']))){
-
             header("Location: Dashboard/dashboard.php");
         }else{
             echo "

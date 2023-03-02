@@ -22,7 +22,7 @@ header("Expires: 0");
 
 <?php
                
-$SQL="SELECT * FROM producto P INNER JOIN estado E On E.idEstado=P.idEstado;";
+$SQL="SELECT * FROM producto P;";
 $dato = mysqli_query($DB, $SQL);
 
 if($dato -> num_rows >0){
@@ -35,7 +35,7 @@ while($fila=mysqli_fetch_array($dato)){
 	<td><?php echo utf8_decode('$ '.$fila['precio']); ?></td>
 	<td><?php echo utf8_decode($fila['stock']); ?></td>
 	<td><?php echo utf8_decode($fila['descripcion']); ?></td>
-	<td><?php echo utf8_decode($fila['nameEstado']); ?></td>
+	<td><?php echo utf8_decode($fila['idEstado']); ?></td>
 </tr>
 <?php
 }

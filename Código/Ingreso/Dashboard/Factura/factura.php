@@ -167,7 +167,7 @@ $row=mysqli_fetch_array($query);
                   </thead>
                   <tbody>
                   <?php              
-                            $SQL="SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;"; 
+                            $SQL="SELECT * FROM persona P INNER JOIN usuario U on U.id_persona=P.id_persona INNER JOIN factura F ON U.idUsuario = F.idUsuario;"; 
                             $dato = mysqli_query($DB, $SQL);
 
                             if($dato -> num_rows >0){
@@ -175,7 +175,7 @@ $row=mysqli_fetch_array($query);
                           ?>
                     <tr>
                       <th><?php echo $fila['idFactura']?></th>
-                        <th><?php echo $fila['idUsuario']?></th>
+                        <th><?php echo $fila['id_persona']?></th>
                         <th><?php echo $fila['firstName']." ".$fila['secondName']." ".$fila['surname']." ".$fila ['secondSurname']?></th>
                         <th><?php echo $fila['phone']?></th>
                         <th><?php echo $fila['direccion']?></th>

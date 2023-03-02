@@ -4,13 +4,14 @@ require_once ("../../../DB/db.php");
 session_start();
 
 $idUsuario = $_SESSION['idUsuario'];
+$docType = $_SESSION['docType'];
 
 if(!isset($_SESSION['idUsuario'])){
     header('Location: ../../index.php');
 
 }
 
-$tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_persona = '$idUsuario'"));
+$tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_persona = '$idUsuario' and docType = '$docType'"));
 
 ?>
 <!DOCTYPE html>
