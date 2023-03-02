@@ -19,15 +19,15 @@ function Header()
     $this->Ln(20);
     
     $this->SetFont('Arial','B',7);
-    $this->Cell(28, 10, 'Numero Documento', 1, 0, 'C', 0);
+    $this->Cell(25, 10, 'Numero Documento', 1, 0, 'C', 0);
     $this->Cell(20, 10, 'Primer Nombre', 1, 0, 'C', 0);
-    $this->Cell(25, 10, 'Segundo Nombre', 1, 0, 'C', 0);
+    $this->Cell(23, 10, 'Segundo Nombre', 1, 0, 'C', 0);
     $this->Cell(20, 10, 'Primer Apellido', 1, 0, 'C', 0);
     $this->Cell(25, 10, 'Segundo Apellido', 1, 0, 'C', 0);
-    $this->Cell(15, 10, 'Indicativo', 1, 0, 'C', 0);
+    $this->Cell(13, 10, 'Indicativo', 1, 0, 'C', 0);
     $this->Cell(20, 10, 'Celular', 1, 0, 'C', 0);
-    $this->Cell(40, 10, 'Correo', 1, 1, 'C', 0);
-    //$this->Cell(30, 10, 'Clave', 1, 1, 'C', 0);
+    $this->Cell(35, 10, 'Correo', 1, 0, 'C', 0);
+    $this->Cell(10, 10, 'Estado', 1, 1, 'C', 0);
 }
 
 // Pie de página
@@ -43,7 +43,7 @@ function Footer()
 }
 
 require ('../../../../DB/db.php');
-$consulta = "SELECT * FROM usuario";
+$consulta = "SELECT * FROM usuario U INNER JOIN persona P on U.id_persona=P.id_persona";
 $resultado =$DB->query($consulta);
 
 $pdf = new PDF();
@@ -52,15 +52,15 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',8);
 
 while ($row = $resultado->fetch_assoc()){
-    $pdf->Cell(28, 10, utf8_decode($row['idUsuario']), 1, 0, 'C', 0);
+    $pdf->Cell(25, 10, utf8_decode($row['id_persona']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['firstName']), 1, 0, 'C', 0);
-    $pdf->Cell(25, 10, utf8_decode($row['secondName']), 1, 0, 'C', 0);
+    $pdf->Cell(23, 10, utf8_decode($row['secondName']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['surname']), 1, 0, 'C', 0);
     $pdf->Cell(25, 10, utf8_decode($row['secondSurname']), 1, 0, 'C', 0);
-    $pdf->Cell(15, 10, utf8_decode($row['indicativo']), 1, 0, 'C', 0);
+    $pdf->Cell(13, 10, utf8_decode($row['indicativo']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['phone']), 1, 0, 'C', 0);
-    $pdf->Cell(40, 10, utf8_decode($row['correo']), 1, 1, 'C', 0);
-    //$pdf->Cell(30, 10, utf8_decode($row['clave']), 1, 1, 'C', 0);
+    $pdf->Cell(35, 10, utf8_decode($row['correo']), 1, 0, 'C', 0);
+    $pdf->Cell(10, 10, utf8_decode($row['idEstado']), 1, 1, 'C', 0);
 }
 $pdf->Output();
 ?>
