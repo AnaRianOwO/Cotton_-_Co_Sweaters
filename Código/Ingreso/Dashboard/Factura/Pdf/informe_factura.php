@@ -40,8 +40,7 @@ function Footer()
 }
 
 require ('../../../../DB/db.php');
-$consulta= "SELECT f.idFactura, u.idUsuario, u.firstName, u.secondName, u.surname, u.secondSurname, u.phone, 
-u.direccion, f.fecha, f.total FROM factura f INNER JOIN usuario u ON u.idUsuario = f.idUsuario;"; 
+$consulta= "SELECT * FROM persona P INNER JOIN usuario U on U.id_persona=P.id_persona INNER JOIN factura F ON U.idUsuario = F.idUsuario;;"; 
 $resultado =$DB->query($consulta);
 
 $pdf = new PDF();
@@ -51,7 +50,7 @@ $pdf->SetFont('Arial','',7);
 
 while ($row = $resultado->fetch_assoc()){
     $pdf->Cell(20, 10, utf8_decode($row['idFactura']), 1, 0, 'C', 0);
-    $pdf->Cell(20, 10, utf8_decode($row['idUsuario']), 1, 0, 'C', 0);
+    $pdf->Cell(20, 10, utf8_decode($row['id_persona']), 1, 0, 'C', 0);
     $pdf->Cell(45, 10, utf8_decode($row['firstName']." ".$row['secondName']." ".$row['surname']." ".$row['secondSurname']), 1, 0, 'C', 0);
     $pdf->Cell(22, 10, utf8_decode($row['phone']), 1, 0, 'C', 0);
     $pdf->Cell(28, 10, utf8_decode($row['direccion']), 1, 0, 'C', 0);
