@@ -1,5 +1,4 @@
 <?php
-/*require('Xampp/htdocs/reporte-pdf-php/fpdf/fpdf.php');*/
 require('fpdf/fpdf.php');
 
 class PDF extends FPDF

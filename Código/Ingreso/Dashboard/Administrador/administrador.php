@@ -171,9 +171,7 @@ $row=mysqli_fetch_array($query);
                   <tbody>
                   <?php
                             include("../../../DB/db.php");
-                            $SQL="SELECT A.idAdministrador, A.docType, A.firstName, A.secondName, A.surname,
-                            A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
-                            E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado;"; 
+                            $SQL="SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona=P.id_persona INNER JOIN ciudad C On P.idCiudad=C.idCiudad;"; 
 
                             $dato = mysqli_query($DB, $SQL);
 
@@ -181,7 +179,7 @@ $row=mysqli_fetch_array($query);
                               while($fila=mysqli_fetch_array($dato)){
                           ?>
                     <tr>
-                      <th><?php echo $fila['idAdministrador']?></th>
+                      <th><?php echo $fila['id_persona']?></th>
                         <th><?php echo $fila['docType']?></th>
                         <th><?php echo $fila['firstName']?></th>
                         <th><?php echo $fila['secondName']?></th>
@@ -190,9 +188,8 @@ $row=mysqli_fetch_array($query);
                         <th><?php echo $fila['indicativo']?></th>
                         <th><?php echo $fila['phone']?></th>
                         <th><?php echo $fila['correo']?></th>
-                        <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['nameCiudad']?></th>
-                        <th><?php echo $fila['nameEstado']?></th>
+                        <th><?php echo $fila['idEstado']?></th>
                         <td>
                           <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 
