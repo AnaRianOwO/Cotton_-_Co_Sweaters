@@ -4,16 +4,15 @@ include('../DB/db.php');
     $correo=$_POST['correo'];   
     $pass = $_POST['pass'];
 
-    $consul = mysqli_query($DB,"SELECT * FROM administrador WHERE correo = '$correo'");
+    $consul = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN administrador A ON P.id_persona=A.id_persona AND P.docType = A.docType WHERE P.correo = $correo");
     $data = mysqli_fetch_array($consul);
 
         session_start();
-        $_SESSION['idAdministrador'] = $data['idAdministrador'];
+        $_SESSION['idAdministrador'] = $data['id_persona'];
     
     if(isset($_POST['btn_login'])){
 
-        $query_login = "SELECT * FROM administrador WHERE correo = '$correo'";
-        $resultado = mysqli_query($DB, $query_login);
+        $resultado = mysqli_query($DB, $consul);
         $nr = mysqli_num_rows($resultado);
 
         $buscar_pass = mysqli_fetch_array($resultado);
