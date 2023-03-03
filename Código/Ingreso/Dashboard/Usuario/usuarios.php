@@ -4,15 +4,14 @@ require_once ("../../../DB/db.php");
 session_start();
 
 $idAdministrador = $_SESSION['idAdministrador'];
+$docType = $_SESSION['docType'];
 
 if(!isset($_SESSION['idAdministrador'])){
     header('Location: ../../index.php');    
 
 }
-$sql="SELECT * FROM administrador WHERE idAdministrador = '$idAdministrador'";
-$query=mysqli_query($DB,$sql);
-
-$row=mysqli_fetch_array($query);
+$sql = mysqli_query($DB, "SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona AND A.docType = P.docType WHERE A.id_persona = '$idAdministrador' AND A.docType = '$docType'");
+$row = mysqli_fetch_array($sql);
 
 ?>
 
@@ -64,6 +63,7 @@ $row=mysqli_fetch_array($query);
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="images/avatar.png" alt="User Image">
         <div>
           <p class="app-sidebar__user-name"><?php echo $row['firstName'] ?></p>
+          <p class="app-sidebar__user-name"><?php echo $row['surname'] ?></p>
           <p class="app-sidebar__user-designation">Administrador</p>
         </div>
       </div>

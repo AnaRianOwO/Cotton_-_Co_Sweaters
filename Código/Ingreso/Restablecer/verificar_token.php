@@ -5,7 +5,7 @@
     $token = $_POST['token'];
     $codigo = $_POST['codigo'];
 
-    $res = $DB->query("SELECT * FROM passwords where correo = '$correo' and token = '$token' and codigo = '$codigo'") or die($DB->error);
+    $res = $DB->query("SELECT * FROM recuperar_password where correo = '$correo' and token = '$token' and codigo = '$codigo'") or die($DB->error);
 
     $correcto = false;
     if(mysqli_num_rows($res) > 0){

@@ -9,7 +9,7 @@ $descripcion = $_POST['descripcion'];
 $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
 $idEstado = $_POST['idEstado'];
 
-$sql="INSERT INTO producto VALUES('$codigo','$nameProducto','$precio','$stock','$descripcion','$imagen','$idEstado')";
+$sql="INSERT INTO producto VALUES('$codigo','$nameProducto','$precio','$stock','$descripcion','$imagen','1')";
 $query= mysqli_query($DB,$sql);
 
 if($query){

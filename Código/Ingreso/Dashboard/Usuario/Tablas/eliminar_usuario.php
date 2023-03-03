@@ -5,4 +5,5 @@
     $conexion=mysqli_connect("localhost","root","","cotton");
     $consulta= mysqli_query($DB,"DELETE FROM usuario WHERE idUsuario= '$idUsuario'");
 
-    header('Location: ../usuarios.php');   
+    header('Location: ../usuarios.php');
+?>       

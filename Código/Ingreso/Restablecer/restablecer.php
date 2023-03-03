@@ -7,9 +7,28 @@
     include "mail_reset.php"; //Para enviar el correo
      
     if($enviado){
-        $DB->query("insert into passwords(correo, token, codigo) 
+        $DB->query("insert into recuperar_password(correo, token, codigo) 
         values('$correo','$token','$codigo')") or die($DB->error);
-        echo "<script>alert('Verifica tu correo para restablecer tu contraseña');window.location='../index.php'</script>";
+        echo "
+                    .
+                    <html>
+                        <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+                    <html>
+                    <script>
+                        Swal
+                            .fire({
+                                title: 'Ha ocurrido un error',
+                                text: 'Por favor verifique su información',
+                                icon: 'error',
+                                confirmButtonText: 'Continuar'
+                            })
+                            .then(resultado => {
+                                if (resultado.value) {
+                                    window.location='index.php';
+                                }else {    
+                                }
+                            });
+                    </script>;window.location='../index.php'</script>";
     }
 
     

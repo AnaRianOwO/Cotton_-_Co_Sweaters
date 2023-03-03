@@ -3,13 +3,12 @@
 include("../../../../DB/db.php");
 
 $codigo=$_GET['codigo'];
-$sql="SELECT P.codigo, P.nameProducto, P.precio, P.stock, P.descripcion, E.nameEstado 
-FROM producto P INNER JOIN estado E ON P.idEstado=E.idEstado WHERE P.codigo='$codigo'";
+$sql="SELECT * FROM producto ";
 $query=mysqli_query($DB,$sql);
 $row=mysqli_fetch_assoc($query);
 
-$sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($DB,$sqlEstado);
+//$sqlEstado = "SELECT * FROM estado";
+//$resultadoEstado = mysqli_query($DB,$sqlEstado);
 ?>
 
 <!DOCTYPE html>
@@ -37,13 +36,8 @@ $resultadoEstado = mysqli_query($DB,$sqlEstado);
                                 <!--<input type="file" class="form-control mb-3" name="imagen" placeholder="Imagen" value="<?php //echo $row['imagen'] ?>">-->
                                 <select name="idEstado"  required>
                                     <option value="">Seleccione su ciudad</option>
-                                    <?php while($select = $resultadoEstado->fetch_assoc())
-                                            {
-                                                $select['idEstado'] = "'".$select['idEstado']."'";
-                                                echo "<option value=".$select['idEstado']; if ($select['nameEstado']==$row['nameEstado']){ echo "selected"; };
-                                                echo ">".$select['nameEstado']."</option>";
-                                            }
-                                    ?>
+                                    <option value="0">Inactivo</option>
+                                    <option value="1">Activo</option>
                                 </select>
                                 <br><br>
                                 <input type="hidden" name="accion" value="editar_registro">

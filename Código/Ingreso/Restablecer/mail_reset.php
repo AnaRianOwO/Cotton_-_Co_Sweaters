@@ -15,7 +15,7 @@ include "../../DB/db.php";
 try {
 
     $correo;
-    $sql="SELECT * FROM usuario WHERE correo = '$correo'";
+    $sql="SELECT * FROM persona WHERE correo = '$correo'";
     $query=mysqli_query($DB,$sql);
 
     $row=mysqli_fetch_array($query);

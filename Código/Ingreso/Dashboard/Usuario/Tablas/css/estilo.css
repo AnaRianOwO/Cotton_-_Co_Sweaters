@@ -1,5 +1,7 @@
 body{
 	padding-top: 70px;
+	background: linear-gradient(15deg, rgb(255, 140, 140), rgb(255, 206, 141));
+	font-family: 'Times New Roman', Times, serif;
 }
 .btn-primary1 {
     color: #fff;

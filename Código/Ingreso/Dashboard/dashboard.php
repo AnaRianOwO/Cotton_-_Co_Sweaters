@@ -1,18 +1,18 @@
 <?php
 
-include("../../DB/db.php");
+require_once ("../../DB/db.php");
 session_start();
 
 $idAdministrador = $_SESSION['idAdministrador'];
+$docType = $_SESSION['docType'];
 
 if(!isset($_SESSION['idAdministrador'])){
-    header('Location: ../index.php');    
+    header('Location: ../../index.php');    
 
 }
-$sql="SELECT * FROM administrador WHERE idAdministrador = '$idAdministrador'";
-$query=mysqli_query($DB,$sql);
+$sql = mysqli_query($DB, "SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona AND A.docType = P.docType WHERE A.id_persona = '$idAdministrador' AND A.docType = '$docType'");
+$row = mysqli_fetch_array($sql);
 
-$row=mysqli_fetch_array($query);
 
 ?>
 
@@ -65,6 +65,7 @@ $row=mysqli_fetch_array($query);
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="images/avatar.png" alt="User Image">
         <div>
           <p class="app-sidebar__user-name"><?php echo $row['firstName'] ?></p>
+          <p class="app-sidebar__user-name"><?php echo $row['surname'] ?></p>
           <p class="app-sidebar__user-designation">Administrador</p>
         </div>
       </div>
@@ -288,8 +289,8 @@ $row=mysqli_fetch_array($query);
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           <?php
-          $SQL = "SELECT U.firstName, U.surname, count(F.idUsuario) as 'Total compras' FROM usuario U 
-          INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY U.firstName;";
+          $SQL = "SELECT P.firstName, P.surname, count(P.id_persona) as 'Total compras' FROM persona P INNER JOIN usuario U 
+          ON P.id_persona=U.id_persona INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY P.firstName;";
           //$SQL = "SELECT U.firstName, U.surname, count(F.idUsuario) as 'Total compras' FROM usuario U 
           //INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY U.firstName ORDER BY count(F.idUsuario) DESC LIMIT 5";
           $consulta = mysqli_query($DB, $SQL);
