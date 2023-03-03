@@ -1,8 +1,8 @@
 <?php 
     include("../../../../DB/db.php");
 
-    $sql="SELECT *  FROM estado";
-    $query=mysqli_query($DB,$sql);
+    //$sql="SELECT *  FROM estado";
+    //$query=mysqli_query($DB,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,14 +27,6 @@
                         <input type="number" class="form-control mb-3" name="stock" placeholder="Stock">
                         <input type="text" class="form-control mb-3" name="descripcion" placeholder="Descripcion">
                         <input type="file" class="form-control mb-3" name="imagen" id="Img" required>
-                        <select name="idEstado" id="idEstado" required>
-                            <option value="">Seleccione su estado</option>
-                            <?php while($row = $query->fetch_assoc())
-                                {
-                                    echo "<option value=".$row['idEstado'].">".$row['nameEstado']."</option>";
-                                }
-                            ?>
-                        </select>
                         <br><br>
                         <input type="submit" value="Guardar" class="btn btn-primary">
                         <a href="../../Producto/productos.php" class="btn btn-primary">Cancelar</a>
