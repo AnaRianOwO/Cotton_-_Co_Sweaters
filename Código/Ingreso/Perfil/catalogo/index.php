@@ -4,6 +4,7 @@ require_once ("../../../DB/db.php");
 session_start();
 
 $idUsuario = $_SESSION['idUsuario'];
+$docType = $_SESSION['docType'];
 
 if(!isset($_SESSION['idUsuario'])){
     header('Location: ../../index.php');
@@ -33,7 +34,6 @@ include "añadir.php";
 
 <body>
     <div class="cabeza">
-     
         <h1>Bienvenido <?php echo $rows['firstName']; ?> a Cotton & Co Sweaters</h1>
         <input id="searchbar" onkeyup="search_persona()" type="text"
         name="search" placeholder="Search">

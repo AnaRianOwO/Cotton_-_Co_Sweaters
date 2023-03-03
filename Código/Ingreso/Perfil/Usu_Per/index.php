@@ -50,10 +50,6 @@ $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_p
                 <a href="../factura/index.php" class="favorite"><i class="fa-solid fa-file"></i> Factura</a>
                 <a href="direccion.php" name="cerrar" class="cerrar"><i class="fa-sharp fa-solid fa-door-closed "></i></i>  Cerrar</a>
             </div>
-
-            <div class="container-references">
-                <img src="" alt="">
-            </div>
             <div class="redes-sociales">
                 <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
                 <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
