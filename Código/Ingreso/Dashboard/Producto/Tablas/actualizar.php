@@ -6,9 +6,6 @@ $codigo=$_GET['codigo'];
 $sql="SELECT * FROM producto ";
 $query=mysqli_query($DB,$sql);
 $row=mysqli_fetch_assoc($query);
-
-//$sqlEstado = "SELECT * FROM estado";
-//$resultadoEstado = mysqli_query($DB,$sqlEstado);
 ?>
 
 <!DOCTYPE html>

@@ -3,19 +3,12 @@ include("../../../../DB/db.php");
 
 $idAdministrador= $_GET['idAdministrador'];
 
-//$consulta= "SELECT A.docType, A.firstName, A.secondName, A.surname,
-//A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
-//E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado WHERE A.idAdministrador = '$idAdministrador'";
-
 $consulta= "SELECT * FROM administrador A INNER JOIN persona P on A.id_persona=P.id_persona INNER JOIN ciudad C ON P.idCiudad=C.idCiudad WHERE A.idAdministrador = '$idAdministrador'";
 $resultado = mysqli_query($DB, $consulta);
 $administrador = mysqli_fetch_assoc($resultado);
 
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
 $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
-
-//$sqlEstado = "SELECT * FROM estado";
-//$resultadoEstado = mysqli_query($DB, $sqlEstado);
 ?>
 
 <!DOCTYPE html>
