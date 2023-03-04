@@ -166,7 +166,6 @@ $row = mysqli_fetch_array($sql);
                         <th>Indicativo</th>
                         <th>Celular</th>
                         <th>Correo</th>
-                        <th>Direccion</th>
                         <th>Ciudad</th>
                         <th>Estado</th>
                         <td></td>
