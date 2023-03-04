@@ -1,5 +1,5 @@
 <?php
-    //$idFactura= $_GET['idFactura'];
+    $idFactura= $_GET['idFactura'];
     // Conexion con Base de datos
     include("../../../../DB/db.php");
 	// Conexion con Libreria
@@ -12,7 +12,7 @@
     $pdf->AddPage();
 
 	// Consulta SQL
-    $consulta = "SELECT * FROM persona P INNER JOIN usuario U on P.id_persona=U.id_persona INNER JOIN factura F on U.idUsuario=F.idUsuario ";
+    $consulta = "SELECT * FROM persona P INNER JOIN usuario U on P.id_persona=U.id_persona INNER JOIN factura F on U.idUsuario=F.idUsuario where F.idFactura='$idFactura'";
 	$resultado= $DB->query($consulta);
 	$Administrador = mysqli_fetch_assoc($resultado);
 
@@ -27,7 +27,7 @@
     $pdf->Ln(3);
     $pdf->SetFont('Arial','B',10);
     // Datos Empresa
-    $pdf->MultiCell(0,5,utf8_decode("NIT: 900.469.230-6"),0,'C',false);
+    $pdf->MultiCell(0,5,utf8_decode("NIT: 900 469 230-6"),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Direccion: Cra. 10 #37, Bogota"),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Teléfono: +57 314 3767251"),0,'C',false);
     $pdf->MultiCell(0,5,utf8_decode("Email: cottoncosweattt@gmail.com"),0,'C',false);
@@ -81,7 +81,7 @@
     $pdf->Cell(72,5,utf8_decode("------------------------------------------------------"),0,0,'C');
     $pdf->Ln(5);
 
-    $elSql = mysqli_query($DB, "SELECT * FROM detallefactura D INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN producto P on P.codigo=D.codigo");
+    $elSql = mysqli_query($DB, "SELECT * FROM detallefactura D INNER JOIN factura F on F.idFactura=D.idFactura INNER JOIN producto P on P.codigo=D.codigo where F.idFactura='$idFactura'");
     $datos = 
     $rowss = mysqli_num_rows($elSql);
     if($rowss > 0){
