@@ -11,6 +11,9 @@ if(!isset($_SESSION['idAdministrador'])){
 }
 $sql = mysqli_query($DB, "SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona AND A.docType = P.docType WHERE A.id_persona = '$idAdministrador' AND A.docType = '$docType'");
 $row = mysqli_fetch_array($sql);
+
+
+  $factura = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM factura F INNER JOIN usuario U ON F.idUsuario=U.idUsuario INNER JOIN persona P ON P.id_persona=U.id_persona;"));
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +30,8 @@ $row = mysqli_fetch_array($sql);
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <!-- Font-icon css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/be71717483.js" crossorigin="anonymous"></script>
   </head>
@@ -171,7 +176,7 @@ $row = mysqli_fetch_array($sql);
                   <tbody>
                   <?php
                             include("../../../DB/db.php");
-                            $SQL="SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona=P.id_persona INNER JOIN ciudad C On P.idCiudad=C.idCiudad;"; 
+                            $SQL="SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona=P.id_persona INNER JOIN ciudad C ON C.idCiudad=P.idCiudad"; 
 
                             $dato = mysqli_query($DB, $SQL);
 
@@ -188,11 +193,12 @@ $row = mysqli_fetch_array($sql);
                         <th><?php echo $fila['indicativo']?></th>
                         <th><?php echo $fila['phone']?></th>
                         <th><?php echo $fila['correo']?></th>
-                        <th><?php echo $fila['nameCiudad']?></th>
+                        <th><?php echo $fila['direccion']?></th>
+                        <th><?php echo $fila['ciudad']?></th>
                         <th><?php echo $fila['idEstado']?></th>
                         <td>
-                          <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
-
+                          <a class="btn btn-warning" href="?idAdministrador=<?php echo $fila['idAdministrador']; ?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <!-- <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php //echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
                           <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?idAdministrador=<?php  echo $fila['idAdministrador']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
@@ -262,8 +268,45 @@ $row = mysqli_fetch_array($sql);
 
   </script> 
 
+  <!-- ------------------------------ VENTANA MODAL --------------------- -->
 
-  </body>
+<div class="Ventana-modal">
+  <?php $idAdministrado = $_GET['idAdministrador'];
+  $consul = mysqli_fetch_array(mysqli_query($DB,"SELECT * FROM persona P INNER JOIN administrador A ON A.id_persona=P.id_persona WHERE A.idAdministardor='$idAdministrado'"));
+  ?>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Perfil de usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form action="update.php" method="post">
+        <div class="modal-body">
+            <h6>Nombre</h6>
+            <input type="text" class="form-control" name="nombre" value="<?php echo $consul['firstName']; ?>">
+            <br>
+            <h6>Apellido</h6>
+            <input type="text" class="form-control" name="apellido" value="<?php echo $dataUser['apellido']; ?>">
+            <br>
+            <h6>Edad</h6>
+            <input type="text" class="form-control" name="edad" value="<?php echo $dataUser['edad']; ?>">
+            <br>
+            <h6>Correo</h6>
+            <input type="text" class="form-control" name="correo" value="<?php echo $dataUser['correo']; ?>">
+            <br>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" value="Actualizar" class="btn btn-primary">
+        </div>
+    </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+</body>
 <!--=================================Modal===============================-->
 <script>
 

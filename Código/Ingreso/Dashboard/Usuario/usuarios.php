@@ -191,7 +191,7 @@ $row = mysqli_fetch_array($sql);
                         <td>
                           <!-- <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php //echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
 
-                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php
@@ -224,6 +224,41 @@ $row = mysqli_fetch_array($sql);
     <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
+
+
+  <!-- ---------------- VENTANA MODAL ----------------- -->
+  <div class="Ventana-modal">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Perfil de usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="update.php" method="post">
+                <div class="modal-body">
+                    <h6>Nombre</h6>
+                    <input type="text" class="form-control" name="nombre" value="<?php echo $dataUser['nombre']; ?>">
+                    <br>
+                    <h6>Apellido</h6>
+                    <input type="text" class="form-control" name="apellido" value="<?php echo $dataUser['apellido']; ?>">
+                    <br>
+                    <h6>Edad</h6>
+                    <input type="text" class="form-control" name="edad" value="<?php echo $dataUser['edad']; ?>">
+                    <br>
+                    <h6>Correo</h6>
+                    <input type="text" class="form-control" name="correo" value="<?php echo $dataUser['correo']; ?>">
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Actualizar" class="btn btn-primary">
+                </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
 
 
   </body>

@@ -233,7 +233,7 @@ form .error-activo {
     top: 23px;
 }
 
-@media screen and (max-width: 962px) {
+@media screen and (max-width: 962px) and (min-width: 669px) {
     
     body {
         display: flex;
@@ -533,5 +533,26 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
     }
     100%{
         transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 668) {
+    body{
+        background: red !important;
+    }
+    form,
+    .form-movimiento {
+        margin: 5px auto;
+        border-radius: 50px;
+        margin-block-end: 0;
+        overflow: hidden;
+    }
+    .form-movimiento {
+        transform: none;
+    }
+
+    .tapa,
+    .banner_img {
+        display: none;
     }
 }

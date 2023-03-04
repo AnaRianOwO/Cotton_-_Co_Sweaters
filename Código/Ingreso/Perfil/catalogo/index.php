@@ -34,6 +34,7 @@ include "añadir.php";
 
 <body>
     <div class="cabeza">
+        <a href="../Usu_Per/index.php"><i class="fa-solid fa-person-walking-arrow-right" style="font-size: 40px;margin: 0 0 0 20px !important;cursor: pointer;text-decoration: none;"></i></a>
         <h1>Bienvenido <?php echo $rows['firstName']; ?> a Cotton & Co Sweaters</h1>
         <input id="searchbar" onkeyup="search_persona()" type="text"
         name="search" placeholder="Search">
@@ -54,7 +55,7 @@ include "añadir.php";
                             <p><?php echo $data['nameProducto']; ?></p>
                             <p><?php echo $data['descripcion'] ?></p>
                             <p><?php echo "$",$data['precio'] ?></p>
-                            <input type="number" name="cantidad" id="cantidad" value="1">    
+                            <input type="number" name="cantidad" id="cantidad" value="1" min="1" max="<?php echo $data['stock'] ?>">    
                             <input type="submit" name="btnAccion" id="añadir" value="Añadir">
                         </div>
                     </form>
