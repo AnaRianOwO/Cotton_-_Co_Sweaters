@@ -14,11 +14,11 @@ header("Expires: 0");
         	<th>Primer Nombre</th>
         	<th>Segundo Nombre</th>
         	<th>Primer Apellido</th>
-        	<th>segundo Apellido</th>
-        	<th>indicativo</th>
-        	<th>celular</th>
-        	<th>correo</th>
-        	<th>direccion</th>
+        	<th>Segundo Apellido</th>
+        	<th>Indicativo</th>
+        	<th>Celular</th>
+        	<th>Correo</th>
+        	<th>Direccion</th>
         	<th>Ciudad</th>
 			<th>Estado</th>
     	</tr>

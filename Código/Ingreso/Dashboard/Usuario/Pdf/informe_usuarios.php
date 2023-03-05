@@ -22,10 +22,10 @@ function Header()
     $this->Cell(20, 10, 'Primer Nombre', 1, 0, 'C', 0);
     $this->Cell(23, 10, 'Segundo Nombre', 1, 0, 'C', 0);
     $this->Cell(20, 10, 'Primer Apellido', 1, 0, 'C', 0);
-    $this->Cell(25, 10, 'Segundo Apellido', 1, 0, 'C', 0);
+    $this->Cell(23, 10, 'Segundo Apellido', 1, 0, 'C', 0);
     $this->Cell(13, 10, 'Indicativo', 1, 0, 'C', 0);
     $this->Cell(20, 10, 'Celular', 1, 0, 'C', 0);
-    $this->Cell(35, 10, 'Correo', 1, 0, 'C', 0);
+    $this->Cell(37, 10, 'Correo', 1, 0, 'C', 0);
     $this->Cell(10, 10, 'Estado', 1, 1, 'C', 0);
 }
 
@@ -55,10 +55,10 @@ while ($row = $resultado->fetch_assoc()){
     $pdf->Cell(20, 10, utf8_decode($row['firstName']), 1, 0, 'C', 0);
     $pdf->Cell(23, 10, utf8_decode($row['secondName']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['surname']), 1, 0, 'C', 0);
-    $pdf->Cell(25, 10, utf8_decode($row['secondSurname']), 1, 0, 'C', 0);
+    $pdf->Cell(23, 10, utf8_decode($row['secondSurname']), 1, 0, 'C', 0);
     $pdf->Cell(13, 10, utf8_decode($row['indicativo']), 1, 0, 'C', 0);
     $pdf->Cell(20, 10, utf8_decode($row['phone']), 1, 0, 'C', 0);
-    $pdf->Cell(35, 10, utf8_decode($row['correo']), 1, 0, 'C', 0);
+    $pdf->Cell(37, 10, utf8_decode($row['correo']), 1, 0, 'C', 0);
     $pdf->Cell(10, 10, utf8_decode($row['idEstado']), 1, 1, 'C', 0);
 }
 $pdf->Output();
