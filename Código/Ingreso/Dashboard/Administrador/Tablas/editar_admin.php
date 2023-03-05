@@ -3,17 +3,12 @@ include("../../../../DB/db.php");
 
 $idAdministrador= $_GET['idAdministrador'];
 
-$consulta= "SELECT A.docType, A.firstName, A.secondName, A.surname,
-A.secondSurname, A.indicativo, A.phone, A.correo, A.direccion, C.nameCiudad, 
-E.nameEstado FROM administrador A INNER JOIN ciudad C ON A.idCiudad=C.idCiudad INNER JOIN estado E On E.idEstado=A.idEstado WHERE A.idAdministrador = '$idAdministrador'";
+$consulta= "SELECT * FROM administrador A INNER JOIN persona P on A.id_persona=P.id_persona INNER JOIN ciudad C ON P.idCiudad=C.idCiudad WHERE A.idAdministrador = '$idAdministrador'";
 $resultado = mysqli_query($DB, $consulta);
 $administrador = mysqli_fetch_assoc($resultado);
 
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
 $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
-
-$sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($DB, $sqlEstado);
 ?>
 
 <!DOCTYPE html>
@@ -71,11 +66,6 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                                 <label for="correo" class="form-label">Correo</label>
                                 <input type="email"  id="correo" name="correo" class="form-control" placeholder="" value="<?php echo $administrador['correo'];?>" >
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="direccion">Direccion</label><br>
-                                <input type="text" name="direccion" id="direccion" class="form-control" value="<?php echo $administrador['direccion'];?>" required> 
-                            </div>
 
                             <div class="form-group">
                             <label for="idCiudad">Ciudad</label><br>
@@ -93,15 +83,10 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
 
                             <div class="form-group">
                                 <label for="nameEstado">Estado</label><br>
-                                <select name="idEstado" id="idEstado">
-                                    <option value="">Seleccione su estado</option>
-                                    <?php while($row = $resultadoEstado->fetch_assoc())
-                                            {
-                                                $row['idEstado'] = "'".$row['idEstado']."'";
-                                                echo "<option value=".$row['idEstado']; if ($row['nameEstado']==$administrador['nameEstado']){ echo "selected"; };
-                                                echo ">".$row['nameEstado']."</option>";
-                                            }
-                                    ?>
+                                <select name="idEstado"  required>
+                                    <option value="">Seleccione estado</option>
+                                    <option value="0">Inactivo</option>
+                                    <option value="1">Activo</option>
                                 </select>
                             </div>
                                 

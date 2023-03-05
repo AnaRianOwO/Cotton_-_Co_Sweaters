@@ -3,9 +3,6 @@ require_once ("../../../../DB/db.php");
 
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
 $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
-
-$sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($DB, $sqlEstado);
 ?>
 
 <!DOCTYPE html>

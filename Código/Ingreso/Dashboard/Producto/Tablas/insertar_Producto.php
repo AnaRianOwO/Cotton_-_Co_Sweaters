@@ -1,8 +1,5 @@
 <?php 
     include("../../../../DB/db.php");
-
-    //$sql="SELECT *  FROM estado";
-    //$query=mysqli_query($DB,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
