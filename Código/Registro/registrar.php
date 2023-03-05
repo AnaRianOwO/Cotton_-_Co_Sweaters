@@ -7,7 +7,7 @@
 
         $id_persona = mysqli_real_escape_string($DB, $_POST['idUsuario']);
         $docType = mysqli_real_escape_string($DB, $_POST['docType']);
-        $name = mysqli_real_escape_string($DB, $_POST['Name']);
+        $firstName = mysqli_real_escape_string($DB, $_POST['Name']);
         $secondName = mysqli_real_escape_string($DB, $_POST['secondName']);
         $surname = mysqli_real_escape_string($DB, $_POST['surname']);
         $secondSurname = mysqli_real_escape_string($DB, $_POST['secondSurname']);
@@ -18,7 +18,7 @@
         $pass = mysqli_real_escape_string($DB, $_POST['pass']);
         $idCiudad = mysqli_real_escape_string($DB, $_POST['idCiudad']);
         $pass_cifrada = password_hash($pass, PASSWORD_DEFAULT);
-        $sql_user = "SELECT id_persona, docType FROM persona WHERE id_persona = '$idUsuario' and docType  = '$docType'";
+        $sql_user = "SELECT id_persona, docType FROM persona WHERE id_persona = '$id_person' and docType  = '$docType'";
         $resultado_user = $DB->query($sql_user);
         $filas = $resultado_user->num_rows;
         if ($filas > 0) {
