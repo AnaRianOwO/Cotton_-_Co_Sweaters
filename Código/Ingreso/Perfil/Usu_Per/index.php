@@ -13,6 +13,8 @@ if(!isset($_SESSION['idUsuario'])){
 
 $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_persona = '$idUsuario' and docType = '$docType'"));
 
+$perfil = mysqli_query($DB,"SELECT * FROM factura F INNER JOIN usuario U ON F.idUsuario=U.idUsuario INNER JOIN persona P ON U.id_persona=P.id_persona WHERE P.id_persona = '$idUsuario' AND P.docType = '$docType'");
+$datos = mysqli_fetch_array($perfil);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +23,8 @@ $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_p
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Perfil de usuario Cotton & Co Sweaters</title>
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
@@ -45,8 +49,10 @@ $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_p
                 
             </div>
             <div class="perfil-usuario-footer">
-                <a href="../perfil.php" class="user"> <i class="fa-solid fa-user"></i> Perfil</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="user"> <i class="fa-solid fa-user"></i> Perfil</a>
+                <!-- <a href="../perfil.php" class="user"> <i class="fa-solid fa-user"></i> Perfil</a> -->
                 <a href="../catalogo" class="bolso"><i class="fa-solid fa-bag-shopping "></i>  Compras</a>
+                <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="favorite"><i class="fa-solid fa-file"></i> Factura</a> -->
                 <a href="../factura/index.php" class="favorite"><i class="fa-solid fa-file"></i> Factura</a>
                 <a href="direccion.php" name="cerrar" class="cerrar"><i class="fa-sharp fa-solid fa-door-closed "></i></i>  Cerrar</a>
             </div>
@@ -57,7 +63,92 @@ $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_p
             </div>
         </div>
     </section>
+    
+    <div class="Ventana-modal">
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Perfil de usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="update.php" method="post">
+                <div class="modal-body">
+
+                        <h6>Nombre</h6>
+                        <input type="text" class="form-control" name="nombre" value="<?php echo $dataUser['nombre']; ?>">
+                        <br>
+                        <h6>Apellido</h6>
+                        <input type="text" class="form-control" name="apellido" value="<?php echo $dataUser['apellido']; ?>">
+                        <br>
+                        <h6>Edad</h6>
+                        <input type="text" class="form-control" name="edad" value="<?php echo $dataUser['edad']; ?>">
+                        <br>
+                        <h6>Correo</h6>
+                        <input type="text" class="form-control" name="correo" value="<?php echo $dataUser['correo']; ?>">
+                        <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Actualizar" class="btn btn-primary">
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL FACTURA -->
+    
+    <div class="Ventana-modal">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Perfil y actualizacion de datos</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="update.php" method="post">
+                        <div class="modal-body" style="overflow-y: auto !important;">
+                                <h5>Nombres</h5>
+                                <div>
+                                    <input type="text" placeholder="Primer nombre" value="<?php echo $datos['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="text" placeholder="Segundo nombre" value="<?php echo $datos['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                </div>
+                                <h5>apellido</h5>
+                                <div>
+                                    <input type="text" placeholder="Primer apellido" value="<?php echo $datos['surname']?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="text" placeholder="Segundo apellido" value="<?php echo $datos['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
+                                </div>
+                                <h5>Correo</h5>
+                                <input type="text" placeholder="Correo" value="<?php echo $datos['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <h5>Contacto</h5>
+                                <div>
+                                    <input type="" placeholder="Indicativo" value="<?php echo $datos['indicativo'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
+                                    <input type="" placeholder="Numero" value="<?php echo $datos['phone'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                </div>
+                                <h5>Dirección</h5>
+                                <input type="" placeholder="Dirección" value="<?php echo $datos['direccion'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <h5>Ciudad</h5>
+                                <select name="" id="">
+                                    <option value="">Bogota</option>
+                                    <option value="">Chapinero</option>
+                                </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" value="Actualizar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    const modo
+</script>
 
 </html>

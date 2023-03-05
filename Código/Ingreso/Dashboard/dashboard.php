@@ -42,6 +42,7 @@ $row = mysqli_fetch_array($sql);
       <!-- Barra de navegación menu-->
       <ul class="app-nav">
         <!-- Menu usuario-->
+        <button id="modo">Modo oscuro</button>
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -350,6 +351,15 @@ $row = mysqli_fetch_array($sql);
         var chart = new google.charts.Bar(document.getElementById('top_x_div'));
         chart.draw(data, options);
       };
+    </script>
+    <script>
+      const modo = document.getElementById('modo').addEventListener('click', function () {
+        const nav = document.querySelector('.app-nav');
+        const body = document.querySelector('body');
+        console.log(body);
+        body.classList.toggle('dark');
+        nav.classList.toggle('dark');
+      });
     </script>
   </body>
 </html>

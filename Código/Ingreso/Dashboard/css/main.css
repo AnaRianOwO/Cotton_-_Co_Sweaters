@@ -11,6 +11,13 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+html{
+  transition: all .7s ease;
+}
+
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -16734,4 +16741,10 @@ be a descendant of the grid when it is being dragged.
 
 .user .user-settings label {
   color: #666;
+}
+
+.dark{
+  background: red !important;
+  color: #fff !important;
+  z-index: 10;
 }
