@@ -80,7 +80,7 @@ if(isset($_POST)){
                             })
                             .then(resultado => {
                                 if (resultado.value) {
-                                    window.location='../Ingreso/index.php';
+                                    window.location='../administrador.php';
                                 }else {    
                                 }
                             });
