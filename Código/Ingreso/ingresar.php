@@ -26,9 +26,9 @@
 
         $nr = mysqli_num_rows($consul);
 
-        $buscar_pass = mysqli_fetch_array($consul);
+        // $buscar_pass = mysqli_fetch_array($consul);
 
-        if(($nr == 1) && (password_verify($pass, $buscar_pass['pass']))){
+        if(($nr == 1) && (password_verify($pass, $data['pass']))){
             header("Location: Perfil/Usu_Per/index.php");
         }else{
             echo "

@@ -43,22 +43,11 @@
                         });
                 </script>";
         }else{
-            $sumar = mysqli_query($DB ,"SELECT * FROM usuario ORDER BY CAST(REPLACE(idUsuario,'U','') as int) DESC LIMIT 1");
-            $rows = mysqli_num_rows($sumar);
-            if(!isset($rows)){
-                $index = 1;
-            }else{
-                $usuario = mysqli_fetch_assoc($sumar);
-                $indice = substr($usuario['idUsuario'], 1);
-                $indice = intval($indice);
-                $indice+=1;
-            }
-
             $query_persona = "INSERT INTO persona VALUES 
             ('$id_persona','$docType','$name','$secondName','$surname','$secondSurname',
             '$indicativo','$phone','$correo','$pass_cifrada','1','$idCiudad')";
 
-            $query_usuario = "INSERT INTO usuario VALUES ('U$indice','$direccion','$id_persona','$docType')";
+            $query_usuario = "INSERT INTO usuario VALUES ('$id_persona','$docType','$direccion')";
             
 
             $resultado_persona = $DB->query($query_persona);
