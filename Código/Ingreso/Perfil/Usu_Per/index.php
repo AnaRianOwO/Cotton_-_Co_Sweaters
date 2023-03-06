@@ -15,6 +15,9 @@ $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_p
 
 $perfil = mysqli_query($DB,"SELECT * FROM factura F INNER JOIN usuario U ON F.idUsuario=U.idUsuario INNER JOIN persona P ON U.id_persona=P.id_persona WHERE P.id_persona = '$idUsuario' AND P.docType = '$docType'");
 $datos = mysqli_fetch_array($perfil);
+
+$ciudadPersona = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN ciudad C ON C.idCiudad=P.idCiudad WHERE P.id_persona= '$idUsuario' AND P.docType = '$docType'");
+$ciu = mysqli_fetch_array($ciudadPersona);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,42 +67,7 @@ $datos = mysqli_fetch_array($perfil);
         </div>
     </section>
     
-    <div class="Ventana-modal">
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Perfil de usuario</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="update.php" method="post">
-                <div class="modal-body">
-
-                        <h6>Nombre</h6>
-                        <input type="text" class="form-control" name="nombre" value="<?php echo $dataUser['nombre']; ?>">
-                        <br>
-                        <h6>Apellido</h6>
-                        <input type="text" class="form-control" name="apellido" value="<?php echo $dataUser['apellido']; ?>">
-                        <br>
-                        <h6>Edad</h6>
-                        <input type="text" class="form-control" name="edad" value="<?php echo $dataUser['edad']; ?>">
-                        <br>
-                        <h6>Correo</h6>
-                        <input type="text" class="form-control" name="correo" value="<?php echo $dataUser['correo']; ?>">
-                        <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" value="Actualizar" class="btn btn-primary">
-                </div>
-            </form>
-            </div>
-        </div>
-        </div>
-    </div>
-
-
+    
     <!-- MODAL FACTURA -->
     
     <div class="Ventana-modal">
@@ -114,32 +82,35 @@ $datos = mysqli_fetch_array($perfil);
                         <div class="modal-body" style="overflow-y: auto !important;">
                                 <h5>Nombres</h5>
                                 <div>
-                                    <input type="text" placeholder="Primer nombre" value="<?php echo $datos['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                    <input type="text" placeholder="Segundo nombre" value="<?php echo $datos['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="text" name="firstName" placeholder="Primer nombre" value="<?php echo $datos['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="text" name="secondName" placeholder="Segundo nombre" value="<?php echo $datos['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
                                 </div>
                                 <h5>apellido</h5>
                                 <div>
-                                    <input type="text" placeholder="Primer apellido" value="<?php echo $datos['surname']?>" style="border: none; border-bottom: 2px solid black;">
-                                    <input type="text" placeholder="Segundo apellido" value="<?php echo $datos['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="text" name="surname" placeholder="Primer apellido" value="<?php echo $datos['surname']?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="text" name="secondSurname" placeholder="Segundo apellido" value="<?php echo $datos['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
                                 </div>
                                 <h5>Correo</h5>
-                                <input type="text" placeholder="Correo" value="<?php echo $datos['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="correo" placeholder="Correo" value="<?php echo $datos['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
                                 <h5>Contacto</h5>
                                 <div>
-                                    <input type="" placeholder="Indicativo" value="<?php echo $datos['indicativo'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
-                                    <input type="" placeholder="Numero" value="<?php echo $datos['phone'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                    <input type="" name="indicativo" placeholder="Indicativo" value="<?php echo $datos['indicativo'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
+                                    <input type="" name="phone" placeholder="Numero" value="<?php echo $datos['phone'] ?>" style="border: none; border-bottom: 2px solid black;">
                                 </div>
                                 <h5>Dirección</h5>
-                                <input type="" placeholder="Dirección" value="<?php echo $datos['direccion'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="" name="direccion" placeholder="Dirección" value="<?php echo $datos['direccion'] ?>" style="border: none; border-bottom: 2px solid black;">
                                 <h5>Ciudad</h5>
-                                <select name="" id="">
-                                    <option value="">Bogota</option>
-                                    <option value="">Chapinero</option>
+                                <select name="ciudad" id="">
+                                    <?php $consult = mysqli_query($DB,"SELECT * FROM ciudad;"); ?>
+                                    <option value="<?php echo $ciu['idCiudad']; ?>"><?php echo $ciu['nameCiudad']; ?></option>
+                                    <?php while($ciudades= mysqli_fetch_array($consult)){ ?>
+                                        <option value="<?php echo $ciudades['idCiudad'];?>"><?php echo $ciudades['nameCiudad'];?></option>
+                                    <?php } ?>
                                 </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" value="Actualizar" class="btn btn-primary">
+                            <input type="submit" name="btnActivar" value="Actualizar" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
