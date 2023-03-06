@@ -4,8 +4,7 @@ include("../../../../DB/db.php");
 $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
 $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
 
-$sqlEstado = "SELECT * FROM estado";
-$resultadoEstado = mysqli_query($DB, $sqlEstado);
+
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +41,9 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                                 <div class="content-select">
                                     <select name="docType" class="content-select" required="" oninvalid="this.setCustomValidity(' Por favor selecciona tu tipo de documento')">
                                     <option>Seleccione tipo de documento</option>
-                                    <option value="Cedula de ciudadania">Cédula de ciudadanía</option>
-                                    <option value="Pasaporte">Pasaporte</option>
-                                    <option value="Cedula de extranjeria">Cédula de extranjería</option>
+                                    <option value="CC">Cédula de ciudadanía</option>
+                                    <option value="PP">Pasaporte</option>
+                                    <option value="CE">Cédula de extranjería</option>
                                     </select>
                                     <!-- <i></i> -->
                                 </div>
@@ -94,17 +93,6 @@ $resultadoEstado = mysqli_query($DB, $sqlEstado);
                                     </select>
                                 </div>
                                 <br>
-                                <div class="form-group">
-                                    <label for="estado" class="form-label">Estado</label>
-                                    <select name="idEstado" id="idEstado" required>
-                                        <option value="">Seleccione su estado</option>
-                                        <?php while($row = $resultadoEstado->fetch_assoc())
-                                            {
-                                                echo "<option value=".$row['idEstado'].">".$row['nameEstado']."</option>";
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="pass">Contraseña:</label><br>
