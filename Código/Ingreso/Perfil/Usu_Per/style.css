@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     color: #424242;
     font-family: 'Times New Roman', Times, serif;
@@ -126,6 +125,7 @@ body {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    margin-bottom: 50px;
 }
 
 .seccion-perfil-usuario .perfil-usuario-bio {
@@ -193,37 +193,36 @@ a:hover{
 
 .seccion-perfil-usuario .redes-sociales {
     position: absolute;
-    right: calc(0px - 50px - 1rem);
+    /* top: 10rem; */
+    right: -10rem;
     top: 0;
     display: flex;
+    /* background: red; */
+    align-items: center !important;
+    justify-content: center !important;
     flex-direction: column;
 }
 
 .seccion-perfil-usuario .redes-sociales .boton-redes {
+    position: relative;
     border: 0;
     background-color: #fff;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     color: #fff;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    font-size: 1.3rem;
-}
-
-.seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
-    margin-top: .7rem;
-    position: relative;
-    left: 150px;
+    /* box-shadow: 0 0 12px rgba(0, 0, 0, .2); */
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15px;
 }
 
 .seccion-perfil-usuario .boton-redes.facebook {
     background-color: #5955FF;
-    position: relative;
-    left: 150px;
+
 }
 
 .seccion-perfil-usuario .boton-redes.twitter {
@@ -234,11 +233,17 @@ a:hover{
     background: linear-gradient(45deg, #FF2DFD, #40A7FF);
 }
 
+.seccion-perfil-usuario .redes-sociales .boton-redes:hover{
+    transform: rotateY(360deg);
+    transition: all .9s ease;
+}
+
 /* adactacion a dispositivos */
 @media (max-width: 750px) {
 
     .body{
         overflow-x: hidden;
+        height: 1200px;
     }
     .seccion-perfil-usuario .lista-datos {
         width: 100%;
@@ -271,25 +276,9 @@ a:hover{
         margin-top: 0;
     }
     .redes-sociales{
-        transform: translateY(120px), scale(.9), translateX(-500px) !important;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        height: 120px !important;
-        width: 80%!important;
-        overflow: hidden;
-    }
-
-    .redes-sociales a{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        left: -50px;
+        display: none;
     }
 }
-
 /* @media (max-width: 668px) {
     *{
         background: red;

@@ -35,7 +35,6 @@ $ciu = mysqli_fetch_array($ciudadPersona);
 </head>
 
 <body>
-   
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
@@ -49,7 +48,6 @@ $ciu = mysqli_fetch_array($ciudadPersona);
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
                 <h3 class="titulo"><?php echo $tabUsu['firstName']," ", $tabUsu['surname']; ?></h3>
-                
             </div>
             <div class="perfil-usuario-footer">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="user"> <i class="fa-solid fa-user"></i> Perfil</a>
@@ -119,7 +117,9 @@ $ciu = mysqli_fetch_array($ciudadPersona);
     </div>
 </body>
 <script>
-    const modo
+    function modo(){
+        const body = document.querySelector('body');
+        body.classList.toggle('dark');
+    }
 </script>
-
 </html>
