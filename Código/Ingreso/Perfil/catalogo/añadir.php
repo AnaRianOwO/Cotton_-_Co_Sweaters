@@ -2,7 +2,6 @@
 require_once ("../../../DB/db.php");
 error_reporting(0);
 $persona = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN persona P ON P.id_persona = U.id_persona and P.docType = U.docType WHERE P.id_persona = '$idUsuario' and P.docType = '$docType';"));
-$idPersona = $persona['idUsuario'];
 if(isset($_POST['btnAccion'])){
         $nombrePro = $_POST['nameProducto'];
         $codigo = $_POST['codigo'];
@@ -55,7 +54,7 @@ if(isset($_POST['btnComprar'])){
     $total = $_SESSION['total'];
     date_default_timezone_set('America/Bogota');
     $FecHr = date('Y-m-d H:i:s');
-    $factura = mysqli_query($DB, "INSERT INTO `factura` (`idFactura`, `fecha`, `total`, `idUsuario`) VALUES ('F$codigo', '$FecHr', '$total', '$idPersona');");
+    $factura = mysqli_query($DB, "INSERT INTO `factura` (`idFactura`, `fecha`, `total`, `idEstado`,`id_persona`,`docType`) VALUES ('F$codigo', '$FecHr', '$total', '1','$idUsuario','$docType');");
     if(isset($_SESSION['carrito'])){
         foreach($_SESSION['carrito'] as $indice=>$productos){ 
             $consu = mysqli_query($DB, "SELECT * FROM detallefactura D ORDER BY CAST(REPLACE(D.idDetalle,'D','') AS int) DESC LIMIT 1;");

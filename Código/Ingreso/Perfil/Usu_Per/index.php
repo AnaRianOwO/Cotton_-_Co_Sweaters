@@ -78,33 +78,38 @@ $ciu = mysqli_fetch_array($ciudadPersona);
                     </div>
                     <form action="update.php" method="post">
                         <div class="modal-body" style="overflow-y: auto !important;">
-                                <h5>Nombres</h5>
-                                <div>
-                                    <input type="text" name="firstName" placeholder="Primer nombre" value="<?php echo $datos['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                    <input type="text" name="secondName" placeholder="Segundo nombre" value="<?php echo $datos['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                </div>
-                                <h5>apellido</h5>
-                                <div>
-                                    <input type="text" name="surname" placeholder="Primer apellido" value="<?php echo $datos['surname']?>" style="border: none; border-bottom: 2px solid black;">
-                                    <input type="text" name="secondSurname" placeholder="Segundo apellido" value="<?php echo $datos['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
-                                </div>
-                                <h5>Correo</h5>
-                                <input type="text" name="correo" placeholder="Correo" value="<?php echo $datos['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                <h5>Contacto</h5>
-                                <div>
-                                    <input type="" name="indicativo" placeholder="Indicativo" value="<?php echo $datos['indicativo'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
-                                    <input type="" name="phone" placeholder="Numero" value="<?php echo $datos['phone'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                </div>
-                                <h5>Dirección</h5>
-                                <input type="" name="direccion" placeholder="Dirección" value="<?php echo $datos['direccion'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                <h5>Ciudad</h5>
-                                <select name="ciudad" id="">
+                            <h5>Nombres</h5>
+                            <div>
+                                <input type="text" name="firstName" placeholder="Primer nombre" value="<?php echo $datos['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondName" placeholder="Segundo nombre" value="<?php echo $datos['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>apellido</h5>
+                            <div>
+                                <input type="text" name="surname" placeholder="Primer apellido" value="<?php echo $datos['surname']?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondSurname" placeholder="Segundo apellido" value="<?php echo $datos['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Correo</h5>
+                            <input type="text" name="correo" placeholder="Correo" value="<?php echo $datos['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            <h5>Contacto</h5>
+                            <div>
+                                <input type="" name="indicativo" placeholder="Indicativo" value="<?php echo $datos['indicativo'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
+                                <input type="" name="phone" placeholder="Numero" value="<?php echo $datos['phone'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Dirección</h5>
+                            <input type="" name="direccion" placeholder="Dirección" value="<?php echo $datos['direccion'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            <h5>Ciudad</h5>
+                            <div>
+                                <select name="ciudad" id="" style="rigth: 50px">
                                     <?php $consult = mysqli_query($DB,"SELECT * FROM ciudad;"); ?>
                                     <option value="<?php echo $ciu['idCiudad']; ?>"><?php echo $ciu['nameCiudad']; ?></option>
                                     <?php while($ciudades= mysqli_fetch_array($consult)){ ?>
                                         <option value="<?php echo $ciudades['idCiudad'];?>"><?php echo $ciudades['nameCiudad'];?></option>
                                     <?php } ?>
                                 </select>
+                                <form action="eliminar.php" method="post">
+                                    <input type="submit" class="btn btn-danger" value="Eliminar cuenta" style="left: 40px;">
+                                </form>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
