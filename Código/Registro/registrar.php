@@ -44,7 +44,7 @@
                 </script>";
         }else{
             $query_persona = "INSERT INTO persona VALUES 
-            ('$id_persona','$docType','$name','$secondName','$surname','$secondSurname',
+            ('$id_persona','$docType','$firstName','$secondName','$surname','$secondSurname',
             '$indicativo','$phone','$correo','$pass_cifrada','1','$idCiudad')";
 
             $query_usuario = "INSERT INTO usuario VALUES ('$id_persona','$docType','$direccion')";
