@@ -13,11 +13,8 @@ if(!isset($_SESSION['idUsuario'])){
 
 $tabUsu = mysqli_fetch_array(mysqli_query($DB, "SELECT * FROM persona WHERE id_persona = '$idUsuario' and docType = '$docType'"));
 
-$perfil = mysqli_query($DB,"SELECT * FROM factura F INNER JOIN usuario U ON F.id_persona=U.id_persona INNER JOIN persona P ON U.id_persona=P.id_persona WHERE P.id_persona = '$idUsuario' AND P.docType = '$docType'");
-$filas = mysqli_num_rows($perfil);
-if(isset($perfil)){
-    $datos = mysqli_fetch_array($perfil);
-}
+$perfil = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN usuario U ON P.id_persona=U.id_persona AND P.docType=U.docType WHERE U.id_persona='$idUsuario' AND U.docType='$docType'");
+$datos = mysqli_fetch_array($perfil);
 
 $ciudadPersona = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN ciudad C ON C.idCiudad=P.idCiudad WHERE P.id_persona= '$idUsuario' AND P.docType = '$docType'");
 $ciu = mysqli_fetch_array($ciudadPersona);
