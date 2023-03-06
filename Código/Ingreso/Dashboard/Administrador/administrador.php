@@ -293,7 +293,7 @@ $row = mysqli_fetch_array($sql);
   })
 
 </script>  
-
+<a href="../Código/Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf"></a>
 <!--Fecha y Reloj-->  
 <br>
   <?php include "Tablas/fecha.php"?>

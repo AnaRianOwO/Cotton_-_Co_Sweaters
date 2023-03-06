@@ -12,7 +12,7 @@
     $pdf->AddPage();
 
 	// Consulta SQL
-    $consulta = "SELECT * FROM persona P INNER JOIN usuario U on P.id_persona=U.id_persona INNER JOIN factura F on U.idUsuario=F.idUsuario where F.idFactura='$idFactura'";
+    $consulta = "SELECT * FROM persona P INNER JOIN usuario U on P.id_persona=U.id_persona INNER JOIN factura F on P.id_persona=F.id_persona where F.idFactura='$idFactura'";
 	$resultado= $DB->query($consulta);
 	$Administrador = mysqli_fetch_assoc($resultado);
 

@@ -2,12 +2,12 @@
 require_once ("../../../../DB/db.php");
 
 if(isset($_POST)){
-  if (strlen($_POST['idAdministrador']) >=1 && strlen($_POST['docType'])  >=1 && strlen($_POST['firstName'])  >=1 
+  if (strlen($_POST['id_persona']) >=1 && strlen($_POST['docType'])  >=1 && strlen($_POST['firstName'])  >=1 
   && strlen($_POST['secondName'])  >=1 && strlen($_POST['surname']) >= 1 && strlen($_POST['secondSurname']) >= 1 
   && strlen($_POST['indicativo']) >= 1 && strlen($_POST['phone']) >= 1 && strlen($_POST['correo']) >= 1 
   && strlen($_POST['direccion']) >= 1 && strlen($_POST['pass']) >= 1 && strlen($_POST['idCiudad']) >= 1) {
 
-    $id_persona = trim($_POST['idAdministrador']);
+    $id_persona = trim($_POST['id_persona']);
     $docType = trim($_POST['docType']);
     $firstName = trim($_POST['firstName']);
     $secondName = trim($_POST['secondName']);
@@ -45,13 +45,13 @@ if(isset($_POST)){
                         });
                 </script>";
         }else{
-            $sumar = mysqli_query($DB ,"SELECT * FROM administrador ORDER BY CAST(REPLACE(idAdministrador,'A','') as int) DESC LIMIT 1");
+            $sumar = mysqli_query($DB ,"SELECT * FROM administrador ORDER BY CAST(REPLACE(id_persona,'A','') as int) DESC LIMIT 1");
             $rows = mysqli_num_rows($sumar);
             if(!isset($rows)){
                 $index = 1;
             }else{
                 $admin = mysqli_fetch_assoc($sumar);
-                $indice = substr($admin['idAdministrador'], 1);
+                $indice = substr($admin['id_persona'], 1);
                 $indice = intval($indice);
                 $indice+=1;
             }
