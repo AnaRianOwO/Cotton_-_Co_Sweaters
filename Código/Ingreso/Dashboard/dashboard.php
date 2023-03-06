@@ -291,7 +291,7 @@ $row = mysqli_fetch_array($sql);
           ['Task', 'Hours per Day'],
           <?php
           $SQL = "SELECT P.firstName, P.surname, count(P.id_persona) as 'Total compras' FROM persona P INNER JOIN usuario U 
-          ON P.id_persona=U.id_persona INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY P.firstName;";
+          ON P.id_persona=U.id_persona INNER JOIN factura F on F.id_persona=P.id_persona GROUP BY P.firstName;";
           //$SQL = "SELECT U.firstName, U.surname, count(F.idUsuario) as 'Total compras' FROM usuario U 
           //INNER JOIN factura F on F.idUsuario=U.idUsuario GROUP BY U.firstName ORDER BY count(F.idUsuario) DESC LIMIT 5";
           $consulta = mysqli_query($DB, $SQL);

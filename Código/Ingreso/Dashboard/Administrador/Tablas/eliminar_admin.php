@@ -2,6 +2,7 @@
     include("../../../../DB/db.php");
 
     $idAdministrador= $_GET['idAdministrador'];
-    $consulta= mysqli_query($DB,"DELETE FROM administrador WHERE idAdministrador= '$idAdministrador'");
-
-    header('Location: ../administrador.php');   
+    //$consulta= mysqli_query($DB,"DELETE FROM administrador WHERE idAdministrador= '$idAdministrador'");
+    $consulta= mysqli_query($DB,"DELETE A, P FROM persona As P INNER JOIN administrador AS A WHERE P.id_persona='$id_persona' AND A.id_persona= '$id_persona';");
+    header('Location: ../administrador.php');
+?>    

@@ -190,9 +190,9 @@ $row = mysqli_fetch_array($sql);
                         <th><?php echo $fila['nameCiudad']?></th>
                         <th><?php echo $fila['idEstado']?></th>
                         <td>
-                          <a class="btn btn-warning" href="Tablas/editar_admin.php?idAdministrador=<?php echo $fila['idAdministrador']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <a class="btn btn-warning" href="Tablas/editar_admin.php?id_persona=<?php echo $fila['id_persona']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 
-                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?idAdministrador=<?php  echo $fila['idAdministrador']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?id_persona=<?php  echo $fila['id_persona']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php

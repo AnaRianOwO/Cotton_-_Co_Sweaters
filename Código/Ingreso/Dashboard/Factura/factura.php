@@ -166,7 +166,7 @@ $row = mysqli_fetch_array($sql);
                   </thead>
                   <tbody>
                   <?php              
-                            $SQL="SELECT * FROM persona P INNER JOIN usuario U on U.id_persona=P.id_persona INNER JOIN factura F ON U.idUsuario = F.idUsuario;"; 
+                            $SQL="SELECT * FROM persona P INNER JOIN usuario U on U.id_persona=P.id_persona INNER JOIN factura F ON P.id_persona = F.id_persona;"; 
                             $dato = mysqli_query($DB, $SQL);
 
                             if($dato -> num_rows >0){
