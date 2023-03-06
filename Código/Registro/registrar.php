@@ -7,7 +7,7 @@
 
         $id_persona = mysqli_real_escape_string($DB, $_POST['idUsuario']);
         $docType = mysqli_real_escape_string($DB, $_POST['docType']);
-        $firstName = mysqli_real_escape_string($DB, $_POST['Name']);
+        $firstName = mysqli_real_escape_string($DB, $_POST['firstName']);
         $secondName = mysqli_real_escape_string($DB, $_POST['secondName']);
         $surname = mysqli_real_escape_string($DB, $_POST['surname']);
         $secondSurname = mysqli_real_escape_string($DB, $_POST['secondSurname']);
@@ -44,7 +44,7 @@
                 </script>";
         }else{
             $query_persona = "INSERT INTO persona VALUES 
-            ('$id_persona','$docType','$name','$secondName','$surname','$secondSurname',
+            ('$id_persona','$docType','$firstName','$secondName','$surname','$secondSurname',
             '$indicativo','$phone','$correo','$pass_cifrada','1','$idCiudad')";
 
             $query_usuario = "INSERT INTO usuario VALUES ('$id_persona','$docType','$direccion')";
