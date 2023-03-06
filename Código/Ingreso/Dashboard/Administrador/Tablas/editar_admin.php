@@ -1,9 +1,9 @@
 <?php
 include("../../../../DB/db.php");
 
-$idAdministrador= $_GET['idAdministrador'];
+$id_persona= $_GET['id_persona'];
 
-$consulta= "SELECT * FROM administrador A INNER JOIN persona P on A.id_persona=P.id_persona INNER JOIN ciudad C ON P.idCiudad=C.idCiudad WHERE A.idAdministrador = '$idAdministrador'";
+$consulta= "SELECT * FROM administrador A INNER JOIN persona P on A.id_persona=P.id_persona INNER JOIN ciudad C ON P.idCiudad=C.idCiudad WHERE A.id_persona = '$id_persona'";
 $resultado = mysqli_query($DB, $consulta);
 $administrador = mysqli_fetch_assoc($resultado);
 
@@ -91,7 +91,7 @@ $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
                             </div>
                                 
                                 <input type="hidden" name="accion" value="editar_registro">
-                                <input type="hidden" name="idAdministrador" value="<?php echo $idAdministrador;?>">
+                                <input type="hidden" name="id_persona" value="<?php echo $id_persona;?>">
                             </div>
                         
                            <br>

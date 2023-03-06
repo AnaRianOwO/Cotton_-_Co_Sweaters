@@ -22,7 +22,7 @@ if (isset($_POST['accion'])){
         include("../../../../DB/db.php");		extract($_POST);
 		$consulta="UPDATE administrador A INNER JOIN persona P on A.id_persona=P.id_persona INNER JOIN ciudad C on C.idCiudad=P.idCiudad SET P.firstName = '$firstName', P.secondName = '$secondName',
 		P.surname ='$surname', P.secondSurname ='$secondSurname', P.indicativo ='$indicativo', P.phone ='$phone', 
-        P.correo ='$correo', C.idCiudad='$idCiudad', P.idEstado='$idEstado' WHERE A.idAdministrador = '$idAdministrador' ";
+        P.correo ='$correo', C.idCiudad='$idCiudad', P.idEstado='$idEstado' WHERE A.id_persona = '$id_persona' ";
         
 		mysqli_query($DB, $consulta);
 		header('Location: ../administrador.php');
