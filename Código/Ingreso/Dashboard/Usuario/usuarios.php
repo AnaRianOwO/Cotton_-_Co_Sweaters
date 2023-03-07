@@ -191,7 +191,7 @@ $row = mysqli_fetch_array($sql);
                         <td>
                           <!-- <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php //echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
 
-                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?id_persona=<?php  echo   $fila  ['id_persona']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php
