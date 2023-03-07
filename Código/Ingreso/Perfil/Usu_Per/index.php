@@ -106,9 +106,7 @@ $ciu = mysqli_fetch_array($ciudadPersona);
                                         <option value="<?php echo $ciudades['idCiudad'];?>"><?php echo $ciudades['nameCiudad'];?></option>
                                     <?php } ?>
                                 </select>
-                                <form action="eliminar.php" method="post">
-                                    <input type="submit" class="btn btn-danger" value="Eliminar cuenta" style="left: 40px;">
-                                </form>
+                                <!-- <input type="submit" name="btnEliminar" class="btn btn-danger" value="Eliminar cuenta" style="left: 40px;"> -->
                             </div>
                         </div>
                         <div class="modal-footer">

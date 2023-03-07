@@ -25,4 +25,35 @@ if(isset($_POST["btnActivar"])){
         echo "Ha ocurrido un error";
     }
 }
+if(isset($_POST['btnEliminar'])){
+    echo "
+        .
+        <html>
+            <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+        <html>
+        <script>
+            Swal
+                .fire({
+                    title: '¿Estas seguro?',
+                    text: 'Si borras tu cuenta perderas todos tus registros',
+                    icon: 'warning',
+                    confirmButtonText: 'Continuar',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar'
+                })
+                .then(resultado => {
+                    if (resultado.value) {
+                        window.location='validacion.php';
+                    }else {   
+                        window.location='index.php'; 
+                    }
+                });
+        </script>";
+        // $update = mysqli_query($DB,"UPDATE `persona` SET `idEstado` = '0' WHERE `persona`.`id_persona` = '$idUsuario' AND `persona`.`docType` = '$docType'");
+        // if($update){
+        //     header('Location: index.php');
+        // }else{
+        //     echo "<script>alert('Ha ocurrido un error');</script>";
+        // }
+}
 ?>
