@@ -127,6 +127,12 @@ $row = mysqli_fetch_array($sql);
             <span class="app-menu__label">Logout</span></a>
         </li>
       </ul>
+      <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
+          </li>
+       </ul>
+  
     </aside>
 
     <main class="app-content">
@@ -191,7 +197,7 @@ $row = mysqli_fetch_array($sql);
                         <td>
                           <!-- <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php //echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
 
-                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?idUsuario=<?php  echo   $fila  ['idUsuario']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?id_persona=<?php  echo   $fila  ['id_persona']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php

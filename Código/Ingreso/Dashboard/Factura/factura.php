@@ -126,7 +126,12 @@ $row = mysqli_fetch_array($sql);
             <span class="app-menu__label">Logout</span></a>
         </li>
       </ul>
-    </aside>
+      <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
+          </li>
+       </ul>
+     </aside>
 <!--======================================================================================================-->
     <main class="app-content">
       <div class="app-title">
