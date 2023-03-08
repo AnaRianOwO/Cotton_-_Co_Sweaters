@@ -1,3 +1,20 @@
+<?php 
+include('DB/db.php');
+
+$vendidos="SELECT P.codigo, P.nameProducto, P.descripcion, P.precio, P.imagen, SUM(D.cantidad) FROM producto P INNER JOIN detallefactura D ON P.codigo = D.codigo WHERE P.idEstado = 1 GROUP BY P.codigo ORDER BY SUM(D.cantidad) DESC LIMIT 3";
+$vendidosql=mysqli_query($DB,$vendidos);
+$vendidosrow = mysqli_num_rows($vendidosql);
+
+$ofertas="SELECT P.codigo, P.nameProducto, P.descripcion, P.precio, P.imagen FROM producto P WHERE P.idEstado = 1 ORDER BY P.precio ASC LIMIT 3";
+$ofertasql=mysqli_query($DB,$ofertas);
+$ofertasrow = mysqli_num_rows($ofertasql);
+
+$ultimos="SELECT P.codigo, P.nameProducto, P.descripcion, P.precio, P.imagen, F.fecha FROM producto P INNER JOIN detallefactura D ON P.codigo = D.codigo INNER JOIN factura F ON D.idFactura = F.idFactura WHERE P.idEstado = 1 GROUP BY P.codigo ORDER BY F.fecha ASC LIMIT 3";
+$ultimosql=mysqli_query($DB,$ultimos);
+$ultimosrow = mysqli_num_rows($ultimosql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,28 +134,23 @@
                 <h1 class="article"><b>DESTACADOS</b></h1>
                 <hr class="linea">
                 <div class="container-card">
- 
-                    <div class="card"
-                         style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677626137976993/unknown_4.png)">
-                        <div class="content_1">
-                              <h2>Ref 1</h2>
-                             <a href="#" id="saco">Ver detalles</a>
-                        </div>
-                    </div>
-                    <div class="card"
-                            style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677626435784784/unknown_5.png)">
-                        <div class="content_1">
-                            <h2>Ref 2</h2>
-                            <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
-                    <div class="card"
-                        style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677626867785849/unknown_6.png)">
-                        <div class="content_1">
-                            <h2>Ref 3</h2>
-                             <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
+                <?php
+                    if($vendidosrow>0){
+                        while($vendidosrow = mysqli_fetch_array($vendidosql)){
+                        ?>
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="data:image/jpg;base64, <?php echo base64_encode($vendidosrow['imagen']) ?>">
+                                <div class="content_1">
+                                    <h2><?php echo $vendidosrow['nameProducto']; ?></h2>
+                                    <p><?php echo $vendidosrow['descripcion']; ?></p>
+                                    <p><?php echo "$",$vendidosrow['precio']; ?></p>
+                                    <a href="catalogo/#<?php echo $vendidosrow['codigo']?>">Ver detalles</a>
+                                </div>
+                            </div>
+                                
+                            <?php    
+                            }
+                            } ?>
                 </div>
             </div>
 
@@ -147,56 +159,47 @@
                 <hr class="linea">
                 <div class="container-card">
  
-                    <div class="card"
-                         style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677627358515382/unknown.png)">
-                        <div class="content_1">
-                              <h2>Ref 1</h2>
-                             <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
-                    <div class="card"
-                            style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677627903778956/unknown_2.png)">
-                        <div class="content_1">
-                            <h2>Ref 2</h2>
-                            <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
-                    <div class="card"
-                        style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677628188987553/unknown_1.png)">
-                        <div class="content_1">
-                            <h2>Ref 3</h2>
-                             <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
+                <?php
+                    if($ofertasrow>0){
+                        while($ofertasrow = mysqli_fetch_array($ofertasql)){
+                        ?>
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="data:image/jpg;base64, <?php echo base64_encode($ofertasrow['imagen']) ?>">
+                                <div class="content_1">
+                                    <h2><?php echo $ofertasrow['nameProducto']; ?></h2>
+                                    <p><?php echo $ofertasrow['descripcion']; ?></p>
+                                    <p><?php echo "$",$ofertasrow['precio']; ?></p>
+                                    <a href="catalogo/#<?php echo $ofertasrow['codigo']?>">Ver detalles</a>
+                                </div>
+                            </div>
+                                
+                        <?php    
+                        }
+                        } ?>
                 </div>
             </div>
             <div class="destacados">
-                <h1 class="article"><b>NUEVOS</b></h1>
+                <h1 class="article"><b>NOVEDAD</b></h1>
                 <hr class="linea">
                 <div class="container-card">
  
-                    <div class="card"
-                         style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677654378233899/modelo2.jpg)">
-                        <div class="content_1">
-                              <h2>Ref 1</h2>
-                             <a href="#" id="saco">Ver detalles</a>
+                <?php
+                if($ultimosrow>0){
+                    while($ultimosrow = mysqli_fetch_array($ultimosql)){
+                    ?>
+                        <div class="card">
+                            <img class="imagen" id="imagen" src="data:image/jpg;base64, <?php echo base64_encode($ultimosrow['imagen']) ?>">
+                            <div class="content_1">
+                                <h2><?php echo $ultimosrow['nameProducto']; ?></h2>
+                                <p><?php echo $ultimosrow['descripcion']; ?></p>
+                                <p><?php echo "$",$ultimosrow['precio']; ?></p>
+                                <a href="catalogo/#<?php echo $ultimosrow['codigo']?>">Ver detalles</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card"
-                            style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677654629888030/modelo3.jpg)">
-                        <div class="content_1">
-                            <h2>Ref 2</h2>
-                            <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
-                    <div class="card"
-                        style="--i:url(https://cdn.discordapp.com/attachments/1015677011961860167/1015677655129014342/modelo1.jpg)">
-                        <div class="content_1">
-                            <h2>Ref 3</h2>
-                             <a href="#">Ver detalles</a>
-                             <span id="ubicacion"></span>
-                        </div>
-                    </div>
+                                
+                    <?php    
+                    }
+                    } ?>
                 </div>
             </div>
         </main>

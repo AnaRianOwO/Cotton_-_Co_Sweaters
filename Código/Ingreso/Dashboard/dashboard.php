@@ -130,8 +130,13 @@ $row = mysqli_fetch_array($sql);
             <span class="app-menu__label">Logout</span></a>
         </li>
       </ul>
-    </aside>
-
+   
+        <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
+          </li>
+       </ul>
+     </aside>
 
     <main class="app-content">
       <div class="app-title">
@@ -189,7 +194,11 @@ $row = mysqli_fetch_array($sql);
           </div>
         </div> 
       </div>
+
+      
+
       <div class="row">
+        
         <!-- Grafica de Uusario -->
         <div class="col-md-6" id="piechart" class="embed-responsive embed-responsive-16by9" style="width: 500px; height: 500px; padding: 30px;"></div>
         <!-- Grafica de Ventas -->
@@ -278,7 +287,6 @@ $row = mysqli_fetch_array($sql);
         e.preventDefault();
       });
     </script>
-
     <!-- Funcion Grafica de Uusario -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -360,6 +368,10 @@ $row = mysqli_fetch_array($sql);
         body.classList.toggle('dark');
         nav.classList.toggle('dark');
       });
+
+
+
+      
     </script>
   </body>
 </html>

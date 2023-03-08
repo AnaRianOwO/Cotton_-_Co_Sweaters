@@ -36,8 +36,7 @@ include "añadir.php";
     <div class="cabeza">
         <a href="../Usu_Per/index.php"><i class="fa-solid fa-person-walking-arrow-right" style="font-size: 40px;margin: 0 0 0 20px !important;cursor: pointer;text-decoration: none;"></i></a>
         <h1>Bienvenido <?php echo $rows['firstName']; ?> a Cotton & Co Sweaters</h1>
-        <input id="searchbar" onkeyup="search_persona()" type="text"
-        name="search" placeholder="Search">
+        <input id="searchbar" type="text" name="search" placeholder="Search">
     </div>
     <div class="container-productos">
         <?php
@@ -52,7 +51,7 @@ include "añadir.php";
                             <input type="hidden" class="nombreSearch" name="nameProducto" id="" value="<?php echo $data['nameProducto'] ?>">
                             <input type="hidden" name="codigo" id="" value="<?php echo $data['codigo'] ?>">
                             <input type="hidden" name="precio" id="" value="<?php echo $data['precio'] ?>">
-                            <p><?php echo $data['nameProducto']; ?></p>
+                            <p class="Producto"><?php echo $data['nameProducto']; ?></p>
                             <p><?php echo $data['descripcion'] ?></p>
                             <p><?php echo "$",$data['precio'] ?></p>
                             <input type="number" name="cantidad" id="cantidad" value="1" min="1" max="<?php echo $data['stock'] ?>">    
@@ -108,6 +107,24 @@ include "añadir.php";
                 </table>
             </div>
         </div>
-</body>
-<script src="script/carrito.js"></script>
+        <script src="script/carrito.js"></script>
+    </body>
+<script>
+    const barra = document.getElementById('searchbar');
+    
+    barra.addEventListener('keyup',()=>{
+        const search = document.getElementById('searchbar').value;
+        const x = document.getElementsByClassName('carta');
+        const producto = document.getElementsByClassName('Producto');
+        let valor = search.toLowerCase();
+
+        for(i = 0; i < x.length; i++){
+            if(producto[i].innerHTML.toLowerCase().includes(valor)){
+                x[i].style.display = "block";
+            }else{
+                x[i].style.display = "none";
+            }
+        }
+    })
+</script>
 </html>

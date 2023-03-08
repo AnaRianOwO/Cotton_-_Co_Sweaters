@@ -125,7 +125,14 @@ $row = mysqli_fetch_array($sql);
             <span class="app-menu__label">Logout</span></a>
         </li>
       </ul>
-    </aside>
+
+      
+      <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
+          </li>
+       </ul>
+     </aside>
 <!--======================================================================================================-->
     <main class="app-content">
       <div class="app-title">
@@ -192,7 +199,7 @@ $row = mysqli_fetch_array($sql);
                         <td>
                           <a class="btn btn-warning" href="Tablas/editar_admin.php?id_persona=<?php echo $fila['id_persona']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
 
-                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?id_persona=<?php  echo $fila['id_persona']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?id_persona=<?php  echo $fila['id_persona']?>&docType=<?php echo $fila['docType'] ?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php
@@ -293,7 +300,7 @@ $row = mysqli_fetch_array($sql);
   })
 
 </script>  
-<a href="../Código/Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf"></a>
+<a href="../Código/Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf">Ayuda</a>
 <!--Fecha y Reloj-->  
 <br>
   <?php include "Tablas/fecha.php"?>

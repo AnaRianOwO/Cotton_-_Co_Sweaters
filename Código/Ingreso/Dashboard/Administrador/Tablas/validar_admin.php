@@ -51,16 +51,16 @@ if(isset($_POST)){
                 $index = 1;
             }else{
                 $admin = mysqli_fetch_assoc($sumar);
-                $indice = substr($admin['id_persona'], 1);
-                $indice = intval($indice);
-                $indice+=1;
+                // $indice = substr($admin['id_persona'], 1);
+                // $indice = intval($indice);
+                // $indice+=1;
             }
 
             $query_persona = "INSERT INTO persona VALUES 
             ('$id_persona','$docType','$firstName','$secondName','$surname','$secondSurname',
             '$indicativo','$phone','$correo','$pass_cifrada','1','$idCiudad')";
 
-            $query_admin = "INSERT INTO administrador VALUES ('A$indice','$id_persona','$docType')";
+            $query_admin = "INSERT INTO administrador VALUES ('$id_persona','$docType')";
             
 
             $resultado_persona = $DB->query($query_persona);
