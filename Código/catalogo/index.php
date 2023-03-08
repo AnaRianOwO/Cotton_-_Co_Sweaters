@@ -3,14 +3,14 @@ include('../DB/db.php');
 
 session_start();
 error_reporting(0);
-$idUsuario = $_SESSION['idUsuario'];
+$idUsuario = $_SESSION['id_persona'];
 
 if (isset($idUsuario)){
     header("Location:  ../Ingreso/Perfil/catalogo/index.php");
 } else {
 }
 
-$consul="SELECT * FROM usuario WHERE idUsuario = '$idUsuario'";
+$consul="SELECT * FROM usuario WHERE id_persona = '$id_persona'";
 $consult=mysqli_query($DB,$consul);
 
 $sql = mysqli_query($DB, "SELECT * FROM producto");
@@ -45,7 +45,7 @@ include "añadir.php";
                     if($data['idEstado']==1){
                     ?>
                         <form action="" method="post">
-                        <div class="carta" id="carta">
+                        <div class="carta" id="<?php echo $data['codigo']?>">
                             <center><img class="imagen" src="data:image/jpg;base64, <?php echo base64_encode($data['imagen']) ?>"></center>
                             <hr>
                             <input type="hidden" class="nombreSearch" name="nameProducto" id="" value="<?php echo $data['nameProducto'] ?>">
@@ -54,7 +54,7 @@ include "añadir.php";
                             <p><?php echo $data['nameProducto']; ?></p>
                             <p><?php echo $data['descripcion'] ?></p>
                             <p><?php echo "$",$data['precio'] ?></p>
-                            <input type="number" name="cantidad" id="cantidad" value="1">    
+                            <input type="number" name="cantidad" id="cantidad" value="1" min="1" max="<?php echo $data['stock'] ?>">    
                             <input type="submit" name="btnAccion" id= "añadir"value="Añadir">
                         </div>
                     </form>
