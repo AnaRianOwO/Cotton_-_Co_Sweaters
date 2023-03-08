@@ -372,12 +372,21 @@ main hr{
     border-radius: 5px;
     background: var(--i);
     background-size: cover;
-    overflow: hidden;    
+    overflow: hidden;
+    padding: 20px;    
+}
+
+.imagen {
+    background-size: cover;
+    background-position: center;
+    transition: .5s;
+    position: flex;
 }
 
 .content_1{
-    width: 100%;
-    height: 100%;
+    margin: 0px;
+    width: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -386,9 +395,12 @@ main hr{
     opacity: 0;
     transition: .5s;
     font-size: 30px;
+    z-index: 1;
+    position: absolute;
+    bottom: 120px;
 }
 
-.content_1 h2, a{
+.content_1 h2, a, p{
     color: rgba(255, 255, 255, .8);
     margin: 10px 0;
     
@@ -397,10 +409,6 @@ main hr{
 .card:hover .content_1{
     opacity: 1;
 }
-
-
-
-
 
 /*---------------------------------- CARD -------------------------------------*/
 .card{ 

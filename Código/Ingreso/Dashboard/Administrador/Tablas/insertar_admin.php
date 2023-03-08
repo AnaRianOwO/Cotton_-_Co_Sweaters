@@ -34,8 +34,8 @@ $resultadoCiudad = mysqli_query($DB, $sqlCiudad);
                             <div class="modal-body">
                             <form  action="" method="POST">
                                 <div class="form-group">
-                                    <label for="idAdministrador" class="form-label">Numero de Documento</label>
-                                    <input type="number"  id="idAdministrador" name="idAdministrador" class="form-control" required>
+                                    <label for="id_persona" class="form-label">Numero de Documento</label>
+                                    <input type="number"  id="id_persona" name="id_persona" class="form-control" required>
                                 </div>
                                 <br>
                                 <div class="content-select">
