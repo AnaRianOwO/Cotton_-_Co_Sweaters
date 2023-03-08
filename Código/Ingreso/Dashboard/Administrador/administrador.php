@@ -125,7 +125,14 @@ $row = mysqli_fetch_array($sql);
             <span class="app-menu__label">Logout</span></a>
         </li>
       </ul>
-    </aside>
+
+      
+      <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
+          </li>
+       </ul>
+     </aside>
 <!--======================================================================================================-->
     <main class="app-content">
       <div class="app-title">
@@ -293,7 +300,7 @@ $row = mysqli_fetch_array($sql);
   })
 
 </script>  
-<a href="../Código/Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf"></a>
+<a href="../Código/Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf">Ayuda</a>
 <!--Fecha y Reloj-->  
 <br>
   <?php include "Tablas/fecha.php"?>

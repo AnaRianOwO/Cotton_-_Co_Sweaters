@@ -30,7 +30,7 @@ $data = mysqli_fetch_array($consul);
             })
             .then(resultado => {
                 if (resultado.value) {
-                    <?php $pass = ?>resultado.value<?php ; ?>
+                    <?php $pass = ?>resultado.value<?php ?>
                     <?php if(password_verify($pass, $data['pass'])){
                         $update = mysqli_query($DB,"UPDATE `persona` SET `idEstado` = '0' WHERE `persona`.`id_persona` = '$idUsuario' AND `persona`.`docType` = '$docType'");
                         if($update){
