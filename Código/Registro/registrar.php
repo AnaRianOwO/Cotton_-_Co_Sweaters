@@ -7,7 +7,7 @@
 
         $id_persona = mysqli_real_escape_string($DB, $_POST['idUsuario']);
         $docType = mysqli_real_escape_string($DB, $_POST['docType']);
-        $firstName = mysqli_real_escape_string($DB, $_POST['firstName']);
+        $firstName = mysqli_real_escape_string($DB, $_POST['Name']);
         $secondName = mysqli_real_escape_string($DB, $_POST['secondName']);
         $surname = mysqli_real_escape_string($DB, $_POST['surname']);
         $secondSurname = mysqli_real_escape_string($DB, $_POST['secondSurname']);
