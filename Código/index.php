@@ -126,7 +126,7 @@ $ultimosrow = mysqli_num_rows($ultimosql);
                                     <h2><?php echo $vendidosrow['nameProducto']; ?></h2>
                                     <p><?php echo $vendidosrow['descripcion']; ?></p>
                                     <p><?php echo "$",$vendidosrow['precio']; ?></p>
-                                    <a href="catalogo/#<?php echo $ofertasrow['codigo']?>">Ver detalles</a>
+                                    <a href="catalogo/#<?php echo $vendidosrow['codigo']?>">Ver detalles</a>
                                 </div>
                             </div>
                                 
@@ -175,7 +175,7 @@ $ultimosrow = mysqli_num_rows($ultimosql);
                                 <h2><?php echo $ultimosrow['nameProducto']; ?></h2>
                                 <p><?php echo $ultimosrow['descripcion']; ?></p>
                                 <p><?php echo "$",$ultimosrow['precio']; ?></p>
-                                <a href="catalogo/#<?php echo $ofertasrow['codigo']?>">Ver detalles</a>
+                                <a href="catalogo/#<?php echo $ultimosrow['codigo']?>">Ver detalles</a>
                             </div>
                         </div>
                                 
