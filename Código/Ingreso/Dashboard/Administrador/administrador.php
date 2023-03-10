@@ -22,6 +22,9 @@ $row = mysqli_fetch_array($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#009688">
     <title>Cotton & Co Sweaters - Tienda Virtual</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -197,7 +200,7 @@ $row = mysqli_fetch_array($sql);
                         <th><?php echo $fila['nameCiudad']?></th>
                         <th><?php echo $fila['idEstado']?></th>
                         <td>
-                          <a class="btn btn-warning" href="Tablas/editar_admin.php?id_persona=<?php echo $fila['id_persona']?> "><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <a class="btn btn-warning" href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar" data-id_persona="<?php  echo $fila['id_persona']?>" data-docType="<?php echo $fila['docType'] ?>" ><i class="fa-solid fa-arrows-rotate"></i></a>
 
                           <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?id_persona=<?php  echo $fila['id_persona']?>&docType=<?php echo $fila['docType'] ?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
@@ -266,9 +269,89 @@ $row = mysqli_fetch_array($sql);
     })
   })
 
+  var boton = document.getElementsByClassName('btn-warning');
+
+  $(document).ready(function() {
+    
+    var queryString = window.location.search;
+    let id_persona = queryString.split("=")[1].split("&")[0];
+    let docType = queryString.split("=")[3];
+
+    if (id_persona !== null && docType !== null) {
+      console.log("funciona");
+      $("#modalActualizar").modal("show");
+    }
+  });
+
+  for (let i = 0; i < boton.length; i++) {
+    boton[i].addEventListener('click', (e)=>{
+      let id_persona = boton.dataset["id_persona"];
+      let docType= boton.dataset["docType"];
+      window.location.href = "?id_persona=".id_persona."&docType=".docType;
+  })
+  }
+
   </script> 
+<!--================================= Ventana modal actualizar (Anibal wtf) ===============================-->
 
+<div class="Ventana-modal">
+        <div class="modal fade" id="modalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización administrador</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="editar_admin.php" method="post">
+                    <?php
+                      $id_persona = isset($_GET['id_persona']) ? $_GET['id_persona'] : "";
+                      $docType = isset($_GET['docType']) ? $_GET['docType'] : "";
+                      $perfil = mysqli_query($DB, "SELECT A.id_persona, A.docType, P.firstName, P.secondName, P.surname, P.secondSurname, P.indicativo, P.phone, P.correo, P.idEstado, C.nameCiudad FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona INNER JOIN ciudad C ON P.idCiudad = C.idCiudad WHERE A.id_persona = '$id_persona' AND A.docType = '$docType'");
+                      $fila = mysqli_fetch_array($perfil);
+                    ?>
+                        <div class="modal-body" style="overflow-y: auto !important;">
+                            <h5>Nombres</h5>
+                            <div>
+                                <input type="text" name="firstName" placeholder="Primer nombre" value="<?php echo $fila['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondName" placeholder="Segundo nombre" value="<?php echo $fila['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Apellidos</h5>
+                            <div>
+                                <input type="text" name="surname" placeholder="Primer apellido" value="<?php echo $fila['surname']?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondSurname" placeholder="Segundo apellido" value="<?php echo $fila['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Correo</h5>
+                            <input type="text" name="correo" placeholder="Correo" value="<?php echo $fila['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            <h5>Contacto</h5>
+                            <div>
+                                <input type="" name="indicativo" placeholder="Indicativo" value="<?php echo $fila['indicativo'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
+                                <input type="" name="phone" placeholder="Numero" value="<?php echo $fila['phone'] ?>" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Ciudad</h5>
+                            <div>
+                                <select name="ciudad" id="" style="rigth: 50px">
+                                    <?php $consult = mysqli_query($DB,"SELECT * FROM ciudad;"); ?>
+                                    <option value="<?php echo $fila['idCiudad']; ?>"><?php echo $fila['nameCiudad']; ?></option>
+                                    <?php while($ciudades= mysqli_fetch_array($consult)){ ?>
+                                        <option value="<?php echo $ciudades['idCiudad'];?>"><?php echo $ciudades['nameCiudad'];?></option>
+                                    <?php } ?>
+                                </select>
+                                <!-- <input type="submit" name="btnEliminar" class="btn btn-danger" value="Eliminar cuenta" style="left: 40px;"> -->
+                            </div>
+                            <h5>Estado</h5>
+                            <input type="" name="idEstado" placeholder="idEstado" value="<?php echo $fila['idEstado'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" name="btnActivar" value="Actualizar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
+   <!--================================= Ventana modal FIN ===============================-->
   </body>
 <!--=================================Modal===============================-->
 <script>

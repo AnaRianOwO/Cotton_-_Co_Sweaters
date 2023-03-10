@@ -5,7 +5,7 @@ error_reporting(0);
 if(isset($_SESSION['idUsuario']) and isset($_SESSION['docType'])){
     $idUsuario = $_SESSION['idUsuario'];
     $docType = $_SESSION['docType'];
-    $pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.idUsuario=F.idUsuario INNER JOIN persona P ON P.id_persona=U.id_persona WHERE P.id_persona = '$idUsuario' AND P.docType = '$docType';");
+    $pro = mysqli_query($DB, "SELECT * FROM usuario U INNER JOIN factura F ON U.id_persona=F.id_persona INNER JOIN persona P ON P.id_persona=U.id_persona WHERE P.id_persona = '$idUsuario' AND P.docType = '$docType';");
 }else{
     header('Location: ../../index.php');
 }
