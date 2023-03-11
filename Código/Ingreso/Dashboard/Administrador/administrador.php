@@ -151,7 +151,7 @@ $row = mysqli_fetch_array($sql);
                       <a class="btn btn-primary1" href="Excel/Informe_Admin_excel.php"><i class="bi bi-file-earmark-excel-fill"></i>&nbsp;<b>Excel</b>
                       </a>
                       <a href="Pdf/informe_administradores.php" class="btn btn-primary2"><i class="bi bi-file-earmark-pdf-fill"></i>&nbsp;<b>PDF</b></a>
-                      <a href="Tablas/insertar_admin.php" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
+                      <a data-bs-toggle="modal" data-bs-target="#modalCrear" class="btn btn-success1"><i class="icon bi bi-person-plus-fill"></i><b>Crear</b></a>
 		                </div>
                   <thead>
                     <tr>
@@ -366,6 +366,76 @@ $row = mysqli_fetch_array($sql);
     </div>
 
    <!--================================= Ventana modal FIN ===============================-->
+   <!--================================= Nueva ventana modal ===============================-->
+
+   <div class="Ventana-modal">
+        <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización administrador</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="Tablas/validar_admin.php" method="post">
+                        <div class="modal-body" style="overflow-y: auto !important;">
+
+                            <h5>Número de documento</h5>
+                            <div>
+                              <input type="text" id="id_persona" name="id_persona" placeholder="Número de documento" value="" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Tipo de documento</h5>
+                            <div class="content-select">
+                              <select name="docType" id="docType" class="content-select" required="" oninvalid="this.setCustomValidity(' Por favor selecciona tu tipo de documento')">
+                                <option>Seleccione tipo de documento</option>
+                                <option value="CC">Cédula de ciudadanía</option>
+                                <option value="PP">Pasaporte</option>
+                                <option value="CE">Cédula de extranjería</option>
+                              </select>
+                            </div>
+                            <h5>Nombres</h5>
+                            <div>
+                                <input type="text" name="firstName" id="firstName" placeholder="Primer nombre" value="" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondName" id="secondName" placeholder="Segundo nombre" value="" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Apellidos</h5>
+                            <div>
+                                <input type="text" name="surname" id="surname" placeholder="Primer apellido" value="" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondSurname" id="" placeholder="Segundo apellido" value="" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Correo</h5>
+                            <input type="email" name="correo" placeholder="Correo" value="" style="border: none; border-bottom: 2px solid black;">
+                            <h5>Contacto</h5>
+                            <div>
+                                <input type="" name="indicativo" placeholder="+" value="" style="width: 40px;border: none; border-bottom: 2px solid black;">
+                                <input type="" name="phone" placeholder="Numero" value="" style="border: none; border-bottom: 2px solid black;">
+                            </div>
+                            <h5>Ciudad</h5>
+                            <div>
+                              <select name="idCiudad" id="idCiudad" required>
+                                <option value="">Seleccione su ciudad</option>
+                                <?php $sqlCiudad = "SELECT * FROM ciudad ORDER BY nameCiudad ASC";
+                                      $resultadoCiudad = mysqli_query($DB, $sqlCiudad); ?>
+                                <?php while($row = $resultadoCiudad->fetch_assoc())
+                                  {
+                                  echo "<option value=".$row['idCiudad'].">".$row['nameCiudad']."</option>";
+                                  }
+                                ?>
+                              </select>  
+                            </div>
+                            <h5>Contraseña</h5>
+                            <input type="password" name="pass" id="pass" style="border: none; border-bottom: 2px solid black;">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="hidden" name="accion" value="editar_registro">
+                            <input type="submit" name="btnActivar" value="Crear" name="registrar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================================= Ventana modal FIN ===============================-->
   </body>
 <!--=================================Modal===============================-->
 <script>

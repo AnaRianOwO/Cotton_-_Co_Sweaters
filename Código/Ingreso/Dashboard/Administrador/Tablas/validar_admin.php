@@ -5,7 +5,7 @@ if(isset($_POST)){
   if (strlen($_POST['id_persona']) >=1 && strlen($_POST['docType'])  >=1 && strlen($_POST['firstName'])  >=1 
   && strlen($_POST['secondName'])  >=1 && strlen($_POST['surname']) >= 1 && strlen($_POST['secondSurname']) >= 1 
   && strlen($_POST['indicativo']) >= 1 && strlen($_POST['phone']) >= 1 && strlen($_POST['correo']) >= 1 
-  && strlen($_POST['direccion']) >= 1 && strlen($_POST['pass']) >= 1 && strlen($_POST['idCiudad']) >= 1) {
+  && strlen($_POST['pass']) >= 1 && strlen($_POST['idCiudad']) >= 1) {
 
     $id_persona = trim($_POST['id_persona']);
     $docType = trim($_POST['docType']);
@@ -16,13 +16,13 @@ if(isset($_POST)){
     $indicativo = trim($_POST['indicativo']);
     $phone = trim($_POST['phone']);
     $correo = trim($_POST['correo']);
-    $direccion = trim($_POST['direccion']);
     $pass = trim($_POST['pass']);
     $idCiudad = trim($_POST['idCiudad']);
     $pass_cifrada = password_hash($pass, PASSWORD_DEFAULT);
-    $sql_user = "SELECT id_persona, docType FROM persona WHERE id_persona = '$id_persona' and docType  = '$docType'";
+    $sql_user = "SELECT id_persona, docType FROM persona WHERE id_persona = '$id_persona' AND docType  = '$docType' OR correo = '$correo'";
         $resultado_user = $DB->query($sql_user);
         $filas = $resultado_user->num_rows;
+        echo $filas;
         if ($filas > 0) {
             echo "
                 .
