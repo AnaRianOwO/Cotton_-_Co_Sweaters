@@ -42,7 +42,7 @@ $row = mysqli_fetch_array($sql);
       <!-- Barra de navegación menu-->
       <ul class="app-nav">
         <!-- Menu usuario-->
-        <button id="modo">Modo oscuro</button>
+        
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
