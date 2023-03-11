@@ -55,7 +55,26 @@ try {
             $enviado = true;
         }
     }else{
-         echo "<script>alert('Ingresa un correo registrado');window.location='../index.php'</script>";
+        echo "
+                    .
+                    <html>
+                        <script src='https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js'></script>
+                    <html>
+                    <script>
+                        Swal
+                            .fire({
+                                title: 'Correo no registrado',
+                                text: 'Por favor ingrese un correo previamente registrado',
+                                icon: 'warning',
+                                confirmButtonText: 'Continuar'
+                            })
+                            .then(resultado => {
+                                if (resultado.value) {
+                                    window.location='../index.php';
+                                }else {    
+                                }
+                            });
+                            </script>";
     }
     } catch (Exception $e) {
     }
