@@ -141,10 +141,9 @@ $ultimosrow = mysqli_num_rows($ultimosql);
                             <div class="card">
                                 <img class="imagen" id="imagen" src="data:image/jpg;base64, <?php echo base64_encode($vendidosrow['imagen']) ?>">
                                 <div class="content_1">
-                                    <h2><?php echo $vendidosrow['nameProducto']; ?></h2>
-                                    <p><?php echo $vendidosrow['descripcion']; ?></p>
-                                    <p><?php echo "$",$vendidosrow['precio']; ?></p>
-                                    <a href="catalogo/#<?php echo $vendidosrow['codigo']?>">Ver detalles</a>
+                                    <center><h2><?php echo $vendidosrow['nameProducto']; ?></h2></center>
+                                    <center><p><?php echo "$",$vendidosrow['precio']; ?></p></center>
+                                    <center><a href="catalogo/#<?php echo $vendidosrow['codigo']?>">Ver detalles</a></center>
                                 </div>
                             </div>
                                 
@@ -166,10 +165,9 @@ $ultimosrow = mysqli_num_rows($ultimosql);
                             <div class="card">
                                 <img class="imagen" id="imagen" src="data:image/jpg;base64, <?php echo base64_encode($ofertasrow['imagen']) ?>">
                                 <div class="content_1">
-                                    <h2><?php echo $ofertasrow['nameProducto']; ?></h2>
-                                    <p><?php echo $ofertasrow['descripcion']; ?></p>
-                                    <p><?php echo "$",$ofertasrow['precio']; ?></p>
-                                    <a href="catalogo/#<?php echo $ofertasrow['codigo']?>">Ver detalles</a>
+                                    <center><h2><?php echo $ofertasrow['nameProducto']; ?></h2></center>
+                                    <center><p><?php echo "$",$ofertasrow['precio']; ?></p></center>
+                                    <center><a href="catalogo/#<?php echo $ofertasrow['codigo']?>">Ver detalles</a></center>
                                 </div>
                             </div>
                                 
@@ -190,10 +188,9 @@ $ultimosrow = mysqli_num_rows($ultimosql);
                         <div class="card">
                             <img class="imagen" id="imagen" src="data:image/jpg;base64, <?php echo base64_encode($ultimosrow['imagen']) ?>">
                             <div class="content_1">
-                                <h2><?php echo $ultimosrow['nameProducto']; ?></h2>
-                                <p><?php echo $ultimosrow['descripcion']; ?></p>
-                                <p><?php echo "$",$ultimosrow['precio']; ?></p>
-                                <a href="catalogo/#<?php echo $ultimosrow['codigo']?>">Ver detalles</a>
+                                <center><h2><?php echo $ultimosrow['nameProducto']; ?></h2></center>
+                                <center><p><?php echo "$",$ultimosrow['precio']; ?></p></center>
+                                <center><a href="catalogo/#<?php echo $ultimosrow['codigo']?>">Ver detalles</a></center>
                             </div>
                         </div>
                                 

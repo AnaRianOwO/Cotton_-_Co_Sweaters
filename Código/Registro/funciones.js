@@ -7,7 +7,7 @@ const expresiones = {
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	num: /^\d{8,15}$/, // 10 a 15 numeros.
     tel: /^\d{10,15}$/,
-    direccion: /^[a-zA-ZÁ-ÿ\s]+[0-9]+[a-zA-ZÁ-ÿ\s]+[(#)(No.)(N°)(numero)\]+[0-9]+[a-zA-ZÁ-ÿ\s]+[0-9]+$/, //dirección xd
+    direccion: /^[a-zA-ZÁ-ÿ\s]+[0-9]+[a-zA-ZÁ-ÿ\s]+[(#)(No.)(N°)(numero)\]+[0-9]+[a-zA-ZÁ-ÿ\s]+[0-9]/, //dirección xd
     indicativo: /^\++\d{2,5}$/ // valida símbolo "+" y max 3 numeros
 }
 
