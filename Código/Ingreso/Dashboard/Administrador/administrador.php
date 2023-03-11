@@ -44,13 +44,11 @@ $row = mysqli_fetch_array($sql);
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li>
-                <a class="dropdown-item" href="opciones.php"><i class="fa fa-cog fa-lg"></i> Settings</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="perfil_admin.php"><i class="fa fa-user fa-lg"></i> Profile</a>
-            </li>
-            <li>
+
+          <li> <a class="dropdown-item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
+            
                 <a class="dropdown-item" href="../logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
             </li>
           </ul>
@@ -130,11 +128,6 @@ $row = mysqli_fetch_array($sql);
       </ul>
 
       
-      <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
-         <i class="fa-solid fa-question"></i>
-            <span class="app-menu__label">Ayuda</span></a>
-          </li>
-       </ul>
      </aside>
 <!--======================================================================================================-->
     <main class="app-content">
