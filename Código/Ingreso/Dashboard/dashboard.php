@@ -46,11 +46,10 @@ $row = mysqli_fetch_array($sql);
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li>
-                <a class="dropdown-item" href="#" id="ajustes"><i class="fa fa-cog fa-lg"></i> Settings</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="perfil_admin.php"><i class="fa fa-user fa-lg"></i> Profile</a>
+
+          <li> <a class="dropdown-item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf">
+         <i class="fa-solid fa-question"></i>
+            <span class="app-menu__label">Ayuda</span></a>
             </li>
             <li>
                 <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
@@ -131,9 +130,7 @@ $row = mysqli_fetch_array($sql);
         </li>
       </ul>
    
-        <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
-         <i class="fa-solid fa-question"></i>
-            <span class="app-menu__label">Ayuda</span></a>
+
           </li>
        </ul>
      </aside>
@@ -360,7 +357,7 @@ $row = mysqli_fetch_array($sql);
         chart.draw(data, options);
       };
     </script>
-    <script>
+<!-- ````    <script>
       const modo = document.getElementById('modo').addEventListener('click', function () {
         const nav = document.querySelector('.app-nav');
         const body = document.querySelector('body');
@@ -372,6 +369,6 @@ $row = mysqli_fetch_array($sql);
 
 
       
-    </script>
+    </script>```` -->
   </body>
 </html>
