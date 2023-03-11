@@ -121,13 +121,17 @@
 }
 
 .usuario{
-    background: #b55340 !important;
+    background: rgb(177, 61, 61) !important;
 }
 .administrador{
-    background: rgb(197, 99, 7) !important; 
+    background: rgb(56, 23, 148) !important; 
 } 
-
-
+.productos{
+    background: rgb(197, 130, 42) !important; 
+} 
+.ventas{
+    background: rgb(199, 86, 11) !important; 
+} 
 /* #piechart,
 #top_x_div {
 	position: relative;

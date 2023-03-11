@@ -42,7 +42,7 @@ $row = mysqli_fetch_array($sql);
       <!-- Barra de navegación menu-->
       <ul class="app-nav">
         <!-- Menu usuario-->
-        <button id="modo">Modo oscuro</button>
+        <!--<button id="modo">Modo oscuro</button>-->
         <li class="dropdown">
             <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -165,10 +165,17 @@ $row = mysqli_fetch_array($sql);
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+          <div class="widget-small primary coloured-icon"><i class="productos icon fa-solid fa-bag-shopping"></i>
             <div class="info">
-              <h4>Pedidos</h4>
-              <p><b>5</b></p>
+              <h4>Productos</h4>
+              <p><b><?php
+                  $sql = "SELECT * FROM producto";
+                  if($result=mysqli_query($DB, $sql)){
+                      $count = mysqli_num_rows($result);
+                      echo $count;
+                  }
+                ?></b>
+                </p>
             </div>
           </div>
         </div>
@@ -180,6 +187,24 @@ $row = mysqli_fetch_array($sql);
                 <b>
                 <?php
                   $sql = "SELECT * FROM administrador";
+                  if($result=mysqli_query($DB, $sql)){
+                      $count = mysqli_num_rows($result);
+                      echo $count;
+                  }
+                ?>
+                </b>
+              </p>
+            </div>
+          </div>
+        </div> 
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small primary coloured-icon btn-admin"><i class="ventas icon fa-solid fa-cart-shopping"></i>
+            <div class="info">
+              <h4>Ventas</h4>
+              <p>
+                <b>
+                <?php
+                  $sql = "SELECT * FROM factura";
                   if($result=mysqli_query($DB, $sql)){
                       $count = mysqli_num_rows($result);
                       echo $count;
