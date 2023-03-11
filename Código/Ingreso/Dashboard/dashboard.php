@@ -48,7 +48,7 @@ $row = mysqli_fetch_array($sql);
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
 
           <li> <a class="dropdown-item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf">
-         <i class="fa-solid fa-question"></i>
+          <i class="fa-solid fa-question"></i>
             <span class="app-menu__label">Ayuda</span></a>
             </li>
             <li>
