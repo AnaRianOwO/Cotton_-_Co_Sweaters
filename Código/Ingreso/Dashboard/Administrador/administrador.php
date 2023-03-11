@@ -427,7 +427,6 @@ $row = mysqli_fetch_array($sql);
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="hidden" name="accion" value="editar_registro">
                             <input type="submit" name="btnActivar" value="Crear" name="registrar" class="btn btn-primary">
                         </div>
                     </form>
