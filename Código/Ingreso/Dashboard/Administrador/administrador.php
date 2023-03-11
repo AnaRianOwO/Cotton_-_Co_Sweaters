@@ -200,7 +200,7 @@ $row = mysqli_fetch_array($sql);
                         <th><?php echo $fila['nameCiudad']?></th>
                         <th><?php echo $fila['idEstado']?></th>
                         <td>
-                          <a class="btn btn-warning" href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar" data-id_persona="<?php  echo $fila['id_persona']?>" data-docType="<?php echo $fila['docType'] ?>" ><i class="fa-solid fa-arrows-rotate"></i></a>
+                          <a class="btn btn-warning" href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar" data-idpersona="<?php  echo $fila['id_persona']?>" data-doctype="<?php echo $fila['docType'] ?>" ><i class="fa-solid fa-arrows-rotate"></i></a>
 
                           <a class="btn btn-danger btn-del"  href="Tablas/eliminar_admin.php?id_persona=<?php  echo $fila['id_persona']?>&docType=<?php echo $fila['docType'] ?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
@@ -269,27 +269,39 @@ $row = mysqli_fetch_array($sql);
     })
   })
 
-  var boton = document.getElementsByClassName('btn-warning');
+  
 
   $(document).ready(function() {
-    
-    var queryString = window.location.search;
-    let id_persona = queryString.split("=")[1].split("&")[0];
-    let docType = queryString.split("=")[3];
+    var boton = document.getElementsByClassName('btn-warning');
 
-    if (id_persona !== null && docType !== null) {
-      console.log("funciona");
-      $("#modalActualizar").modal("show");
+    for (let i = 0; i < boton.length; i++) {
+      boton[i].addEventListener('click', (e)=>{
+        let dato_id_persona = boton[i].dataset.idpersona;
+        let dato_doc_type= boton[i].dataset.doctype;
+        
+        var queryString = window.location.search;
+        
+        if (queryString == "") {
+          window.location.href = "?id_persona="+dato_id_persona+"&docType="+dato_doc_type; 
+        } else {
+          let idPersona = queryString.split("=")[1].split("&")[0];
+          let docType = queryString.split("=")[3];
+          return idPersona, docType;
+        }
+        console.log("hasta aquí bien");
+        
+        if (idPersona !== dato_id_persona && docType !== dato_doc_type) {
+          console.log("imaginate que te redireccione");
+          window.location.href = "?id_persona="+dato_id_persona+"&docType="+dato_doc_type; 
+        } else {
+          console.log("modal normal");
+          $("#modalActualizar").modal("show"); 
+        }
+    })
     }
   });
 
-  for (let i = 0; i < boton.length; i++) {
-    boton[i].addEventListener('click', (e)=>{
-      let id_persona = boton.dataset["id_persona"];
-      let docType= boton.dataset["docType"];
-      window.location.href = "?id_persona=".id_persona."&docType=".docType;
-  })
-  }
+  
 
   </script> 
 <!--================================= Ventana modal actualizar (Anibal wtf) ===============================-->
@@ -302,11 +314,11 @@ $row = mysqli_fetch_array($sql);
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización administrador</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="editar_admin.php" method="post">
+                    <form action="Tablas/funciones_admin.php" method="post">
                     <?php
                       $id_persona = isset($_GET['id_persona']) ? $_GET['id_persona'] : "";
                       $docType = isset($_GET['docType']) ? $_GET['docType'] : "";
-                      $perfil = mysqli_query($DB, "SELECT A.id_persona, A.docType, P.firstName, P.secondName, P.surname, P.secondSurname, P.indicativo, P.phone, P.correo, P.idEstado, C.nameCiudad FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona INNER JOIN ciudad C ON P.idCiudad = C.idCiudad WHERE A.id_persona = '$id_persona' AND A.docType = '$docType'");
+                      $perfil = mysqli_query($DB, "SELECT A.id_persona, A.docType, P.firstName, P.secondName, P.surname, P.secondSurname, P.indicativo, P.phone, P.correo, P.idEstado, P.idCiudad, C.nameCiudad FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona INNER JOIN ciudad C ON P.idCiudad = C.idCiudad WHERE A.id_persona = '$id_persona' AND A.docType = '$docType'");
                       $fila = mysqli_fetch_array($perfil);
                     ?>
                         <div class="modal-body" style="overflow-y: auto !important;">
@@ -343,6 +355,7 @@ $row = mysqli_fetch_array($sql);
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="hidden" name="accion" value="editar_registro">
                             <input type="submit" name="btnActivar" value="Actualizar" class="btn btn-primary">
                         </div>
                     </form>
