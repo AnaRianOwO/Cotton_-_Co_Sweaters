@@ -262,39 +262,45 @@ $row = mysqli_fetch_array($sql);
     })
   })
 
-  
+  $(document).ready(function(){
+    
+    var queryString = window.location.search;
+    console.log("La URL tiene esto de más "+queryString);
 
-  $(document).ready(function() {
-    var boton = document.getElementsByClassName('btn-warning');
-
-    for (let i = 0; i < boton.length; i++) {
-      boton[i].addEventListener('click', (e)=>{
-        let dato_id_persona = boton[i].dataset.idpersona;
-        let dato_doc_type= boton[i].dataset.doctype;
-        
-        var queryString = window.location.search;
-        
-        if (queryString == "") {
-          window.location.href = "?id_persona="+dato_id_persona+"&docType="+dato_doc_type; 
-        } else {
-          let idPersona = queryString.split("=")[1].split("&")[0];
-          let docType = queryString.split("=")[3];
-          return idPersona, docType;
-        }
-        console.log("hasta aquí bien");
-        
-        if (idPersona !== dato_id_persona && docType !== dato_doc_type) {
-          console.log("imaginate que te redireccione");
-          window.location.href = "?id_persona="+dato_id_persona+"&docType="+dato_doc_type; 
-        } else {
-          console.log("modal normal");
-          $("#modalActualizar").modal("show"); 
-        }
-    })
+    if (queryString !== "") {
+      let idPersona = queryString.split("=")[1].split("&")[0];
+      let docType = queryString.split("=")[3];
+      console.log("modal normal");
+      $("#modalActualizar").modal("show");
     }
+
   });
 
-  
+  var boton = document.getElementsByClassName('btn-warning');
+
+  for (let i = 0; i < boton.length; i++) {
+    boton[i].addEventListener('click', (e)=>{
+      let dato_id_persona = boton[i].dataset.idpersona;
+      let dato_doc_type= boton[i].dataset.doctype;
+      console.log(dato_id_persona, dato_doc_type);
+
+      var queryString = window.location.search;
+
+      if(queryString == ""){
+        window.location.href = "?id_persona="+dato_id_persona+"&docType="+dato_doc_type; 
+      } else{
+        let idPersona = queryString.split("=")[1].split("&")[0];
+        let docType = queryString.split("=")[3];
+
+        if(idPersona == dato_id_persona && docType == dato_doc_type){
+          console.log("modal normal");
+          $("#modalActualizar").modal("show");
+        }else{
+          window.location.href = "?id_persona="+dato_id_persona+"&docType="+dato_doc_type;           
+        }
+      }
+    })
+  }
 
   </script> 
 <!--================================= Ventana modal actualizar (Anibal wtf) ===============================-->
@@ -317,13 +323,13 @@ $row = mysqli_fetch_array($sql);
                         <div class="modal-body" style="overflow-y: auto !important;">
                             <h5>Nombres</h5>
                             <div>
-                                <input type="text" name="firstName" placeholder="Primer nombre" value="<?php echo $fila['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
-                                <input type="text" name="secondName" placeholder="Segundo nombre" value="<?php echo $fila['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="firstName" id="firstName" placeholder="Primer nombre" value="<?php echo $fila['firstName'] ?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondName" id="secondName" placeholder="Segundo nombre" value="<?php echo $fila['secondName'] ?>" style="border: none; border-bottom: 2px solid black;">
                             </div>
                             <h5>Apellidos</h5>
                             <div>
-                                <input type="text" name="surname" placeholder="Primer apellido" value="<?php echo $fila['surname']?>" style="border: none; border-bottom: 2px solid black;">
-                                <input type="text" name="secondSurname" placeholder="Segundo apellido" value="<?php echo $fila['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="surname" id="surname" placeholder="Primer apellido" value="<?php echo $fila['surname']?>" style="border: none; border-bottom: 2px solid black;">
+                                <input type="text" name="secondSurname" id="" placeholder="Segundo apellido" value="<?php echo $fila['secondSurname']?>" style="border: none; border-bottom: 2px solid black;">
                             </div>
                             <h5>Correo</h5>
                             <input type="text" name="correo" placeholder="Correo" value="<?php echo $fila['correo'] ?>" style="border: none; border-bottom: 2px solid black;">
@@ -334,20 +340,22 @@ $row = mysqli_fetch_array($sql);
                             </div>
                             <h5>Ciudad</h5>
                             <div>
-                                <select name="ciudad" id="" style="rigth: 50px">
+                                <select name="idCiudad" id="idCiudad" style="right: 50px">
                                     <?php $consult = mysqli_query($DB,"SELECT * FROM ciudad;"); ?>
                                     <option value="<?php echo $fila['idCiudad']; ?>"><?php echo $fila['nameCiudad']; ?></option>
                                     <?php while($ciudades= mysqli_fetch_array($consult)){ ?>
                                         <option value="<?php echo $ciudades['idCiudad'];?>"><?php echo $ciudades['nameCiudad'];?></option>
                                     <?php } ?>
                                 </select>
-                                <!-- <input type="submit" name="btnEliminar" class="btn btn-danger" value="Eliminar cuenta" style="left: 40px;"> -->
+                                
                             </div>
                             <h5>Estado</h5>
                             <input type="" name="idEstado" placeholder="idEstado" value="<?php echo $fila['idEstado'] ?>" style="width: 40px;border: none; border-bottom: 2px solid black;">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="hidden" name="id_persona" id="id_persona" value="<?php echo $fila['id_persona'] ?>">
+                            <input type="hidden" name="docType" id="docType" value="<?php echo $fila['docType'] ?>">
                             <input type="hidden" name="accion" value="editar_registro">
                             <input type="submit" name="btnActivar" value="Actualizar" class="btn btn-primary">
                         </div>
