@@ -174,7 +174,7 @@ $row = mysqli_fetch_array($sql);
                   </thead>
                   <tbody>
                   <?php
-                            $SQL="SELECT * FROM usuario U INNER JOIN persona P ON U.id_persona=P.id_persona INNER JOIN ciudad C on P.idCiudad=C.idCiudad"; 
+                            $SQL="SELECT * FROM usuario U INNER JOIN persona P ON U.id_persona=P.id_persona INNER JOIN ciudad C on P.idCiudad=C.idCiudad WHERE P.idEstado=1 OR P.idEstado=0"; 
 
                             $dato = mysqli_query($DB, $SQL);
 
@@ -197,7 +197,7 @@ $row = mysqli_fetch_array($sql);
                         <td>
                           <!-- <a class="btn btn-warning" href="Tablas/editar_usuario.php?idUsuario=<?php //echo     $fila  ['idUsuario']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
 
-                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?id_persona=<?php  echo   $fila  ['id_persona']?>"><i class="fa-regular fa-trash-can"></i></a>
+                          <a class="btn btn-danger btn-del" href="Tablas/eliminar_usuario.php?id_persona=<?php  echo $fila['id_persona']?>&docType=<?php echo $fila['docType']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php
