@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     session_start();
     $sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
     if(!empty($sessData['status']['msg'])){
@@ -13,7 +14,7 @@
 
     }
 
-    error_reporting(0);
+    
 ?>
 
 <!DOCTYPE html>
