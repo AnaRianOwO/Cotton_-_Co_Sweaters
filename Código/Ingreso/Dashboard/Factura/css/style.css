@@ -127,3 +127,38 @@
     background: rgb(197, 99, 7) !important;
     width: 500px !important; 
 }
+
+/* Estilos de los estados de la factura*/
+.cancel, .stock, .pack, .way, .delivered {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.cancel i, .stock i, .pack i, .way i, .delivered i{
+    padding: 5px;
+}
+
+.cancel {
+    background: #F28585;
+}
+
+.stock {
+    background: #F2B263;
+}
+
+.pack {
+    background: #F2C6C2;
+}
+
+.way {
+    background: #77B0CB;
+}
+
+.delivered {
+    background: #86A69D;
+}

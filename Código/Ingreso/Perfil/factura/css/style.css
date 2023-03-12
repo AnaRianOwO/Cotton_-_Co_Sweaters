@@ -9,11 +9,12 @@ body{
     background: #fff;
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
 
-#container-body{
+/* #container-body{
 
-}
+} */
 
 header #busqueda{
     position: relative;
@@ -51,7 +52,7 @@ header #busqueda::placeholder{
 
 .tabla{
     background: rgb(255, 133, 133);
-    width: 120vh;
+    width: 170vh;
     height: auto;
     padding: 30px;
     border-radius: 30px;
@@ -89,4 +90,52 @@ table tr td{
     font-size: 60px;
     position: relative;
     margin: auto 40px;
+}
+
+/* Estilos para los mensajes de las facturas */
+.tooltip {
+    color: rgb(250, 98, 98);
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    margin: 3px;
+    margin-right: 3px;
+}
+
+.tooltip:hover .tooltip-box {
+    display: inline-block;
+}
+
+
+.tooltip-box {
+    font-weight: normal;
+    display: none;
+    position: absolute;
+    background: #0b0b0b;
+    line-height: 20px;
+    z-index: 500;
+    text-align: center;
+    color:#fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    left: -85px;
+    
+    bottom: 30px;
+    width: 200px;
+}
+
+.tooltip-box::after {
+    content: '';
+    display: block;
+    border-top: 7px solid #0b0b0b;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: -7px;
+    left: calc(50% - 7px); 
+}
+
+.activo {
+    color: rgb(0, 255, 0);
 }

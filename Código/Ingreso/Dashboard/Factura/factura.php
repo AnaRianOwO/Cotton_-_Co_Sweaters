@@ -12,17 +12,29 @@ if(!isset($_SESSION['idAdministrador'])){
 }
 $sql = mysqli_query($DB, "SELECT * FROM administrador A INNER JOIN persona P ON A.id_persona = P.id_persona AND A.docType = P.docType WHERE A.id_persona = '$idAdministrador' AND A.docType = '$docType'");
 $row = mysqli_fetch_array($sql);
+
+$estados = array(
+    array( "Cancelado", "cancel", "fa-ban"),
+    array( "En stock", "stock", "fa-warehouse"),
+    array( "Empacado", "pack", "fa-boxes-packing"),
+    array( "En camino", "way", "fa-truck-moving"),
+    array( "Entregado", "delivered", "fa-house-circle-check"),
+);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta name="description" content="Tienda virtual de Cotton & Co Sweaters">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#009688">
     <title>Cotton & Co Sweaters - Tienda Virtual</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -158,6 +170,7 @@ $row = mysqli_fetch_array($sql);
 		                </div>
                   <thead>
                     <tr>
+                        <th>Editar estado</th>
                         <th>Número de factura</th>
                         <th>Identificación comprador</th>
                         <th>Nombre comprador</th>
@@ -165,6 +178,7 @@ $row = mysqli_fetch_array($sql);
                         <th>Dirección</th>
                         <th>Fecha</th>
                         <th>Total Compra</th>
+                        <th>Estado</th>
                         <th>Ver factura</th>
                         <td></td>
                     </tr>
@@ -178,18 +192,19 @@ $row = mysqli_fetch_array($sql);
                               while($fila=mysqli_fetch_array($dato)){
                           ?>
                     <tr>
-                      <th><?php echo $fila['idFactura']?></th>
+                        <th><?php echo $fila['idFactura']?></th>
+                        <th><a data-bs-toggle="modal" data-bs-target="#modalEstado" class="btn btn-warning" data-idfactura="<?php echo $fila['idFactura']?>"><i class="fa-solid fa-arrows-rotate"></i></a></th>
                         <th><?php echo $fila['id_persona']?></th>
                         <th><?php echo $fila['firstName']." ".$fila['secondName']." ".$fila['surname']." ".$fila ['secondSurname']?></th>
                         <th><?php echo $fila['phone']?></th>
                         <th><?php echo $fila['direccion']?></th>
                         <th><?php echo $fila['fecha']?></th>
                         <th><?php echo '$ '.$fila['total']?></th>
+                        <td><div class="<?php echo $estados[$fila['idEstado']][1]?>"><i class="fa-solid fa-2x <?php echo $estados[$fila['idEstado']][2]?>"></i><?php echo "  ".$estados[$fila['idEstado']][0]?></div></td>
                         <th><a class="btn btn-info" href="Info_Factura/generador_factura.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-file"></i></a></th>
                         <!-- En esta parte se inserta el documento de la factura en pdf, en el href-->
                         <td>
-                          <!-- <a class="btn btn-warning" href="Tablas/editar_venta.php?idFactura=<?php echo $fila['idFactura']?> "><i class="fa-solid fa-arrows-rotate"></i></a> -->
-
+                    
                           <a class="btn btn-danger btn-del"  href="Tablas/eliminar_venta.php?idFactura=<?php  echo $fila['idFactura']?>"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
@@ -210,8 +225,46 @@ $row = mysqli_fetch_array($sql);
           </div>
         </div>
       </div>
-      
-      
+
+<!--================================= Ventana modal estados ===============================-->
+    <div class="Ventana-modal">
+        <div class="modal fade" id="modalEstado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización Estado</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="Tablas/estado.php" method="post">
+                    <?php
+                      $idFactura = isset($_GET['idFactura']) ? $_GET['idFactura'] : "";
+                      $factura = mysqli_query($DB, "SELECT F.idFactura, F.idEstado FROM factura F WHERE F.idFactura = '$idFactura';");
+                      $fila = mysqli_fetch_array($factura);
+                      
+                    ?>
+                        <div class="modal-body" style="overflow-y: auto !important;">
+                            <h5>Estado Factura</h5>
+                            <div>
+                                <select name="idEstado" id="idEstado" class="form-control">
+                                    <option value="0" <?php if($fila['idEstado'] == '0') echo "selected"; ?>>Cancelado</option>
+                                    <option value="1" <?php if($fila['idEstado'] == '1') echo "selected"; ?>>En stock</option>
+                                    <option value="2" <?php if($fila['idEstado'] == '2') echo "selected"; ?>>Empacado</option>
+                                    <option value="3" <?php if($fila['idEstado'] == '3') echo "selected"; ?>>En camino</option>
+                                    <option value="4" <?php if($fila['idEstado'] == '4') echo "selected"; ?>>Entregado</option>
+                                </select>
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="hidden" name="idFactura" id="idFactura" value="<?php echo $fila['idFactura'] ?>">
+                            <input type="submit" name="btnActivar" value="Actualizar" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!--================================= Ventana modal estados ===============================-->
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -226,8 +279,6 @@ $row = mysqli_fetch_array($sql);
     <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
-
-
 
   </body>
 
@@ -259,6 +310,44 @@ $row = mysqli_fetch_array($sql);
       }   
   })
   })
+
+  $(document).ready(function(){
+    
+    var queryString = window.location.search;
+    console.log("La URL tiene esto de más "+queryString);
+
+    if (queryString !== "") {
+      let url_factura = queryString.split("=")[1];
+      $("#modalEstado").modal("show");
+    }
+
+  });
+
+  var boton = document.getElementsByClassName('btn-warning');
+  console.log(boton);
+
+  for (let i = 0; i < boton.length; i++) {
+    boton[i].addEventListener('click', (e)=>{
+      let dato_factura = boton[i].dataset.idfactura;
+      console.log(dato_factura);
+
+      var queryString = window.location.search;
+
+      if(queryString == ""){
+        window.location.href = "?idFactura="+dato_factura; 
+      } else{
+        let fact = queryString.split("=")[1];
+
+        if(fact == dato_factura){
+          console.log("modal normal");
+          $("#modalActualizar").modal("show");
+        }else{
+          window.location.href = "?idFactura="+dato_factura;           
+        }
+      }
+    })
+  }
+
 
 </script>  
 

@@ -164,7 +164,8 @@ body .cabeza{
 }
 
 .carta .imagen{
-    height: 20% !important;
+    /* height: 20% !important; */
+    height: 250px;
     display: flex;
     position: relative;
     max-width: 150px;
