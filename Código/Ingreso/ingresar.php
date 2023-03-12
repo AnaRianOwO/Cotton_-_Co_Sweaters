@@ -13,10 +13,10 @@
 
         session_start();
 
-        $_SESSION['idUsuario'] = $data['id_persona'];
+        $_SESSION['id_persona'] = $data['id_persona'];
         $_SESSION['docType'] = $data['docType'];
     
-    if(isset($_SESSION['idUsuario'])){
+    if(isset($_SESSION['id_persona'])){
         header("Location: Perfil/Usu_Per/index.php");
     } else {
         
