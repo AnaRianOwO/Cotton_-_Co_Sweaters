@@ -170,8 +170,8 @@ $estados = array(
 		                </div>
                   <thead>
                     <tr>
-                        <th>Editar estado</th>
                         <th>Número de factura</th>
+                        <th>Editar estado</th>
                         <th>Identificación comprador</th>
                         <th>Nombre comprador</th>
                         <th>Telefono</th>

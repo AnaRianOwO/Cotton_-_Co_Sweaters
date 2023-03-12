@@ -1,20 +1,20 @@
 <?php
 
-    error_reporting(0);
+    error_reporting();
 
     include('../DB/db.php');
     
     $correo=$_POST['correo'];   
     $pass = $_POST['pass'];
 
-    $consul = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN usuario U ON P.id_persona = U.id_persona and P.docType=U.docType WHERE P.correo = '$correo' AND idEstado='1'");
+    $consul = mysqli_query($DB,"SELECT * FROM persona P INNER JOIN usuario U ON P.id_persona = U.id_persona and P.docType = U.docType WHERE P.correo = '$correo' AND P.idEstado='1'");
     $data = mysqli_fetch_array($consul);
     // $exist = mysqli_num_rows($consul);
 
-        session_start();
+        // session_start();
 
-        $_SESSION['idUsuario'] = $data['id_persona'];
-        $_SESSION['docType'] = $data['docType'];
+        // $_SESSION['idUsuario'] = $data['id_persona'];
+        // $_SESSION['docType'] = $data['docType'];
     
     if(isset($_SESSION['idUsuario'])){
         header("Location: Perfil/Usu_Per/index.php");
@@ -28,7 +28,11 @@
 
         // $buscar_pass = mysqli_fetch_array($consul);
 
-        if(($nr == 1) && (password_verify($pass, $data['pass']))){
+        if(($nr == 1 && password_verify($pass, $data['pass']))){
+            session_start();
+
+        $_SESSION['idUsuario'] = $data['id_persona'];
+        $_SESSION['docType'] = $data['docType'];
             header("Location: Perfil/Usu_Per/index.php");
         }else{
             echo "
