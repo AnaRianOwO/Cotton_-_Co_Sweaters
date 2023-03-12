@@ -14,7 +14,7 @@ body{
     background: rgba(255, 184, 156, 0.952);
     position: relative;
     overflow: hidden;
-    overflow: none;
+    overflow: none; 
 }
 
 h2{
@@ -238,7 +238,7 @@ form .error-activo {
     body {
         display: flex;
         justify-content: center;
-        overflow: hidden;
+        overflow-x: hidden;
     }
     
     form,
@@ -246,7 +246,7 @@ form .error-activo {
         margin: 5px auto;
         border-radius: 50px;
         margin-block-end: 0;
-        overflow: hidden;
+        overflow-x: hidden;
     }
 
     .form-movimiento {
@@ -417,7 +417,7 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
     border-radius: 120px 4% 120px 4%;
     background: rgb(33, 54, 69);
     opacity: .3;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     position: absolute;
     bottom: -250px;
@@ -545,7 +545,7 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
         margin: 5px auto;
         border-radius: 50px;
         margin-block-end: 0;
-        overflow: hidden;
+        overflow-x: hidden;
     }
     .form-movimiento {
         transform: none;

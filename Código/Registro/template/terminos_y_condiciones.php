@@ -146,7 +146,7 @@
                             <!-- <a href="#owo">owo</a> -->
                             <!-- <h2 id="owo">OWO</h2> -->
                             <input type="checkbox" name="checkbox" id="checkbox" required> <p> He leído y aceptado los términos y condiciones</p>
-                            <button type="button" name="aceptar" id="aceptar" disabled data-bs-dismiss="modal">Aceptar</button>
+                            <button type="button" name="btn_registrar" id="aceptar" class="TyC" disabled data-bs-dismiss="modal">Aceptar</button>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

@@ -1,3 +1,7 @@
+setTimeout(function() {
+    document.body.style.overflow = "auto";
+}, 7000);
+
 var registro = document.getElementById('registro');
 var inputs = document.querySelectorAll('#registro input');
 
@@ -160,7 +164,9 @@ var registrar = document.getElementById('btn_registrar');
 
 checkbox.addEventListener('click',()=>{
     let checkbox = document.getElementById('checkbox').checked;
-    if(checkbox) {
+    let checbox = document.getElementById('checbox').checked;
+    if(checkbox || checbox) {
+        console.log("a");
         aceptar.disabled = false;
         registrar.disabled = false;
     } else {
@@ -169,7 +175,7 @@ checkbox.addEventListener('click',()=>{
     }
 })
 
-aceptar.addEventListener('click',()=>{
-    let registrar = document.getElementById('btn_registrar');
-    registrar.disabled = false;
-})
+// aceptar.addEventListener('click',()=>{
+//     let registrar = document.getElementById('btn_registrar');
+//     registrar.disabled = false;
+// })

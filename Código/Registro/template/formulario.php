@@ -90,7 +90,7 @@
                         <p class="error">Las contraseñas deben coincidir.</p>
                     </div>
                     
-                    <input type="checkbox" name="checkbox" id="checkbox" class="checkbox" required><center>Acepta los <a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>términos y condiciones</a> antes de terminar</center>
+                    <input type="checkbox" name="checkbox" id="checbox" class="checkbox" required><center>Acepta los <a href="#" class="TyC" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>términos y condiciones</a> antes de terminar</center>
                     <p><center><a href="../Ingreso/index.php">¿Ya tienes cuenta?</a></center></p>
                     
 
