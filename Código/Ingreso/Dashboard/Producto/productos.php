@@ -171,7 +171,7 @@ $row = mysqli_fetch_array($sql);
                   </thead>
                   <tbody>
                     <?php            
-                        $consulta="SELECT * FROM producto P;"; 
+                        $consulta="SELECT * FROM producto P WHERE P.idEstado=1 OR P.idEstado=0;"; 
 
                         $resultado = mysqli_query($DB, $consulta);
                         
@@ -317,7 +317,7 @@ $row = mysqli_fetch_array($sql);
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualización administrador</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Producto</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="Tablas/validar_producto.php" method="post" enctype="multipart/form-data">
