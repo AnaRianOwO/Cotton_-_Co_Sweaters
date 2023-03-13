@@ -128,10 +128,10 @@ $row = mysqli_fetch_array($sql);
         </li>
       </ul>
    
-        <li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
+        <!--<li> <a class="app-menu__item" a href="../../Manual de usuario (Administrador) - Cotton & Co Sweaters.pdf" style="top:450px">
          <i class="fa-solid fa-question"></i>
             <span class="app-menu__label">Ayuda</span></a>
-          </li>
+          </li>-->
        </ul>
      </aside>
 
