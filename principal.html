@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+                    
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+
+            background-color :rgba(223, 213, 204, 0.781), 0.918;
+            margin: auto;
+            left: 70px;
+            margin: 0%;
+            }
+            .todo{
+                background-color: #ff888872;
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            /* --------------------------------- HEADER ------------------------------------------*/
+            header{
+                width: 100%;
+                height: 300px;
+                text-align: center;
+                overflow: hidden;
+                transition: all 0.5s ease;
+                background: /*#3970A8*/url(IMG/Slider/1.jpg);
+                background-size: 100%;
+                z-index: 2;
+            }
+            .container-header{
+                
+                background: rgba(99, 37, 28, 0.726);
+                z-index: 1;
+                font-family: 'Dancing Script', cursive;
+                font-weight: 900;
+                
+            }
+            .line-header{
+                position: relative;
+                top: -75px;
+                left: 16%;
+                width: 70%;
+                text-align: center;
+                align-items: center;
+                padding: 0;
+
+            }
+
+            .icon{
+                position:absolute;
+                top: 100px;
+                right: 100px;
+            }
+            .icon-header{
+                color:#fff;
+                font-size: 40px;
+                font-weight: lighter;
+                display: inline-block;
+                margin-right: 40px;
+            }
+            header h1{
+                font-size: 70px;
+                font-weight: 900;
+                color: rgb(255, 255, 255);
+                line-height: 230px;
+                font-weight: 300;
+                transition: all 0.3s ease;
+            }
+
+            header nav{
+                height: 70px;
+                line-height: 100%;
+                width: 100%;
+                background: #ff8a8a;
+            }
+            nav {
+                float: right;
+            }
+                nav ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    padding-right: 20px;
+                    
+                }
+                
+                    nav ul li {
+                        display: inline-block;
+                        line-height: 10px;
+                        position: relative;
+                        left: 270px;
+                        
+                    }
+                        
+                        nav ul li a {
+                            display: block;
+                            padding: 0 10px;
+                            text-decoration: none;
+                            margin-right: 500px;
+                            font-size: 24px;
+                        }
+                        
+                        @media (max-width: 1052px) {
+
+                        .icon-header {
+                                display: contents;
+                                align-items: center;
+                                text-align: center;
+                                color: #ffffff;
+                                margin-top: 12px;
+                            }
+                            .header h1{
+                                display: contents;
+                                align-items: center;
+                                text-align: center;
+                                color: #ffffff;
+                                margin-top: 12px;
+                            }
+                            
+                            header nav{
+
+                                background-color: #ff8a8a;
+                                height: 70%;
+                            }
+                            .Menu{
+                                position: relative;
+                                align-items: center;
+                                text-align: center;
+                                top: -5%;
+                            }
+                            .nav{
+                                
+                                align-items: center;
+                                width: 50%;
+                                height: 1650px;
+                                margin-top: 15px;
+                                text-align: center;
+                                align-items: center;
+                            }
+
+                        }
+                            
+
+            /*.container-categoria{
+                height: 70px;
+            }*/
+
+            .Menu li a:hover{
+                transition: all .3;
+            }
+
+            .container-categoria .container-tutorial{
+                position: absolute;
+                width: 80%;
+                height: 0px;
+                background: #fff;
+                top: 300px;
+                margin: 0 120px;
+                border-radius: 0 0px 40px 40px;
+                overflow: hidden;
+            }
+
+            .container-tutorial li{
+
+                list-style: none;
+                display: inline-block;
+                margin: 50px 20px;
+                font-size: 25px;
+                
+            }
+
+            header nav a{
+                color: white;
+                display: inline-block;
+                padding: 10px 15px;
+                font-size: 20px;
+                line-height: 1;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            header nav a:hover{
+                background: rgba(0, 0, 0, 0.2);
+            }
+
+            img {
+                
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+            /* ---------------------------- SLIDE --------------------------------*/
+            .container-all{
+                position: relative;
+                max-width: 100%;
+                width: 100%;
+                border-radius: 6px;
+                overflow: hidden;
+                align-items: center;
+                justify-content: center;
+                height: 600px;
+            }
+
+            .slide {
+                display: flex;
+                transform: translate3d(0, 0, 0);
+                transition: all 1000ms;
+
+                animation: autoplay  20s infinite alternate;
+                animation-name: autoplay;
+                animation-direction: alternate;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+            }
+
+            .item-slide{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                flex-shrink: 0;
+                flex-grow: 0;
+                max-width: 100%;
+            }
+
+            .pagination{
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .pagination-item{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 2px solid white;
+                width: 16px;
+                height: 16px;
+                border-radius: 4px;
+                overflow: hidden;
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 0.5);
+                margin: 0 10px;
+                text-align: center;
+                transition: all 300ms;
+            }
+
+            .pagination-item:hover{
+                transform: scale(2);
+            }
+
+            .pagination-item img{
+                display: inline-block;
+                max-width: none;
+                height: 100%;
+                transform: scale(1);
+                opacity: 0;
+                transition: all 300ms;
+            }
+
+            .pagination-item:hover img{
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            input[id="1"]:checked ~ .slide{
+                animation: none;
+                transform: translate3d(0, 0, 0);
+            }
+
+            input[id="1"]:checked ~ .pagination .pagination-item[for="1"]{
+                background: #fff;
+            }
+
+            input[id="2"]:checked ~ .slide{
+                animation: none;
+                transform: translate3d(calc(-100% * 1), 0, 0);
+            }
+            input[id="2"]:checked ~ .pagination .pagination-item[for="2"]{
+                background: #fff;
+            }
+
+            input[id="3"]:checked ~ .slide{
+                animation: none;
+                transform: translate3d(calc(-100% * 2), 0, 0);
+            }
+            input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
+                background: #fff;
+            }
+
+            input[id="4"]:checked ~ .slide{
+                animation: none;
+                transform: translate3d(calc(-100% * 3), 0, 0);
+            }
+            input[id="4"]:checked ~ .pagination .pagination-item[for="4"]{
+                background: #fff;
+            }
+
+            @keyframes autoplay{
+                25%{
+                    transform: translate3d(calc(-100% * 0), 0, 0);
+                }
+
+                50%{
+                    transform: translate3d(calc(-100% * 1), 0, 0);
+                }
+
+                75%{
+                    transform: translate3d(calc(-100% * 2), 0, 0);
+                }
+
+                100%{
+                    transform: translate3d(calc(-100% * 3),0 ,0);
+                }
+            }
+            /*------------------------------------------- ----------------------------*/
+            .main{
+
+                padding: 7rem;
+                margin-top: 5px ;
+            }
+
+            main{
+                width: 100%;
+                max-width: 1200px;
+                margin: auto;
+                margin-top: 20px;
+
+            }
+            main hr{
+                max-width: 500px;
+                height: 4px;
+                border-style: none;
+                background: -webkit-linear-gradient(90deg, rgb(185, 80, 80), #ffb8b8);
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            .linea{
+                width: 100%;
+                max-width: 600px;
+                min-width: 500px;
+                margin-top: 70px;
+                margin-left: 0;
+                padding-right: 20px;
+                position: absolute;
+                top: 0;
+            }
+            /*---------------------------------------------CARD CON HOVER ------------------------------------*/
+            .container-card{
+                width: 100%;
+                max-width: 1200px;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: auto;
+                margin-top: 70px;
+                justify-content: space-around;
+                margin-block-end: -430px;
+            }
+
+            .card{
+                margin: 20px;
+                width: 300px;
+                height: 400px;
+                border-radius: 5px;
+                overflow: hidden;
+                padding: 20px;    
+            }
+
+            .imagen {
+                margin: 0px;
+                width: 300px;
+                height: 400px;
+                border-radius: 5px;
+                background-size: cover;
+                background-position: center;
+                transition: .5s;
+                position: flex;
+            }
+
+            .content_1{
+                margin: 0px;
+                width: 260px;
+                height: 380px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 0, 0, .4);
+                opacity: 0;
+                transition: .5s;
+                font-size: 30px;
+                z-index: 1;
+                position: absolute;
+                bottom: 140px;
+                border-radius: 5px;
+            }
+
+            .content_1 h2, a, p{
+                color: rgba(255, 255, 255, .8);
+                margin: 10px;
+                
+            }
+
+            .card:hover .content_1{
+                opacity: 1;
+            }
+
+            /*---------------------------------- CARD -------------------------------------*/
+            .card{ 
+                max-width: 100%;
+            }
+            .container-card_1{
+                width: 100%;
+                max-width: 1200px;
+                height: 430px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: auto;
+                margin-top: 70px;
+                justify-content: space-around;
+                margin-block-end: -430px;
+                max-width: 500px;
+            }
+
+            .container-card_1 .card_2{
+                width: 290px;
+                height: 480px;
+                border-radius: 8px;
+                box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                margin: 20px;
+                text-align: center;
+                transition: all 0.5 ease;
+                background: white;
+                max-width: 500px;
+
+                animation: slider 20s infinite alternate;
+                animation-timing-function: linear;
+            }
+
+            .container-card_1 .card_2:hover{
+                /* transform: translateY(-15px); */
+                cursor: pointer;
+                transform: scale(1.1);
+                box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
+
+            .hover-card{    box-shadow: 3px 5px 5px var(------azulOscuro);
+
+                
+                height: 350;
+                width: 290;
+                z-index: 5;
+            }
+
+            .hover-card:hover{
+                background: var(------azulV);
+                transition: all .9s ease;
+                transform: translateX(300px);
+            }
+
+            .container-card_1 .card_2 img{
+                width: 290px;
+                height: 350px;
+                z-index: 2;
+            }
+
+            .container-card_1 h4{
+                font-weight: 600;
+                margin-top: 30px;
+            }
+
+            .container-card_1 p{
+                padding: 0 1rem;
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .container-card_1 .card_2 a{
+                font-weight: 500;
+                text-decoration: none;
+                color: #3498db;
+            }
+
+            /*-------------------------- DESTACADOS ----------------------------*/
+            .destacados{
+                border-radius: 10px;
+                padding: 2rem;
+                flex: 1px;
+                width: 100%;
+                max-width: 1000%;
+                margin: 0 auto;
+                overflow: hidden;
+                margin-bottom: 6%;
+                position: relative;
+                height: 700px;
+                left: 20px;
+                background: #ffeeee;
+                border: 1px solid #d16b6b;
+                justify-content: center;
+                font-family: 'Dancing Script', cursive;
+                box-sizing: border-box;
+            }
+
+            /* -----------------------------INFO------------------------------------------- */
+
+            /* .container-contact{
+
+                width: 100%;
+                height: 400px;
+                color: #ffffff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #ffa9a9;
+                position: relative;
+            margin-bottom: 5%;
+            } */
+
+
+            iframe{
+                width:800px;
+                height:300px;
+                border:0;
+            }
+
+            @media (max-width: 1052px){
+                .destacados{
+                    
+                    align-items: center;
+                    width: 50%;
+                    height: 1650px;
+                    margin-top: 15px;
+                    text-align: center;
+                    align-items: center;
+                }
+
+                /* .container-contact{
+                    background-color: #ff8a8a;
+                    width: 100%;
+                    height: 300px;
+                } */
+
+                .ubicacion{
+                    width: 50%;
+                    height: 30%;
+                    position: absolute;
+                    align-items: center;
+                    text-align: center;
+
+                }
+                iframe{
+                    width: 300px;
+                    height: 200px;
+
+                }
+                
+            }
+
+            /*-------------------------------------- FOOTER --------------------------------------*/
+
+
+            footer{
+                position: relative;
+                bottom: 0;
+                left: 0;
+                height: 400px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background-color: var(--dark);
+                color: rgb(255, 255, 255);
+                background-image: url(IMG/Group1.png);
+            }
+
+            .copyright-container{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top: 1px solid #ffffff;
+                top: 0;
+                bottom: 0;
+            }
+
+            .copyright{
+                font-size: 15px;
+                opacity: 0.7;
+                font-weight: 400;
+                padding: 5px 0;
+            }
+
+            .footer-menus{
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 40%;
+            }
+
+            .footer-container{
+                height: fit-content;
+                width: 100%;
+                padding: 4rem 7rem;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                font-size: 20;
+            }
+
+            .footer-content-container{
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-direction: column;
+                font-size: 20px;
+            }
+
+            footer .website-logo{
+                margin-bottom: 1.2rem;
+                font-size: calc(1vw + 15px);
+            }
+
+            .footer-info, .menu-item-footer{
+                margin: 0.1rem 0;
+                opacity: 0.7;
+                color: rgb(255, 255, 255);
+                text-decoration: none;
+                transition: 0.5s;
+                font-size: 17px;
+            }
+
+            .menu-item-footer:hover{
+                opacity: 1;
+            }
+
+            .menu-title{
+                font-size: calc(1vw + 8px);
+                font-weight: 300;
+                text-transform: uppercase;
+                margin-bottom: 1.2rem;
+            }
+
+            .social-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
+                width: 100%;
+            }
+
+            .social-link{
+                height: 100%;
+                width: 30px;
+                background-image: url(IMG/f.png);
+                background-size: 70%;
+                background-position: center;
+                margin-right: 1rem;
+                background-repeat: no-repeat;
+            }
+
+            .social-link:hover{
+                opacity: 0.7;
+            }
+
+            footer .social-link:nth-of-type(2){
+                background-image: url(https://discord.com/channels/935576670914633768/978651507157270558/1011373171808682106);
+            }
+
+            footer .social-link:nth-of-type(3){/*Nth of type inside that container*/
+                background-image: url(https://discord.com/channels/935576670914633768/978651507157270558/1011373262430818459);
+            }
+
+
+            /*MEDIA QUERY*/
+            @media (max-width: 768px){
+                
+                .footer-container{
+                    padding: 2rem;
+                    flex-direction: column;
+                }
+
+                .footer-content-container{
+                    width: 100%;
+                    padding: 2rem 0;
+                    border-bottom: 1px solid #ffffff;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .footer-content-container:nth-of-type(1){
+                    align-items: flex-start;
+                }
+                .footer-content-container:nth-of-type(3){
+                    border-bottom: none;
+                    padding-bottom: 0;
+                }
+
+                .footer-menus{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    border-bottom: 1px solid #ffffff;
+                }
+
+                .footer-menus .footer-content-container:nth-of-type(1){
+                    width: 45%;
+                    align-items: flex-start;
+                    border-bottom: none;
+                }
+                .footer-menus .footer-content-container:nth-of-type(2){
+                    width: 45%;
+                    align-items: flex-start;
+                    border-bottom: none;
+                }
+            }
+
+
+
+
+
+
+            /* -------------------------- VENTANA MODAL ------------------------------ */
+
+            .ventanas-modales{
+                background: rgba(0, 0, 0, 0.404);
+                position: absolute;
+                width: 100%;
+                height: 470vh;
+                margin: 0px;
+                padding: 0;
+                display: fixed;
+                z-index: 10;
+            }
+
+            .ventanas-modales .ventana-modal{
+                position: fixed;
+                top: 0%;
+                left: 10%;
+                margin: 20vh 20vh;
+                background: #fff;
+                height: 350px;
+                width: 150vh;
+                border-radius: 40px;
+                z-index: 20;
+            }
+
+            .modal1{
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: 1fr 2fr 1fr;
+                position: relative;
+                margin: 0;
+                padding: 30px;
+                top: -100px;
+                color: black;
+                z-index: 22;
+                width: 100%;
+                height: 100%;
+            }
+            .modal1 h1{
+                display: grid;
+                color: black;
+                margin: 0;
+                position: relative;
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+            .modal1 input{
+                display: grid;
+                background: red;
+                margin: 40px;
+                height: 30px;
+                width: 60px;
+                cursor: pointer;
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+            .modal1 p{
+                display: grid;
+            }
+
+            .modal1 .imagenes{
+                position: relative;
+                height: 40px;
+                width: 40px;
+                display: inline;
+                background: red;
+                margin: 10px;
+            }
+
+            /*--------------------------boton de ayuda----------------------------------*/
+
+
+            
+
+            /* ------------------------ APAGAR Y CERRAR LOS OBJETOS --------------------------- */
+
+            .apagar{
+                display: none !important;
+            }
+
+            @media (max-width: 600px){
+
+                .destacados{
+
+                    flex-direction: column;
+                }
+            }
+
+            /* Estilos para el modal */
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.7);
+            }
+
+            .modal-contenido {
+                background-color: #fff;
+                border-radius: 5px;
+                width: 80%;
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                position: relative;
+            }
+
+            .cerrar {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/be71717483.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+ <title>Cotton & Co Sweaters</title>
+ <link rel="icon" href="https://media.discordapp.net/attachments/1015677011961860167/1015677294016208906/Logo.png">
+</head>
+
+<body>
+
+
+    <header>
+        <script>
+            window.addEventListener('mouseover', initLandbot, { once: true });
+            window.addEventListener('touchstart', initLandbot, { once: true });
+            var myLandbot;
+            function initLandbot() {
+              if (!myLandbot) {
+                var s = document.createElement('script');s.type = 'text/javascript';s.async = true;
+                s.addEventListener('load', function() {
+                  var myLandbot = new Landbot.Livechat({
+                    configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-1513194-VVGLEFR39OVDDLFO/index.json',
+                  });
+                });
+                s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+              }
+            }
+            </script>
+        <div class="container-header">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+                </style>
+            <h1>Cotton & Co Sweaters</h1>
+            <hr class="line-header">
+            <div class="icon">
+                <p class="icon-header"><a href="#" class="mostrarModal"><i class="fa-regular fa-circle-user"></i></p></a></a>
+                <p class="icon-header"><a href="#" class="mostrarModal"><i class="fa-solid fa-bag-shopping"></i></p></a></a>
+            </div>
+        </div>
+
+        <nav>
+            <ul class="Menu">
+                <li><a href="#" class="mostrarModal">Catálogo</a></li>
+                <li><a href="#" class="mostrarModal">Contactanos</a></li>
+
+            </ul>
+        </nav>
+
+    </header>
+    <div class="container-all">
+
+        <input type="radio" name="image-slide" id="1" hidden>
+        <input type="radio" name="image-slide" id="2" hidden>
+        <input type="radio" name="image-slide" id="3" hidden>
+        <input type="radio" name="image-slide" id="4" hidden>
+
+
+        <div class="slide">
+            <div class="item-slide">
+                <img src="IMG/Slider/5.jpg">
+            </div>
+
+            <div class="item-slide">
+                <img src="IMG/Slider/6.jpg">
+            </div>
+
+            <div class="item-slide">
+                <img src="IMG/Slider/7.jpg">
+            </div>
+
+            <div class="item-slide">
+                <img src="IMG/Slider/8.jpg">
+            </div>
+
+        </div>
+
+        
+
+        <div class="pagination">
+
+            <label class="pagination-item" for="1">
+                <img src="IMG/Slider/1.jpg" alt="">
+            </label>
+
+            <label class="pagination-item" for="2">
+                <img src="IMG/Slider/2.jpg" alt="">
+            </label>
+
+            <label class="pagination-item" for="3">
+                <img src="IMG/Slider/3.jpg" alt="">
+            </label>
+
+            <label class="pagination-item" for="4">
+                <img src="IMG/Slider/4.jpg" alt="">
+            </label>
+
+        </div>
+    </div>
+    
+    
+        <main>
+            <div class="destacados">
+                <h1 class="article"><b>DESTACADOS</b></h1>
+                <hr class="linea">
+                <div class="container-card">
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="IMG/destacados1.png">
+                                <div class="content_1">
+                                    <center><h2></h2></center>
+                                    <center><p></p></center>
+                                    <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="IMG/destacados2.png">
+                                <div class="content_1">
+                                    <center><h2></h2></center>
+                                    <center><p></p></center>
+                                    <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="IMG/destacados3.png">
+                                <div class="content_1">
+                                    <center><h2></h2></center>
+                                    <center><p></p></center>
+                                    <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                                </div>
+                            </div>
+                </div>
+            </div>
+
+            <div class="destacados">
+                <h1 class="article"><b>OFERTAS</b></h1>
+                <hr class="linea">
+                <div class="container-card">
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="IMG/modelo1.jpg">
+                                <div class="content_1">
+                                    <center><h2></h2></center>
+                                    <center><p></p></center>
+                                    <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="IMG/modelo2.jpg">
+                                <div class="content_1">
+                                    <center><h2></h2></center>
+                                    <center><p></p></center>
+                                    <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <img class="imagen" id="imagen" src="IMG/modelo3.jpg">
+                                <div class="content_1">
+                                    <center><h2></h2></center>
+                                    <center><p></p></center>
+                                    <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <div class="destacados">
+                <h1 class="article"><b>NOVEDAD</b></h1>
+                <hr class="linea">
+                <div class="container-card">
+                        <div class="card">
+                            <img class="imagen" id="imagen" src="IMG/novedades1.png">
+                            <div class="content_1">
+                                <center><h2></h2></center>
+                                <center><p></p></center>
+                                <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="imagen" id="imagen" src="IMG/novedades2.png">
+                            <div class="content_1">
+                                <center><h2></h2></center>
+                                <center><p></p></center>
+                                <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="imagen" id="imagen" src="IMG/novedades3.png">
+                            <div class="content_1">
+                                <center><h2></h2></center>
+                                <center><p></p></center>
+                                <center><a href="#" class="mostrarModal">Ver detalles</a></center>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="container-contact">
+               
+   
+        <!--FOOTER-->
+        <footer>
+            
+
+            <div class="footer-container">
+                <div class="footer-content-container">
+                    <h3 class="website-logo">COTTON & CO SWEATERS</h3>
+                    <span class="footer-info">Keep it soft. Keep it simple. Keep it Cotton.</span>
+                    <span class="footer-info">cottoncosweattt@gmail.com</span>
+                </div>
+                <div class="footer-menus">
+                    <div class="footer-content-container">
+                        <span class="menu-title">Menu</span>
+                        <a href="#" class="menu-item-footer mostrarModal">Home</a>
+                        <a href="#" class="menu-item-footer mostrarModal">Carrito de compras</a>
+                        <a href="#" class="menu-item-footer mostrarModal">Mis facturas</a>
+                        <a href="#" class="menu-item-footer mostrarModal">Ayuda</a>
+                    </div>
+                    <div class="footer-content-container">
+                        <span class="menu-title">Contactanos</span>
+                        <a href="#" class="menu-item-footer mostrarModal"> <i class="fa-regular fa-envelope"></i> Correo</a>
+                        <a href="#" class="menu-item-footer mostrarModal"> <i class="fa-solid fa-location-dot"></i> </i>Ubicación </a>
+                        <a href="#" class="menu-item-footer mostrarModal"><i class="fa-solid fa-phone"></i> </i>3502120698 </a>
+                    </div>
+                </div>
+                <div class="footer-content-container">
+                        <span class="menu-title">legal</span>
+                        <a href="#" class="menu-item-footer mostrarModal">Mi perfil</a>
+                        <a href="#" class="menu-item-footer mostrarModal">Termino y condiciones </a>
+                        <a href="#" class="menu-item-footer mostrarModal">Catálogo</a>
+                    </div>
+                </div>
+                
+                <div class="footer-content-container">
+                    <span class="menu-title">Siguenos</span>
+                    <div class="social-container">
+                        <a href="#" class="social-link mostrarModal"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-link mostrarModal"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link mostrarModal"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link mostrarModal"><i class="fa-brands fa-github"></i></a>   
+                    </div>
+                </div>
+            </div>
+            </div> 
+    </div>
+            <div class="copyright-container">
+                <span class="copyright">Copyright 2023, Cotton&CoSweaters.com. All rights reserved.</span>
+            </div>
+        </footer>
+
+        <div class="modal" id="miModal">
+            <div class="modal-contenido">
+                <span class="cerrar" id="cerrarModal">&times;</span>
+                <h1>Esta página es una versión de prueba, descarga o accede a la página web del proyecto para tener toda la experiencia.</h1>
+            </div>
+        </div>
+</body>
+
+<script>
+    const enlaceModal = document.getElementsByClassName("mostrarModal");
+    const modal = document.getElementById("miModal");
+    const cerrarModal = document.getElementById("cerrarModal");
+
+    for (let i = 0; i < enlaceModal.length; i++) {
+        enlaceModal[i].addEventListener("click", () => {
+            console.log("hola");
+            modal.style.display = "block";
+        });
+    }
+
+    cerrarModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+</html>

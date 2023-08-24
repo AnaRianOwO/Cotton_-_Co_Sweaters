@@ -11,9 +11,13 @@ Este es un sistema de información enfocado a la empresa Cotton & Co Sweaters pa
 - Exportación de informes a PDF y Excel.
 - Gestión de perfil.
 
+## Vista previa
+
+Para acceder a la vista previa de la página acceder al siguiente link [Cotton & Co Sweaters](https://anarianowo.github.io/Cotton_-_Co_Sweaters/)
+
 ## Instalación
 
-Para que funcione correctamente el aplicativo debe ser instalado XAMPP, seguir el tutorial a continuación [Manual de instalación]()
+Para que funcione correctamente el aplicativo debe ser instalado XAMPP, seguir el tutorial a continuación [Manual de instalación](Docs/Trimestre-4/ManualDeInstalacion/Manual_de_instalaci%C3%B3n_OVA.pdf)
 
 ## Contribución
 
