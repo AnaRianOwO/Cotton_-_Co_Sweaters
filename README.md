@@ -13,7 +13,7 @@ Este es un sistema de información enfocado a la empresa Cotton & Co Sweaters pa
 
 ## Vista previa
 
-Para acceder a la vista previa de la página acceder al siguiente link [Cotton & Co Sweaters](https://anarianowo.github.io/Cotton_-_Co_Sweaters/)
+Para acceder a la vista previa de la página acceder al siguiente link [Cotton & Co Sweaters](https://anarianowo.github.io/Cotton_-_Co_Sweaters/site/)
 
 ## Instalación
 
